@@ -20,11 +20,12 @@ export default function Home() {
       <ServicesSection />
       
       <LogoMarquee />
+      <ProjectsShowcase />
       <ArtisticProjectsSection />
       <BlogPreviewSection />
       <InstagramFilmstrip />
       <PosterGallery />
-      <ProjectsShowcase />
+      
       <Footer />
     </main>
   )
