@@ -18,7 +18,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ServicesSection />
-      <PremiumStatsSection />
+      
       <LogoMarquee />
       <ArtisticProjectsSection />
       <BlogPreviewSection />

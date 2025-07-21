@@ -65,7 +65,7 @@ const DesktopProjectSlide: React.FC<{ project: Project; isActive: boolean }> = (
       <div className="absolute inset-0">
         <iframe
           src={project.videoUrl}
-          className="h-full w-full object-cover"
+          className="absolute top-1/2 left-1/2 w-auto h-auto min-w-[110%] min-h-[110%] -translate-x-1/2 -translate-y-1/2 object-cover"
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
