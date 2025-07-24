@@ -1,118 +1,148 @@
 "use client";
 
-// app/components/HeroSection.tsx
-
-import Header from './Header'
-import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import Header from './Header';
 
 const HeroSection = () => {
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [currentCharIndex, setCurrentCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  // Hybrid Loading State Management
+  const [isMounted, setIsMounted] = useState(false);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
-  const texts = [
-    "Hikayenizi Anlatın",
-    "Markanızı Büyütün", 
-    "Hayalinizi Gerçekleştirin"
-  ];
-
+  // Trigger video loading after component mounts
   useEffect(() => {
-    const typeSpeed = isDeleting ? 50 : 100;
-    const deleteSpeed = 50;
-    const pauseTime = 2000;
+    setIsMounted(true);
+  }, []);
 
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        if (currentCharIndex < texts[currentTextIndex].length) {
-          setCurrentCharIndex(currentCharIndex + 1);
-        } else {
-          setTimeout(() => setIsDeleting(true), pauseTime);
-        }
-      } else {
-        if (currentCharIndex > 0) {
-          setCurrentCharIndex(currentCharIndex - 1);
-        } else {
-          setIsDeleting(false);
-          setCurrentTextIndex((currentTextIndex + 1) % texts.length);
-        }
+  // Animation variants for the new slogan
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
       }
-    }, isDeleting ? deleteSpeed : typeSpeed);
+    }
+  };
 
-    return () => clearTimeout(timer);
-  }, [currentCharIndex, isDeleting, currentTextIndex, texts]);
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50,
+      scale: 0.95
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1
+    }
+  };
 
   return (
-    <section className="relative h-[60vh] md:h-screen w-full overflow-hidden bg-noise">
-      {/* Vimeo Arkaplan - Ultra Aggressive Cropping Method */}
-      <div className="absolute inset-0 z-[-2]">
-        <iframe 
-          src="https://player.vimeo.com/video/1089941484?muted=1&autoplay=1&loop=1&background=1&app_id=122963" 
-          allow="autoplay; fullscreen; picture-in-picture" 
-          className="absolute top-1/2 left-1/2 w-auto h-auto min-w-[230%] md:min-w-[120%] min-h-[115%] -translate-x-1/2 -translate-y-1/2 object-cover"
-          style={{ 
-            border: 'none', 
-            pointerEvents: 'none'
-          }}
-        ></iframe>
-      </div>
+    <section className="relative h-[65vh] md:h-screen w-full overflow-hidden">
+      {/* Layer 1: Video Background (Conditionally Rendered) */}
+      {isMounted && (
+        <div className="absolute inset-0 z-[-3]">
+          <iframe 
+            src="https://player.vimeo.com/video/1089941484?muted=1&autoplay=1&loop=1&background=1&quality=720p&controls=0&title=0&byline=0&portrait=0&transparent=0&playsinline=1&preload=auto" 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            className="absolute top-1/2 left-1/2 w-auto h-auto min-w-[250%] md:min-w-[120%] min-h-[115%] -translate-x-1/2 -translate-y-1/2 object-cover"
+            style={{ 
+              border: 'none', 
+              pointerEvents: 'none',
+              width: '100%',
+              height: '100%',
+              opacity: isVideoPlaying ? 1 : 0,
+              transition: 'opacity 0.3s ease-in-out'
+            }}
+            onLoad={() => {
+              console.log('Video iframe loaded');
+              setIsVideoReady(true);
+              
+              // Video gerçekten oynatılmaya başladığında geçiş yap
+              // Vimeo'nun loading overlay'ini atlamak için daha uzun bir delay
+              setTimeout(() => {
+                console.log('Video should be playing now');
+                setIsVideoPlaying(true);
+              }, 1500);
+            }}
+            onError={(e) => {
+              console.error('Video loading error:', e);
+            }}
+          />
+        </div>
+      )}
 
-      {/* Video Overlay */}
-      <div className="absolute inset-0 z-[-1] bg-black/60"></div>
+      {/* Layer 2: Poster Image (Cross-fade with video) */}
+      <div 
+        className={`absolute inset-0 z-[-2] bg-cover bg-center transition-opacity duration-300 ease-in-out ${
+          isVideoPlaying ? 'opacity-0' : 'opacity-100'
+        }`}
+        style={{ 
+          backgroundImage: "url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1920&h=1080&fit=crop&q=80')",
+          backgroundPosition: 'center center'
+        }}
+      />
+
+      {/* Layer 3: Dark Overlay (Always Present) */}
+      <div className="absolute inset-0 z-[-1] bg-black/30" />
 
       {/* Header */}
       <Header />
 
-      {/* Hero İçeriği - Mobile: Centered, Desktop: Bottom-left positioned */}
+      {/* Hero Content - New Minimalist Design */}
       <div className="absolute z-10 inset-0 flex items-center justify-start px-4 md:px-8 md:items-end md:justify-start md:bottom-16 md:left-16">
-        <div className="max-w-4xl w-full">
-          {/* Ana Başlık - Responsive font sizes */}
+        <motion.div 
+          className="max-w-4xl w-full"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Part 1: Solid Text with Premium Red Accent */}
           <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold mb-4 md:mb-6 leading-tight text-white font-sans"
+            variants={itemVariants}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-sans mb-2"
           >
-            Doğru
-            <br />
-            Video Hikayesi
+            <span className="text-white">HİKAYENİ GÖRSELLEŞTİR</span>
+            <span className="text-premium-red ml-2 md:ml-4">.</span>
           </motion.h1>
-          
-          {/* Daktilo Animasyonlu Alt Başlık - Responsive sizing */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1 }}
-            className="mb-4 md:mb-6"
-          >
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 font-sans">
-              {texts[currentTextIndex].substring(0, currentCharIndex)}
-              <span className="animate-pulse">|</span>
-            </h2>
-          </motion.div>
 
-          {/* Divider - Responsive width */}
-          <motion.div 
-            initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            transition={{ duration: 1, delay: 1.5 }}
-            className="h-px bg-white mb-4 md:mb-6 max-w-xs md:max-w-none"
-          ></motion.div>
-
-          {/* Açıklama - Responsive text and positioning */}
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 2 }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl opacity-90 max-w-2xl text-white/90 font-sans leading-relaxed"
+          {/* Part 2: Outline Text with Premium Red Accent */}
+          <motion.h1 
+            variants={itemVariants}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-sans"
           >
-            Dijital markaların dönüşümlerini artırmak için video prodüksiyon şirketi olarak 
-            hizmet veriyoruz. Her projede mükemmelliği hedefliyoruz.
-          </motion.p>
-        </div>
+            <span 
+              className="text-transparent"
+              style={{ 
+                WebkitTextStroke: '1px white'
+              }}
+            >
+              PRODÜKSİYON
+            </span>
+            <span className="text-premium-red ml-2 md:ml-4">.</span>
+          </motion.h1>
+        </motion.div>
       </div>
-    </section>
-  )
-}
 
-export default HeroSection
+      {/* Loading Indicator (Optional) */}
+      {isMounted && !isVideoPlaying && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="absolute bottom-8 right-8 z-20"
+        >
+          <div className="flex items-center gap-2 text-white/60 text-sm">
+            <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse" />
+            <span>Video yükleniyor...</span>
+          </div>
+        </motion.div>
+      )}
+    </section>
+  );
+};
+
+export default HeroSection;

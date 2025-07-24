@@ -1,0 +1,205 @@
+!function(c) {
+    "use strict";
+    function i(n) {
+        const t = n.find(".scroll-timeline-wrap")
+          , o = t.find(".scroll-timeline-item")
+          , r = o.length
+          , e = t.offset().top
+          , i = t.outerHeight();
+        c(window).on("scroll.scrollTimeline", function() {
+            const s = (c(window).scrollTop() - e) / i;
+            s < 0 || 1 < s ? o.each(function() {
+                c(this).css({
+                    transform: "translateX(0%)"
+                })
+            }) : o.each(function(n) {
+                const t = c(this);
+                var o = n / r
+                  , e = (n + 1) / r
+                  , o = (s - o) / (e - o)
+                  , o = Math.min(Math.max(o, 0), 1);
+                let i = 0;
+                n < r - 1 && (i = (n % 2 == 0 ? -1 : 1) * o * 150),
+                t.css({
+                    transform: `translateX(${i}%)`
+                })
+            })
+        })
+    }
+    function s(n, t, o) {
+        var e = o.offset().top
+          , i = o.outerHeight()
+          , s = t.height()
+          , r = parseInt(t.css("top"), 10)
+          , l = t.offset().top
+          , o = n.scrollTop()
+          , n = t.data("relative");
+        n && (t = c(n).outerHeight(),
+        i = l + s - (e + i),
+        e <= l && i <= -2 ? c(n).css({
+            position: "sticky",
+            top: -(t - r),
+            transform: "none"
+        }) : -2 <= i ? c(n).css({
+            transition: "none",
+            transform: `translateY(-${o + r - l}px)`
+        }) : c(n).css({
+            position: "",
+            top: "",
+            transform: "none"
+        }))
+    }
+    c(window).on("elementor/frontend/init", () => {
+        880 <= c(window).width() && elementorFrontend.hooks.addAction("frontend/element_ready/framek-scroll-timeline-2.default", function(o) {
+            const e = c(window);
+            !function() {
+                const n = o.find(".scroll-timeline-wrap")
+                  , t = o.find(".scroll-timeline-sticky");
+                i(o),
+                s(e, t, n),
+                e.on("scroll.scrollTimeline", () => s(e, t, n)),
+                e.on("resize.scrollTimeline", () => {
+                    s(e, t, n),
+                    i(o)
+                }
+                )
+            }()
+        })
+    }
+    )
+}(jQuery);
+
+
+
+bu js kısmıydı.
+
+ <div class="scroll-timeline-sticky" data-relative="#work-process">
+                                                        <div class="scroll-timeline-inner">
+                                                            <div class="scroll-timeline-item">
+                                                                <div class="scroll-timeline-inner-wraper elementor-repeater-item-a59437d">
+                                                                    <div class="scroll-timeline-number">
+                                                                        <div class="timeline-number">01</div>
+                                                                        <span class="timeline-sum">/04</span>
+                                                                    </div>
+                                                                    <div class="scroll-timeline-grid">
+                                                                        <div class="timeline-content-wrap">
+                                                                            <h2 class="timeline-heading">The content</h2>
+                                                                            <div class="timeline-content-box">
+                                                                                <div class="timeline-footer-box">
+                                                                                    <div class="scroll-timeline-subheading">Timeline</div>
+                                                                                    <div class="scroll-timeline-infor">1-2 days.</div>
+                                                                                </div>
+                                                                                <div class="timeline-desc">We firstly identify the final result you want to achieve, from here we spec out the project, requirements and content needed.                                            </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="timeline-image">
+                                                                            <div class="video-container">
+                                                                                <video width="100%" height="auto" loop autoplay playsinline muted crossorigin="anonymous" preload="auto">
+                                                                                    <source src="https://videos.pexels.com/video-files/3196062/3196062-uhd_2560_1440_25fps.mp4" type="video/mp4">
+                                                                                </video>
+                                                                            </div>
+                                                                            <div class="timeline-post-thumbnail">
+                                                                                <img loading="lazy" decoding="async" width="670" height="510" src="https://demo2.wpopal.com/framek/wp-content/uploads/2025/06/thecontent.jpg" class="attachment-full size-full wp-image-2607" alt="" srcset="https://demo2.wpopal.com/framek/wp-content/uploads/2025/06/thecontent.jpg 670w, https://demo2.wpopal.com/framek/wp-content/uploads/2025/06/thecontent-300x228.jpg 300w" sizes="(max-width: 670px) 100vw, 670px"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="scroll-timeline-item">
+                                                                <div class="scroll-timeline-inner-wraper elementor-repeater-item-eae7f8c">
+                                                                    <div class="scroll-timeline-number">
+                                                                        <div class="timeline-number">02</div>
+                                                                        <span class="timeline-sum">/04</span>
+                                                                    </div>
+                                                                    <div class="scroll-timeline-grid">
+                                                                        <div class="timeline-content-wrap">
+                                                                            <h2 class="timeline-heading">The shoot</h2>
+                                                                            <div class="timeline-content-box">
+                                                                                <div class="timeline-footer-box">
+                                                                                    <div class="scroll-timeline-subheading">Timeline</div>
+                                                                                    <div class="scroll-timeline-infor">3-5 days</div>
+                                                                                </div>
+                                                                                <div class="timeline-desc">Now the real fun begins! We bring out all our latest technology to capture and direct the footage required to create your video.                                             </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="timeline-image">
+                                                                            <div class="video-container">
+                                                                                <video width="100%" height="auto" loop autoplay playsinline muted crossorigin="anonymous" preload="auto">
+                                                                                    <source src="https://videos.pexels.com/video-files/9808528/9808528-uhd_2732_1440_25fps.mp4" type="video/mp4">
+                                                                                </video>
+                                                                            </div>
+                                                                            <div class="timeline-post-thumbnail">
+                                                                                <img loading="lazy" decoding="async" width="670" height="510" src="https://demo2.wpopal.com/framek/wp-content/uploads/2025/06/theshoot.jpg" class="attachment-full size-full wp-image-2608" alt="" srcset="https://demo2.wpopal.com/framek/wp-content/uploads/2025/06/theshoot.jpg 670w, https://demo2.wpopal.com/framek/wp-content/uploads/2025/06/theshoot-300x228.jpg 300w" sizes="(max-width: 670px) 100vw, 670px"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="scroll-timeline-item">
+                                                                <div class="scroll-timeline-inner-wraper elementor-repeater-item-1f671ea">
+                                                                    <div class="scroll-timeline-number">
+                                                                        <div class="timeline-number">03</div>
+                                                                        <span class="timeline-sum">/04</span>
+                                                                    </div>
+                                                                    <div class="scroll-timeline-grid">
+                                                                        <div class="timeline-content-wrap">
+                                                                            <h2 class="timeline-heading">Editing</h2>
+                                                                            <div class="timeline-content-box">
+                                                                                <div class="timeline-footer-box">
+                                                                                    <div class="scroll-timeline-subheading">Timeline</div>
+                                                                                    <div class="scroll-timeline-infor">2-4 days</div>
+                                                                                </div>
+                                                                                <div class="timeline-desc">Once the shoot is complete, our in-house video editors will edit the footage and send the first cuts back to you within 10-14 days.                                             </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="timeline-image">
+                                                                            <div class="video-container">
+                                                                                <video width="100%" height="auto" loop autoplay playsinline muted crossorigin="anonymous" preload="auto">
+                                                                                    <source src="https://videos.pexels.com/video-files/5092427/5092427-hd_1920_1080_30fps.mp4" type="video/mp4">
+                                                                                </video>
+                                                                            </div>
+                                                                            <div class="timeline-post-thumbnail">
+                                                                                <img loading="lazy" decoding="async" width="670" height="510" src="https://demo2.wpopal.com/framek/wp-content/uploads/2025/06/edit.jpg" class="attachment-full size-full wp-image-2605" alt="" srcset="https://demo2.wpopal.com/framek/wp-content/uploads/2025/06/edit.jpg 670w, https://demo2.wpopal.com/framek/wp-content/uploads/2025/06/edit-300x228.jpg 300w" sizes="(max-width: 670px) 100vw, 670px"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="scroll-timeline-item">
+                                                                <div class="scroll-timeline-inner-wraper elementor-repeater-item-34e2019">
+                                                                    <div class="scroll-timeline-number">
+                                                                        <div class="timeline-number">04</div>
+                                                                        <span class="timeline-sum">/04</span>
+                                                                    </div>
+                                                                    <div class="scroll-timeline-grid">
+                                                                        <div class="timeline-content-wrap">
+                                                                            <h2 class="timeline-heading">Finished content</h2>
+                                                                            <div class="timeline-content-box">
+                                                                                <div class="timeline-footer-box">
+                                                                                    <div class="scroll-timeline-subheading">Timeline</div>
+                                                                                    <div class="scroll-timeline-infor">1-2 days.</div>
+                                                                                </div>
+                                                                                <div class="timeline-desc">Now all editing is complete and the content is approved, we will send you the full, high-quality, final cuts ready for immediate use.                                            </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="timeline-image">
+                                                                            <div class="video-container">
+                                                                                <video width="100%" height="auto" loop autoplay playsinline muted crossorigin="anonymous" preload="auto">
+                                                                                    <source src="https://videos.pexels.com/video-files/3917521/3917521-uhd_2732_1440_25fps.mp4" type="video/mp4">
+                                                                                </video>
+                                                                            </div>
+                                                                            <div class="timeline-post-thumbnail">
+                                                                                <img loading="lazy" decoding="async" width="670" height="510" src="https://demo2.wpopal.com/framek/wp-content/uploads/2025/06/finish.jpg" class="attachment-full size-full wp-image-2606" alt="" srcset="https://demo2.wpopal.com/framek/wp-content/uploads/2025/06/finish.jpg 670w, https://demo2.wpopal.com/framek/wp-content/uploads/2025/06/finish-300x228.jpg 300w" sizes="(max-width: 670px) 100vw, 670px"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+bu html kısmı
+

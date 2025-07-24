@@ -71,12 +71,14 @@ const ServiceCard = ({
     <div 
       onMouseEnter={onMouseEnter}
       className={`
-        relative overflow-hidden rounded-xl 
-        flex-1 transition-all duration-700 ease-in-out
-        ${isHovered ? 'lg:flex-[2.5]' : 'lg:flex-[1]'}
+        relative overflow-hidden rounded-2xl 
+        transition-all duration-500 ease-out
+        flex-1
+        ${isHovered ? 'lg:flex-[2.5]' : 'lg:flex-[0.8]'}
         aspect-[4/5] lg:aspect-auto
         w-full lg:h-[600px]
-        shadow-lg border border-[#E5E5E5]
+        shadow-2xl border border-white/10 bg-black/20 backdrop-blur-sm
+        group
       `}
     >
       {/* Background Media */}
@@ -85,33 +87,38 @@ const ServiceCard = ({
         <div 
           className={`
             absolute inset-0 bg-cover bg-center 
-            transition-opacity duration-500
+            transition-opacity duration-300
             ${isHovered ? 'opacity-0' : 'opacity-100'}
           `}
           style={{ backgroundImage: `url(${service.poster})` }}
         />
 
-        {/* Video Background */}
-        <div className={`
-          absolute inset-0 overflow-hidden
-          transition-opacity duration-500
-          ${isHovered ? 'opacity-100' : 'opacity-0'}
-        `}>
-          <iframe
-            src={`https://player.vimeo.com/video/${service.videoId}?muted=1&autoplay=${isHovered ? 1 : 0}&loop=1&background=1&controls=0`}
-            className="absolute w-[230%] md:w-[130%] h-[110%] md:h-[130%] object-cover"
-            style={{ 
-              pointerEvents: 'none',
-              top: '-5%',
-              left: '-5%',
-              transform: 'scale(1.1)'
-            }}
-            allow="autoplay; fullscreen"
-          />
-        </div>
+        {/* Video Background - Only load when hovered */}
+        {isHovered && (
+          <div className="absolute inset-0 overflow-hidden">
+            <iframe
+              src={`https://player.vimeo.com/video/${service.videoId}?muted=1&autoplay=1&loop=1&background=1&controls=0&quality=480p&dnt=1`}
+              className="absolute w-[130%] h-[130%] object-cover"
+              style={{ 
+                pointerEvents: 'none',
+                top: '-15%',
+                left: '-15%',
+              }}
+              allow="autoplay; fullscreen"
+              loading="lazy"
+            />
+          </div>
+        )}
 
-        {/* Light Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/40" />
+        {/* Dark Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+        
+        {/* Premium Red Glow on Hover */}
+        <div className={`
+          absolute inset-0 bg-gradient-to-t from-premium-red/20 via-transparent to-transparent
+          transition-opacity duration-300
+          ${isHovered ? 'opacity-100' : 'opacity-0'}
+        `} />
       </div>
 
       {/* Content */}
@@ -121,29 +128,54 @@ const ServiceCard = ({
         p-6 text-white text-center
       ">
         {/* SVG Icon */}
-        <div className="mb-6">
-          <img 
-            src={service.icon} 
-            alt={service.title}
-            className="w-16 h-16 lg:w-20 lg:h-20 opacity-90"
-          />
+        <div 
+          className={`
+            mb-6 transition-all duration-300
+            ${isHovered ? 'scale-110' : 'scale-100'}
+          `}
+        >
+          <div className="w-16 h-16 lg:w-20 lg:h-20 bg-premium-red/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-premium-red/30">
+            <img 
+              src={service.icon} 
+              alt={service.title}
+              className="w-8 h-8 lg:w-10 lg:h-10 opacity-90 filter brightness-0 invert"
+            />
+          </div>
         </div>
 
         {/* Title - Always Visible and Centered */}
-        <h3 className="text-3xl lg:text-4xl font-bold mb-4 text-center">
+        <h3 
+          className={`
+            text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-center
+            transition-transform duration-300
+            ${isHovered ? '-translate-y-2' : 'translate-y-0'}
+          `}
+        >
           {service.title}
         </h3>
 
         {/* Description - Visible only on hover */}
-        <p className={`
-          text-base lg:text-lg transition-all duration-500 max-w-sm
-          ${isHovered 
-            ? 'opacity-100 max-h-40 mt-4' 
-            : 'opacity-0 max-h-0 mt-0 overflow-hidden'
-          }
-        `}>
+        <p 
+          className={`
+            text-sm sm:text-base lg:text-lg transition-all duration-300 max-w-sm text-white/90
+            ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
+          `}
+        >
           {service.description}
         </p>
+
+        {/* Hover Indicator */}
+        <div
+          className={`
+            absolute bottom-4 right-4 w-8 h-8 bg-premium-red/80 backdrop-blur-sm rounded-full flex items-center justify-center
+            transition-all duration-300
+            ${isHovered ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}
+          `}
+        >
+          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
       </div>
     </div>
   );
@@ -154,92 +186,68 @@ const ServicesSection = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   return (
-    <section className="py-24 lg:py-32 bg-[#F9F9F9] bg-noise">
-      <div className="container-fluid px-0 max-w-full">
+    <section className="py-16 lg:py-32 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden relative">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 via-black/80 to-black" />
+      
+      {/* Animated Background Lines */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute top-20 left-10 w-32 h-32 border border-premium-red/20 rounded-full"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-10 w-24 h-24 border border-premium-red/20 rounded-full"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 lg:px-8 relative z-20">
         {/* Section Header */}
-        <div className="text-center mb-20 lg:mb-24 px-4">
-          {/* Ana Başlık - Harf Harf Animasyon */}
-          <motion.h2 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl lg:text-6xl font-bold mb-8 text-[#181818] font-serif"
+        <div className="text-center mb-16 lg:mb-24">
+          {/* About Us Label */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-2 mb-6"
           >
-            Hizmetlerimiz
-          </motion.h2>
+            <div className="w-2 h-2 bg-premium-red rounded-full" />
+            <span className="text-white/60 text-sm uppercase tracking-wider">Hizmetlerimiz</span>
+          </motion.div>
 
-          {/* Alt Çizgi Animasyonu */}
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "120px" }}
-            transition={{ 
-              duration: 1, 
-              delay: 0.8,
-              ease: "easeOut"
-            }}
-            className="h-1 bg-[#D4AF37] mx-auto mb-8"
-          />
-
-          {/* Açıklama Metni - Satır Satır Animasyon */}
-          <motion.div
+          {/* Ana Başlık */}
+          <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.8, 
-              delay: 1.2,
-              ease: "easeOut"
-            }}
-            className="text-[#444] max-w-3xl mx-auto text-xl leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 text-white leading-tight"
           >
-            <motion.span
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ 
-                duration: 0.6, 
-                delay: 1.4,
-                ease: "easeOut"
-              }}
-              className="inline-block"
-            >
-              Markanızın görsel hikayesini bir üst seviyeye taşımak
-            </motion.span>
-            <br />
-            <motion.span
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ 
-                duration: 0.6, 
-                delay: 1.6,
-                ease: "easeOut"
-              }}
-              className="inline-block"
-            >
-              ve hedef kitlenizle anlamlı bağlar kurmak için
-            </motion.span>
-            <br />
-            <motion.span
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ 
-                duration: 0.6, 
-                delay: 1.8,
-                ease: "easeOut"
-              }}
-              className="inline-block"
-            >
-              tasarlanmış kapsamlı video prodüksiyon hizmetleri sunuyoruz.
-            </motion.span>
-          </motion.div>
+            Yaratıcı{" "}
+            <span className="text-premium-red">Çözümler</span> Sunuyoruz
+          </motion.h2>
+
+          {/* Açıklama Metni */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-base sm:text-lg text-white/80 leading-relaxed max-w-3xl mx-auto"
+          >
+            Markanızın görsel hikayesini bir üst seviyeye taşımak ve hedef kitlenizle anlamlı bağlar kurmak için tasarlanmış kapsamlı video prodüksiyon hizmetleri sunuyoruz.
+          </motion.p>
 
           {/* Dekoratif Elementler */}
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              duration: 0.6, 
-              delay: 2.2,
-              ease: "easeOut"
-            }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            viewport={{ once: true }}
             className="flex justify-center items-center gap-4 mt-8"
           >
             <motion.div
@@ -252,7 +260,7 @@ const ServicesSection = () => {
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="w-2 h-2 bg-[#D4AF37] rounded-full"
+              className="w-2 h-2 bg-premium-red rounded-full"
             />
             <motion.div
               animate={{
@@ -265,7 +273,7 @@ const ServicesSection = () => {
                 ease: "easeInOut",
                 delay: 0.5
               }}
-              className="w-2 h-2 bg-[#D4AF37] rounded-full"
+              className="w-2 h-2 bg-premium-red rounded-full"
             />
             <motion.div
               animate={{
@@ -278,19 +286,19 @@ const ServicesSection = () => {
                 ease: "easeInOut",
                 delay: 1
               }}
-              className="w-2 h-2 bg-[#D4AF37] rounded-full"
+              className="w-2 h-2 bg-premium-red rounded-full"
             />
           </motion.div>
         </div>
 
         {/* Services Container */}
-        <div className="space-y-16 lg:space-y-20">
+        <div className="space-y-12 lg:space-y-16">
           {/* First Row */}
           <div 
             className="
               flex flex-col lg:flex-row 
-              gap-10 lg:gap-16 lg:h-[600px] 
-              w-full px-8 lg:px-16
+              gap-6 lg:gap-8
+              w-full
             "
             onMouseLeave={() => setHoveredId(null)}
           >
@@ -308,8 +316,8 @@ const ServicesSection = () => {
           <div 
             className="
               flex flex-col lg:flex-row 
-              gap-10 lg:gap-16 lg:h-[600px] 
-              w-full px-8 lg:px-16
+              gap-6 lg:gap-8
+              w-full
             "
             onMouseLeave={() => setHoveredId(null)}
           >

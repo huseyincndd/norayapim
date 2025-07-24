@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
 
 interface Company {
   id: number;
@@ -65,43 +64,35 @@ const companies: Company[] = [
 
 const LogoMarquee: React.FC = () => {
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-16 text-center"
-        >
-          <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
-            Bize Güvenen Markalar
-          </h2>
-          <p className="mx-auto max-w-2xl text-lg text-gray-600">
-            Dünya çapında tanınan markalarla çalışarak, kalitemizi ve güvenilirliğimizi kanıtlıyoruz.
-          </p>
-        </motion.div>
+    <section className="py-16 lg:py-24 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden relative">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/5 via-black/80 to-black" />
+      
+      {/* Animated Background Lines */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent" />
+        <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent" />
+      </div>
 
+      <div className="container mx-auto px-4 relative z-20">
         {/* Marquee Container */}
         <div className="relative overflow-hidden">
           {/* Gradient Overlays for Smooth Edges */}
-          <div className="absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-gray-50 to-transparent" />
-          <div className="absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-gray-50 to-transparent" />
+          <div className="absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-black to-transparent" />
+          <div className="absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-black to-transparent" />
           
           {/* The Infinite Marquee */}
-          <div className="group relative flex animate-scroll items-center">
+          <div className="group relative flex animate-scroll items-center py-8">
             {/* First Set of Logos */}
             {companies.map((company) => (
               <div
                 key={`first-${company.id}`}
-                className="mx-12 flex h-16 w-32 flex-shrink-0 items-center justify-center"
+                className="mx-8 lg:mx-12 flex h-12 lg:h-16 w-24 lg:w-32 flex-shrink-0 items-center justify-center"
               >
                 <img
                   src={company.logoUrl}
                   alt={`${company.name} logo`}
-                  className="h-auto max-h-12 w-auto max-w-full filter grayscale transition-all duration-300 hover:scale-110 hover:filter-none"
-                  style={{ filter: 'grayscale(1)' }}
+                  className="h-auto max-h-8 lg:max-h-12 w-auto max-w-full filter brightness-0 invert opacity-40 transition-all duration-300 hover:scale-110 hover:opacity-80"
                 />
               </div>
             ))}
@@ -110,42 +101,17 @@ const LogoMarquee: React.FC = () => {
             {companies.map((company) => (
               <div
                 key={`second-${company.id}`}
-                className="mx-12 flex h-16 w-32 flex-shrink-0 items-center justify-center"
+                className="mx-8 lg:mx-12 flex h-12 lg:h-16 w-24 lg:w-32 flex-shrink-0 items-center justify-center"
               >
                 <img
                   src={company.logoUrl}
                   alt={`${company.name} logo`}
-                  className="h-auto max-h-12 w-auto max-w-full filter grayscale transition-all duration-300 hover:scale-110 hover:filter-none"
-                  style={{ filter: 'grayscale(1)' }}
+                  className="h-auto max-h-8 lg:max-h-12 w-auto max-w-full filter brightness-0 invert opacity-40 transition-all duration-300 hover:scale-110 hover:opacity-80"
                 />
               </div>
             ))}
           </div>
         </div>
-
-        {/* Trust Indicators */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500">
-            <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-green-500" />
-              <span>10+ Yıllık Deneyim</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-blue-500" />
-              <span>500+ Tamamlanan Proje</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-purple-500" />
-              <span>%98 Müşteri Memnuniyeti</span>
-            </div>
-          </div>
-        </motion.div>
       </div>
 
       {/* Custom CSS for Animation */}
@@ -160,28 +126,17 @@ const LogoMarquee: React.FC = () => {
         }
         
         .animate-scroll {
-          animation: scroll 20s linear infinite;
+          animation: scroll 25s linear infinite;
         }
         
         @media (max-width: 768px) {
           .animate-scroll {
-            animation: scroll 15s linear infinite;
+            animation: scroll 20s linear infinite;
           }
         }
         
         .group:hover .animate-scroll {
           animation-play-state: paused;
-        }
-        
-        /* Ensure smooth grayscale transitions */
-        img {
-          filter: grayscale(1) !important;
-          transition: all 0.3s ease !important;
-        }
-        
-        img:hover {
-          filter: grayscale(0) !important;
-          transform: scale(1.1) !important;
         }
       `}</style>
     </section>

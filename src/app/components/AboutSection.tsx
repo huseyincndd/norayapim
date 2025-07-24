@@ -1,5 +1,3 @@
-// app/components/AboutSection.tsx
-
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -14,7 +12,7 @@ const PhoneIcon = () => (
 
 const ArrowIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
@@ -45,232 +43,187 @@ const Counter = ({ end, suffix, label }: { end: number; suffix: string; label: s
   return (
     <motion.div 
       ref={ref} 
-      className="text-center bg-white border border-[#E5E5E5] rounded-xl shadow-md p-6 relative overflow-hidden"
-      whileHover={{ 
-        scale: 1.02,
-        boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
-      }}
-      transition={{ duration: 0.3 }}
+      className="text-center"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
     >
-      {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="w-full h-full" style={{
-          backgroundImage: `radial-gradient(circle at 25% 25%, rgba(0,0,0,0.1) 1px, transparent 1px)`,
-          backgroundSize: '20px 20px'
-        }}></div>
-      </div>
-      
-      <div className="relative z-10">
-        <div className="text-4xl lg:text-5xl font-bold text-[#D4AF37] mb-2 font-serif">
+      <div className="text-4xl lg:text-5xl font-bold text-premium-red mb-2">
           {count}{suffix}
-        </div>
-        <div className="text-xs text-[#888] uppercase tracking-wider">{label}</div>
       </div>
+      <div className="text-sm text-white/80 uppercase tracking-wider">{label}</div>
     </motion.div>
   );
 };
 
 // --- Ana Bileşen ---
 const AboutSection = () => {
-  const headingText = "Tasarım ustalığı ile hikayeler yaratıyoruz";
-  const letters = headingText.split('');
-
   return (
-    <section className="relative py-24 lg:py-32 bg-[#F9F9F9] bg-noise overflow-hidden">
-      {/* Açık watermark */}
-      <div className="absolute inset-0 flex items-center justify-center z-0">
-        <h1 className="text-[200px] lg:text-[300px] font-black text-black/5 select-none">NORA</h1>
-      </div>
+    <section className="relative py-16 lg:py-32 bg-gradient-to-br from-red-900/20 via-black to-black overflow-hidden">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/30 via-black/80 to-black" />
 
-      {/* Minimal Tasarım Elementleri */}
+      <div className="container mx-auto px-4 lg:px-8 relative z-20">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+          
+          {/* Sol Taraf - Görsel Alanı */}
+          <div className="relative h-[400px] sm:h-[500px] lg:h-[700px] order-2 lg:order-1">
+            {/* Top-Left Green X Pattern Panel */}
       <motion.div
-        animate={{
-          rotate: [0, 360]
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "linear"
-        }}
-        className="absolute top-20 right-20 w-32 h-32 border border-[#E5E5E5] rounded-full opacity-30"
-      />
-
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.6, 0.3]
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute bottom-20 left-20 w-16 h-16 bg-[#E5E5E5] rounded-full"
-      />
-
-      {/* Subtle Grid Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="w-full h-full" style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }}></div>
-      </div>
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        {/* Mobile: Single column layout, Desktop: Two column grid */}
-        <div className="block lg:grid lg:grid-cols-2 lg:gap-24 lg:items-center">
-          {/* Metin İçeriği - Her zaman üstte */}
-          <div className="space-y-8 mb-16 lg:mb-0">
-            <motion.h3 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="absolute top-4 left-4 lg:top-10 lg:left-0 w-20 h-20 sm:w-24 sm:h-24 lg:w-48 lg:h-48 bg-black/0 rounded-2xl z-20 flex items-center justify-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
-              className="font-semibold text-sm uppercase tracking-wider text-[#888]">
-              Hakkımızda
-            </motion.h3>
-            <motion.h2
-              initial="hidden" 
-              whileInView="visible" 
-              transition={{ staggerChildren: 0.1 }}
-              className="text-4xl lg:text-5xl font-bold text-[#181818] leading-tight font-serif"
+              viewport={{ once: true }}
             >
-              <motion.span 
-                className="block"
-                variants={{
-                  hidden: { opacity: 0, y: 30, x: -20 },
-                  visible: { opacity: 1, y: 0, x: 0 }
-                }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-              >
-                Tasarım ustalığı ile
-              </motion.span>
-              <motion.span 
-                className="block"
-                variants={{
-                  hidden: { opacity: 0, y: 30, x: 20 },
-                  visible: { opacity: 1, y: 0, x: 0 }
-                }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              >
-                hikayeler yaratıyoruz
-              </motion.span>
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg text-[#444] leading-relaxed">
-              Nora Yapım olarak, her projede yaratıcılığın sınırlarını zorluyor ve markaların hikayelerini görsel sanatla birleştiriyoruz. 25 yılı aşkın deneyimimizle, her karede mükemmelliği hedefliyor ve müşterilerimizin vizyonunu gerçeğe dönüştürüyoruz.
-            </motion.p>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
-              <Counter end={25} suffix="+" label="Year's Of Experience" />
-              <Counter end={36} suffix="K+" label="Project Complete" />
-              <Counter end={98} suffix="%" label="Client Reach" />
-            </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}
-              className="pt-8">
-              <button className="group inline-flex items-center gap-3 bg-[#181818] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">
-                <span>Daha Fazla</span>
-                <div className="transition-transform group-hover:translate-x-1">
-                  <ArrowIcon />
+              <div className="grid grid-cols-4 sm:grid-cols-5 gap-0.5 sm:gap-1">
+                {[...Array(16)].map((_, i) => (
+                  <div key={i} className="w-3 h-3 sm:w-4 sm:h-4 lg:w-6 lg:h-10 text-red-400 flex items-center justify-center">
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-2 h-2 sm:w-3 sm:h-3 lg:w-6 lg:h-6">
+                      <path d="M19 5L5 19M5 5L19 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                  </div>
+                ))}
                 </div>
-              </button>
+            </motion.div>
+
+            {/* Rear Image Panel (Top-Right - Background Layer) */}
+            <motion.div
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 lg:top-8 lg:right-8 w-[65%] h-[50%] sm:w-[70%] sm:h-[55%] lg:w-[70%] lg:h-[55%] rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl z-10"
+              initial={{ opacity: 0, x: 100, y: -50 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop&q=80" 
+                alt="Team meeting" 
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+
+            {/* Front Image Panel (Bottom-Left - Foreground Layer) */}
+            <motion.div
+              className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 lg:bottom-8 lg:left-8 w-[70%] h-[55%] sm:w-[75%] sm:h-[60%] lg:w-[75%] lg:h-[60%] rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl z-30"
+              initial={{ opacity: 0, x: -100, y: 50 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80" 
+                alt="Collaborative work" 
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+
+            {/* Call-to-Action Box (Highest Layer) */}
+            <motion.div
+              className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 lg:bottom-8 lg:right-8 z-40"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              animate={{
+                x: [-15, 15],
+              }}
+              transition={{
+                opacity: { duration: 0.6, delay: 0.8 },
+                scale: { duration: 0.6, delay: 0.8 },
+                x: {
+                duration: 6,
+                repeat: Infinity,
+                  repeatType: "reverse",
+                ease: "easeInOut"
+                }
+              }}
+            >
+              <div className="flex items-center bg-black/80 backdrop-blur-md rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl border border-white/20 hover:border-red-400/50 transition-all duration-300 group min-w-[200px] sm:min-w-[240px] lg:min-w-[280px]">
+                <div className="bg-premium-red p-3 sm:p-4 lg:p-7 rounded-l-2xl lg:rounded-l-3xl group-hover:bg-red-600 transition-colors duration-300 flex-shrink-0">
+                  <PhoneIcon />
+                </div>
+                <div className="px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex-1">
+                  <div className="text-white font-semibold text-sm sm:text-base lg:text-lg">İletişime Geç</div>
+                  <div className="text-white/80 text-xs sm:text-sm font-medium">+90 555 123 4567</div>
+                </div>
+              </div>
             </motion.div>
           </div>
 
-          {/* Görsel Alanı - Mobile: Yazıdan sonra, Desktop: Sol tarafta */}
-          <div className="relative h-[500px] lg:h-[600px] flex items-center">
-            {/* Kart görseli - Sol Alt */}
+          {/* Sağ Taraf - Metin İçeriği */}
+          <div className="space-y-6 lg:space-y-8 order-1 lg:order-2">
+            {/* About Us Label */}
             <motion.div
-              initial={{ clipPath: "inset(100% 0 0 0)" }}
-              whileInView={{ clipPath: "inset(0% 0 0 0)" }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="absolute bottom-0 left-0 z-10 w-[70%] h-[60%] rounded-xl overflow-hidden shadow-md border border-[#E5E5E5] bg-white"
-              whileHover={{ 
-                scale: 1.05,
-                rotateY: 5,
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
-              }}
-              transition={{ 
-                duration: 1,
-                ease: [0.22, 1, 0.36, 1]
-              }}
+              className="flex items-center gap-2"
             >
-              <motion.img 
-                src="https://demo.awaikenthemes.com/artistics/creative-portfolio/wp-content/uploads/2025/02/about-image-1.jpg" 
-                alt="About Nora Yapım" 
-                className="w-full h-full object-cover"
-                animate={{
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
+              <div className="w-2 h-2 bg-premium-red rounded-full" />
+              <span className="text-white/60 text-sm uppercase tracking-wider">Hakkımızda</span>
             </motion.div>
 
-            {/* Kart görseli - Sağ Üst */}
-            <motion.div
-              initial={{ clipPath: "inset(0 0 100% 0)" }}
-              whileInView={{ clipPath: "inset(0 0 0% 0)" }}
+            {/* Ana Başlık */}
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="absolute top-0 right-0 z-20 w-[70%] h-[60%] rounded-xl overflow-hidden shadow-md border border-[#E5E5E5] bg-white"
-              whileHover={{ 
-                scale: 1.05,
-                rotateY: -5,
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
-              }}
-              transition={{ 
-                duration: 1,
-                ease: [0.22, 1, 0.36, 1],
-                delay: 0.2
-              }}
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"
             >
-              <motion.img 
-                src="https://demo.awaikenthemes.com/artistics/creative-portfolio/wp-content/uploads/2025/02/about-image-2.jpg" 
-                alt="Studio work" 
-                className="w-full h-full object-cover"
-                animate={{
-                  scale: [1, 1.15, 1],
-                }}
-                transition={{
-                  duration: 10,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 2
-                }}
-              />
+              Tasarım ustalığı ile{" "}
+              <span className="text-premium-red">hikayeler</span> yaratıyoruz
+            </motion.h2>
+
+            {/* Açıklama */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-base sm:text-lg text-white/80 leading-relaxed max-w-lg"
+            >
+              Fikirleri etkileyici görsellere dönüştürüyor, yaratıcılık ve stratejiyi harmanlayarak vizyonunuzu hayata geçiriyoruz.
+            </motion.p>
+
+            {/* İstatistikler */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pt-6 lg:pt-8"
+            >
+              <Counter end={25} suffix="+" label="Yıllık Deneyim" />
+              <Counter end={36} suffix="K+" label="Tamamlanan Proje" />
+              <Counter end={98} suffix="%" label="Müşteri Memnuniyeti" />
             </motion.div>
 
-            {/* Floating Elements */}
+            {/* More About Button */}
             <motion.div
-              animate={{
-                y: [-10, 10, -10],
-                rotate: [-2, 2, -2]
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="absolute top-1/4 left-1/4 z-30 w-4 h-4 bg-white/20 rounded-full"
-            />
-
-            <motion.div
-              animate={{
-                y: [10, -10, 10],
-                rotate: [2, -2, 2]
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1
-              }}
-              className="absolute bottom-1/4 right-1/4 z-30 w-3 h-3 bg-white/30 rounded-full"
-            />
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3 sm:gap-4 pt-6 lg:pt-8"
+            >
+              <button className="bg-white/10 backdrop-blur-sm text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-white/20 border border-white/20 text-sm sm:text-base">
+                Daha Fazla
+              </button>
+              <motion.div 
+                className="w-10 h-10 sm:w-12 sm:h-12 bg-premium-red rounded-full flex items-center justify-center cursor-pointer group"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.2 }}
+              >
+                <motion.div
+                  className="text-white"
+                  whileHover={{ rotate: 45 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ArrowIcon />
+                </motion.div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>
