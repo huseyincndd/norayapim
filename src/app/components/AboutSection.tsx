@@ -57,11 +57,49 @@ const Counter = ({ end, suffix, label }: { end: number; suffix: string; label: s
 };
 
 // --- Ana Bileşen ---
-const AboutSection = () => {
+const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
   return (
-    <section className="relative py-16 lg:py-32 bg-gradient-to-br from-red-900/20 via-black to-black overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-900/30 via-black/80 to-black" />
+    <section className={`relative py-16 lg:py-32 ${noBg ? 'bg-transparent' : 'bg-gradient-to-br from-black via-gray-900 to-black'} overflow-hidden`}>
+      {/* Unified Background Elements */}
+      {!noBg && (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black/90 to-black" />
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.div
+              className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1.5, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            />
+            <motion.div
+              className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1.5, delay: 0.5, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            />
+          </div>
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.div
+              className="absolute top-1/3 left-1/4 w-32 h-32 bg-premium-red/5 rounded-full blur-2xl"
+              animate={{ 
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.6, 0.3]
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-premium-red/5 rounded-full blur-2xl"
+              animate={{ 
+                scale: [1, 1.3, 1],
+                opacity: [0.3, 0.5, 0.3]
+              }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            />
+          </div>
+        </>
+      )}
 
       <div className="container mx-auto px-4 lg:px-8 relative z-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">

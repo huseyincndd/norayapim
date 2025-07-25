@@ -62,17 +62,26 @@ const companies: Company[] = [
   }
 ];
 
-const LogoMarquee: React.FC = () => {
+const LogoMarquee: React.FC<{ noBg?: boolean }> = ({ noBg = false }) => {
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden relative">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-900/5 via-black/80 to-black" />
-      
-      {/* Animated Background Lines */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent" />
-        <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent" />
-      </div>
+    <section className={`py-16 lg:py-24 ${noBg ? 'bg-transparent' : 'bg-gradient-to-br from-black via-gray-900 to-black'} overflow-hidden relative`}>
+      {/* Unified Background Elements */}
+      {!noBg && (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black/90 to-black" />
+          {/* Animated Background Lines */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent" />
+            <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent" />
+          </div>
+          {/* Red Blur Top Left */}
+          <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-premium-red/5 rounded-full blur-2xl z-0" />
+          {/* Red Blur Bottom Right */}
+          <div className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-premium-red/5 rounded-full blur-2xl z-0" />
+          {/* Red Blur Bottom Left */}
+          <div className="absolute bottom-1/4 left-0 w-32 h-32 bg-premium-red/10 rounded-full blur-2xl z-0" />
+        </>
+      )}
 
       <div className="container mx-auto px-4 relative z-20">
         {/* Marquee Container */}

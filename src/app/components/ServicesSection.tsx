@@ -182,27 +182,61 @@ const ServiceCard = ({
 };
 
 // Services Section Component
-const ServicesSection = () => {
+const ServicesSection = ({ noBg = false }: { noBg?: boolean }) => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   return (
-    <section className="py-16 lg:py-32 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden relative">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 via-black/80 to-black" />
-      
-      {/* Animated Background Lines */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-20 left-10 w-32 h-32 border border-premium-red/20 rounded-full"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-10 w-24 h-24 border border-premium-red/20 rounded-full"
-          animate={{ rotate: -360 }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        />
-      </div>
+    <section className={`py-16 lg:py-32 ${noBg ? 'bg-transparent' : 'bg-gradient-to-br from-black via-gray-900 to-black'} overflow-hidden relative`}>
+      {/* Unified Background Elements */}
+      {!noBg && (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black/90 to-black" />
+          {/* Animated Background Lines */}
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.div
+              className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1.5, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            />
+            <motion.div
+              className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1.5, delay: 0.5, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            />
+          </div>
+          {/* Red Blur Top Left */}
+          <motion.div
+            className="absolute top-1/3 left-1/4 w-32 h-32 bg-premium-red/5 rounded-full blur-2xl z-0"
+            animate={{ 
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.6, 0.3]
+            }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
+          {/* Red Blur Bottom Right */}
+          <motion.div
+            className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-premium-red/5 rounded-full blur-2xl z-0"
+            animate={{ 
+              scale: [1, 1.3, 1],
+              opacity: [0.3, 0.5, 0.3]
+            }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          />
+          {/* Red Blur Bottom Left */}
+          <motion.div
+            className="absolute bottom-1/4 left-0 w-32 h-32 bg-premium-red/10 rounded-full blur-2xl z-0"
+            animate={{ 
+              scale: [1, 1.15, 1],
+              opacity: [0.2, 0.4, 0.2]
+            }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          />
+        </>
+      )}
 
       <div className="container mx-auto px-4 lg:px-8 relative z-20">
         {/* Section Header */}
