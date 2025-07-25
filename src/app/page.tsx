@@ -19,6 +19,7 @@ import { Miss_Fajardose } from 'next/font/google'
 import MissionStatementSection from './components/MissionStatementSection'
 import FeaturesSection from './components/FeaturesSection'
 import IconGridSection from './components/IconGridSection'
+import SettenKarelerSection from './components/SettenKarelerSection'
 import { motion } from 'framer-motion'
 
 export default function Home() {
@@ -30,35 +31,116 @@ export default function Home() {
       
       {/* Unified background wrapper for About, Stats, SloganSlider, Services, LogoMarquee */}
       <section className="relative bg-gradient-to-br from-red-900/20 via-black/90 to-black overflow-hidden">
-        {/* Animated Red Lines (optional, can be removed if not wanted) */}
-        {/*
+        {/* Modern Gradient Mesh */}
         <div className="absolute inset-0 z-0">
-          <motion.div
-            className="absolute h-0.5 w-32 bg-premium-red opacity-30"
-            style={{ top: '15%', left: '10%', rotate: -25 }}
-            animate={{ x: ['0%', '20%'] }}
-            transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse', ease: 'linear' }}
-          />
-          <motion.div
-            className="absolute h-0.5 w-24 bg-premium-red opacity-40"
-            style={{ bottom: '20%', right: '15%', rotate: 15 }}
-            animate={{ x: ['0%', '-15%'] }}
-            transition={{ duration: 25, repeat: Infinity, repeatType: 'reverse', ease: 'linear' }}
-          />
-          <motion.div
-            className="absolute h-0.5 w-28 bg-premium-red opacity-25"
-            style={{ top: '60%', left: '5%', rotate: -10 }}
-            animate={{ x: ['0%', '30%'] }}
-            transition={{ duration: 30, repeat: Infinity, repeatType: 'reverse', ease: 'linear' }}
-          />
-          <motion.div
-            className="absolute h-0.5 w-20 bg-premium-red opacity-35"
-            style={{ top: '80%', right: '5%', rotate: 45 }}
-            animate={{ x: ['0%', '25%'] }}
-            transition={{ duration: 18, repeat: Infinity, repeatType: 'reverse', ease: 'linear' }}
+          <div 
+            className="absolute inset-0 opacity-20"
+            style={{
+              background: `
+                radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(220, 38, 38, 0.08) 0%, transparent 50%)
+              `
+            }}
           />
         </div>
-        */}
+
+        {/* Subtle Noise Texture */}
+        <div 
+          className="absolute inset-0 z-0 opacity-5"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundSize: '200px 200px'
+          }}
+        />
+
+        {/* Animated Grid Lines */}
+        <div className="absolute inset-0 z-0">
+          <motion.div
+            className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/10 to-transparent"
+            animate={{ scaleX: [0, 1, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/10 to-transparent"
+            animate={{ scaleX: [0, 1, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          />
+          <motion.div
+            className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-premium-red/10 to-transparent"
+            animate={{ scaleY: [0, 1, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          />
+          <motion.div
+            className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-premium-red/10 to-transparent"
+            animate={{ scaleY: [0, 1, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+          />
+        </div>
+
+        {/* Floating Geometric Shapes */}
+        <div className="absolute inset-0 z-0">
+          <motion.div
+            className="absolute w-2 h-2 bg-premium-red/30 rounded-full"
+            style={{ top: '15%', left: '20%' }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.3, 0.8, 0.3],
+              scale: [1, 1.5, 1]
+            }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute w-1 h-1 bg-premium-red/40 rounded-full"
+            style={{ top: '25%', right: '25%' }}
+            animate={{
+              y: [0, -15, 0],
+              opacity: [0.4, 0.9, 0.4],
+              scale: [1, 2, 1]
+            }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          />
+          <motion.div
+            className="absolute w-3 h-0.5 bg-premium-red/25"
+            style={{ top: '70%', left: '15%', rotate: 45 }}
+            animate={{
+              x: [0, 30, 0],
+              opacity: [0.25, 0.6, 0.25]
+            }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          />
+          <motion.div
+            className="absolute w-0.5 h-3 bg-premium-red/35"
+            style={{ top: '60%', right: '20%', rotate: -30 }}
+            animate={{
+              y: [0, -25, 0],
+              opacity: [0.35, 0.7, 0.35]
+            }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          />
+        </div>
+
+        {/* Pulse Effects */}
+        <div className="absolute inset-0 z-0">
+          <motion.div
+            className="absolute w-32 h-32 rounded-full border border-premium-red/10"
+            style={{ top: '30%', left: '10%' }}
+            animate={{
+              scale: [1, 1.5, 1],
+              opacity: [0.1, 0.3, 0.1]
+            }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute w-24 h-24 rounded-full border border-premium-red/15"
+            style={{ bottom: '25%', right: '10%' }}
+            animate={{
+              scale: [1, 1.8, 1],
+              opacity: [0.15, 0.4, 0.15]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+          />
+        </div>
 
         {/* Floating Metallic Knot Icon (IconGridSection style) */}
         <div className="absolute inset-0 z-0">
@@ -123,9 +205,10 @@ export default function Home() {
         <LogoMarquee noBg />
       </section>
       <ProjectsShowcase />
-      <ArtisticProjectsSection />
-      <BlogPreviewSection />
-      <InstagramFilmstrip />
+      <ArtisticProjectsSection noBg />
+      <BlogPreviewSection noBg />
+      <InstagramFilmstrip noBg />
+      <SettenKarelerSection noBg />
       <PosterGallery />
       
       <Footer />

@@ -384,7 +384,7 @@ const ProjectsShowcase: React.FC = () => {
           (showcaseRef as React.MutableRefObject<HTMLElement | null>).current = el;
         }
       }}
-      className="relative"
+      className="relative bg-black"
     >
       {isDesktop ? (
         <DesktopShowcase />

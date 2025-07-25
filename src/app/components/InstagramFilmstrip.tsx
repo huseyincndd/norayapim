@@ -154,7 +154,7 @@ const InstagramPostCard: React.FC<{ post: InstagramPost }> = ({ post }) => {
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="group relative aspect-[4/5] w-80 flex-shrink-0 overflow-hidden rounded-2xl bg-gray-900 shadow-lg border border-[#E5E5E5]"
+      className="group relative aspect-[4/5] w-80 flex-shrink-0 overflow-hidden rounded-2xl bg-gray-900 shadow-lg border border-white/10 backdrop-blur-sm"
     >
       {/* Background Image */}
       <img
@@ -171,7 +171,7 @@ const InstagramPostCard: React.FC<{ post: InstagramPost }> = ({ post }) => {
       )}
 
       {/* Hover Overlay */}
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
         {/* Stats Container */}
         <div className="absolute bottom-6 left-6 right-6">
           <div className="flex items-center justify-between">
@@ -195,8 +195,8 @@ const InstagramPostCard: React.FC<{ post: InstagramPost }> = ({ post }) => {
 
         {/* Instagram Icon (Center) */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <div className="rounded-full bg-white/20 backdrop-blur-sm p-3">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-white">
+          <div className="rounded-full bg-premium-red/20 backdrop-blur-sm p-3 border border-premium-red/30">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-premium-red">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
             </svg>
           </div>
@@ -206,7 +206,7 @@ const InstagramPostCard: React.FC<{ post: InstagramPost }> = ({ post }) => {
   );
 };
 
-const InstagramFilmstrip: React.FC = () => {
+const InstagramFilmstrip: React.FC<{ noBg?: boolean }> = ({ noBg = false }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -243,8 +243,53 @@ const InstagramFilmstrip: React.FC = () => {
   }, [scrollPosition]);
 
   return (
-    <section className="bg-[#F9F9F9] bg-noise py-20">
-      <div className="container mx-auto px-4">
+    <section className={`py-24 lg:py-32 ${noBg ? 'bg-transparent' : 'bg-gradient-to-br from-black via-gray-900 to-black'} overflow-hidden relative`}>
+      {/* Background Elements */}
+      {!noBg && (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 via-black/80 to-black" />
+          
+          {/* Animated Background Lines */}
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.div
+              className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1.5, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            />
+            <motion.div
+              className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1.5, delay: 0.5, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            />
+          </div>
+
+          {/* Floating Elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.div
+              className="absolute top-1/3 left-1/4 w-32 h-32 bg-premium-red/5 rounded-full blur-2xl"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.6, 0.3]
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-premium-red/5 rounded-full blur-2xl"
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.3, 0.5, 0.3]
+              }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            />
+          </div>
+        </>
+      )}
+
+      <div className="container mx-auto px-4 relative z-20">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -253,10 +298,23 @@ const InstagramFilmstrip: React.FC = () => {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h2 className="mb-4 text-4xl font-bold text-[#181818] md:text-5xl font-serif">
-            Anlık: Instagram'da Biz
+          {/* About Us Label */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-2 mb-6"
+          >
+            <div className="w-2 h-2 bg-premium-red rounded-full" />
+            <span className="text-white/60 text-sm uppercase tracking-wider">Sosyal Medya</span>
+          </motion.div>
+
+          <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">
+            Anlık:{" "}
+            <span className="text-premium-red">Instagram'da Biz</span>
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-[#444] mb-8">
+          <p className="mx-auto max-w-2xl text-lg text-white/80 mb-8">
             Günlük çalışmalarımızdan, kamera arkası anlardan ve yaratıcı süreçlerimizden kareler.
           </p>
           
@@ -265,7 +323,7 @@ const InstagramFilmstrip: React.FC = () => {
             href="https://instagram.com/norayapim"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 rounded-xl bg-[#181818] px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-[#D4AF37] hover:text-black"
+            className="inline-flex items-center gap-3 rounded-xl bg-premium-red px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-white hover:text-black border border-premium-red/30"
             whileHover={{ x: 5 }}
             transition={{ duration: 0.3 }}
           >
@@ -312,14 +370,14 @@ const InstagramFilmstrip: React.FC = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <p className="text-[#444] mb-4">
+          <p className="text-white/80 mb-4">
             Daha fazla içerik için Instagram'da bizi takip edin
           </p>
           <a
             href="https://instagram.com/norayapim"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[#D4AF37] font-semibold hover:text-[#181818] transition-colors duration-300"
+            className="inline-flex items-center gap-2 text-premium-red font-semibold hover:text-white transition-colors duration-300"
           >
             <span>@norayapim</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

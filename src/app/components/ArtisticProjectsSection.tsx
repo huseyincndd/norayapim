@@ -85,7 +85,7 @@ const ProjectListItem = ({
             scale: isActive ? 1 : 0.5
           }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="w-2 h-2 bg-[#D4AF37] rounded-full flex-shrink-0"
+          className="w-2 h-2 bg-premium-red rounded-full flex-shrink-0"
         />
 
         {/* Project Title */}
@@ -95,7 +95,7 @@ const ProjectListItem = ({
             x: isActive ? 0 : -10
           }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="text-2xl lg:text-3xl xl:text-4xl font-bold text-[#181818] group-hover:opacity-100 transition-opacity duration-300"
+          className="text-2xl lg:text-3xl xl:text-4xl font-bold text-white group-hover:opacity-100 transition-opacity duration-300"
         >
           {project.title}
         </motion.h3>
@@ -105,7 +105,7 @@ const ProjectListItem = ({
           <motion.span
             animate={{ opacity: isActive ? 1 : 0.3 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="text-sm text-[#666] font-medium px-3 py-1 bg-[#F5F5F5] rounded-full"
+            className="text-sm text-white/80 font-medium px-3 py-1 bg-premium-red/20 backdrop-blur-sm rounded-full border border-premium-red/30"
           >
             {project.year}
           </motion.span>
@@ -189,7 +189,7 @@ const MobileProjectCard = ({ project }: { project: Project }) => {
       className="group cursor-pointer"
     >
       <Link href={project.detailsUrl} className="block">
-        <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-gray-200">
+        <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-gray-900 border border-white/10">
           {/* Background Image */}
           <div className="absolute inset-0">
             <motion.img
@@ -227,13 +227,58 @@ const MobileProjectCard = ({ project }: { project: Project }) => {
 };
 
 // Main Artistic Projects Section Component
-const ArtisticProjectsSection = ({ projects = dummyProjects }: { projects?: Project[] }) => {
+const ArtisticProjectsSection = ({ projects = dummyProjects, noBg = false }: { projects?: Project[], noBg?: boolean }) => {
   const [activeProjectId, setActiveProjectId] = useState(projects[0]?.id || '');
   const activeProject = projects.find(p => p.id === activeProjectId) || projects[0];
 
   return (
-    <section className="py-24 lg:py-32 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section className={`py-24 lg:py-32 ${noBg ? 'bg-transparent' : 'bg-gradient-to-br from-black via-gray-900 to-black'} overflow-hidden relative`}>
+      {/* Background Elements */}
+      {!noBg && (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 via-black/80 to-black" />
+          
+          {/* Animated Background Lines */}
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.div
+              className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1.5, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            />
+            <motion.div
+              className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1.5, delay: 0.5, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            />
+          </div>
+
+          {/* Floating Elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.div
+              className="absolute top-1/3 left-1/4 w-32 h-32 bg-premium-red/5 rounded-full blur-2xl"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.6, 0.3]
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-premium-red/5 rounded-full blur-2xl"
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.3, 0.5, 0.3]
+              }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            />
+          </div>
+        </>
+      )}
+
+      <div className="container mx-auto px-4 lg:px-8 relative z-20">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -241,20 +286,33 @@ const ArtisticProjectsSection = ({ projects = dummyProjects }: { projects?: Proj
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16 lg:mb-20"
         >
+          {/* About Us Label */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-2 mb-6"
+          >
+            <div className="w-2 h-2 bg-premium-red rounded-full" />
+            <span className="text-white/60 text-sm uppercase tracking-wider">Projelerimiz</span>
+          </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl lg:text-6xl font-bold text-[#181818] font-serif mb-6"
+            className="text-4xl lg:text-6xl font-bold text-white mb-6"
           >
-            Öne Çıkanlar
+            Öne Çıkan{" "}
+            <span className="text-premium-red">Projeler</span>
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-xl text-[#666] max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed"
           >
             En etkileyici projelerimizden seçkiler
           </motion.p>
@@ -264,7 +322,7 @@ const ArtisticProjectsSection = ({ projects = dummyProjects }: { projects?: Proj
             initial={{ width: 0 }}
             whileInView={{ width: "80px" }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="h-1 bg-[#D4AF37] mx-auto mt-8"
+            className="h-1 bg-premium-red mx-auto mt-8"
           />
         </motion.div>
 

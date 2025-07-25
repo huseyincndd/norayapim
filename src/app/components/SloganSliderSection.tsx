@@ -64,8 +64,8 @@ const SloganSliderSection = ({ noBg = false }: { noBg?: boolean }) => {
         {/* Marquee Container */}
         <div className="relative overflow-hidden">
           {/* Gradient Overlays for Smooth Edges */}
-          <div className="absolute left-0 top-0 z-10 h-full w-32 bg-gradient-to-r from-black to-transparent" />
-          <div className="absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-black to-transparent" />
+          <div className={`absolute left-0 top-0 z-10 h-full w-32 ${noBg ? 'bg-gradient-to-r from-transparent to-transparent' : 'bg-gradient-to-r from-black to-transparent'}`} />
+          <div className={`absolute right-0 top-0 z-10 h-full w-32 ${noBg ? 'bg-gradient-to-l from-transparent to-transparent' : 'bg-gradient-to-l from-black to-transparent'}`} />
           
           {/* The Infinite Marquee */}
           <div className="flex animate-scroll items-center py-8">
