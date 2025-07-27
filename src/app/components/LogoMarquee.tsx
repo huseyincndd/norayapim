@@ -64,7 +64,7 @@ const companies: Company[] = [
 
 const LogoMarquee: React.FC<{ noBg?: boolean }> = ({ noBg = false }) => {
   return (
-    <section className={`py-16 lg:py-24 ${noBg ? 'bg-transparent' : 'bg-gradient-to-br from-black via-gray-900 to-black'} overflow-hidden relative`}>
+    <section className={`py-8 lg:py-12 ${noBg ? 'bg-transparent' : 'bg-gradient-to-br from-black via-gray-900 to-black'} overflow-hidden relative`}>
       {/* Unified Background Elements */}
       {!noBg && (
         <>
@@ -83,25 +83,21 @@ const LogoMarquee: React.FC<{ noBg?: boolean }> = ({ noBg = false }) => {
         </>
       )}
 
-      <div className="container mx-auto px-4 relative z-20">
+      <div className="relative z-20">
         {/* Marquee Container */}
         <div className="relative overflow-hidden">
-          {/* Gradient Overlays for Smooth Edges */}
-          <div className="absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-black to-transparent" />
-          <div className="absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-black to-transparent" />
-          
           {/* The Infinite Marquee */}
-          <div className="group relative flex animate-scroll items-center py-8">
+          <div className="group relative flex animate-scroll items-center py-4">
             {/* First Set of Logos */}
             {companies.map((company) => (
               <div
                 key={`first-${company.id}`}
-                className="mx-8 lg:mx-12 flex h-12 lg:h-16 w-24 lg:w-32 flex-shrink-0 items-center justify-center"
+                className="mx-4 lg:mx-6 flex h-12 lg:h-16 w-24 lg:w-32 flex-shrink-0 items-center justify-center"
               >
                 <img
                   src={company.logoUrl}
                   alt={`${company.name} logo`}
-                  className="h-auto max-h-8 lg:max-h-12 w-auto max-w-full filter brightness-0 invert opacity-40 transition-all duration-300 hover:scale-110 hover:opacity-80"
+                  className="h-auto max-h-8 lg:max-h-12 w-auto max-w-full filter brightness-0 invert opacity-60 transition-all duration-300 hover:scale-110 hover:opacity-100"
                 />
               </div>
             ))}
@@ -110,12 +106,12 @@ const LogoMarquee: React.FC<{ noBg?: boolean }> = ({ noBg = false }) => {
             {companies.map((company) => (
               <div
                 key={`second-${company.id}`}
-                className="mx-8 lg:mx-12 flex h-12 lg:h-16 w-24 lg:w-32 flex-shrink-0 items-center justify-center"
+                className="mx-4 lg:mx-6 flex h-12 lg:h-16 w-24 lg:w-32 flex-shrink-0 items-center justify-center"
               >
                 <img
                   src={company.logoUrl}
                   alt={`${company.name} logo`}
-                  className="h-auto max-h-8 lg:max-h-12 w-auto max-w-full filter brightness-0 invert opacity-40 transition-all duration-300 hover:scale-110 hover:opacity-80"
+                  className="h-auto max-h-8 lg:max-h-12 w-auto max-w-full filter brightness-0 invert opacity-60 transition-all duration-300 hover:scale-110 hover:opacity-100"
                 />
               </div>
             ))}
@@ -135,12 +131,12 @@ const LogoMarquee: React.FC<{ noBg?: boolean }> = ({ noBg = false }) => {
         }
         
         .animate-scroll {
-          animation: scroll 25s linear infinite;
+          animation: scroll 15s linear infinite;
         }
         
         @media (max-width: 768px) {
           .animate-scroll {
-            animation: scroll 20s linear infinite;
+            animation: scroll 12s linear infinite;
           }
         }
         

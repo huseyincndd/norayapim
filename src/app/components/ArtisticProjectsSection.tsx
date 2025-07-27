@@ -55,6 +55,14 @@ const dummyProjects: Project[] = [
     detailsUrl: '/projects/yildizlarin-altinda',
     year: '2024',
     category: 'Bilim Kurgu'
+  },
+  {
+    id: 'film-6',
+    title: 'Karanlık Sular',
+    posterUrl: 'https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=800&h=1200&fit=crop',
+    detailsUrl: '/projects/karanlik-sular',
+    year: '2024',
+    category: 'Aksiyon'
   }
 ];
 
@@ -189,7 +197,7 @@ const MobileProjectCard = ({ project }: { project: Project }) => {
       className="group cursor-pointer"
     >
       <Link href={project.detailsUrl} className="block">
-        <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-gray-900 border border-white/10">
+        <div className="relative aspect-[4/5] rounded-lg overflow-hidden bg-gray-900 border border-white/10">
           {/* Background Image */}
           <div className="absolute inset-0">
             <motion.img
@@ -211,13 +219,13 @@ const MobileProjectCard = ({ project }: { project: Project }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
           {/* Content */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+          <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 text-white">
+            <h3 className="text-sm md:text-base font-bold mb-1">{project.title}</h3>
             {project.category && (
-              <p className="text-sm text-white/80 mb-2">{project.category}</p>
+              <p className="text-xs md:text-sm text-white/80 mb-1">{project.category}</p>
             )}
             {project.year && (
-              <p className="text-sm text-white/60">{project.year}</p>
+              <p className="text-xs text-white/60">{project.year}</p>
             )}
           </div>
         </div>
@@ -360,13 +368,13 @@ const ArtisticProjectsSection = ({ projects = dummyProjects, noBg = false }: { p
           </motion.div>
         </div>
 
-        {/* Mobile Layout - Single Column */}
+        {/* Mobile Layout - Two Columns */}
         <div className="lg:hidden">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="grid grid-cols-2 gap-4 md:gap-6"
           >
             {projects.map((project) => (
               <MobileProjectCard key={project.id} project={project} />

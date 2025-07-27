@@ -101,10 +101,10 @@ const PhotoCard = ({ photo, isSelected, onSelect }: {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       whileHover={{ 
-        scale: 1.02,
-        transition: { duration: 0.3, ease: "easeOut" }
+        scale: 1.03,
+        transition: { duration: 0.4, ease: "easeOut" }
       }}
-      className={`relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer group ${
+      className={`relative aspect-[4/3] overflow-hidden cursor-pointer group ${
         isSelected ? 'ring-2 ring-premium-red' : ''
       }`}
       onClick={onSelect}
@@ -113,38 +113,38 @@ const PhotoCard = ({ photo, isSelected, onSelect }: {
       <img
         src={photo.imageUrl}
         alt={photo.title}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
 
       {/* Hover Overlay - Only visible on hover */}
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end">
         {/* Content - Only visible on hover */}
-        <div className="p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+        <div className="p-4 lg:p-6 text-white transform translate-y-6 group-hover:translate-y-0 transition-all duration-500">
           {/* Category Badge */}
-          <div className="inline-flex items-center px-3 py-1 bg-premium-red/20 backdrop-blur-sm rounded-full border border-premium-red/30 mb-3">
-            <span className="text-xs font-medium text-premium-red">{photo.category}</span>
+          <div className="inline-flex items-center px-2 py-1 lg:px-3 lg:py-1 bg-premium-red/90 backdrop-blur-sm rounded-full border border-premium-red/50 mb-2 lg:mb-3">
+            <span className="text-xs font-semibold text-white">{photo.category}</span>
           </div>
 
           {/* Title */}
-          <h3 className="text-xl font-bold mb-2 text-white">
+          <h3 className="text-lg lg:text-xl font-bold mb-1 lg:mb-2 text-white leading-tight">
             {photo.title}
           </h3>
 
           {/* Description */}
-          <p className="text-sm text-white/80 mb-3 line-clamp-2">
+          <p className="text-xs lg:text-sm text-white/90 mb-2 lg:mb-3 line-clamp-2 leading-relaxed">
             {photo.description}
           </p>
 
           {/* Meta Info */}
-          <div className="flex items-center justify-between text-xs text-white/60">
-            <span>{photo.date}</span>
+          <div className="flex items-center justify-between text-xs text-white/70">
+            <span className="font-medium">{photo.date}</span>
             {photo.location && (
               <span className="flex items-center gap-1">
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                {photo.location}
+                <span className="hidden sm:inline">{photo.location}</span>
               </span>
             )}
           </div>
@@ -319,7 +319,7 @@ const SettenKarelerSection = ({ noBg = false }: { noBg?: boolean }) => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6"
         >
           {setPhotos.map((photo) => (
             <PhotoCard

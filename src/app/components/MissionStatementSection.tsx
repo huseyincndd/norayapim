@@ -11,12 +11,12 @@ const MissionStatementSection = () => {
   };
 
   return (
-    <section className="relative bg-black py-24 lg:py-40 overflow-hidden">
+    <section id="mission-statement-section" className="relative h-[40vh] md:h-auto bg-black py-4 md:py-20 lg:py-32 overflow-hidden">
       {/* Sophisticated Background Image */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-bottom"
+        className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop&q=80')"
+          backgroundImage: "url('https://macksennettstudios.net/wp-content/uploads/2021/01/how-does-filming-work-in-a-sound-stage.jpg')"
         }}
       />
       
@@ -24,115 +24,80 @@ const MissionStatementSection = () => {
       <div className="absolute inset-0 z-0 bg-black/80" />
 
       {/* Main Content Container */}
-      <div className="relative z-10 container mx-auto px-4 md:px-8">
+      <div className="relative z-10 container mx-auto px-4 md:px-8 pt-0 md:pt-8 -mt-2 md:-mt-0 md:ml-48 lg:ml-64">
         
-        {/* Refined Heading Block with Red Marker Lines */}
-        <div className="relative">
-          {/* Left Red Marker Line */}
-          <motion.div
-            className="absolute top-0 left-0 w-1 h-full bg-premium-red origin-top"
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            transition={{ duration: 1, ease: 'easeOut', delay: 0.5 }}
-            viewport={{ once: true }}
-          />
-          
-          {/* Right Red Marker Line */}
-          <motion.div
-            className="absolute top-0 right-0 w-1 h-full bg-premium-red origin-top"
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            transition={{ duration: 1, ease: 'easeOut', delay: 0.5 }}
-            viewport={{ once: true }}
-          />
-          
-          <motion.div
-            className="text-center"
-            variants={fadeInUp}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase leading-tight text-white">
-              {/* Line 1: Standard White Text */}
-              <div className="mb-2">GELENEKSEL VE YENİLİKÇİ</div>
-              
-              {/* Line 2: Standard White Text */}
-              <div className="mb-4">SİNEMATOGRAFİ TEKNİKLERİNİ</div>
-              
-              {/* Line 3: Signature Outline Text */}
-              <div>
-                <span className="text-transparent" style={{ WebkitTextStroke: '1px white' }}>
-                  BİRLEŞTİRİYORUZ
-                </span>
-              </div>
-              
-              {/* Line 4: Standard White Text */}
-              <div className="mt-4 text-2xl md:text-3xl lg:text-4xl">
-                GERÇEK DÜNYA İLE LED EKRAN ARASINDA BİR KÖPRÜ KURUYORUZ
-              </div>
-            </h2>
-          </motion.div>
-        </div>
+        {/* Heading Section - Compact Layout */}
+        <motion.div
+          className="text-left max-w-4xl md:max-w-6xl"
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+        >
+          <p className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-medium uppercase leading-tight text-white mb-1 md:mb-6 lg:mb-8">
+            <strong>YARATICI VİZYONU GERÇEĞE DÖNÜŞTÜREN</strong>
+          </p>
+          <p className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-medium uppercase leading-tight text-white mb-2 md:mb-8 lg:mb-12">
+            <strong>PROFESYONEL YAPIM EKİBİ</strong>
+          </p>
+          <p className="text-base md:text-xl lg:text-2xl font-light uppercase leading-tight text-white/70 mb-4 md:mb-8 lg:mb-12">
+            REKLAM, MÜZİK VİDEOSU, KURUMSAL İÇERİK VE ÇOK DAHA FAZLASI.
+          </p>
+        </motion.div>
 
-        {/* Details Block */}
-        <div className="mt-16 lg:mt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        {/* Details Section - Closer to Heading */}
+        <div className="mt-2 lg:mt-4 md:mt-8 lg:mt-12 xl:mt-16">
+          <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
             
-            {/* Left Column - Paragraph */}
+            {/* Paragraph */}
             <motion.div
-              className="lg:col-span-7 relative"
+              className="max-w-4xl"
               variants={fadeInUp}
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              {/* Red Marker Line for Left Column */}
-              <motion.div
-                className="absolute top-0 left-0 w-1 h-full bg-premium-red origin-top"
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                transition={{ duration: 1, ease: 'easeOut', delay: 0.7 }}
-                viewport={{ once: true }}
-              />
-              
-              <p className="text-base font-light text-white/80 leading-relaxed pl-6">
-                Norayapım olarak, sinema ve reklam prodüksiyonlarında geleneksel sinematografi tekniklerini 
-                modern LED ekran teknolojisi ile harmanlayarak, izleyicilere benzersiz görsel deneyimler sunuyoruz. 
-                Gerçek dünya ile dijital dünya arasında kusursuz bir köprü kuran yaklaşımımız, 
-                her projede özgün ve etkileyici sonuçlar elde etmemizi sağlıyor.
+              <p className="text-xs md:text-base lg:text-lg font-light text-white/80 leading-relaxed">
+                İstanbul merkezli yenilikçi yapım şirketimiz, reklam filmleri, müzik videoları ve kurumsal içeriklerde uzmanlaşmış ekibiyle her projeye özgün yaklaşım getiriyor. Modern teknoloji ve yaratıcı vizyonu birleştirerek markaların hikayelerini etkileyici görsel anlatımlarla hayata geçiriyoruz.
               </p>
             </motion.div>
 
-            {/* Right Column - Button */}
+            {/* Button */}
             <motion.div
-              className="lg:col-span-5 text-center relative"
+              className="text-left max-w-4xl"
               variants={fadeInUp}
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              {/* Red Marker Line for Right Column */}
-              <motion.div
-                className="absolute top-0 right-0 w-1 h-full bg-premium-red origin-top"
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                transition={{ duration: 1, ease: 'easeOut', delay: 0.9 }}
-                viewport={{ once: true }}
-              />
-              
               <a 
                 href="/about"
-                className="inline-block bg-white text-black rounded-full px-10 py-4 uppercase font-semibold transition-colors duration-300 hover:bg-gray-200 hover:text-premium-red"
+                className="inline-block bg-white text-black rounded-full px-8 md:px-10 py-3 md:py-4 uppercase font-semibold text-sm md:text-base transition-colors duration-300 hover:bg-gray-200 hover:text-premium-red"
               >
-                Hakkımızda
+                DETAYLAR
               </a>
             </motion.div>
           </div>
         </div>
       </div>
+      {/* Down Arrow for Mobile */}
+      <button
+        type="button"
+        onClick={() => {
+          const el = document.getElementById('after-mission-statement');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }}
+        className="md:hidden absolute left-1/2 bottom-1 -translate-x-1/2 z-20 flex flex-col items-center"
+        aria-label="Aşağı kaydır"
+      >
+        <span className="animate-bounce">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-down">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </span>
+      </button>
     </section>
   );
 };

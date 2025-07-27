@@ -20,7 +20,7 @@ const projectsData: Project[] = [
     title: "Modern Soundscapes",
     category: "MÜZİK VİDEOSU",
     videoUrl: "https://player.vimeo.com/video/1088965285?muted=1&autoplay=1&loop=1&background=1&controls=0",
-    posterUrl: "/api/placeholder/1920/1080/2a2a2a/ffffff?text=Modern+Soundscapes",
+    posterUrl: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/service_6-1024x576.jpg",
     description: "Müziğin ruhunu görsel sanatla birleştiren, sanatsal ve yaratıcı müzik video prodüksiyonu."
   },
   {
@@ -28,7 +28,7 @@ const projectsData: Project[] = [
     title: "Brand Evolution",
     category: "REKLAM FİLMİ",
     videoUrl: "https://player.vimeo.com/video/1088965204?muted=1&autoplay=1&loop=1&background=1&controls=0",
-    posterUrl: "/api/placeholder/1920/1080/3a3a3a/ffffff?text=Brand+Evolution",
+    posterUrl: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/service_3-1024x539.jpg",
     description: "Markanın değerlerini ve vizyonunu etkileyici görsel hikayelerle anlatan kurumsal reklam çalışması."
   },
   {
@@ -36,7 +36,7 @@ const projectsData: Project[] = [
     title: "Corporate Vision",
     category: "KURUMSAL VİDEO",
     videoUrl: "https://player.vimeo.com/video/1088965267?muted=1&autoplay=1&loop=1&background=1&controls=0",
-    posterUrl: "/api/placeholder/1920/1080/4a4a4a/ffffff?text=Corporate+Vision",
+    posterUrl: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/service_5-1024x539.jpg",
     description: "Kurumsal kimliği ve vizyonu güçlü bir şekilde aktaran profesyonel video prodüksiyonu."
   },
   {
@@ -44,7 +44,7 @@ const projectsData: Project[] = [
     title: "Creative Storytelling",
     category: "İÇERİK ÜRETİMİ",
     videoUrl: "https://player.vimeo.com/video/1088965238?muted=1&autoplay=1&loop=1&background=1&controls=0",
-    posterUrl: "/api/placeholder/1920/1080/5a5a5a/ffffff?text=Creative+Storytelling",
+    posterUrl: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/service_4-1024x576.jpg",
     description: "Yaratıcı hikaye anlatımı teknikleriyle üretilen etkileyici içerik çalışmaları."
   },
   {
@@ -52,7 +52,7 @@ const projectsData: Project[] = [
     title: "Artistic Direction",
     category: "YARATICI YÖNETİM",
     videoUrl: "https://player.vimeo.com/video/1088965175?muted=1&autoplay=1&loop=1&background=1&controls=0",
-    posterUrl: "/api/placeholder/1920/1080/6a6a6a/ffffff?text=Artistic+Direction",
+    posterUrl: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/service_2-1024x540.jpg",
     description: "Sanatsal yönetim ve yaratıcı vizyonla şekillendirilen özgün projeler."
   }
 ];
@@ -153,49 +153,91 @@ const DesktopProjectSlide: React.FC<{ project: Project; isActive: boolean }> = (
 };
 
 // Mobile Project Card Component
-const MobileProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+const MobileProjectCard: React.FC<{ 
+  project: Project, 
+  isActive: boolean,
+  cardId: number
+}> = ({ project, isActive, cardId }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+
   return (
     <motion.div
+      ref={cardRef}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="group relative overflow-hidden rounded-2xl bg-gray-900 shadow-2xl"
+      className="group relative overflow-hidden rounded-xl bg-gray-900/50 backdrop-blur-sm border border-white/10 shadow-xl"
+      data-card-id={cardId}
     >
       {/* Video Background */}
-      <div className="relative aspect-video w-full overflow-hidden">
-        <iframe
-          src={project.videoUrl}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-          style={{ pointerEvents: 'none' }}
+      <div className="relative aspect-[16/9] w-full overflow-hidden">
+        {/* Poster Image - Always visible as fallback */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center transition-opacity duration-500 z-10"
+          style={{ backgroundImage: `url(${project.posterUrl})` }}
         />
+
+        {/* Video Background - Only load and play when active */}
+        {isActive && (
+          <iframe
+            src={project.videoUrl}
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 z-20"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            style={{ pointerEvents: 'none' }}
+          />
+        )}
+
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-30" />
+        
+        {/* Play Button Overlay - Only show when not active */}
+        {!isActive && (
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-40">
+            <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
+              <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+        )}
+
+        {/* Active Indicator */}
+        {isActive && (
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="absolute top-4 right-4 w-8 h-8 bg-premium-red/80 backdrop-blur-sm rounded-full flex items-center justify-center z-40"
+          >
+            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </motion.div>
+        )}
       </div>
 
       {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-6">
+      <div className="p-4 md:p-6">
         <div className="mb-3">
-          <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+          <span className="inline-block rounded-full bg-premium-red/20 px-3 py-1 text-xs font-semibold text-premium-red border border-premium-red/30">
             {project.category}
           </span>
         </div>
         
-        <h3 className="mb-2 text-2xl font-bold text-white">
+        <h3 className="mb-3 text-xl md:text-2xl font-bold text-white group-hover:text-premium-red transition-colors duration-300">
           {project.title}
         </h3>
         
-        <p className="mb-4 text-sm text-gray-300 line-clamp-2">
+        <p className="mb-4 text-sm md:text-base text-gray-300 leading-relaxed line-clamp-3">
           {project.description}
         </p>
         
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition-all hover:bg-gray-100"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="inline-flex items-center gap-2 rounded-lg bg-premium-red px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-premium-red/90 hover:shadow-lg hover:shadow-premium-red/25"
         >
           <span>Projeyi İncele</span>
           <svg 
@@ -290,37 +332,111 @@ const DesktopShowcase: React.FC = () => {
 
 // Mobile Showcase Component - Clean card-based layout
 const MobileShowcase: React.FC = () => {
+  const [activeId, setActiveId] = useState<number>(1); // İlk kartı aktif başlat
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Scroll event listener to detect which card is in the center
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+
+      const cards = containerRef.current.querySelectorAll('[data-card-id]');
+      const viewportCenter = window.innerHeight / 2;
+      let closestCard = 1;
+      let minDistance = Infinity;
+
+      cards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(cardCenter - viewportCenter);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestCard = parseInt(card.getAttribute('data-card-id') || '1');
+        }
+      });
+
+      setActiveId(closestCard);
+    };
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Initial check
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="bg-gradient-to-b from-gray-900 to-black py-16">
-      <div className="container mx-auto px-4">
+    <div className="bg-gradient-to-b from-black via-gray-900/50 to-black py-20 md:py-24">
+      <div className="container mx-auto px-4 md:px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-12 text-center"
+          className="mb-16 md:mb-20 text-center"
         >
-          <h2 className="mb-4 text-4xl font-bold text-white">
-            Projelerimiz
-          </h2>
-          <p className="mx-auto max-w-2xl text-lg text-gray-300">
+          {/* Category Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-2 mb-6"
+          >
+            <div className="w-2 h-2 bg-premium-red rounded-full" />
+            <span className="text-white/60 text-sm uppercase tracking-wider">Portfolio</span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold text-white"
+          >
+            Öne Çıkan{" "}
+            <span className="text-premium-red">Projeler</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mx-auto max-w-3xl text-lg md:text-xl text-white/80 leading-relaxed"
+          >
             Nora Yapım'ın yaratıcı vizyonunu ve teknik mükemmelliğini yansıtan 
             seçkin projelerimizi keşfedin.
-          </p>
+          </motion.p>
+
+          {/* Decorative Line */}
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "80px" }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="h-1 bg-premium-red mx-auto mt-8"
+          />
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div ref={containerRef} className="grid gap-6 md:gap-8 lg:gap-10 md:grid-cols-2 xl:grid-cols-3">
           {projectsData.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <MobileProjectCard project={project} />
+              <MobileProjectCard 
+                project={project} 
+                isActive={activeId === project.id}
+                cardId={project.id}
+              />
             </motion.div>
           ))}
         </div>
@@ -329,13 +445,33 @@ const MobileShowcase: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-20 text-center"
         >
-          <button className="rounded-full bg-white px-8 py-4 text-lg font-semibold text-black transition-all hover:bg-gray-100">
-            Tüm Projeleri Görüntüle
-          </button>
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center gap-3 rounded-full bg-premium-red px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-premium-red/90 hover:shadow-xl hover:shadow-premium-red/25"
+          >
+            <span>Tüm Projeleri Görüntüle</span>
+            <svg 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+              className="transition-transform group-hover:translate-x-1"
+            >
+              <path 
+                d="M5 12H19M12 5L19 12L12 19" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+            </svg>
+          </motion.button>
         </motion.div>
       </div>
     </div>

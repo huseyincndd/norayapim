@@ -157,9 +157,11 @@ const Header: React.FC = () => {
             >
               <a 
                 href="#home" 
-                className="text-2xl font-bold text-white tracking-wider hover:text-premium-red transition-all duration-300 cursor-pointer group font-display"
+                className="flex items-center hover:scale-105 transition-all duration-300 cursor-pointer group"
               >
-                <span className="group-hover:tracking-widest transition-all duration-300">NORA</span>
+                <h1 className="text-2xl font-bold text-white tracking-wider font-display group-hover:text-premium-red transition-all duration-300">
+                  NORA
+                </h1>
               </a>
             </motion.div>
 
@@ -222,23 +224,21 @@ const Header: React.FC = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden flex items-center justify-center w-12 h-12 rounded-full bg-premium-red text-white hover:bg-premium-red-light hover:scale-110 transition-all duration-300 shadow-lg relative z-40"
+              className="lg:hidden flex items-center justify-center w-12 h-12 rounded-full bg-transparent text-white hover:bg-white/10 hover:scale-110 transition-all duration-300 shadow-lg relative z-40"
             >
-              {/* Top Line - Direct child, perfectly centered */}
+              {/* Hamburger Icon: 3 lines */}
               <motion.div
-                animate={isMenuOpen ? 
-                  { rotate: 45 } : 
-                  { rotate: 0, y: -4 }
-                }
+                animate={isMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -6 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="absolute w-6 h-0.5 bg-white rounded-full"
               />
-              {/* Bottom Line - Direct child, perfectly centered */}
               <motion.div
-                animate={isMenuOpen ? 
-                  { rotate: -45 } : 
-                  { rotate: 0, y: 4 }
-                }
+                animate={isMenuOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="absolute w-6 h-0.5 bg-white rounded-full"
+              />
+              <motion.div
+                animate={isMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 6 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="absolute w-6 h-0.5 bg-white rounded-full"
               />
@@ -257,22 +257,10 @@ const Header: React.FC = () => {
             transition={{ duration: 0.5, ease: "easeInOut" }}
             className="fixed top-0 right-0 w-full h-full z-30 bg-black overflow-hidden"
           >
-            {/* Background Elements */}
-            <div className="absolute inset-0">
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 via-black to-black" />
-              
-              {/* Animated background lines */}
-              <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent" />
-              <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent" />
-              
-              {/* Floating elements */}
-              <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-premium-red/5 rounded-full blur-2xl animate-pulse" />
-              <div className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-premium-red/5 rounded-full blur-2xl animate-pulse delay-1000" />
-            </div>
+            {/* No background elements, just pure black */}
 
             {/* Main Content Container */}
-            <div className="relative h-full flex flex-col">
+            <div className="relative h-full flex flex-col pt-24">
               {/* Navigation Links */}
               <div className="flex-1 flex items-center justify-center px-8 md:px-16">
                 <nav className="w-full max-w-2xl">
@@ -280,7 +268,7 @@ const Header: React.FC = () => {
                     {navItems.map((item, index) => (
                       <motion.li
                         key={item.id}
-                        initial={{ opacity: 0, x: 50 }}
+                        initial={{ opacity: 0, x: 100 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ 
                           duration: 0.5, 

@@ -154,37 +154,6 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
                 className="w-full h-full object-cover"
               />
             </motion.div>
-
-            {/* Call-to-Action Box (Highest Layer) */}
-            <motion.div
-              className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 lg:bottom-8 lg:right-8 z-40"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              animate={{
-                x: [-15, 15],
-              }}
-              transition={{
-                opacity: { duration: 0.6, delay: 0.8 },
-                scale: { duration: 0.6, delay: 0.8 },
-                x: {
-                duration: 6,
-                repeat: Infinity,
-                  repeatType: "reverse",
-                ease: "easeInOut"
-                }
-              }}
-            >
-              <div className="flex items-center bg-black/80 backdrop-blur-md rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl border border-white/20 hover:border-red-400/50 transition-all duration-300 group min-w-[200px] sm:min-w-[240px] lg:min-w-[280px]">
-                <div className="bg-premium-red p-3 sm:p-4 lg:p-7 rounded-l-2xl lg:rounded-l-3xl group-hover:bg-red-600 transition-colors duration-300 flex-shrink-0">
-                  <PhoneIcon />
-                </div>
-                <div className="px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex-1">
-                  <div className="text-white font-semibold text-sm sm:text-base lg:text-lg">İletişime Geç</div>
-                  <div className="text-white/80 text-xs sm:text-sm font-medium">+90 555 123 4567</div>
-                </div>
-              </div>
-            </motion.div>
           </div>
 
           {/* Sağ Taraf - Metin İçeriği */}

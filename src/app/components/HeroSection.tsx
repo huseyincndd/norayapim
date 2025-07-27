@@ -41,7 +41,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-[65vh] md:h-screen w-full overflow-hidden">
+    <section className="relative h-[60vh] md:h-screen w-full overflow-hidden">
       {/* Layer 1: Video Background (Conditionally Rendered) */}
       {isMounted && (
         <div className="absolute inset-0 z-[-3]">
@@ -92,27 +92,34 @@ const HeroSection = () => {
       {/* Header */}
       <Header />
 
-      {/* Hero Content - New Minimalist Design */}
-      <div className="absolute z-10 inset-0 flex items-center justify-start px-4 md:px-8 md:items-end md:justify-start md:bottom-16 md:left-16">
-        <motion.div 
-          className="max-w-4xl w-full"
+      {/* Main Content Container */}
+      <div className="absolute z-10 inset-0 flex items-end justify-center md:justify-start px-4 md:px-8 md:items-end md:bottom-16 md:left-16 pb-8 md:pb-0">
+        <motion.div
+          className="max-w-4xl w-full ml-4 md:ml-0"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Part 1: Solid Text with Premium Red Accent */}
+          {/* Part 1: Solid Text */}
           <motion.h1 
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-sans mb-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight font-sans mb-2"
           >
-            <span className="text-white">HİKAYENİ GÖRSELLEŞTİR</span>
-            <span className="text-premium-red ml-2 md:ml-4">.</span>
+            <span className="text-white">HİKAYENİ</span>
           </motion.h1>
 
-          {/* Part 2: Outline Text with Premium Red Accent */}
+          {/* Part 2: Solid Text */}
           <motion.h1 
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-sans"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight font-sans mb-2"
+          >
+            <span className="text-white">GÖRSELLEŞTİR</span>
+          </motion.h1>
+
+          {/* Part 3: Outline Text */}
+          <motion.h1 
+            variants={itemVariants}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight font-sans"
           >
             <span 
               className="text-transparent"
@@ -122,7 +129,6 @@ const HeroSection = () => {
             >
               PRODÜKSİYON
             </span>
-            <span className="text-premium-red ml-2 md:ml-4">.</span>
           </motion.h1>
         </motion.div>
       </div>

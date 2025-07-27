@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: 'Nora Yapım - Video Production & Creative Agency',
   description: 'Markanızın hikayesini sinematik bir dille anlatan, yaratıcı video prodüksiyon ajansı.',
   icons: {
-    icon: '/favicon.ico',
+    icon: 'https://villaqrmenu.b-cdn.net/nora/Nora%20logo%20BEYAZ%20(1).png',
   },
 }
 

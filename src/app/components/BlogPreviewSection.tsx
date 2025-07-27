@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useRef, useId, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 // Blog post data structure
@@ -66,110 +66,190 @@ const dummyPosts: BlogPost[] = [
   }
 ];
 
-// Blog Card Component
-const BlogCard = ({ post }: { post: BlogPost }) => {
+// Blog Slide Component with 3D effects
+interface BlogSlideProps {
+  post: BlogPost;
+  index: number;
+  current: number;
+  handleSlideClick: (index: number) => void;
+}
+
+const BlogSlide = ({ post, index, current, handleSlideClick }: BlogSlideProps) => {
+  const slideRef = useRef<HTMLLIElement>(null);
+
+  const xRef = useRef(0);
+  const yRef = useRef(0);
+  const frameRef = useRef<number>();
+
+  useEffect(() => {
+    const animate = () => {
+      if (!slideRef.current) return;
+
+      const x = xRef.current;
+      const y = yRef.current;
+
+      slideRef.current.style.setProperty("--x", `${x}px`);
+      slideRef.current.style.setProperty("--y", `${y}px`);
+
+      frameRef.current = requestAnimationFrame(animate);
+    };
+
+    frameRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
+      }
+    };
+  }, []);
+
+  const handleMouseMove = (event: React.MouseEvent) => {
+    const el = slideRef.current;
+    if (!el) return;
+
+    const r = el.getBoundingClientRect();
+    xRef.current = event.clientX - (r.left + Math.floor(r.width / 2));
+    yRef.current = event.clientY - (r.top + Math.floor(r.height / 2));
+  };
+
+  const handleMouseLeave = () => {
+    xRef.current = 0;
+    yRef.current = 0;
+  };
+
+  const imageLoaded = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    event.currentTarget.style.opacity = "1";
+  };
+
+  const { imageUrl, title, excerpt, date, slug } = post;
+
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      whileHover={{ 
-        scale: 1.02,
-        transition: { duration: 0.3, ease: "easeOut" }
-      }}
-      className="group cursor-pointer flex-shrink-0"
-    >
-      <Link href={post.slug} className="block">
-        <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-gray-900 border border-white/10">
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <img
-              src={post.imageUrl}
-              alt={post.title}
-              className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-            />
-          </div>
-
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-opacity duration-300 group-hover:opacity-95" />
-
-          {/* Content */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-            {/* Date */}
-            {post.date && (
-              <motion.p 
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-                className="text-sm text-white/70 mb-2 font-light"
-              >
-                {post.date}
-              </motion.p>
-            )}
-
-            {/* Title */}
-            <motion.h3 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              className="text-xl lg:text-2xl font-bold mb-3 leading-tight group-hover:text-white transition-colors duration-300"
-            >
-              {post.title}
-            </motion.h3>
-
-            {/* Excerpt */}
-            {post.excerpt && (
-              <motion.p 
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.4 }}
-                className="text-sm text-white/80 leading-relaxed line-clamp-2"
-              >
-                {post.excerpt}
-              </motion.p>
-            )}
-
-            {/* Read More Indicator */}
-            <motion.div
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 0.5 }}
-              className="mt-4 flex items-center gap-2 text-sm text-premium-red/80 group-hover:text-premium-red transition-colors duration-300"
-            >
-              <span>Devamını Oku</span>
-              <svg 
-                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </motion.div>
-          </div>
+    <div className="[perspective:1200px] [transform-style:preserve-3d]">
+      <li
+        ref={slideRef}
+        className="flex flex-1 flex-col items-center justify-center relative text-center text-white opacity-100 transition-all duration-300 ease-in-out w-[70vmin] h-[70vmin] mx-[4vmin] z-10 cursor-pointer"
+        onClick={() => handleSlideClick(index)}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          transform:
+            current !== index
+              ? "scale(0.98) rotateX(8deg)"
+              : "scale(1) rotateX(0deg)",
+          transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+          transformOrigin: "bottom",
+        }}
+      >
+        <div
+          className="absolute top-0 left-0 w-full h-full bg-[#1D1F2F] rounded-[1%] overflow-hidden transition-all duration-150 ease-out"
+          style={{
+            transform:
+              current === index
+                ? "translate3d(calc(var(--x) / 30), calc(var(--y) / 30), 0)"
+                : "none",
+          }}
+        >
+          <img
+            className="absolute inset-0 w-[120%] h-[120%] object-cover opacity-100 transition-opacity duration-600 ease-in-out"
+            style={{
+              opacity: current === index ? 1 : 0.5,
+            }}
+            alt={title}
+            src={imageUrl}
+            onLoad={imageLoaded}
+            loading="eager"
+            decoding="sync"
+          />
+          {current === index && (
+            <div className="absolute inset-0 bg-black/30 transition-all duration-1000" />
+          )}
         </div>
-      </Link>
-    </motion.article>
+
+        <article
+          className={`relative p-[4vmin] transition-opacity duration-1000 ease-in-out ${
+            current === index ? "opacity-100 visible" : "opacity-0 invisible"
+          }`}
+        >
+          {/* Date */}
+          {date && (
+            <p className="text-sm text-white/70 mb-2 font-light">
+              {date}
+            </p>
+          )}
+
+          {/* Title */}
+          <h2 className="text-lg md:text-2xl lg:text-4xl font-semibold mb-4 relative">
+            {title}
+          </h2>
+
+          {/* Excerpt */}
+          {excerpt && (
+            <p className="text-sm md:text-base text-white/80 mb-6 leading-relaxed max-w-md mx-auto">
+              {excerpt}
+            </p>
+          )}
+
+          {/* Read More Button */}
+          <div className="flex justify-center">
+            <Link href={slug}>
+              <button className="mt-6 px-4 py-2 w-fit mx-auto sm:text-sm text-black bg-white h-12 border border-transparent text-xs flex justify-center items-center rounded-2xl hover:shadow-lg transition duration-200 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+                Devamını Oku
+              </button>
+            </Link>
+          </div>
+        </article>
+      </li>
+    </div>
+  );
+};
+
+// Carousel Control Component
+interface CarouselControlProps {
+  type: string;
+  title: string;
+  handleClick: () => void;
+}
+
+const CarouselControl = ({
+  type,
+  title,
+  handleClick,
+}: CarouselControlProps) => {
+  return (
+    <button
+      className={`w-10 h-10 flex items-center mx-2 justify-center bg-neutral-200 dark:bg-neutral-800 border-3 border-transparent rounded-full focus:border-premium-red focus:outline-none hover:-translate-y-0.5 active:translate-y-0.5 transition duration-200 ${
+        type === "previous" ? "rotate-180" : ""
+      }`}
+      title={title}
+      onClick={handleClick}
+    >
+      <svg className="w-5 h-5 text-neutral-600 dark:text-neutral-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
   );
 };
 
 // Main Blog Preview Section Component
 const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: BlogPost[], noBg?: boolean }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const cardsPerView = 3; // Desktop'ta 3 card görünür
-  const maxIndex = posts.length - cardsPerView; // 6 - 3 = 3, yani 0,1,2,3 indexleri (4 slide)
+  const [current, setCurrent] = useState(0);
+  const id = useId();
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  const handlePreviousClick = () => {
+    const previous = current - 1;
+    setCurrent(previous < 0 ? posts.length - 1 : previous);
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  const handleNextClick = () => {
+    const next = current + 1;
+    setCurrent(next === posts.length ? 0 : next);
   };
 
-  // Her slide'da tam olarak 1 card genişliği kadar kaydır
-  const slideOffset = (110 / cardsPerView) * currentIndex; // 33.333% * currentIndex
+  const handleSlideClick = (index: number) => {
+    if (current !== index) {
+      setCurrent(index);
+    }
+  };
 
   return (
     <section className={`py-24 lg:py-32 ${noBg ? 'bg-transparent' : 'bg-gradient-to-br from-black via-gray-900 to-black'} overflow-hidden relative`}>
@@ -268,56 +348,43 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
           />
         </motion.div>
 
-        {/* Slider Container */}
-        <div className="relative">
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-black/50 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-premium-red/20 hover:border-premium-red/50 transition-all duration-300 group"
+        {/* Carousel Container */}
+        <div className="relative overflow-hidden w-full h-full py-20">
+          <div
+            className="relative w-[70vmin] h-[70vmin] mx-auto"
+            aria-labelledby={`carousel-heading-${id}`}
           >
-            <svg className="w-6 h-6 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-black/50 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-premium-red/20 hover:border-premium-red/50 transition-all duration-300 group"
-          >
-            <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-
-          {/* Slider */}
-          <div className="overflow-hidden">
-            <motion.div
-              ref={sliderRef}
-              className="flex gap-6 lg:gap-8"
-              animate={{ x: `-${slideOffset}%` }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+            <ul
+              className="absolute flex mx-[-4vmin] transition-transform duration-1000 ease-in-out"
+              style={{
+                transform: `translateX(-${current * (100 / posts.length)}%)`,
+              }}
             >
-              {posts.map((post) => (
-                <div key={post.id} className="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0">
-                  <BlogCard post={post} />
-                </div>
+              {posts.map((post, index) => (
+                <BlogSlide
+                  key={post.id}
+                  post={post}
+                  index={index}
+                  current={current}
+                  handleSlideClick={handleSlideClick}
+                />
               ))}
-            </motion.div>
-          </div>
+            </ul>
 
-          {/* Dots Indicator */}
-          <div className="flex justify-center items-center gap-2 mt-8">
-            {Array.from({ length: maxIndex + 1 }, (_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentIndex(i)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  i === currentIndex 
-                    ? 'bg-premium-red scale-125' 
-                    : 'bg-white/30 hover:bg-white/50'
-                }`}
+            {/* Navigation Controls */}
+            <div className="absolute flex justify-center w-full top-[calc(100%+1rem)]">
+              <CarouselControl
+                type="previous"
+                title="Go to previous slide"
+                handleClick={handlePreviousClick}
               />
-            ))}
+
+              <CarouselControl
+                type="next"
+                title="Go to next slide"
+                handleClick={handleNextClick}
+              />
+            </div>
           </div>
         </div>
 
