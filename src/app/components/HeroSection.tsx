@@ -103,7 +103,7 @@ const HeroSection = () => {
           {/* Part 1: Solid Text */}
           <motion.h1 
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight font-sans mb-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight font-bebas-neue mb-2 tracking-wider"
           >
             <span className="text-white">HİKAYENİ</span>
           </motion.h1>
@@ -111,7 +111,7 @@ const HeroSection = () => {
           {/* Part 2: Solid Text */}
           <motion.h1 
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight font-sans mb-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight font-bebas-neue mb-2 tracking-wider"
           >
             <span className="text-white">GÖRSELLEŞTİR</span>
           </motion.h1>
@@ -119,7 +119,7 @@ const HeroSection = () => {
           {/* Part 3: Outline Text */}
           <motion.h1 
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight font-sans"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight font-bebas-neue tracking-wider"
           >
             <span 
               className="text-transparent"

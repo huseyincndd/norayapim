@@ -180,14 +180,14 @@ const MobileProjectCard: React.FC<{
 
         {/* Video Background - Only load and play when active */}
         {isActive && (
-          <iframe
-            src={project.videoUrl}
+        <iframe
+          src={project.videoUrl}
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 z-20"
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            style={{ pointerEvents: 'none' }}
-          />
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          style={{ pointerEvents: 'none' }}
+        />
         )}
 
         {/* Gradient Overlay */}

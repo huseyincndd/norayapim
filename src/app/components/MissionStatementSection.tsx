@@ -34,13 +34,13 @@ const MissionStatementSection = () => {
           whileInView="animate"
           viewport={{ once: true }}
         >
-          <p className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-medium uppercase leading-tight text-white mb-1 md:mb-6 lg:mb-8">
+          <p className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight text-white mb-1 md:mb-6 lg:mb-8 font-montserrat tracking-wide">
             <strong>YARATICI VİZYONU GERÇEĞE DÖNÜŞTÜREN</strong>
           </p>
-          <p className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-medium uppercase leading-tight text-white mb-2 md:mb-8 lg:mb-12">
+          <p className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight text-white mb-2 md:mb-8 lg:mb-12 font-montserrat tracking-wide">
             <strong>PROFESYONEL YAPIM EKİBİ</strong>
           </p>
-          <p className="text-base md:text-xl lg:text-2xl font-light uppercase leading-tight text-white/70 mb-4 md:mb-8 lg:mb-12">
+          <p className="text-base md:text-xl lg:text-2xl font-light uppercase leading-tight text-white/70 mb-4 md:mb-8 lg:mb-12 font-lato tracking-wider">
             REKLAM, MÜZİK VİDEOSU, KURUMSAL İÇERİK VE ÇOK DAHA FAZLASI.
           </p>
         </motion.div>
@@ -58,7 +58,7 @@ const MissionStatementSection = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <p className="text-xs md:text-base lg:text-lg font-light text-white/80 leading-relaxed">
+              <p className="text-xs md:text-base lg:text-lg font-light text-white/80 leading-relaxed font-lato">
                 İstanbul merkezli yenilikçi yapım şirketimiz, reklam filmleri, müzik videoları ve kurumsal içeriklerde uzmanlaşmış ekibiyle her projeye özgün yaklaşım getiriyor. Modern teknoloji ve yaratıcı vizyonu birleştirerek markaların hikayelerini etkileyici görsel anlatımlarla hayata geçiriyoruz.
               </p>
             </motion.div>
@@ -74,7 +74,7 @@ const MissionStatementSection = () => {
             >
               <a 
                 href="/about"
-                className="inline-block bg-white text-black rounded-full px-8 md:px-10 py-3 md:py-4 uppercase font-semibold text-sm md:text-base transition-colors duration-300 hover:bg-gray-200 hover:text-premium-red"
+                className="inline-block bg-white text-black rounded-full px-8 md:px-10 py-3 md:py-4 uppercase font-bold text-sm md:text-base transition-colors duration-300 hover:bg-gray-200 hover:text-premium-red font-montserrat tracking-wide"
               >
                 DETAYLAR
               </a>

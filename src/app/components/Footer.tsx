@@ -61,7 +61,7 @@ const Footer = () => {
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-2 h-2 bg-premium-red rounded-full" />
-                  <h1 className="text-3xl font-bold text-white tracking-wider font-display">
+                  <h1 className="text-3xl font-bold text-white tracking-wider font-bebas-neue">
                     NORA
                   </h1>
                 </div>

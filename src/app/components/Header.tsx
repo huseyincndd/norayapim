@@ -159,7 +159,7 @@ const Header: React.FC = () => {
                 href="#home" 
                 className="flex items-center hover:scale-105 transition-all duration-300 cursor-pointer group"
               >
-                <h1 className="text-2xl font-bold text-white tracking-wider font-display group-hover:text-premium-red transition-all duration-300">
+                <h1 className="text-2xl font-bold text-white tracking-wider font-bebas-neue group-hover:text-premium-red transition-all duration-300">
                   NORA
                 </h1>
               </a>
