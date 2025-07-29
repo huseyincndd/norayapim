@@ -127,7 +127,7 @@ const BlogSlide = ({ post, index, current, handleSlideClick }: BlogSlideProps) =
     <div className="[perspective:1200px] [transform-style:preserve-3d]">
       <li
         ref={slideRef}
-        className="flex flex-1 flex-col items-center justify-center relative text-center text-white opacity-100 transition-all duration-300 ease-in-out w-[70vmin] h-[70vmin] mx-[4vmin] z-10 cursor-pointer"
+        className="flex flex-1 flex-col items-center justify-center relative text-center text-white opacity-100 transition-all duration-300 ease-in-out w-screen md:w-[60vw] lg:w-[30vw] h-[160vmin] md:h-[90vmin] lg:h-[60vmin] mx-0 z-10 cursor-pointer"
         onClick={() => handleSlideClick(index)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -166,36 +166,45 @@ const BlogSlide = ({ post, index, current, handleSlideClick }: BlogSlideProps) =
         </div>
 
         <article
-          className={`relative p-[4vmin] transition-opacity duration-1000 ease-in-out ${
+          className={`absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/70 to-transparent p-6 md:p-8 transition-opacity duration-1000 ease-in-out ${
             current === index ? "opacity-100 visible" : "opacity-0 invisible"
           }`}
         >
-          {/* Date */}
-          {date && (
-            <p className="text-sm text-white/70 mb-2 font-light">
-              {date}
-            </p>
-          )}
+          <div className="max-w-2xl text-left">
+            {/* Category Tag */}
+            <div className="inline-block bg-white text-black px-3 py-1 rounded-full text-xs font-medium mb-3">
+              Blog
+            </div>
 
-          {/* Title */}
-          <h2 className="text-lg md:text-2xl lg:text-4xl font-semibold mb-4 relative">
-            {title}
-          </h2>
+            {/* Title */}
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 leading-tight">
+              {title}
+            </h2>
 
-          {/* Excerpt */}
-          {excerpt && (
-            <p className="text-sm md:text-base text-white/80 mb-6 leading-relaxed max-w-md mx-auto">
-              {excerpt}
-            </p>
-          )}
+            {/* Excerpt */}
+            {excerpt && (
+              <p className="text-sm md:text-base text-white/80 mb-4 leading-relaxed">
+                {excerpt}
+              </p>
+            )}
 
-          {/* Read More Button */}
-          <div className="flex justify-center">
-            <Link href={slug}>
-              <button className="mt-6 px-4 py-2 w-fit mx-auto sm:text-sm text-black bg-white h-12 border border-transparent text-xs flex justify-center items-center rounded-2xl hover:shadow-lg transition duration-200 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
-                Devamını Oku
-              </button>
-            </Link>
+            {/* Date and Read More */}
+            <div className="flex items-center justify-between">
+              {date && (
+                <p className="text-sm text-white/60 font-light">
+                  {date}
+                </p>
+              )}
+              
+              <Link href="/blog/1">
+                <button className="px-4 py-2 bg-white text-black text-sm font-medium rounded-lg hover:bg-gray-100 transition duration-200 flex items-center gap-2">
+                  Devamını Oku
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </Link>
+            </div>
           </div>
         </article>
       </li>
@@ -217,13 +226,13 @@ const CarouselControl = ({
 }: CarouselControlProps) => {
   return (
     <button
-      className={`w-10 h-10 flex items-center mx-2 justify-center bg-neutral-200 dark:bg-neutral-800 border-3 border-transparent rounded-full focus:border-premium-red focus:outline-none hover:-translate-y-0.5 active:translate-y-0.5 transition duration-200 ${
+      className={`w-12 h-12 flex items-center justify-center bg-white border-2 border-white focus:outline-none hover:bg-gray-100 active:bg-gray-200 transition duration-200 ${
         type === "previous" ? "rotate-180" : ""
       }`}
       title={title}
       onClick={handleClick}
     >
-      <svg className="w-5 h-5 text-neutral-600 dark:text-neutral-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
       </svg>
     </button>
@@ -252,23 +261,23 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
   };
 
   return (
-    <section className={`py-24 lg:py-32 ${noBg ? 'bg-transparent' : 'bg-gradient-to-br from-black via-gray-900 to-black'} overflow-hidden relative`}>
+    <section className={`py-12 lg:py-20 ${noBg ? 'bg-transparent' : 'bg-black'} overflow-hidden relative`}>
       {/* Background Elements */}
       {!noBg && (
         <>
-          <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 via-black/80 to-black" />
+          <div className="absolute inset-0 bg-black" />
           
           {/* Animated Background Lines */}
           <div className="absolute inset-0 overflow-hidden">
             <motion.div
-              className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent"
+              className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 1.5, ease: 'easeOut' }}
               viewport={{ once: true }}
             />
             <motion.div
-              className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent"
+              className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 1.5, delay: 0.5, ease: 'easeOut' }}
@@ -279,7 +288,7 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
           {/* Floating Elements */}
           <div className="absolute inset-0 overflow-hidden">
             <motion.div
-              className="absolute top-1/3 left-1/4 w-32 h-32 bg-premium-red/5 rounded-full blur-2xl"
+              className="absolute top-1/3 left-1/4 w-32 h-32 bg-white/5 rounded-full blur-2xl"
               animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0.3, 0.6, 0.3]
@@ -287,7 +296,7 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
             <motion.div
-              className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-premium-red/5 rounded-full blur-2xl"
+              className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-white/5 rounded-full blur-2xl"
               animate={{
                 scale: [1, 1.3, 1],
                 opacity: [0.3, 0.5, 0.3]
@@ -298,35 +307,23 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
         </>
       )}
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-20">
+      <div className="container mx-auto px-0 relative z-20">
         {/* Section Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-16 lg:mb-20"
+          className="text-left lg:text-center mb-8 lg:mb-12 px-6 lg:px-8 relative"
         >
-          {/* About Us Label */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="flex items-center justify-center gap-2 mb-6"
-          >
-            <div className="w-2 h-2 bg-premium-red rounded-full" />
-            <span className="text-white/60 text-sm uppercase tracking-wider">Blog</span>
-          </motion.div>
-
           {/* Main Title */}
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl lg:text-6xl font-bold text-white mb-6"
+            className="text-4xl lg:text-6xl font-bold text-white mb-4 text-left lg:text-center"
           >
-            Ajans'tan{" "}
-            <span className="text-premium-red">Haberler</span>
+            Sahnelerden{" "}
+            <span className="text-white">Hikayeler</span>
           </motion.h2>
 
           {/* Subtitle */}
@@ -334,28 +331,42 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-white/80 max-w-3xl leading-relaxed lg:text-center lg:mx-auto"
           >
-            Sektörden son gelişmeler, başarı hikayeleri ve ipuçları.
+            Oyuncuların dünyasından en güncel deneyimler, başarı hikayeleri ve profesyonel ipuçları.
           </motion.p>
 
           {/* Decorative Line */}
           <motion.div
             initial={{ width: 0 }}
-            whileInView={{ width: "80px" }}
+            whileInView={{ width: "120px" }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="h-1 bg-premium-red mx-auto mt-8"
+            className="h-0.5 bg-gradient-to-r from-white via-white/60 to-transparent mt-6 lg:mx-auto"
           />
+
+          {/* Mobile Navigation Controls - Positioned at bottom right of header */}
+          <div className="lg:hidden absolute -bottom-24 right-2 flex gap-1 z-30">
+            <CarouselControl
+              type="previous"
+              title="Go to previous slide"
+              handleClick={handlePreviousClick}
+            />
+            <CarouselControl
+              type="next"
+              title="Go to next slide"
+              handleClick={handleNextClick}
+            />
+          </div>
         </motion.div>
 
         {/* Carousel Container */}
-        <div className="relative overflow-hidden w-full h-full py-20">
+        <div className="relative overflow-hidden w-full py-20 mx-0">
           <div
-            className="relative w-[70vmin] h-[70vmin] mx-auto"
+            className="relative w-screen md:w-[60vw] lg:w-[30vw] h-[160vmin] md:h-[90vmin] lg:h-[60vmin] mx-auto"
             aria-labelledby={`carousel-heading-${id}`}
           >
             <ul
-              className="absolute flex mx-[-4vmin] transition-transform duration-1000 ease-in-out"
+              className="absolute flex mx-0 transition-transform duration-1000 ease-in-out"
               style={{
                 transform: `translateX(-${current * (100 / posts.length)}%)`,
               }}
@@ -371,8 +382,8 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
               ))}
             </ul>
 
-            {/* Navigation Controls */}
-            <div className="absolute flex justify-center w-full top-[calc(100%+1rem)]">
+            {/* Desktop Navigation Controls */}
+            <div className="hidden lg:flex absolute justify-center w-full top-[calc(100%+2rem)]">
               <CarouselControl
                 type="previous"
                 title="Go to previous slide"
@@ -393,11 +404,11 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center mt-12"
+          className="text-left mt-12 px-6 lg:px-8"
         >
           <Link 
-            href="/blog"
-            className="group inline-flex items-center gap-3 text-white font-semibold text-lg hover:text-premium-red transition-colors duration-300"
+            href="/blog/1"
+            className="group inline-flex items-center gap-3 text-white font-semibold text-lg hover:text-gray-300 transition-colors duration-300"
           >
             <span>Tümünü Gör</span>
             <motion.div

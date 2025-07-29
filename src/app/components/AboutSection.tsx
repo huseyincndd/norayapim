@@ -16,64 +16,26 @@ const ArrowIcon = () => (
   </svg>
 );
 
-// --- Sayaç Bileşeni ---
-const Counter = ({ end, suffix, label }: { end: number; suffix: string; label: string }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  useEffect(() => {
-    if (isInView) {
-      const duration = 2000;
-      const increment = end / (duration / 16);
-      let current = 0;
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= end) {
-          setCount(end);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(current));
-        }
-      }, 16);
-      return () => clearInterval(timer);
-    }
-  }, [isInView, end]);
-
-  return (
-    <motion.div 
-      ref={ref} 
-      className="text-center"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      <div className="text-4xl lg:text-5xl font-bold text-premium-red mb-2">
-          {count}{suffix}
-      </div>
-      <div className="text-sm text-white/80 uppercase tracking-wider">{label}</div>
-    </motion.div>
-  );
-};
 
 // --- Ana Bileşen ---
 const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
   return (
-    <section className={`relative py-16 lg:py-32 ${noBg ? 'bg-transparent' : 'bg-gradient-to-br from-black via-gray-900 to-black'} overflow-hidden`}>
+    <section className={`relative py-8 lg:py-16 ${noBg ? 'bg-transparent' : 'bg-gradient-to-br from-black via-gray-900 to-black'} overflow-hidden`}>
       {/* Unified Background Elements */}
       {!noBg && (
         <>
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black/90 to-black" />
           <div className="absolute inset-0 overflow-hidden">
             <motion.div
-              className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent"
+              className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 1.5, ease: 'easeOut' }}
               viewport={{ once: true }}
             />
             <motion.div
-              className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-premium-red/20 to-transparent"
+              className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 1.5, delay: 0.5, ease: 'easeOut' }}
@@ -82,7 +44,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
           </div>
           <div className="absolute inset-0 overflow-hidden">
             <motion.div
-              className="absolute top-1/3 left-1/4 w-32 h-32 bg-premium-red/5 rounded-full blur-2xl"
+              className="absolute top-1/3 left-1/4 w-32 h-32 bg-white/5 rounded-full blur-2xl"
               animate={{ 
                 scale: [1, 1.2, 1],
                 opacity: [0.3, 0.6, 0.3]
@@ -90,7 +52,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
             <motion.div
-              className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-premium-red/5 rounded-full blur-2xl"
+              className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-white/5 rounded-full blur-2xl"
               animate={{ 
                 scale: [1, 1.3, 1],
                 opacity: [0.3, 0.5, 0.3]
@@ -116,7 +78,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
             >
               <div className="grid grid-cols-4 sm:grid-cols-5 gap-0.5 sm:gap-1">
                 {[...Array(16)].map((_, i) => (
-                  <div key={i} className="w-3 h-3 sm:w-4 sm:h-4 lg:w-6 lg:h-10 text-red-400 flex items-center justify-center">
+                  <div key={i} className="w-3 h-3 sm:w-4 sm:h-4 lg:w-6 lg:h-10 text-white flex items-center justify-center">
                     <svg viewBox="0 0 24 24" fill="currentColor" className="w-2 h-2 sm:w-3 sm:h-3 lg:w-6 lg:h-6">
                       <path d="M19 5L5 19M5 5L19 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                     </svg>
@@ -158,18 +120,6 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
 
           {/* Sağ Taraf - Metin İçeriği */}
           <div className="space-y-6 lg:space-y-8 order-1 lg:order-2">
-            {/* About Us Label */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-2"
-            >
-              <div className="w-2 h-2 bg-premium-red rounded-full" />
-              <span className="text-white/60 text-sm uppercase tracking-wider">Hakkımızda</span>
-            </motion.div>
-
             {/* Ana Başlık */}
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
@@ -179,7 +129,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"
             >
               Tasarım ustalığı ile{" "}
-              <span className="text-premium-red">hikayeler</span> yaratıyoruz
+              <span className="text-white">hikayeler</span> yaratıyoruz
             </motion.h2>
 
             {/* Açıklama */}
@@ -193,44 +143,9 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               Fikirleri etkileyici görsellere dönüştürüyor, yaratıcılık ve stratejiyi harmanlayarak vizyonunuzu hayata geçiriyoruz.
             </motion.p>
 
-            {/* İstatistikler */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pt-6 lg:pt-8"
-            >
-              <Counter end={25} suffix="+" label="Yıllık Deneyim" />
-              <Counter end={36} suffix="K+" label="Tamamlanan Proje" />
-              <Counter end={98} suffix="%" label="Müşteri Memnuniyeti" />
-            </motion.div>
 
-            {/* More About Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-3 sm:gap-4 pt-6 lg:pt-8"
-            >
-              <button className="bg-white/10 backdrop-blur-sm text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-white/20 border border-white/20 text-sm sm:text-base">
-                Daha Fazla
-              </button>
-              <motion.div 
-                className="w-10 h-10 sm:w-12 sm:h-12 bg-premium-red rounded-full flex items-center justify-center cursor-pointer group"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.2 }}
-              >
-                <motion.div
-                  className="text-white"
-                  whileHover={{ rotate: 45 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <ArrowIcon />
-                </motion.div>
-              </motion.div>
-            </motion.div>
+
+
           </div>
         </div>
       </div>

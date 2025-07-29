@@ -3,70 +3,61 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Large, bold line-art SVG icons
-const SpeedIcon = () => (
-  <img 
-    src="https://villaqrmenu.b-cdn.net/nora/filmroll.png"
-    alt="Film Roll Icon"
-    className="w-20 h-20 md:w-24 md:h-24 object-contain filter brightness-0 invert"
-  />
-);
-
-const LocationIcon = () => (
-  <img 
-    src="https://villaqrmenu.b-cdn.net/nora/isik.png"
-    alt="Işık Icon"
-    className="w-20 h-20 md:w-24 md:h-24 object-contain filter brightness-0 invert"
-  />
-);
-
-const CameraIcon = () => (
-  <img 
-    src="https://villaqrmenu.b-cdn.net/nora/camera.png"
-    alt="Camera Icon"
-    className="w-20 h-20 md:w-24 md:h-24 object-contain filter brightness-0 invert"
-  />
-);
-
-const WeatherIcon = () => (
+// Large, bold line-art SVG icons for the new categories
+const SinemaIcon = () => (
   <img 
     src="https://villaqrmenu.b-cdn.net/nora/klaket.png"
-    alt="Klaket Icon"
+    alt="Sinema Icon"
     className="w-20 h-20 md:w-24 md:h-24 object-contain filter brightness-0 invert"
   />
 );
 
-const FantasyIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg {...props} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-    <circle cx="12" cy="12" r="10" />
-    <text x="12" y="16" textAnchor="middle" fontSize="8" fill="currentColor">360°</text>
-    <path d="M12 2a10 10 0 0 1 0 20" strokeDasharray="2 2" />
-    <path d="M12 2a10 10 0 0 0 0 20" strokeDasharray="2 2" />
-  </svg>
+const DiziIcon = () => (
+  <img 
+    src="https://villaqrmenu.b-cdn.net/nora/dizi.png"
+    alt="Dizi Icon"
+    className="w-20 h-20 md:w-24 md:h-24 object-contain filter brightness-0 invert"
+  />
+);
+
+const ReklamIcon = () => (
+  <img 
+    src="https://villaqrmenu.b-cdn.net/nora/reklam.png"
+    alt="Reklam Icon"
+    className="w-20 h-20 md:w-24 md:h-24 object-contain filter brightness-0 invert"
+  />
+);
+
+const BelgeselIcon = () => (
+  <img 
+    src="https://villaqrmenu.b-cdn.net/nora/belgesel.png"
+    alt="Belgesel Icon"
+    className="w-20 h-20 md:w-24 md:h-24 object-contain filter brightness-0 invert"
+  />
 );
 
 const IconGridSection = ({ noBg = false }: { noBg?: boolean }) => {
-  // Feature data matching the new icons
+  // Feature data matching the new categories
   const features = [
     { 
-      icon: SpeedIcon, // Film Roll
-      title: "PROFESYONEL",
-      subtitle: "FİLM PRODÜKSİYON"
+      icon: SinemaIcon,
+      title: "SİNEMA",
+      subtitle: "Büyük ekranın büyülü dünyası"
     },
     { 
-      icon: LocationIcon, // Işık
-      title: "STÜDYO",
-      subtitle: "IŞIKLANDIRMA"
+      icon: DiziIcon,
+      title: "DİZİ",
+      subtitle: "Her bölümde mükemmellik"
     },
     { 
-      icon: CameraIcon, // Kamera
-      title: "YÜKSEK KALİTE",
-      subtitle: "KAMERA ÇEKİM"
+      icon: ReklamIcon,
+      title: "REKLAM",
+      subtitle: "Markaların hikayesini anlatıyoruz"
     },
     { 
-      icon: WeatherIcon, // Klaket
-      title: "SET YÖNETİMİ",
-      subtitle: "PROFESYONEL EKİP"
+      icon: BelgeselIcon,
+      title: "BELGESEL",
+      subtitle: "Gerçeğin objektifinden"
     }
   ];
 
@@ -85,7 +76,7 @@ const IconGridSection = ({ noBg = false }: { noBg?: boolean }) => {
   };
 
   return (
-    <section className={`py-24 lg:py-32 overflow-hidden relative ${noBg ? 'bg-transparent' : 'bg-[#0A0A0A]'}`}>
+    <section className={`py-12 lg:py-20 overflow-hidden relative ${noBg ? 'bg-transparent' : 'bg-[#0A0A0A]'}`}>
       {/* Premium Background Layers - Only show when noBg is false */}
       {!noBg && (
         <>
@@ -124,9 +115,9 @@ const IconGridSection = ({ noBg = false }: { noBg?: boolean }) => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              TEKNOLOJİK
+              NELER YAPIYORUZ?
             </h2>
-            <div className="w-24 h-0.5 bg-premium-red mx-auto" />
+            <div className="w-24 h-0.5 bg-white mx-auto" />
           </motion.div>
 
           {/* Icon Grid - Horizontal Layout */}

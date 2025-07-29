@@ -260,124 +260,118 @@ const Header: React.FC = () => {
             {/* No background elements, just pure black */}
 
             {/* Main Content Container */}
-            <div className="relative h-full flex flex-col pt-24">
-              {/* Navigation Links */}
-              <div className="flex-1 flex items-center justify-center px-8 md:px-16">
-                <nav className="w-full max-w-2xl">
-                  <ul className="space-y-8 md:space-y-12">
-                    {navItems.map((item, index) => (
-                      <motion.li
-                        key={item.id}
-                        initial={{ opacity: 0, x: 100 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ 
-                          duration: 0.5, 
-                          delay: 0.3 + index * 0.1,
-                          ease: "easeOut"
-                        }}
-                        onMouseEnter={() => setHoveredItem(item.id)}
-                        onMouseLeave={() => setHoveredItem(null)}
-                        className="w-full"
-                      >
-                        <a
-                          href={item.href}
-                          onClick={() => setIsMenuOpen(false)}
-                          className={`group flex items-center justify-between py-4 w-full cursor-pointer transition-all duration-300 ${
-                            hoveredItem === item.id ? 'text-white' : 
-                            hoveredItem ? 'text-white/30' : 'text-white/60'
-                          }`}
-                        >
-                          {/* Link Text */}
-                          <span className="text-4xl md:text-5xl font-light font-display relative">
-                            {item.label}
-                            {/* Premium Red Line - Animated on Hover */}
-                            <motion.div 
-                              className="absolute -bottom-2 left-0 h-0.5 bg-premium-red"
-                              initial={{ width: 0 }}
-                              animate={{ width: hoveredItem === item.id ? '100%' : 0 }}
-                              transition={{ duration: 0.4, ease: "easeOut" }}
-                            />
-                          </span>
-                          
-                          {/* Premium Red Dot - Appears on Hover */}
-                          <motion.div
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={{ 
-                              opacity: hoveredItem === item.id ? 1 : 0,
-                              scale: hoveredItem === item.id ? 1 : 0
-                            }}
-                            transition={{ duration: 0.3, ease: "easeOut" }}
-                            className="w-3 h-3 rounded-full bg-premium-red"
-                          />
-                        </a>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </nav>
+            <div className="relative h-full flex flex-col justify-center items-center px-6">
+              {/* Navigation Links - Centered */}
+              <div className="flex flex-col items-center space-y-6">
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, x: 200 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 150,
+                      damping: 15,
+                      delay: 0.3 + index * 0.15,
+                      mass: 1.2
+                    }}
+                    onMouseEnter={() => setHoveredItem(item.id)}
+                    onMouseLeave={() => setHoveredItem(null)}
+                    className="text-center"
+                  >
+                    <a
+                      href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`block text-lg font-medium tracking-wide uppercase transition-all duration-300 ${
+                        hoveredItem === item.id ? 'text-white' : 'text-white'
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  </motion.div>
+                ))}
               </div>
 
-              {/* Footer Section - Contact & Social Media */}
+              {/* Language Selector */}
               <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="px-8 md:px-16 pb-8 md:pb-12"
+                initial={{ opacity: 0, x: 200 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 150,
+                  damping: 15,
+                  delay: 1.2,
+                  mass: 1.2
+                }}
+                className="mt-8 flex items-center gap-2 text-white"
               >
-                {/* Contact Information */}
-                <div className="mb-8">
-                  <h3 className="text-white/60 text-sm font-medium mb-4 font-body tracking-wide uppercase">
-                    İletişim
-                  </h3>
-                  <div className="space-y-2 text-white/50 font-body">
-                    <p className="text-sm hover:text-white transition-colors duration-300 cursor-pointer">
-                      info@norayapim.com
-                    </p>
-                    <p className="text-sm hover:text-white transition-colors duration-300 cursor-pointer">
-                      +90 (212) 555 0123
-                    </p>
-                    <p className="text-sm hover:text-white transition-colors duration-300 cursor-pointer">
-                      İstanbul, Türkiye
-                    </p>
-                  </div>
-                </div>
+                <span className="text-sm font-medium">TR</span>
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                </svg>
+              </motion.div>
 
-                {/* Social Media */}
-                <div>
-                  <h3 className="text-white/60 text-sm font-medium mb-4 font-body tracking-wide uppercase">
-                    Sosyal Medya
-                  </h3>
-                  <div className="flex items-center space-x-4">
-                    {socialLinks.map((social, index) => (
-                      <motion.a
-                        key={social.name}
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ 
-                          duration: 0.4, 
-                          delay: 0.9 + index * 0.1,
-                          ease: "easeOut"
-                        }}
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className="flex items-center justify-center w-12 h-12 rounded-full bg-white/5 hover:bg-premium-red/20 border border-white/10 hover:border-premium-red/30 text-white/60 hover:text-premium-red transition-all duration-300 group"
-                      >
-                        <span className="group-hover:scale-110 transition-transform duration-300">
-                          {social.icon}
-                        </span>
-                      </motion.a>
-                    ))}
-                  </div>
-                </div>
+              {/* CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, x: 200 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 150,
+                  damping: 15,
+                  delay: 1.4,
+                  mass: 1.2
+                }}
+                className="mt-6"
+              >
+                <a
+                  href="#contact"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-white/30 rounded-lg text-white text-sm font-medium hover:bg-white/10 transition-all duration-300"
+                >
+                  <span>RANDEVU TALEBİ</span>
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
+                  </svg>
+                </a>
+              </motion.div>
 
-                {/* Decorative Line */}
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: '100%' }}
-                  transition={{ duration: 0.8, delay: 1.2 }}
-                  className="h-px bg-gradient-to-r from-transparent via-premium-red/30 to-transparent mt-8"
-                />
+              {/* Social Media Icons */}
+              <motion.div
+                initial={{ opacity: 0, x: 200 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 150,
+                  damping: 15,
+                  delay: 1.6,
+                  mass: 1.2
+                }}
+                className="mt-8 flex items-center gap-4"
+              >
+                {socialLinks.slice(0, 4).map((social, index) => (
+                  <motion.a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, x: 100, scale: 0.8 }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 18,
+                      delay: 1.8 + index * 0.1,
+                      mass: 1.0
+                    }}
+                    whileHover={{ scale: 1.1 }}
+                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white/30 text-white hover:bg-white/10 transition-all duration-300"
+                  >
+                    <span className="text-sm">
+                      {social.icon}
+                    </span>
+                  </motion.a>
+                ))}
               </motion.div>
             </div>
           </motion.div>

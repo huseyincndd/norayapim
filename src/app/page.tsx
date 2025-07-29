@@ -22,6 +22,8 @@ import FeaturesSection from './components/FeaturesSection'
 import IconGridSection from './components/IconGridSection'
 import SettenKarelerSection from './components/SettenKarelerSection'
 import { motion } from 'framer-motion'
+import CreativeFlowSection from './components/CreativeFlowSection'
+import ImageSliderSection from './components/ImageSliderSection'
 
 export default function Home() {
 
@@ -38,23 +40,31 @@ export default function Home() {
         <div className="relative z-10">
           <AboutSection noBg />
         </div>
-        <div className="relative z-10">
-          <SloganSliderSection noBg />
-        </div>
+        
         <div className="relative z-10">
           <ServicesSectionNew noBg />
         </div>
         <div className="relative z-10">
+          {/* Creative Flow Section */}
+          <CreativeFlowSection noBg />
+        </div>
+        <div className="relative z-10">
+          <StatsSection noBg />
+        </div>
+        <div className="relative z-10">
+          {/* Image Slider Section */}
+          <ImageSliderSection noBg />
+        </div>
+        <div className="relative z-10">
           <LogoMarquee noBg />
         </div>
+
       </section>
-      <ProjectsShowcase />
+      
+      
       
       {/* Second Premium Black Background Section */}
       <section className="relative bg-black">
-        <div className="relative z-10">
-          <ArtisticProjectsSection noBg />
-        </div>
         <div className="relative z-10">
           <BlogPreviewSection noBg />
         </div>

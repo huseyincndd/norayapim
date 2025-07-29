@@ -11,7 +11,7 @@ const MissionStatementSection = () => {
   };
 
   return (
-    <section id="mission-statement-section" className="relative h-[40vh] md:h-auto bg-black py-4 md:py-20 lg:py-32 overflow-hidden">
+    <section id="mission-statement-section" className="relative h-[40vh] md:h-auto bg-black py-4 md:py-12 lg:py-20 overflow-hidden">
       {/* Sophisticated Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center"
@@ -21,7 +21,7 @@ const MissionStatementSection = () => {
       />
       
       {/* Dark Overlay for Text Readability */}
-      <div className="absolute inset-0 z-0 bg-black/80" />
+      <div className="absolute inset-0 z-0 bg-black/100" />
 
       {/* Main Content Container */}
       <div className="relative z-10 container mx-auto px-4 md:px-8 pt-0 md:pt-8 -mt-2 md:-mt-0 md:ml-48 lg:ml-64">
@@ -34,19 +34,19 @@ const MissionStatementSection = () => {
           whileInView="animate"
           viewport={{ once: true }}
         >
-          <p className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight text-white mb-1 md:mb-6 lg:mb-8 font-montserrat tracking-wide">
+          <p className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight text-white mb-3 md:mb-8 lg:mb-10 font-montserrat tracking-wide">
             <strong>YARATICI VİZYONU GERÇEĞE DÖNÜŞTÜREN</strong>
           </p>
-          <p className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight text-white mb-2 md:mb-8 lg:mb-12 font-montserrat tracking-wide">
+          <p className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight text-white mb-4 md:mb-10 lg:mb-14 font-montserrat tracking-wide">
             <strong>PROFESYONEL YAPIM EKİBİ</strong>
           </p>
-          <p className="text-base md:text-xl lg:text-2xl font-light uppercase leading-tight text-white/70 mb-4 md:mb-8 lg:mb-12 font-lato tracking-wider">
+          <p className="text-base md:text-xl lg:text-2xl font-light uppercase leading-tight text-white/70 mb-6 md:mb-12 lg:mb-16 font-lato tracking-wider">
             REKLAM, MÜZİK VİDEOSU, KURUMSAL İÇERİK VE ÇOK DAHA FAZLASI.
           </p>
         </motion.div>
 
         {/* Details Section - Closer to Heading */}
-        <div className="mt-2 lg:mt-4 md:mt-8 lg:mt-12 xl:mt-16">
+        <div className="mt-4 lg:mt-6 md:mt-10 lg:mt-14 xl:mt-18">
           <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
             
             {/* Paragraph */}
@@ -63,22 +63,7 @@ const MissionStatementSection = () => {
               </p>
             </motion.div>
 
-            {/* Button */}
-            <motion.div
-              className="text-left max-w-4xl"
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              <a 
-                href="/about"
-                className="inline-block bg-white text-black rounded-full px-8 md:px-10 py-3 md:py-4 uppercase font-bold text-sm md:text-base transition-colors duration-300 hover:bg-gray-200 hover:text-premium-red font-montserrat tracking-wide"
-              >
-                DETAYLAR
-              </a>
-            </motion.div>
+
           </div>
         </div>
       </div>

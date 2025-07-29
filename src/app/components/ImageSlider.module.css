@@ -1,0 +1,68 @@
+/* ImageSlider.module.css */
+
+/* Image row base styles */
+.imageRow {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  width: fit-content;
+}
+
+/* Top row slides left */
+.slideLeft {
+  animation: slide-left linear infinite;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Bottom row slides right */
+.slideRight {
+  animation: slide-right linear infinite;
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Image hover effects */
+.imageRow img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.imageRow img:hover {
+  transform: scale(1.05);
+}
+
+/* Image container hover effects */
+.imageRow > div:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .slideLeft,
+  .slideRight {
+    animation: none !important;
+  }
+  
+  .imageRow {
+    transform: none !important;
+  }
+  
+  .imageRow img:hover {
+    transform: none !important;
+  }
+} 

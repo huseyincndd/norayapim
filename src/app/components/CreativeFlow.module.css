@@ -1,0 +1,40 @@
+/* CreativeFlow.module.css */
+
+/* Simple CSS animation for banner */
+.bannerContent {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.animate {
+  animation: scroll-left linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Smooth text rendering */
+.sloganText {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate {
+    animation: none !important;
+  }
+  
+  .bannerContent {
+    transform: none !important;
+  }
+} 

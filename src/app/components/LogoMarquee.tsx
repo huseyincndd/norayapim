@@ -64,7 +64,7 @@ const companies: Company[] = [
 
 const LogoMarquee: React.FC<{ noBg?: boolean }> = ({ noBg = false }) => {
   return (
-    <section className={`py-8 lg:py-12 ${noBg ? 'bg-transparent' : 'bg-gradient-to-br from-black via-gray-900 to-black'} overflow-hidden relative`}>
+    <section className={`py-8 lg:py-16 ${noBg ? 'bg-transparent' : 'bg-gradient-to-br from-black via-gray-900 to-black'} overflow-hidden relative`}>
       {/* Unified Background Elements */}
       {!noBg && (
         <>
@@ -97,7 +97,7 @@ const LogoMarquee: React.FC<{ noBg?: boolean }> = ({ noBg = false }) => {
                 <img
                   src={company.logoUrl}
                   alt={`${company.name} logo`}
-                  className="h-auto max-h-8 lg:max-h-12 w-auto max-w-full filter brightness-0 invert opacity-60 transition-all duration-300 hover:scale-110 hover:opacity-100"
+                  className="h-auto max-h-8 lg:max-h-12 w-auto max-w-full filter brightness-0 invert opacity-100 transition-all duration-300 hover:scale-110"
                 />
               </div>
             ))}
@@ -111,7 +111,7 @@ const LogoMarquee: React.FC<{ noBg?: boolean }> = ({ noBg = false }) => {
                 <img
                   src={company.logoUrl}
                   alt={`${company.name} logo`}
-                  className="h-auto max-h-8 lg:max-h-12 w-auto max-w-full filter brightness-0 invert opacity-60 transition-all duration-300 hover:scale-110 hover:opacity-100"
+                  className="h-auto max-h-8 lg:max-h-12 w-auto max-w-full filter brightness-0 invert opacity-100 transition-all duration-300 hover:scale-110"
                 />
               </div>
             ))}
