@@ -307,7 +307,7 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
         </>
       )}
 
-      <div className="container mx-auto px-0 relative z-20">
+      <div className="container mx-auto px-0 relative z-20 overflow-visible">
         {/* Section Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -343,21 +343,9 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
             transition={{ duration: 0.8, delay: 0.5 }}
             className="h-0.5 bg-gradient-to-r from-white via-white/60 to-transparent mt-6 lg:mx-auto"
           />
-
-          {/* Mobile Navigation Controls - Positioned at bottom right of header */}
-          <div className="lg:hidden absolute -bottom-24 right-2 flex gap-1 z-30">
-            <CarouselControl
-              type="previous"
-              title="Go to previous slide"
-              handleClick={handlePreviousClick}
-            />
-            <CarouselControl
-              type="next"
-              title="Go to next slide"
-              handleClick={handleNextClick}
-            />
-          </div>
         </motion.div>
+
+
 
         {/* Carousel Container */}
         <div className="relative overflow-hidden w-full py-20 mx-0">
@@ -365,6 +353,19 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
             className="relative w-screen md:w-[60vw] lg:w-[30vw] h-[160vmin] md:h-[90vmin] lg:h-[60vmin] mx-auto"
             aria-labelledby={`carousel-heading-${id}`}
           >
+            {/* Mobile Navigation Controls - Positioned at top right of carousel */}
+            <div className="lg:hidden absolute -top-16 -right-1 flex gap-1 z-[9999] pointer-events-auto bg-black/20 p-2 rounded-lg">
+              <CarouselControl
+                type="previous"
+                title="Go to previous slide"
+                handleClick={handlePreviousClick}
+              />
+              <CarouselControl
+                type="next"
+                title="Go to next slide"
+                handleClick={handleNextClick}
+              />
+            </div>
             <ul
               className="absolute flex mx-0 transition-transform duration-1000 ease-in-out"
               style={{
@@ -404,7 +405,7 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-left mt-12 px-6 lg:px-8"
+          className="text-left mt-6 lg:mt-12 px-6 lg:px-8"
         >
           <Link 
             href="/blog/1"

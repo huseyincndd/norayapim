@@ -2,8 +2,74 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const Footer = () => {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    // Reset form
+    setFormData({
+      fullName: '',
+      email: '',
+      phone: '',
+      message: ''
+    });
+    setIsSubmitting(false);
+    
+    // Show success message (you can implement a toast notification here)
+    alert('Mesajınız başarıyla gönderildi!');
+  };
+
+  const navItems = [
+    { 
+      id: 'home',
+      label: 'Ana Sayfa', 
+      href: '#home'
+    },
+    { 
+      id: 'about',
+      label: 'Hakkımızda', 
+      href: '#about'
+    },
+    { 
+      id: 'services',
+      label: 'Hizmetler', 
+      href: '#services'
+    },
+    { 
+      id: 'projects',
+      label: 'Projeler', 
+      href: '#projects'
+    },
+    { 
+      id: 'contact',
+      label: 'İletişim', 
+      href: '#contact'
+    }
+  ];
+
   return (
     <footer className="bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden">
       {/* Background Elements */}
@@ -48,11 +114,11 @@ const Footer = () => {
       <div className="relative z-10">
         {/* Main Footer Content */}
         <div className="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
             
-            {/* Left Column - Company Info & Services */}
+            {/* Left Column - Company Info & Navigation */}
             <div className="space-y-12">
-        {/* Company Info */}
+              {/* Company Info */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -66,7 +132,7 @@ const Footer = () => {
                   </h1>
                 </div>
                 <p className="text-lg text-white/80 leading-relaxed mb-6 max-w-lg">
-            Dijital markaların hikayelerini güçlü videolarla anlatan yaratıcı bir prodüksiyon şirketi.
+                  Dijital markaların hikayelerini güçlü videolarla anlatan yaratıcı bir prodüksiyon şirketi.
                   Modern teknoloji ve yaratıcı vizyonu birleştirerek markaların hikayelerini etkileyici görsel anlatımlarla hayata geçiriyoruz.
                 </p>
                 
@@ -118,50 +184,108 @@ const Footer = () => {
                 </div>
               </motion.div>
 
-              {/* Services */}
+              {/* Navigation Links */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <h4 className="text-xl font-semibold mb-6 text-white">Hizmetlerimiz</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-premium-red rounded-full" />
-                    <span className="text-white/80">Video Prodüksiyon</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-premium-red rounded-full" />
-                    <span className="text-white/80">Reklam Filmleri</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-premium-red rounded-full" />
-                    <span className="text-white/80">Müzik Videoları</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-premium-red rounded-full" />
-                    <span className="text-white/80">Kurumsal İçerik</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-premium-red rounded-full" />
-                    <span className="text-white/80">Drone Çekimleri</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-premium-red rounded-full" />
-                    <span className="text-white/80">Post Prodüksiyon</span>
-                  </div>
+                <h4 className="text-xl font-semibold mb-6 text-white">Sayfalar</h4>
+                <div className="space-y-3">
+                  {navItems.map((item) => (
+                    <div key={item.id} className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-premium-red rounded-full" />
+                      <Link 
+                        href={item.href}
+                        className="text-white/80 hover:text-white transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             </div>
 
-            {/* Right Column - Contact & Map */}
+            {/* Middle Column - Contact Form */}
+            <div className="space-y-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                <h4 className="text-xl font-semibold mb-6 text-white">İletişim Formu</h4>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <input
+                      type="text"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleInputChange}
+                      placeholder="Ad Soyad"
+                      required
+                      className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:border-premium-red/50 focus:bg-white/15 transition-all duration-300"
+                    />
+                  </div>
+                  
+                  <div>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="E-posta"
+                      required
+                      className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:border-premium-red/50 focus:bg-white/15 transition-all duration-300"
+                    />
+                  </div>
+                  
+                  <div>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="Telefon Numarası"
+                      required
+                      className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:border-premium-red/50 focus:bg-white/15 transition-all duration-300"
+                    />
+                  </div>
+                  
+                  <div>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Mesaj"
+                      rows={4}
+                      required
+                      className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:border-premium-red/50 focus:bg-white/15 transition-all duration-300 resize-none"
+                    />
+                  </div>
+                  
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full px-6 py-3 bg-gradient-to-r from-premium-red to-premium-red-light text-white font-semibold rounded-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {isSubmitting ? 'Gönderiliyor...' : 'Mesaj Gönder'}
+                  </motion.button>
+                </form>
+              </motion.div>
+            </div>
+
+            {/* Right Column - Contact Info & Map */}
             <div className="space-y-12">
               {/* Contact Info */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
                 viewport={{ once: true }}
               >
                 <h4 className="text-xl font-semibold mb-6 text-white">İletişim Bilgileri</h4>
@@ -177,7 +301,7 @@ const Footer = () => {
                       <p className="text-white/80">+90 (555) 123 45 67</p>
                       <p className="text-white/60 text-sm">Pazartesi - Cuma, 09:00 - 18:00</p>
                     </div>
-        </div>
+                  </div>
 
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-premium-red/20 backdrop-blur-sm border border-premium-red/30 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -185,12 +309,12 @@ const Footer = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
-        <div>
+                    <div>
                       <p className="text-white font-medium">E-posta</p>
                       <p className="text-white/80">info@norayapim.com</p>
                       <p className="text-white/60 text-sm">24 saat içinde yanıt veriyoruz</p>
                     </div>
-        </div>
+                  </div>
 
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-premium-red/20 backdrop-blur-sm border border-premium-red/30 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -199,38 +323,44 @@ const Footer = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                     </div>
-        <div>
+                    <div>
                       <p className="text-white font-medium">Adres</p>
-                      <p className="text-white/80">Levent Mahallesi, Büyükdere Caddesi</p>
-                      <p className="text-white/80">No: 123, Kat: 5, Beşiktaş</p>
-                      <p className="text-white/60 text-sm">İstanbul, Türkiye</p>
+                      <p className="text-white/80">İstanbul</p>
                     </div>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Map */}
+              {/* Map Image */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
                 viewport={{ once: true }}
                 className="relative"
               >
                 <h4 className="text-xl font-semibold mb-6 text-white">Konum</h4>
-                <div className="relative h-64 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-white/10">
-                  {/* Google Maps Embed with Dark Theme */}
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.9633694779306!2d28.9833!3d41.0082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAwJzI5LjUiTiAyOMKwNTknMDAuMCJF!5e0!3m2!1str!2str!4v1234567890&style=feature:all|element:all|hue:0x000000|saturation:-100|lightness:-50"
-                    className="w-full h-full"
-                    style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(0.8) contrast(1.2)' }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                  
-                  {/* Map Overlay for Styling */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none"></div>
+                <div className="relative h-64 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-white/10 group cursor-pointer">
+                  <a 
+                    href="https://www.google.com/maps?q=41.024112,28.998138"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full h-full"
+                  >
+                    <img
+                      src="https://villaqrmenu.b-cdn.net/nora/resim_2025-08-01_160908476.png"
+                      alt="İstanbul Boğazı Konumu"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    {/* Overlay with click indicator */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 border border-white/30">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </div>
+                    </div>
+                  </a>
                 </div>
               </motion.div>
             </div>

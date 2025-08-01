@@ -24,6 +24,9 @@ import SettenKarelerSection from './components/SettenKarelerSection'
 import { motion } from 'framer-motion'
 import CreativeFlowSection from './components/CreativeFlowSection'
 import ImageSliderSection from './components/ImageSliderSection'
+import InstagramFeedSection from './components/InstagramFeedSection'
+import FlowingImagesSection from './components/FlowingImagesSection'
+import HighlightsFromSetSection from './components/HighlightsFromSetSection'
 
 export default function Home() {
 
@@ -67,9 +70,6 @@ export default function Home() {
       <section className="relative bg-black">
         <div className="relative z-10">
           <BlogPreviewSection noBg />
-        </div>
-        <div className="relative z-10">
-          <InstagramFilmstrip noBg />
         </div>
         <div className="relative z-10">
           <SettenKarelerSection noBg />

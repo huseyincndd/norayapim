@@ -15,7 +15,7 @@ const CreativeFlowSection: React.FC<CreativeFlowSectionProps> = ({
   noBg = false
 }) => {
   return (
-    <section className={`relative py-8 lg:py-12 overflow-hidden ${className}`}>
+    <section className={`relative py-8 lg:py-16 overflow-hidden ${className}`}>
       {/* Background - only if noBg is false */}
       {!noBg && (
         <>

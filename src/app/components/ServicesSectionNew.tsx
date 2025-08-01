@@ -195,7 +195,7 @@ function CarouselNavigation({
       <button
         type='button'
         aria-label='Previous slide'
-        className={`pointer-events-auto h-fit w-fit rounded-full bg-zinc-50 p-2 transition-opacity duration-300 dark:bg-zinc-950 ${
+        className={`pointer-events-auto h-fit w-fit rounded-full bg-zinc-50 p-3 transition-opacity duration-300 dark:bg-zinc-950 ${
           alwaysShow
             ? 'opacity-100'
             : 'opacity-0 group-hover/hover:opacity-100'
@@ -211,13 +211,13 @@ function CarouselNavigation({
           }
         }}
       >
-        <svg className="w-4 h-4 stroke-zinc-600 dark:stroke-zinc-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 stroke-zinc-600 dark:stroke-zinc-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
       </button>
       <button
         type='button'
-        className={`pointer-events-auto h-fit w-fit rounded-full bg-zinc-50 p-2 transition-opacity duration-300 dark:bg-zinc-950 ${
+        className={`pointer-events-auto h-fit w-fit rounded-full bg-zinc-50 p-3 transition-opacity duration-300 dark:bg-zinc-950 ${
           alwaysShow
             ? 'opacity-100'
             : 'opacity-0 group-hover/hover:opacity-100'
@@ -231,7 +231,7 @@ function CarouselNavigation({
           }
         }}
       >
-        <svg className="w-4 h-4 stroke-zinc-600 dark:stroke-zinc-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 stroke-zinc-600 dark:stroke-zinc-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </button>
@@ -485,7 +485,7 @@ const ServicesSectionNew = ({ noBg = false }: { noBg?: boolean }) => {
         </div>
 
         {/* Carousel Container */}
-        <div className='relative w-full px-4'>
+        <div className='relative w-full px-4 pb-8'>
           <Carousel>
             <CarouselContent className='-ml-4'>
               {servicesData.map((service) => (
@@ -498,7 +498,7 @@ const ServicesSectionNew = ({ noBg = false }: { noBg?: boolean }) => {
               ))}
             </CarouselContent>
             <CarouselNavigation
-              className='absolute -bottom-20 left-auto top-auto w-full justify-end gap-2'
+              className='absolute -bottom-24 left-auto top-auto w-full justify-end gap-2 z-30'
               classNameButton='bg-zinc-800 *:stroke-zinc-50 dark:bg-zinc-200 dark:*:stroke-zinc-800'
               alwaysShow
             />

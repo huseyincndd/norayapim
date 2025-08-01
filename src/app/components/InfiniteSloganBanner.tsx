@@ -64,8 +64,8 @@ const InfiniteSloganBanner: React.FC<InfiniteSloganBannerProps> = ({
                 <span className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium text-white px-8 sm:px-10 lg:px-12 font-sans ${styles.sloganText}`}>
                   {slogan}
                 </span>
-                {/* Red recording indicator - STATIC */}
-                <div className="w-5 h-5 bg-premium-red rounded-full mx-4 sm:mx-6" />
+                {/* Red recording indicator - ANIMATED */}
+                <div className="w-6 h-6 bg-premium-red rounded-full mx-4 sm:mx-6 animate-pulse" />
               </React.Fragment>
             ))}
           </div>
@@ -77,8 +77,8 @@ const InfiniteSloganBanner: React.FC<InfiniteSloganBannerProps> = ({
                 <span className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium text-white px-8 sm:px-10 lg:px-12 font-sans ${styles.sloganText}`}>
                   {slogan}
                 </span>
-                {/* Red recording indicator - STATIC */}
-                <div className="w-5 h-5 bg-premium-red rounded-full mx-4 sm:mx-6" />
+                {/* Red recording indicator - ANIMATED */}
+                <div className="w-6 h-6 bg-premium-red rounded-full mx-4 sm:mx-6 animate-pulse" />
               </React.Fragment>
             ))}
           </div>
