@@ -27,6 +27,7 @@ import ImageSliderSection from './components/ImageSliderSection'
 import InstagramFeedSection from './components/InstagramFeedSection'
 import FlowingImagesSection from './components/FlowingImagesSection'
 import HighlightsFromSetSection from './components/HighlightsFromSetSection'
+import SettenKareler2Section from './components/SettenKareler2Section'
 
 export default function Home() {
 
@@ -51,6 +52,7 @@ export default function Home() {
           {/* Creative Flow Section */}
           <CreativeFlowSection noBg />
         </div>
+        
         <div className="relative z-10">
           <StatsSection noBg />
         </div>
@@ -72,7 +74,10 @@ export default function Home() {
           <BlogPreviewSection noBg />
         </div>
         <div className="relative z-10">
-          <SettenKarelerSection noBg />
+          <InstagramFeedSection noBg />
+        </div>
+        <div className="relative z-10">
+          <SettenKareler2Section noBg />
         </div>
       </section>
       

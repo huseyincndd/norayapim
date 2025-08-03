@@ -1,0 +1,349 @@
+/* Gallery Grid Container */
+.galleryGrid {
+  display: grid;
+  gap: 1rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.galleryGrid.gridVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Desktop Grid Layout - 4x3 */
+@media (min-width: 1024px) {
+  .galleryGrid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet Grid Layout - 3x4 */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .galleryGrid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* Mobile Grid Layout - 3x4 */
+@media (max-width: 767px) {
+  .galleryGrid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+/* Gallery Item */
+.galleryItem {
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  aspect-ratio: 1;
+}
+
+.galleryItem:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4);
+  border-color: rgba(139, 92, 246, 0.6);
+  z-index: 10;
+}
+
+/* Image Container */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Image */
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.galleryItem:hover .image {
+  transform: scale(1.15);
+}
+
+/* Image Overlay */
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.3) 0%,
+    rgba(168, 85, 247, 0.2) 50%,
+    rgba(196, 181, 253, 0.1) 100%
+  );
+  opacity: 0;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.galleryItem:hover .imageOverlay {
+  opacity: 1;
+}
+
+/* Overlay Content */
+.overlayContent {
+  text-align: center;
+  color: white;
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+.galleryItem:hover .overlayContent {
+  transform: translateY(0);
+}
+
+.imageNumber {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background: rgba(139, 92, 246, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  backdrop-filter: blur(10px);
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.overlayText {
+  margin-top: 0.5rem;
+}
+
+.imageTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.imageDescription {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modalContent {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: scale(0.8) translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  background: rgba(139, 92, 246, 0.9);
+  border: none;
+  border-radius: 0;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.closeButton:hover {
+  background: rgba(139, 92, 246, 1);
+  transform: scale(1.1);
+}
+
+.modalImage {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+.modalInfo {
+  padding: 2rem;
+  text-align: center;
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.modalDescription {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+/* Floating Elements */
+.floatingElement {
+  position: absolute;
+  border-radius: 0;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(168, 85, 247, 0.05));
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.float1 {
+  width: 60px;
+  height: 60px;
+  top: 15%;
+  left: 8%;
+  animation-delay: 0s;
+}
+
+.float2 {
+  width: 80px;
+  height: 80px;
+  top: 70%;
+  right: 12%;
+  animation-delay: 3s;
+}
+
+.float3 {
+  width: 40px;
+  height: 40px;
+  bottom: 15%;
+  left: 15%;
+  animation-delay: 6s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-15px) rotate(180deg);
+    opacity: 0.5;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .galleryGrid {
+    gap: 0.5rem;
+  }
+  
+  .imageNumber {
+    font-size: 1rem;
+    padding: 0.25rem 0.75rem;
+  }
+  
+  .imageTitle {
+    font-size: 0.875rem;
+  }
+  
+  .imageDescription {
+    font-size: 0.75rem;
+  }
+  
+  .modalContent {
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+  
+  .modalInfo {
+    padding: 1.5rem;
+  }
+  
+  .modalTitle {
+    font-size: 1.25rem;
+  }
+  
+  .modalDescription {
+    font-size: 0.875rem;
+  }
+}
+
+/* Staggered Animation for Grid Items */
+.galleryItem {
+  animation: itemFadeIn 0.6s ease-out forwards;
+  animation-delay: calc(var(--item-index, 0) * 0.1s);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes itemFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply staggered animation delays */
+.item1 { --item-index: 0; }
+.item2 { --item-index: 1; }
+.item3 { --item-index: 2; }
+.item4 { --item-index: 3; }
+.item5 { --item-index: 4; }
+.item6 { --item-index: 5; }
+.item7 { --item-index: 6; }
+.item8 { --item-index: 7; }
+.item9 { --item-index: 8; }
+.item10 { --item-index: 9; }
+.item11 { --item-index: 10; }
+.item12 { --item-index: 11; } 
