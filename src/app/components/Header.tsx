@@ -12,31 +12,31 @@ const Header: React.FC = () => {
     { 
       id: 'home',
       label: 'Ana Sayfa', 
-      href: '#home',
+      href: '/',
       imageUrl: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1920&h=1080&fit=crop&q=80'
     },
     { 
       id: 'about',
       label: 'Hakkımızda', 
-      href: '#about',
+      href: '/about',
       imageUrl: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&h=1080&fit=crop&q=80'
     },
     { 
       id: 'services',
       label: 'Hizmetler', 
-      href: '#services',
+      href: '/services',
       imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop&q=80'
     },
     { 
       id: 'projects',
       label: 'Projeler', 
-      href: '#projects',
+      href: '/blog',
       imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&q=80'
     },
     { 
       id: 'contact',
       label: 'İletişim', 
-      href: '#contact',
+      href: '/contact',
       imageUrl: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1920&h=1080&fit=crop&q=80'
     }
   ];
@@ -156,7 +156,7 @@ const Header: React.FC = () => {
               className="flex items-center"
             >
               <a 
-                href="#home" 
+                href="/" 
                 className="flex items-center hover:scale-105 transition-all duration-300 cursor-pointer group"
               >
                 <h1 className="text-2xl font-bold text-white tracking-wider font-bebas-neue group-hover:text-premium-red transition-all duration-300">
@@ -193,7 +193,7 @@ const Header: React.FC = () => {
               className="hidden lg:block relative z-40"
             >
               <a
-                href="#contact"
+                href="/contact"
                 className="group inline-flex items-center gap-3 px-8 py-4 rounded-none bg-gradient-to-r from-premium-red via-premium-red-light to-premium-red text-white font-semibold hover:scale-105 transition-all duration-300 font-body shadow-xl border border-premium-red/30 hover:border-premium-red/60 relative overflow-hidden"
               >
                 {/* Gradient overlay on hover */}
@@ -325,7 +325,7 @@ const Header: React.FC = () => {
                 className="mt-6"
               >
                 <a
-                  href="#contact"
+                  href="/contact"
                   onClick={() => setIsMenuOpen(false)}
                   className="inline-flex items-center gap-2 px-6 py-3 border border-white/30 rounded-lg text-white text-sm font-medium hover:bg-white/10 transition-all duration-300"
                 >

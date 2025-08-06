@@ -484,30 +484,29 @@ const Footer = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
                 viewport={{ once: true }}
-                className="relative"
+                className="relative lg:relative -mx-4 lg:mx-0"
               >
-                <h4 className="text-xl font-semibold mb-6 text-white">Konum</h4>
-                <div className="relative h-64 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-white/10 group cursor-pointer">
-                  <a 
-                    href="https://www.google.com/maps?q=41.024112,28.998138"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full h-full"
-                  >
-                    <img
-                      src="https://villaqrmenu.b-cdn.net/nora/resim_2025-08-01_160908476.png"
-                      alt="İstanbul Boğazı Konumu"
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    {/* Overlay with click indicator */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 border border-white/30">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </div>
+                <h4 className="text-xl font-semibold mb-6 text-white px-4 lg:px-0">Konum</h4>
+                <div className="relative w-full aspect-square lg:h-64 lg:aspect-auto bg-gradient-to-br from-gray-800 to-gray-900 lg:rounded-2xl overflow-hidden border-0 lg:border lg:border-white/10 group cursor-pointer">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.9633698339308!2d28.995949315414!3d41.024112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAxJzI2LjgiTiAyOMKwNTknNTIuMCJF!5e0!3m2!1str!2str!4v1640995200000!5m2!1str!2str&style=feature:all|element:all|visibility:simplified|color:0x2d2d2d|weight:0.1|gamma:0.8|saturation:-100|lightness:-50"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, filter: 'grayscale(100%) brightness(0.7) contrast(1.2)' }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="İstanbul Boğazı Konumu"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  {/* Overlay with click indicator */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 border border-white/30">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
                     </div>
-                  </a>
+                  </div>
                 </div>
               </motion.div>
             </div>
