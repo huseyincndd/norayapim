@@ -1,55 +1,132 @@
-import Header from '../components/Header'
-import Image from 'next/image'
+"use client";
 
-export default function About() {
+import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Header from '../components/Header';
+import CreativeFlowSectionNoPadding from '../components/CreativeFlowSectionNoPadding';
+import AboutSection from '../components/AboutSection';
+import ApproachSection from '../components/ApproachSection';
+import WhyChooseUsSection from '../components/WhyChooseUsSection';
+import WhatWeDoSection from '../components/WhatWeDoSection';
+import Footer from '../components/Footer';
+
+const ServicesPage = () => {
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      
-      <div className="container mx-auto px-4 pt-24">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          {/* Text Content */}
-          <div className="flex-1">
-            <h1 className="text-4xl font-bold mb-6 text-gray-900">Nora Yapım Hakkında</h1>
-            
-            <div className="space-y-4 text-gray-700 leading-relaxed">
-              <p>
-                Nora Yapım, dijital markaların hikayelerini güçlü ve etkileyici videolarla anlatmaya adanmış 
-                yaratıcı bir video prodüksiyon şirketidir. Müşterilerimizin benzersiz seslerini ve vizyonlarını 
-                ekrana yansıtmak için tutkuyla çalışıyoruz.
-              </p>
-              
-              <p>
-                Her projede, yaratıcılığı teknoloji ile birleştirerek, izleyicilerin duygularına dokunan 
-                ve markalar için somut sonuçlar üreten içerikler oluşturuyoruz.
-              </p>
-            </div>
-
-            <div className="mt-8 bg-gray-100 p-6 rounded-lg">
-              <h2 className="text-2xl font-semibold mb-4">Neden Bizi Tercih Etmelisiniz?</h2>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
-                <li>Yaratıcı ve özgün prodüksiyon yaklaşımı</li>
-                <li>Yüksek kaliteli görsel içerik</li>
-                <li>Müşteri odaklı profesyonel hizmet</li>
-                <li>Dijital pazarlama trendlerinde uzmanlık</li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Image Section */}
-          <div className="flex-1 relative">
-            <div className="rounded-lg overflow-hidden shadow-lg">
-              <Image 
-                src="/team-photo.jpg"  // You'll need to add this image
-                alt="Nora Yapım Ekibi" 
-                width={500} 
-                height={500} 
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 via-black/90 to-black" />
+        {/* Animated Background Lines */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div 
+            className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}
+            viewport={{ once: true }}
+          />
+          <motion.div 
+            className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 1.5, delay: 0.5, ease: 'easeOut' }}
+            viewport={{ once: true }}
+          />
         </div>
+        {/* White Blur Effects */}
+        <motion.div
+          className="absolute top-1/3 left-1/4 w-32 h-32 bg-white/5 rounded-full blur-2xl"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3]
+          }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-white/5 rounded-full blur-2xl"
+          animate={{ 
+            scale: [1, 1.3, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
       </div>
+
+             <Header />
+       
+       <div className="relative z-10">
+         {/* Hero Section with Background */}
+         <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://demo.awaikenthemes.com/artistics/creative-portfolio/wp-content/uploads/2025/02/page-header-bg.jpg"
+              alt="Services Page Background"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/60" />
+          </div>
+          
+          <div className="container mx-auto px-4 lg:px-8 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center max-w-4xl mx-auto"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="flex items-center justify-center gap-3 mb-6"
+              >
+                <div className="w-2 h-2 bg-white rounded-full" />
+                <h1 className="text-5xl lg:text-7xl font-bold text-white tracking-wider font-bebas-neue">
+                  HİZMETLERİMİZ
+                </h1>
+                <div className="w-2 h-2 bg-white rounded-full" />
+              </motion.div>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="text-xl lg:text-2xl text-white/80 leading-relaxed mb-8 max-w-3xl mx-auto"
+              >
+                Hikayenizi birlikte yazalım. Projeleriniz için bizimle iletişime geçin.
+              </motion.p>
+            </motion.div>
+          </div>
+        </section>
+
+                 {/* Slogan Slider - Using CreativeFlowSectionNoPadding */}
+         <div className="pb-2 lg:pb-3">
+           <CreativeFlowSectionNoPadding 
+             duration={40} 
+             className="py-0" 
+             noBg={true}
+           />
+         </div>
+
+        {/* About Section */}
+        <AboutSection noBg={true} />
+
+        {/* Approach Section */}
+        <ApproachSection />
+
+        {/* Why Choose Us Section */}
+        <WhyChooseUsSection />
+
+        {/* What We Do Section */}
+        <WhatWeDoSection />
+
+
+      </div>
+      
+      <Footer />
     </div>
-  )
-} 
+  );
+};
+
+export default ServicesPage; 
