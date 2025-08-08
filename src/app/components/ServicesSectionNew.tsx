@@ -407,11 +407,11 @@ const ServicesSectionNew = ({ noBg = false }: { noBg?: boolean }) => {
   const [activeId, setActiveId] = useState<number>(1); // İlk kartı aktif başlat
 
   return (
-    <section className={`py-12 lg:py-20 ${noBg ? 'bg-transparent' : 'bg-gradient-to-br from-black via-gray-900 to-black'} overflow-hidden relative`}>
+    <section className={`py-12 lg:py-20 ${noBg ? 'bg-transparent' : 'bg-black'} overflow-hidden relative`}>
       {/* Unified Background Elements */}
       {!noBg && (
         <>
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-black" />
+          <div className="absolute inset-0 bg-black" />
           {/* Animated Background Lines */}
           <div className="absolute inset-0 overflow-hidden">
             <motion.div
@@ -497,11 +497,11 @@ const ServicesSectionNew = ({ noBg = false }: { noBg?: boolean }) => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselNavigation
-              className='absolute -bottom-24 left-auto top-auto w-full justify-end gap-2 z-30'
-              classNameButton='bg-zinc-800 *:stroke-zinc-50 dark:bg-zinc-200 dark:*:stroke-zinc-800'
-              alwaysShow
-            />
+                         <CarouselNavigation
+               className='absolute -bottom-24 left-auto top-auto w-full justify-end gap-2 z-30'
+               classNameButton='bg-white *:stroke-black'
+               alwaysShow
+             />
           </Carousel>
         </div>
       </div>

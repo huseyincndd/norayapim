@@ -143,7 +143,7 @@ const ContactPage = () => {
        
        <div className="relative z-10">
          {/* Hero Section with Background */}
-         <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
+         <section className="relative pt-24 pb-16 lg:pt-48 lg:pb-32 overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img
@@ -159,29 +159,25 @@ const ContactPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center max-w-4xl mx-auto"
+              className="text-center max-w-4xl mx-auto pt-8 lg:pt-16"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex items-center justify-center gap-3 mb-6"
+                className="text-center mb-12 lg:mb-16"
               >
-                <div className="w-2 h-2 bg-white rounded-full" />
-                <h1 className="text-5xl lg:text-7xl font-bold text-white tracking-wider font-bebas-neue">
-                  İLETİŞİM
+                <h1 className="text-4xl lg:text-7xl font-bold text-white tracking-wider mb-4">
+                  <span className="text-white">İletişim</span>
                 </h1>
-                <div className="w-2 h-2 bg-white rounded-full" />
+                
+                {/* Breadcrumb Navigation */}
+                <div className="text-sm lg:text-lg text-white/80">
+                  <span className="text-white">Ana Sayfa</span>
+                  <span className="text-white mx-2">*</span>
+                  <span className="text-white">İletişim</span>
+                </div>
               </motion.div>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-xl lg:text-2xl text-white/80 leading-relaxed mb-8 max-w-3xl mx-auto"
-              >
-                Hikayenizi birlikte yazalım. Projeleriniz için bizimle iletişime geçin.
-              </motion.p>
             </motion.div>
           </div>
         </section>
@@ -196,7 +192,7 @@ const ContactPage = () => {
          </div>
 
          {/* Contact Content */}
-         <section className="py-0">
+         <section className="pt-8 lg:pt-12 pb-0">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
               

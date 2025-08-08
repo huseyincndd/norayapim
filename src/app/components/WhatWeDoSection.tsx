@@ -23,13 +23,13 @@ const WhatWeDoSection = () => {
          <section className="relative overflow-hidden">
        <div className="grid grid-cols-1 lg:grid-cols-10 min-h-screen">
          
-         {/* Left Column - Dark Background */}
+         {/* Left Column */}
          <motion.div
            initial={{ opacity: 0, x: -50 }}
            whileInView={{ opacity: 1, x: 0 }}
            transition={{ duration: 0.8 }}
            viewport={{ once: true }}
-           className="bg-black p-8 lg:p-16 flex flex-col justify-center lg:col-span-6"
+           className="p-8 lg:p-16 flex flex-col justify-center lg:col-span-6"
          >
                      <div className="max-w-lg">
                          {/* Header */}

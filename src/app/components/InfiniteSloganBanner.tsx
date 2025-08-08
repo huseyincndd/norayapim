@@ -16,14 +16,14 @@ const InfiniteSloganBanner: React.FC<InfiniteSloganBannerProps> = ({
   const [isVisible, setIsVisible] = useState(false);
 
   const slogans = [
-    "Strategy & Insight",
-    "Creative Direction", 
-    "Brand Identity",
-    "UI/UX Design",
-    "Motion Graphics",
-    "Interactive Prototypes",
-    "Development & Engineering",
-    "Launch & Optimization"
+    "Strateji & İçgörü",
+    "Yaratıcı Yönetim", 
+    "Marka Kimliği",
+    "UI/UX Tasarım",
+    "Hareketli Grafik",
+    "İnteraktif Prototipler",
+    "Geliştirme & Mühendislik",
+    "Lansman & Optimizasyon"
   ];
 
   // Intersection Observer to track visibility
@@ -44,10 +44,10 @@ const InfiniteSloganBanner: React.FC<InfiniteSloganBannerProps> = ({
 
   return (
     <div className={`relative w-full ${className}`}>
-      {/* Banner Container - Full Width */}
+      {/* Banner Container - Smaller size */}
       <div 
         ref={containerRef}
-        className="relative overflow-hidden py-8 lg:py-12 w-full"
+        className="relative overflow-hidden py-1 lg:py-2 w-full"
       >
         {/* Animated Content - CSS ONLY */}
         <div
@@ -61,11 +61,11 @@ const InfiniteSloganBanner: React.FC<InfiniteSloganBannerProps> = ({
           <div className="flex items-center whitespace-nowrap">
             {slogans.map((slogan, index) => (
               <React.Fragment key={`original-${index}`}>
-                <span className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium text-white px-8 sm:px-10 lg:px-12 font-sans ${styles.sloganText}`}>
+                <span className={`text-xl sm:text-2xl lg:text-lg xl:text-xl 2xl:text-2xl font-medium text-white px-4 sm:px-6 lg:px-8 font-sans ${styles.sloganText}`}>
                   {slogan}
                 </span>
                 {/* Red recording indicator - ANIMATED */}
-                <div className="w-6 h-6 bg-premium-red rounded-full mx-4 sm:mx-6 animate-pulse" />
+                <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-4 lg:h-4 xl:w-5 xl:h-5 bg-premium-red rounded-full mx-2 sm:mx-3 animate-pulse" />
               </React.Fragment>
             ))}
           </div>
@@ -74,11 +74,11 @@ const InfiniteSloganBanner: React.FC<InfiniteSloganBannerProps> = ({
           <div className="flex items-center whitespace-nowrap">
             {slogans.map((slogan, index) => (
               <React.Fragment key={`clone-${index}`}>
-                <span className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium text-white px-8 sm:px-10 lg:px-12 font-sans ${styles.sloganText}`}>
+                <span className={`text-xl sm:text-2xl lg:text-lg xl:text-xl 2xl:text-2xl font-medium text-white px-4 sm:px-6 lg:px-8 font-sans ${styles.sloganText}`}>
                   {slogan}
                 </span>
                 {/* Red recording indicator - ANIMATED */}
-                <div className="w-6 h-6 bg-premium-red rounded-full mx-4 sm:mx-6 animate-pulse" />
+                <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-4 lg:h-4 xl:w-5 xl:h-5 bg-premium-red rounded-full mx-2 sm:mx-3 animate-pulse" />
               </React.Fragment>
             ))}
           </div>

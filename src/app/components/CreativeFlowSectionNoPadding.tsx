@@ -15,24 +15,21 @@ const CreativeFlowSectionNoPadding: React.FC<CreativeFlowSectionNoPaddingProps> 
   noBg = false
 }) => {
   return (
-    <section className={`relative py-0 overflow-hidden ${className}`}>
-      {/* Background - only if noBg is false */}
-      {!noBg && (
-        <>
-          <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
-          <div className="absolute inset-0 bg-noise opacity-30" />
-        </>
-      )}
+    <section className={`relative py-1.5 lg:py-1 overflow-hidden bg-white ${className}`}>
+      {/* Background - always white for police tape effect */}
+      <div className="absolute inset-0 bg-white" />
       
       <div className="relative z-10">
         {/* Gradient Overlay for Side Darkness */}
         <div className="absolute inset-0 z-20 pointer-events-none">
-          <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-black/80 to-transparent"></div>
-          <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-black/80 to-transparent"></div>
+          <div className="absolute left-0 top-0 w-16 h-full bg-gradient-to-r from-white to-transparent"></div>
+          <div className="absolute right-0 top-0 w-16 h-full bg-gradient-to-l from-white to-transparent"></div>
         </div>
         
-        {/* Infinite Slogan Banner - Full Width */}
-        <InfiniteSloganBanner duration={duration} />
+        {/* Infinite Slogan Banner - Medium size */}
+        <div className="py-0.5 lg:py-0">
+          <InfiniteSloganBanner duration={duration} />
+        </div>
       </div>
     </section>
   );

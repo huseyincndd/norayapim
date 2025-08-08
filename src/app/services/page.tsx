@@ -5,10 +5,13 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '../components/Header';
 import CreativeFlowSectionNoPadding from '../components/CreativeFlowSectionNoPadding';
-import AboutSection from '../components/AboutSection';
-import ApproachSection from '../components/ApproachSection';
-import WhyChooseUsSection from '../components/WhyChooseUsSection';
-import WhatWeDoSection from '../components/WhatWeDoSection';
+import ServicesSection from '../components/ServicesSection';
+import ServicesSectionNew from '../components/ServicesSectionNew';
+import ServicesGridSection from '../components/ServicesGridSection';
+import TestimonialsSection from '../components/TestimonialsSection';
+import FeaturesSection from '../components/FeaturesSection';
+import StatsSection from '../components/StatsSection';
+import PremiumStatsSection from '../components/PremiumStatsSection';
 import Footer from '../components/Footer';
 
 const ServicesPage = () => {
@@ -53,11 +56,11 @@ const ServicesPage = () => {
         />
       </div>
 
-             <Header />
-       
-       <div className="relative z-10">
-         {/* Hero Section with Background */}
-         <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
+      <Header />
+      
+      <div className="relative z-10">
+        {/* Hero Section with Background */}
+        <section className="relative pt-24 pb-16 lg:pt-48 lg:pb-32 overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img
@@ -73,54 +76,49 @@ const ServicesPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center max-w-4xl mx-auto"
+              className="text-center max-w-4xl mx-auto pt-8 lg:pt-0"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex items-center justify-center gap-3 mb-6"
+                className="text-center mb-12 lg:mb-16 pt-8 lg:pt-16"
               >
-                <div className="w-2 h-2 bg-white rounded-full" />
-                <h1 className="text-5xl lg:text-7xl font-bold text-white tracking-wider font-bebas-neue">
-                  HİZMETLERİMİZ
+                <h1 className="text-4xl lg:text-7xl font-bold text-white tracking-wider mb-4">
+                  <span className="text-white">Hizmetlerimiz</span>
                 </h1>
-                <div className="w-2 h-2 bg-white rounded-full" />
+                
+                {/* Breadcrumb Navigation */}
+                <div className="text-sm lg:text-lg text-white/80">
+                  <span className="text-white">Ana Sayfa</span>
+                  <span className="text-white mx-2">*</span>
+                  <span className="text-white">Hizmetler</span>
+                </div>
               </motion.div>
               
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-xl lg:text-2xl text-white/80 leading-relaxed mb-8 max-w-3xl mx-auto"
-              >
-                Hikayenizi birlikte yazalım. Projeleriniz için bizimle iletişime geçin.
-              </motion.p>
+
             </motion.div>
           </div>
         </section>
 
-                 {/* Slogan Slider - Using CreativeFlowSectionNoPadding */}
-         <div className="pb-2 lg:pb-3">
-           <CreativeFlowSectionNoPadding 
-             duration={40} 
-             className="py-0" 
-             noBg={true}
-           />
-         </div>
+        {/* Slogan Slider - Using CreativeFlowSectionNoPadding */}
+        <div className="pb-2 lg:pb-3">
+          <CreativeFlowSectionNoPadding 
+            duration={40} 
+            className="py-0" 
+            noBg={true}
+          />
+        </div>
+        {/* Services Grid Section */}
+        <ServicesGridSection />
 
-        {/* About Section */}
-        <AboutSection noBg={true} />
+        {/* Services Section New */}
+        <ServicesSectionNew />
 
-        {/* Approach Section */}
-        <ApproachSection />
+        
 
-        {/* Why Choose Us Section */}
-        <WhyChooseUsSection />
-
-        {/* What We Do Section */}
-        <WhatWeDoSection />
-
+        {/* Testimonials Section */}
+        <TestimonialsSection />
 
       </div>
       
@@ -129,4 +127,4 @@ const ServicesPage = () => {
   );
 };
 
-export default ServicesPage; 
+export default ServicesPage;
