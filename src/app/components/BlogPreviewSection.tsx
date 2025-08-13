@@ -20,7 +20,7 @@ const dummyPosts: BlogPost[] = [
     id: 1,
     title: 'Doğru Headshot Fotoğrafı Nasıl Çekilir?',
     excerpt: 'Profesyonel oyuncu portreleri için temel teknikler ve ipuçları',
-    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop',
+    imageUrl: 'https://assets.videomaker.com/2022/08/shooting-studio-for-photographer-and-creative-art-2021-10-13-00-39-44-utc-1.jpg',
     slug: '/blog/dogru-headshot-fotografi',
     date: '15 Mart 2024'
   },
@@ -28,7 +28,7 @@ const dummyPosts: BlogPost[] = [
     id: 2,
     title: 'Casting Sürecinde Dikkat Edilmesi Gerekenler',
     excerpt: 'Başarılı bir casting deneyimi için hazırlık rehberi',
-    imageUrl: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&h=1000&fit=crop',
+    imageUrl: 'https://blaremedia.net/wp/wp-content/uploads/2022/07/jakob-owens-ntqaFfrDdEA-unsplash-1024x683.jpg',
     slug: '/blog/casting-sureci',
     date: '12 Mart 2024'
   },
@@ -36,7 +36,7 @@ const dummyPosts: BlogPost[] = [
     id: 3,
     title: 'Sosyal Medyada Oyuncu Markası Oluşturma',
     excerpt: 'Dijital çağda oyuncu kimliğinizi nasıl geliştirirsiniz?',
-    imageUrl: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=1000&fit=crop',
+    imageUrl: 'https://maestrofilmworks.com/wp-content/uploads/2022/03/Video-Production_Vertical-Split-1.jpg',
     slug: '/blog/oyuncu-markasi',
     date: '10 Mart 2024'
   },
@@ -44,7 +44,7 @@ const dummyPosts: BlogPost[] = [
     id: 4,
     title: 'Türk Sinemasında Yeni Trendler',
     excerpt: '2024 yılında öne çıkan projeler ve fırsatlar',
-    imageUrl: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&h=1000&fit=crop',
+    imageUrl: 'https://assets.videomaker.com/2022/08/shooting-studio-for-photographer-and-creative-art-2021-10-13-00-39-44-utc-1.jpg',
     slug: '/blog/turk-sinemasi-trendleri',
     date: '8 Mart 2024'
   },
@@ -52,7 +52,7 @@ const dummyPosts: BlogPost[] = [
     id: 5,
     title: 'Oyunculuk Teknikleri ve Metodlar',
     excerpt: 'Profesyonel oyunculuk için temel teknikler',
-    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop',
+    imageUrl: 'https://blaremedia.net/wp/wp-content/uploads/2022/07/jakob-owens-ntqaFfrDdEA-unsplash-1024x683.jpg',
     slug: '/blog/oyunculuk-teknikleri',
     date: '5 Mart 2024'
   },
@@ -60,7 +60,7 @@ const dummyPosts: BlogPost[] = [
     id: 6,
     title: 'Dijital Çağda Oyunculuk',
     excerpt: 'Teknoloji ile değişen oyunculuk sektörü',
-    imageUrl: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&h=1000&fit=crop',
+    imageUrl: 'https://maestrofilmworks.com/wp-content/uploads/2022/03/Video-Production_Vertical-Split-1.jpg',
     slug: '/blog/dijital-cagda-oyunculuk',
     date: '3 Mart 2024'
   }

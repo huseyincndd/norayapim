@@ -48,7 +48,7 @@ const JourneySection = () => {
               {/* Right Panel - Image */}
               <div className="lg:col-span-3 relative h-[320px] lg:h-[380px]">
                 <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                  src="https://www.adobe.com/vn_vi/creativecloud/video/discover/media_159a1e642fe84ef617323500d5103b30e30e8bacf.png?width=750&format=png&optimize=medium"
                   alt="Prodüksiyon ekibi çalışması"
                   className="w-full h-full object-cover"
                 />

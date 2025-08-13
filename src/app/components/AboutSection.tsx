@@ -94,7 +94,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               viewport={{ once: true }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop&q=80" 
+                src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/17482/286601_143854.jpeg " 
                 alt="Prodüksiyon ekibi çalışması" 
                 className="w-full h-full object-cover"
               />
@@ -109,7 +109,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               viewport={{ once: true }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80" 
+                src="https://images.squarespace-cdn.com/content/v1/608164c98d4fc466c981a18c/f8227da8-5c9b-495e-bf59-40aebff66022/adidas+filmset+breaking+the+glass+commercial+at+schram+filmstudios+amsterdam.jpg" 
                 alt="Film seti çalışması" 
                 className="w-full h-full object-cover"
               />

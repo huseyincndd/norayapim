@@ -100,27 +100,27 @@ const Footer = () => {
     { 
       id: 'home',
       label: 'Ana Sayfa', 
-      href: '#home'
+      href: '/'
     },
     { 
       id: 'about',
       label: 'Hakkımızda', 
-      href: '#about'
+      href: '/about'
     },
     { 
       id: 'services',
       label: 'Hizmetler', 
-      href: '#services'
+      href: '/services'
     },
     { 
-      id: 'projects',
-      label: 'Projeler', 
-      href: '#projects'
+      id: 'blog',
+      label: 'Blog', 
+      href: '/blog'
     },
     { 
       id: 'contact',
       label: 'İletişim', 
-      href: '#contact'
+      href: '/contact'
     }
   ];
 
@@ -536,13 +536,13 @@ const Footer = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <Link href="/privacy" className="text-white/60 hover:text-white transition-colors">
+                <Link href="#" className="text-white/60 hover:text-white transition-colors">
                   Gizlilik Politikası
                 </Link>
-                <Link href="/terms" className="text-white/60 hover:text-white transition-colors">
+                <Link href="#" className="text-white/60 hover:text-white transition-colors">
                   Kullanım Şartları
                 </Link>
-                <Link href="/cookies" className="text-white/60 hover:text-white transition-colors">
+                <Link href="#" className="text-white/60 hover:text-white transition-colors">
                   Çerez Politikası
                 </Link>
               </motion.div>

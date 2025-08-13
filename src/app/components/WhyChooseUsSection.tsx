@@ -127,9 +127,9 @@ const WhyChooseUsSection = () => {
                className="relative overflow-hidden rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-2xl flex-shrink-0 bg-white p-1.5 w-full lg:w-auto"
              >
                <img
-                 src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&h=600&fit=crop&q=80"
+                 src="https://cdn-dkepej.nitrocdn.com/xHPizjaXJNONuYnLnfsGSUCsMnIlzOEq/assets/images/optimized/rev-ef469ea/blog.frame.io/wp-content/uploads/2021/09/Virtual_production_essentials-2048x1152.jpg"
                  alt="Film prodüksiyonu"
-                 className="w-full h-[450px] lg:w-84 lg:h-[500px] object-cover rounded-xl"
+                 className="w-full h-[450px] lg:w-96 lg:h-[600px] object-cover rounded-xl"
                />
              </motion.div>
 

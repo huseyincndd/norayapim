@@ -124,7 +124,7 @@ const WhatWeDoSection = () => {
                              {/* Main Image */}
                <div className="relative overflow-hidden rounded-2xl flex-shrink-0 w-full lg:w-auto">
                  <img
-                   src="https://images.unsplash.com/photo-1512070679279-8988d32161be?w=400&h=600&fit=crop&q=80"
+                   src="https://img.freepik.com/premium-photo/production-team-working-together-studio_1257223-129210.jpg"
                    alt="Film prodüksiyonu"
                    className="w-full h-[450px] lg:w-96 lg:h-[550px] object-cover rounded-2xl"
                  />
