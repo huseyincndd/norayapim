@@ -28,7 +28,7 @@ const CreativeFlowSectionNoPadding: React.FC<CreativeFlowSectionNoPaddingProps> 
         
         {/* Infinite Slogan Banner - Medium size */}
         <div className="py-0.5 lg:py-0">
-          <InfiniteSloganBanner duration={duration} />
+          <InfiniteSloganBanner duration={duration} textColor="black" />
         </div>
       </div>
     </section>

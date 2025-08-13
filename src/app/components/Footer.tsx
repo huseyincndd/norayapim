@@ -489,7 +489,7 @@ const Footer = () => {
                 <h4 className="text-xl font-semibold mb-6 text-white px-4 lg:px-0">Konum</h4>
                 <div className="relative w-full aspect-square lg:h-64 lg:aspect-auto bg-gradient-to-br from-gray-800 to-gray-900 lg:rounded-2xl overflow-hidden border-0 lg:border lg:border-white/10 group cursor-pointer">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.9633698339308!2d28.995949315414!3d41.024112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAxJzI2LjgiTiAyOMKwNTknNTIuMCJF!5e0!3m2!1str!2str!4v1640995200000!5m2!1str!2str&style=feature:all|element:all|visibility:simplified|color:0x2d2d2d|weight:0.1|gamma:0.8|saturation:-100|lightness:-50"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24071.710958671446!2d28.995949315414!3d41.024112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAxJzI2LjgiTiAyOMKwNTknNTIuMCJF!5e0!3m2!1str!2str!4v1640995200000!5m2!1str!2str&style=feature:all|element:all|visibility:simplified|color:0x2d2d2d|weight:0.1|gamma:0.8|saturation:-100|lightness:-50"
                     width="100%"
                     height="100%"
                     style={{ border: 0, filter: 'grayscale(100%) brightness(0.7) contrast(1.2)' }}

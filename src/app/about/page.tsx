@@ -15,46 +15,7 @@ import Footer from '../components/Footer';
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 via-black/90 to-black" />
-        {/* Animated Background Lines */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div 
-            className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 1.5, ease: 'easeOut' }}
-            viewport={{ once: true }}
-          />
-          <motion.div 
-            className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 1.5, delay: 0.5, ease: 'easeOut' }}
-            viewport={{ once: true }}
-          />
-        </div>
-        {/* White Blur Effects */}
-        <motion.div
-          className="absolute top-1/3 left-1/4 w-32 h-32 bg-white/5 rounded-full blur-2xl"
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3]
-          }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-white/5 rounded-full blur-2xl"
-          animate={{ 
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 0.5, 0.3]
-          }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        />
-      </div>
-
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <Header />
       
       <div className="relative z-10">
@@ -109,18 +70,6 @@ const AboutPage = () => {
 
         {/* Common Background Section for all content */} 
         <section className="relative bg-black overflow-hidden">
-          {/* Gradient Light Effects */}
-          <div className="absolute inset-0 pointer-events-none">
-            {/* Left Side Light */}
-            <div className="absolute left-0 top-0 w-1/3 h-full bg-gradient-to-r from-white/5 via-white/10 to-transparent"></div>
-            {/* Right Side Light */}
-            <div className="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-white/5 via-white/10 to-transparent"></div>
-            {/* Top Light */}
-            <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/5 via-white/10 to-transparent"></div>
-            {/* Bottom Light */}
-            <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white/5 via-white/10 to-transparent"></div>
-          </div>
-
           {/* About Section */}
           <div className="relative z-10">
             <AboutSection noBg={true} />

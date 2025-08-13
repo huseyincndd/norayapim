@@ -6,16 +6,16 @@ import { motion } from 'framer-motion';
 const WhyChooseUsSection = () => {
      const services = [
      {
-       title: "Tailored Design Solutions",
-       description: "Personalized designs that align with creative unique vision and goals."
+       title: "16 Yıllık Deneyim",
+       description: "Film, dizi ve reklam prodüksiyonu alanında 16 yılı aşkın köklü deneyimimizle sektörün öncü şirketlerinden biriyiz."
      },
      {
-       title: "Customizable Solutions",
-       description: "Personalized designs that align with creative unique vision and goals."
+       title: "84 İlde Üretim Gücü",
+       description: "Türkiye'nin 84 ilinde konseptten son teslimata kadar her aşamayı titizlikle planlayarak projelerin kendi ruhunu taşıyan yaratıcı dokunuşlar katıyoruz."
      },
      {
-       title: "User-Friendly",
-       description: "Personalized designs that align with creative unique vision and goals."
+       title: "Kapsamlı Prodüksiyon Hizmetleri",
+       description: "Senaryo geliştirmeden çekim ve yapım süreçlerine, post-prodüksiyondan yayına kadar tüm aşamalarda aktif rol alıyoruz."
      }
    ];
 
@@ -42,7 +42,7 @@ const WhyChooseUsSection = () => {
                viewport={{ once: true }}
                className="text-3xl lg:text-5xl font-bold text-white leading-tight mb-6"
              >
-               Where <span className="text-white">ideas</span> meet <span className="text-white">innovation</span>
+               Sanat ve <span className="text-white">tutku</span> ile <span className="text-white">mükemmellik</span>
              </motion.h3>
 
              {/* Description */}
@@ -53,7 +53,7 @@ const WhyChooseUsSection = () => {
                viewport={{ once: true }}
                className="text-white/80 text-base leading-relaxed mb-8"
              >
-               We blend creativity cutting-edge innovation exceptional, impactful designs that resonate with your audience.
+               Sanatsal mükemmeliyet ve yüksek kalite standartlarından taviz vermeden özgün ve yenilikçi projeler üretiyoruz. Toplumsal kültürün gelişimine katkı sağlayarak, izleyicilere unutulmaz görsel deneyimler sunuyoruz.
              </motion.p>
 
                          {/* Bullet Points */}
@@ -70,7 +70,7 @@ const WhyChooseUsSection = () => {
                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                    </svg>
                  </div>
-                 <p className="text-white text-lg">Custom Design Solutions Crafted Just for You</p>
+                 <p className="text-white text-lg">Film, Dizi ve Reklam Prodüksiyonu</p>
                </div>
                <div className="flex items-start gap-3">
                  <div className="w-6 h-6 bg-white rounded-full mt-1 flex-shrink-0 flex items-center justify-center">
@@ -78,7 +78,7 @@ const WhyChooseUsSection = () => {
                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                    </svg>
                  </div>
-                 <p className="text-white text-lg">Collaborative Partnership Focused on Your Success</p>
+                 <p className="text-white text-lg">Ulusal ve Uluslararası İşbirlikleri</p>
                </div>
              </motion.div>
 
@@ -127,8 +127,8 @@ const WhyChooseUsSection = () => {
                className="relative overflow-hidden rounded-t-2xl lg:rounded-l-2xl lg:rounded-r-2xl flex-shrink-0 bg-white p-1.5 w-full lg:w-auto"
              >
                <img
-                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=600&fit=crop&q=80"
-                 alt="Takım işbirliği"
+                 src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&h=600&fit=crop&q=80"
+                 alt="Film prodüksiyonu"
                  className="w-full h-[450px] lg:w-84 lg:h-[500px] object-cover rounded-xl"
                />
              </motion.div>

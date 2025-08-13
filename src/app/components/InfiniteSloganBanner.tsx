@@ -6,24 +6,27 @@ import styles from './CreativeFlow.module.css';
 interface InfiniteSloganBannerProps {
   duration?: number;
   className?: string;
+  textColor?: 'white' | 'black';
 }
 
 const InfiniteSloganBanner: React.FC<InfiniteSloganBannerProps> = ({ 
   duration = 60,
-  className = ""
+  className = "",
+  textColor = 'white'
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   const slogans = [
-    "Strateji & İçgörü",
-    "Yaratıcı Yönetim", 
-    "Marka Kimliği",
-    "UI/UX Tasarım",
-    "Hareketli Grafik",
-    "İnteraktif Prototipler",
-    "Geliştirme & Mühendislik",
-    "Lansman & Optimizasyon"
+    "Film Prodüksiyonu",
+    "Dizi Yapımları", 
+    "Reklam Filmleri",
+    "Belgesel Prodüksiyonu",
+    "Post-Prodüksiyon",
+    "Set Yönetimi",
+    "Kurgu & Montaj",
+    "84 İlde Hizmet",
+    "16 Yıllık Deneyim"
   ];
 
   // Intersection Observer to track visibility
@@ -41,6 +44,8 @@ const InfiniteSloganBanner: React.FC<InfiniteSloganBannerProps> = ({
 
     return () => observer.disconnect();
   }, []);
+
+  const textColorClass = textColor === 'black' ? 'text-black' : 'text-white';
 
   return (
     <div className={`relative w-full ${className}`}>
@@ -61,7 +66,7 @@ const InfiniteSloganBanner: React.FC<InfiniteSloganBannerProps> = ({
           <div className="flex items-center whitespace-nowrap">
             {slogans.map((slogan, index) => (
               <React.Fragment key={`original-${index}`}>
-                <span className={`text-xl sm:text-2xl lg:text-lg xl:text-xl 2xl:text-2xl font-medium text-white px-4 sm:px-6 lg:px-8 font-sans ${styles.sloganText}`}>
+                <span className={`text-xl sm:text-2xl lg:text-lg xl:text-xl 2xl:text-2xl font-medium ${textColorClass} px-4 sm:px-6 lg:px-8 font-sans ${styles.sloganText}`}>
                   {slogan}
                 </span>
                 {/* Red recording indicator - ANIMATED */}
@@ -74,7 +79,7 @@ const InfiniteSloganBanner: React.FC<InfiniteSloganBannerProps> = ({
           <div className="flex items-center whitespace-nowrap">
             {slogans.map((slogan, index) => (
               <React.Fragment key={`clone-${index}`}>
-                <span className={`text-xl sm:text-2xl lg:text-lg xl:text-xl 2xl:text-2xl font-medium text-white px-4 sm:px-6 lg:px-8 font-sans ${styles.sloganText}`}>
+                <span className={`text-xl sm:text-2xl lg:text-lg xl:text-xl 2xl:text-2xl font-medium ${textColorClass} px-4 sm:px-6 lg:px-8 font-sans ${styles.sloganText}`}>
                   {slogan}
                 </span>
                 {/* Red recording indicator - ANIMATED */}

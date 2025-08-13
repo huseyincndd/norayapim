@@ -71,7 +71,7 @@ const SettenKareler2Section: React.FC<SettenKareler2SectionProps> = ({
         {/* Section Title */}
         <div className="text-center mb-16 lg:mb-20">
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">
-            Setten Kareler2
+            Setten Kareler
           </h2>
           <p className="text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Projelerimizden unutulmaz anlar ve yaratıcı sürecin arka planından kareler

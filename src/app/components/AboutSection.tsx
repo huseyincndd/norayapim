@@ -16,8 +16,6 @@ const ArrowIcon = () => (
   </svg>
 );
 
-
-
 // --- Ana Bileşen ---
 const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
   return (
@@ -69,7 +67,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
           {/* Sol Taraf - Görsel Alanı */}
           <div className="relative h-[400px] sm:h-[500px] lg:h-[700px] order-2 lg:order-1">
             {/* Top-Left Green X Pattern Panel */}
-      <motion.div
+            <motion.div
               className="absolute top-4 left-4 lg:top-10 lg:left-0 w-20 h-20 sm:w-24 sm:h-24 lg:w-48 lg:h-48 bg-black/0 rounded-2xl z-20 flex items-center justify-center"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -84,7 +82,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
                     </svg>
                   </div>
                 ))}
-                </div>
+              </div>
             </motion.div>
 
             {/* Rear Image Panel (Top-Right - Background Layer) */}
@@ -97,7 +95,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
             >
               <img 
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop&q=80" 
-                alt="Team meeting" 
+                alt="Prodüksiyon ekibi çalışması" 
                 className="w-full h-full object-cover"
               />
             </motion.div>
@@ -112,7 +110,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
             >
               <img 
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80" 
-                alt="Collaborative work" 
+                alt="Film seti çalışması" 
                 className="w-full h-full object-cover"
               />
             </motion.div>
@@ -128,8 +126,8 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               viewport={{ once: true }}
               className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"
             >
-              Tasarım ustalığı ile{" "}
-              <span className="text-white">hikayeler</span> yaratıyoruz
+              Tutku ve sanatla{" "}
+              <span className="text-white">yarınları aydınlatıyoruz</span>
             </motion.h2>
 
             {/* Açıklama */}
@@ -140,12 +138,48 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               viewport={{ once: true }}
               className="text-base sm:text-lg text-white/80 leading-relaxed max-w-lg"
             >
-              Fikirleri etkileyici görsellere dönüştürüyor, yaratıcılık ve stratejiyi harmanlayarak vizyonunuzu hayata geçiriyoruz.
+              16 yılı aşkın köklü deneyimimizle, film, dizi ve reklam prodüksiyonu alanında sanatsal mükemmeliyet ve yüksek kalite standartlarından taviz vermeden özgün projeler üretiyoruz.
             </motion.p>
 
+            {/* Özellikler Listesi */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="space-y-4"
+            >
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-white/80 text-sm">Senaryo geliştirmeden çekim süreçlerine, post-prodüksiyondan yayına kadar tüm aşamalarda aktif rol alıyoruz</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-white/80 text-sm">Türkiye'nin 84 ilinde, konseptin oluşumundan son teslimata kadar her aşamayı titizlikle planlıyoruz</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-white/80 text-sm">Gelişen teknoloji ve yaratıcı yaklaşımlarla desteklenen tecrübemiz, unutulmaz görsel deneyimler sunuyor</p>
+              </div>
+            </motion.div>
 
-
-
+            {/* İstatistikler */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-2 gap-6 pt-6"
+            >
+              <div className="text-center">
+                <div className="text-2xl lg:text-3xl font-bold text-white mb-1">16+</div>
+                <p className="text-white/60 text-sm">Yıllık Deneyim</p>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl lg:text-3xl font-bold text-white mb-1">84</div>
+                <p className="text-white/60 text-sm">İlde Üretim</p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>

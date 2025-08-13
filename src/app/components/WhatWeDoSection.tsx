@@ -6,16 +6,16 @@ import { motion } from 'framer-motion';
 const WhatWeDoSection = () => {
   const services = [
     {
-      title: "Web Design And Development",
-      description: "Creating intuitive user experiences through thoughtful layouts, wireframes, and prototypes that prioritize your audience's needs."
+      title: "Film Prodüksiyonu",
+      description: "Sinema filmleri, belgeseller ve kısa filmler için kapsamlı prodüksiyon hizmetleri. Senaryo geliştirmeden post-prodüksiyona kadar tüm süreçleri yönetiyoruz."
     },
     {
-      title: "Motion Graphics And Animation",
-      description: "Creating intuitive user experiences through thoughtful layouts, wireframes, and prototypes that prioritize your audience's needs."
+      title: "Dizi Prodüksiyonu",
+      description: "Televizyon dizileri için profesyonel prodüksiyon çözümleri. Çekim planlaması, set yönetimi ve yayın süreçlerinde uzman ekibimizle hizmet veriyoruz."
     },
     {
-      title: "Illustrations And Custom Artwork",
-      description: "Creating intuitive user experiences through thoughtful layouts, wireframes, and prototypes that prioritize your audience's needs."
+      title: "Reklam Prodüksiyonu",
+      description: "Markalar için yaratıcı reklam filmleri ve tanıtım videoları. Konsept geliştirmeden final teslime kadar tüm aşamalarda aktif rol alıyoruz."
     }
   ];
 
@@ -32,19 +32,6 @@ const WhatWeDoSection = () => {
            className="p-8 lg:p-16 flex flex-col justify-center lg:col-span-6"
          >
                      <div className="max-w-lg">
-                         {/* Header */}
-             <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.6, delay: 0.2 }}
-               viewport={{ once: true }}
-               className="flex items-center gap-2 mb-6"
-             >
-               <div className="w-2 h-2 bg-white rounded-full" />
-               <h2 className="text-sm lg:text-base font-semibold text-white tracking-wider uppercase">
-                 WHAT WE DO
-               </h2>
-             </motion.div>
 
                          {/* Main Heading */}
              <motion.h3
@@ -54,8 +41,8 @@ const WhatWeDoSection = () => {
                viewport={{ once: true }}
                className="text-3xl lg:text-5xl font-bold text-white leading-tight mb-6"
              >
-               Turning creative <span className="text-white">ideas</span><br />
-               Into stunning results
+               Yaratıcı <span className="text-white">fikirleri</span><br />
+               muhteşem sonuçlara dönüştürüyoruz
              </motion.h3>
 
             {/* Service Descriptions */}
@@ -102,9 +89,9 @@ const WhatWeDoSection = () => {
               viewport={{ once: true }}
               className="text-right mb-8"
             >
-              <p className="text-white text-lg mb-2">We Have Worked For You</p>
+              <p className="text-white text-lg mb-2">Sizin İçin Çalıştık</p>
                              <h2 className="text-4xl lg:text-6xl font-bold text-white tracking-wider">
-                 SCIENCE 1996
+                 NORA 2008
                </h2>
             </motion.div>
 
@@ -126,7 +113,7 @@ const WhatWeDoSection = () => {
                >
                                  <div className="text-center">
                    <div className="text-black text-xs lg:text-sm font-bold leading-tight">
-                     GET<br />STARTED
+                     BAŞLAYALIM
                    </div>
                    <svg className="w-4 h-4 text-black mx-auto mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -137,8 +124,8 @@ const WhatWeDoSection = () => {
                              {/* Main Image */}
                <div className="relative overflow-hidden rounded-2xl flex-shrink-0 w-full lg:w-auto">
                  <img
-                   src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=600&fit=crop&q=80"
-                   alt="Profesyonel işbirliği"
+                   src="https://images.unsplash.com/photo-1512070679279-8988d32161be?w=400&h=600&fit=crop&q=80"
+                   alt="Film prodüksiyonu"
                    className="w-full h-[450px] lg:w-96 lg:h-[550px] object-cover rounded-2xl"
                  />
                </div>

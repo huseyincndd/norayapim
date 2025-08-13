@@ -14,7 +14,7 @@ const ApproachSection = () => {
         </svg>
       ),
       title: "Misyonumuz",
-      description: "Misyonumuz, markaları güçlendirerek yenilikçi, görsel olarak etkileyici tasarımlar sunmak ve yaratıcılık ve hassasiyetle kalıcı etki bırakan ilham verici, etkileşimli çözümler geliştirmektir."
+      description: "16 yılı aşkın deneyimimizle, sanat ve tutkuyu rehber edinerek film, dizi ve reklam prodüksiyonu alanında sanatsal mükemmeliyet ve yüksek kalite standartlarından taviz vermeden özgün ve yenilikçi projeler üretmek. Toplumsal kültürün gelişimine katkı sağlayarak, izleyicilere unutulmaz görsel deneyimler sunmak."
     },
     {
       icon: (
@@ -23,7 +23,7 @@ const ApproachSection = () => {
         </svg>
       ),
       title: "Değerlerimiz",
-      description: "Değerlerimiz, markaları güçlendirerek yenilikçi, görsel olarak etkileyici tasarımlar sunmak ve yaratıcılık ve hassasiyetle kalıcı etki bırakan ilham verici, etkileşimli çözümler geliştirmektir."
+      description: "Yaratıcılık, kalite, güvenilirlik ve sürekli yenilik. Her projede edindiğimiz deneyimi yetkin ekibimiz ve organize çalışma anlayışımızla birleştirerek sektörde kalıcı bir üretim standardı oluşturmak. Türkiye'nin 84 ilinde konseptten son teslimata kadar her aşamayı titizlikle planlayarak projelerin kendi ruhunu taşıyan yaratıcı dokunuşlar katmak."
     },
     {
       icon: (
@@ -34,18 +34,18 @@ const ApproachSection = () => {
         </svg>
       ),
       title: "Vizyonumuz",
-      description: "Vizyonumuz, markaları güçlendirerek yenilikçi, görsel olarak etkileyici tasarımlar sunmak ve yaratıcılık ve hassasiyetle kalıcı etki bırakan ilham verici, etkileşimli çözümler geliştirmektir."
+      description: "Film, dizi ve reklam prodüksiyonu sektöründe öncü bir yapım şirketi olarak, gelişen teknoloji ve yaratıcı yaklaşımlarla desteklenen tecrübemizi kullanarak ulusal ve uluslararası platformlarda başarılı işbirlikleri kurmak. Sektörün önde gelen yapım şirketlerinden biri olmanın haklı gururunu yaşayarak, gelecekte de kalıcı bir üretim standardı oluşturmaya devam etmek."
     }
   ];
 
   const images = [
-    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=600&fit=crop&q=80"
+    "https://www.amazingstudiosinc.com/wp-content/uploads/2023/11/5e2b66ba23cad582a6ac30f5_5-MovieMagicSetHERO.jpg",
+    "https://theblackcapmedia.com/media/blogs/produksiyon_film_resim.jpg",
+    "https://macksennettstudios.net/wp-content/uploads/2022/01/What-is-set-design-in-film.jpg"
   ];
 
   return (
-    <section className="relative py-16 lg:py-24 overflow-hidden">
+         <section className="relative pt-0 pb-12 lg:pb-16 overflow-hidden">
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Header Section */}
@@ -56,29 +56,17 @@ const ApproachSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16 lg:mb-20"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="flex items-center justify-center gap-3 mb-6"
-          >
-            <div className="w-2 h-2 bg-white rounded-full" />
-                         <h2 className="text-sm lg:text-base font-semibold text-white tracking-wider uppercase">
-               YAKLAŞIM
-             </h2>
-            <div className="w-2 h-2 bg-white rounded-full" />
-          </motion.div>
+
           
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-                         className="text-4xl lg:text-6xl font-bold text-white leading-tight max-w-4xl mx-auto"
-           >
-             Mükemmelliğe ulaşmak için yaratıcı <span className="text-white">yaklaşımımız</span>
-           </motion.h3>
+                     <motion.h3
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             transition={{ duration: 0.6, delay: 0.4 }}
+             viewport={{ once: true }}
+                          className="text-4xl lg:text-6xl font-bold text-white leading-tight max-w-4xl mx-auto text-left lg:text-center"
+            >
+              Mükemmelliğe ulaşmak için yaratıcı <span className="text-white">yaklaşımımız</span>
+            </motion.h3>
         </motion.div>
 
         {/* Content Grid */}
@@ -112,7 +100,7 @@ const ApproachSection = () => {
           >
                          <img
                src={images[0]}
-               alt="Takım işbirliği"
+               alt="Film prodüksiyonu"
                className="w-full h-full object-cover"
              />
           </motion.div>
@@ -146,7 +134,7 @@ const ApproachSection = () => {
           >
                          <img
                src={images[1]}
-               alt="Yaratıcı işbirliği"
+               alt="Dizi prodüksiyonu"
                className="w-full h-full object-cover"
              />
           </motion.div>
@@ -178,7 +166,7 @@ const ApproachSection = () => {
           >
                          <img
                src={images[2]}
-               alt="Takım toplantısı"
+               alt="Reklam prodüksiyonu"
                className="w-full h-full object-cover"
              />
           </motion.div>

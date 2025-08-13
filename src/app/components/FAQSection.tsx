@@ -5,55 +5,49 @@ import { motion } from 'framer-motion';
 const FAQSection = () => {
   const faqs = [
     {
-      question: "What services do you offer?",
-      answer: "Our pricing is based on the scope and complexity of each project and Contact us for a custom quote."
+      question: "Hangi prodüksiyon hizmetlerini sunuyorsunuz?",
+      answer: "Film, dizi ve reklam prodüksiyonu alanında kapsamlı hizmetler sunuyoruz. Senaryo geliştirmeden çekim ve yapım süreçlerine, post-prodüksiyondan yayına kadar tüm aşamalarda aktif rol alıyoruz."
     },
     {
-      question: "Can I make updates to the design later?",
-      answer: "Our pricing is based on the scope and complexity of each project and Contact us for a custom quote."
+      question: "Proje süreleri ne kadar sürüyor?",
+      answer: "Proje süreleri projenin kapsamına ve karmaşıklığına göre değişmektedir. Kısa reklam filmleri 1-2 hafta, dizi bölümleri 2-3 ay, sinema filmleri ise 6-12 ay sürebilmektedir."
     },
     {
-      question: "How long does a project take?",
-      answer: "Our pricing is based on the scope and complexity of each project and Contact us for a custom quote."
+      question: "Türkiye'nin hangi illerinde hizmet veriyorsunuz?",
+      answer: "Türkiye'nin 84 ilinde hizmet veriyoruz. Konseptin oluşumundan çekim sürecine, kurgu ve renk düzenlemesinden son teslimata kadar her aşamayı titizlikle planlıyoruz."
     },
     {
-      question: "What is your design process?",
-      answer: "Our pricing is based on the scope and complexity of each project and Contact us for a custom quote."
+      question: "Uluslararası projeler yapıyor musunuz?",
+      answer: "Evet, ulusal ve uluslararası platformlarda başarılı işbirlikleri kuruyoruz. Film dağıtımı ve uluslararası yapımlara destek gibi sektörel faaliyetleri de sürdürüyoruz."
     },
     {
-      question: "Do you work with clients internationally?",
-      answer: "Our pricing is based on the scope and complexity of each project and Contact us for a custom quote."
+      question: "Prodüksiyon süreciniz nasıl işliyor?",
+      answer: "Önce konsept geliştirme ve storyboard hazırlığı yapıyoruz. Ardından çekim planlaması, set yönetimi, görüntü ve ses prodüksiyonu ile ileri düzey post-prodüksiyon süreçlerini entegre şekilde yönetiyoruz."
     },
     {
-      question: "Do I own the rights to the designs?",
-      answer: "Our pricing is based on the scope and complexity of each project and Contact us for a custom quote."
+      question: "Hangi markalarla çalıştınız?",
+      answer: "Mavi, Türk Telekom, Kiğılı, Balparmak, Sütaş, Dalin, Vodafone, Haribo, Turkcell, Halkbank, Albaraka, Media Markt, LC Waikiki, Burger King, Vestel, Opet, Migros, Bellona gibi önemli markalarla çalıştık."
     }
   ];
 
   return (
-         <section className="py-20 relative">
+                   <section className="pt-12 pb-20 relative">
       
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         
         {/* Header */}
         <motion.div 
-          className="text-center mb-16"
+          className="text-left lg:text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-                     {/* Small heading */}
-           <div className="flex items-center justify-center gap-2 mb-6">
-             <div className="w-2 h-2 bg-white rounded-full"></div>
-             <span className="text-white uppercase text-sm font-medium tracking-wider">FAQS</span>
-           </div>
-           
            {/* Main title */}
            <h2 className="text-4xl lg:text-5xl font-bold">
-             <span className="text-white">Answer to your </span>
-             <span className="text-white">most common</span>
-             <span className="text-white"> questions</span>
+             <span className="text-white">En çok sorulan </span>
+             <span className="text-white">soruların</span>
+             <span className="text-white"> cevapları</span>
            </h2>
         </motion.div>
 

@@ -29,7 +29,7 @@ const Header: React.FC = () => {
     },
     { 
       id: 'projects',
-      label: 'Projeler', 
+      label: 'Blog', 
       href: '/blog',
       imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&q=80'
     },

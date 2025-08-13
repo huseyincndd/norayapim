@@ -11,7 +11,7 @@ const MissionStatementSection = () => {
   };
 
   return (
-    <section id="mission-statement-section" className="relative h-[40vh] md:h-auto bg-black py-4 md:py-12 lg:py-20 overflow-hidden">
+    <section id="mission-statement-section" className="relative h-[40vh] md:h-[60vh] lg:h-[80vh] bg-black py-4 md:py-12 lg:py-20 overflow-hidden">
       {/* Sophisticated Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center"
@@ -21,10 +21,10 @@ const MissionStatementSection = () => {
       />
       
       {/* Dark Overlay for Text Readability */}
-      <div className="absolute inset-0 z-0 bg-black/100" />
+      <div className="absolute inset-0 z-0 bg-black/60" />
 
       {/* Main Content Container */}
-      <div className="relative z-10 container mx-auto px-4 md:px-8 pt-0 md:pt-8 -mt-2 md:-mt-0 md:ml-48 lg:ml-64">
+      <div className="relative z-10 container mx-auto px-4 md:px-8 pt-0 md:pt-8 -mt-2 md:-mt-0 md:ml-48 lg:ml-64 h-full flex flex-col justify-center">
         
         {/* Heading Section - Compact Layout */}
         <motion.div
@@ -34,11 +34,8 @@ const MissionStatementSection = () => {
           whileInView="animate"
           viewport={{ once: true }}
         >
-          <p className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight text-white mb-3 md:mb-8 lg:mb-10 font-montserrat tracking-wide">
-            <strong>YARATICI VİZYONU GERÇEĞE DÖNÜŞTÜREN</strong>
-          </p>
           <p className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight text-white mb-4 md:mb-10 lg:mb-14 font-montserrat tracking-wide">
-            <strong>PROFESYONEL YAPIM EKİBİ</strong>
+            <strong>YARATICI VİZYONU GERÇEĞE DÖNÜŞTÜREN PROFESYONEL YAPIM EKİBİ</strong>
           </p>
           <p className="text-base md:text-xl lg:text-2xl font-light uppercase leading-tight text-white/70 mb-6 md:mb-12 lg:mb-16 font-lato tracking-wider">
             REKLAM, MÜZİK VİDEOSU, KURUMSAL İÇERİK VE ÇOK DAHA FAZLASI.
