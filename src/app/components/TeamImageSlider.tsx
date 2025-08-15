@@ -7,7 +7,6 @@ const TeamImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [isDragging, setIsDragging] = useState(false);
 
   // Voya Digital ekip fotoğrafları - 10 farklı URL
   const teamImages = [
@@ -38,6 +37,15 @@ const TeamImageSlider = () => {
     }
   };
 
+  // Manuel scroll için daha yavaş animasyon
+  const handleManualScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const target = e.currentTarget;
+    const scrollLeft = target.scrollLeft;
+    const itemWidth = target.scrollWidth / teamImages.length;
+    const currentIndex = Math.round(scrollLeft / itemWidth);
+    setCurrentIndex(currentIndex);
+  };
+
   const nextSlide = () => {
     const newIndex = currentIndex === teamImages.length - 1 ? 0 : currentIndex + 1;
     scrollToImage(newIndex);
@@ -47,91 +55,6 @@ const TeamImageSlider = () => {
     const newIndex = currentIndex === 0 ? teamImages.length - 1 : currentIndex - 1;
     scrollToImage(newIndex);
   };
-
-  // Touch events for better mobile control
-  useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    let startX = 0;
-    let scrollLeft = 0;
-    let isDown = false;
-
-    const handleTouchStart = (e: TouchEvent) => {
-      isDown = true;
-      setIsDragging(true);
-      startX = e.touches[0].pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-      slider.style.scrollBehavior = 'auto';
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.touches[0].pageX - slider.offsetLeft;
-      const walk = (x - startX) * 0.8; // Sürükleme hassasiyetini azalt
-      slider.scrollLeft = scrollLeft - walk;
-    };
-
-    const handleTouchEnd = () => {
-      isDown = false;
-      setIsDragging(false);
-      slider.style.scrollBehavior = 'smooth';
-      
-      // Snap to nearest image
-      const imageWidth = slider.scrollWidth / teamImages.length;
-      const currentScroll = slider.scrollLeft;
-      const nearestIndex = Math.round(currentScroll / imageWidth);
-      scrollToImage(Math.max(0, Math.min(nearestIndex, teamImages.length - 1)));
-    };
-
-    // Mouse events for desktop
-    const handleMouseDown = (e: MouseEvent) => {
-      isDown = true;
-      setIsDragging(true);
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-      slider.style.scrollBehavior = 'auto';
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 0.8;
-      slider.scrollLeft = scrollLeft - walk;
-    };
-
-    const handleMouseUp = () => {
-      isDown = false;
-      setIsDragging(false);
-      slider.style.scrollBehavior = 'smooth';
-      
-      const imageWidth = slider.scrollWidth / teamImages.length;
-      const currentScroll = slider.scrollLeft;
-      const nearestIndex = Math.round(currentScroll / imageWidth);
-      scrollToImage(Math.max(0, Math.min(nearestIndex, teamImages.length - 1)));
-    };
-
-    // Add event listeners
-    slider.addEventListener('touchstart', handleTouchStart, { passive: false });
-    slider.addEventListener('touchmove', handleTouchMove, { passive: false });
-    slider.addEventListener('touchend', handleTouchEnd);
-    slider.addEventListener('mousedown', handleMouseDown);
-    slider.addEventListener('mousemove', handleMouseMove);
-    slider.addEventListener('mouseup', handleMouseUp);
-    slider.addEventListener('mouseleave', handleMouseUp);
-
-    return () => {
-      slider.removeEventListener('touchstart', handleTouchStart);
-      slider.removeEventListener('touchmove', handleTouchMove);
-      slider.removeEventListener('touchend', handleTouchEnd);
-      slider.removeEventListener('mousedown', handleMouseDown);
-      slider.removeEventListener('mousemove', handleMouseMove);
-      slider.removeEventListener('mouseup', handleMouseUp);
-      slider.removeEventListener('mouseleave', handleMouseUp);
-    };
-  }, [teamImages.length]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -199,15 +122,9 @@ const TeamImageSlider = () => {
           <div className="relative overflow-hidden rounded-2xl border border-white/10">
             <div
               ref={sliderRef}
-              className={`flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory select-none ${
-                isDragging ? 'cursor-grabbing' : 'cursor-grab'
-              }`}
-              style={{ 
-                scrollbarWidth: 'none', 
-                msOverflowStyle: 'none',
-                touchAction: 'pan-x',
-                scrollBehavior: 'smooth'
-              }}
+              className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              onScroll={handleManualScroll}
             >
               {teamImages.map((image, index) => (
                 <div
@@ -257,13 +174,10 @@ const TeamImageSlider = () => {
           display: none;
         }
         
-        /* Mobile scroll optimizations */
-        @media (max-width: 768px) {
-          .scrollbar-hide {
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            overscroll-behavior-x: contain;
-          }
+        /* Daha yavaş scroll animasyonu */
+        .scrollbar-hide {
+          scroll-behavior: smooth;
+          transition: scroll-left 0.8s ease-out;
         }
       `}</style>
     </section>
