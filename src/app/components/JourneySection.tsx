@@ -11,12 +11,62 @@ const JourneySection = () => {
         {/* Top Section - Text and Image */}
         <div className="mb-20">
           <motion.div 
-            className="bg-gradient-to-br from-black/60 via-gray-900/40 to-black/60 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10"
+            className="bg-gradient-to-br from-black/60 via-gray-900/40 to-black/60 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 relative"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
+            {/* Animated Wave Background */}
+            <div className="absolute inset-0 overflow-hidden">
+              <motion.div
+                className="absolute inset-0 opacity-20"
+                style={{
+                  background: `linear-gradient(90deg, transparent 0%, white 50%, transparent 100%)`,
+                  backgroundSize: '200% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['200% 0', '-200% 0'],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+              />
+              <motion.div
+                className="absolute inset-0 opacity-15"
+                style={{
+                  background: `linear-gradient(90deg, transparent 0%, white 30%, transparent 100%)`,
+                  backgroundSize: '300% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['300% 0', '-300% 0'],
+                }}
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: 'linear',
+                  delay: 2,
+                }}
+              />
+              <motion.div
+                className="absolute inset-0 opacity-10"
+                style={{
+                  background: `linear-gradient(90deg, transparent 0%, white 20%, transparent 100%)`,
+                  backgroundSize: '400% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['400% 0', '-400% 0'],
+                }}
+                transition={{
+                  duration: 16,
+                  repeat: Infinity,
+                  ease: 'linear',
+                  delay: 4,
+                }}
+              />
+            </div>
             <div className="grid lg:grid-cols-5">
               {/* Left Panel - Text and Button */}
               <div className="lg:col-span-2 p-6 lg:p-8 flex flex-col justify-center">
@@ -124,12 +174,62 @@ const JourneySection = () => {
 
         {/* Bottom Section - Statistics */}
         <motion.div 
-          className="bg-gradient-to-br from-black/60 via-gray-900/40 to-black/60 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 p-8 lg:p-12"
+          className="bg-gradient-to-br from-black/60 via-gray-900/40 to-black/60 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 p-8 lg:p-12 relative"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
         >
+          {/* Animated Wave Background */}
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.div
+              className="absolute inset-0 opacity-20"
+              style={{
+                background: `linear-gradient(90deg, transparent 0%, white 50%, transparent 100%)`,
+                backgroundSize: '200% 100%',
+              }}
+              animate={{
+                backgroundPosition: ['200% 0', '-200% 0'],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: 'linear',
+              }}
+            />
+            <motion.div
+              className="absolute inset-0 opacity-15"
+              style={{
+                background: `linear-gradient(90deg, transparent 0%, white 30%, transparent 100%)`,
+                backgroundSize: '300% 100%',
+              }}
+              animate={{
+                backgroundPosition: ['300% 0', '-300% 0'],
+              }}
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: 'linear',
+                delay: 2,
+              }}
+            />
+            <motion.div
+              className="absolute inset-0 opacity-10"
+              style={{
+                background: `linear-gradient(90deg, transparent 0%, white 20%, transparent 100%)`,
+                backgroundSize: '400% 100%',
+              }}
+              animate={{
+                backgroundPosition: ['400% 0', '-400% 0'],
+              }}
+              transition={{
+                duration: 16,
+                repeat: Infinity,
+                ease: 'linear',
+                delay: 4,
+              }}
+            />
+          </div>
           <div className="relative grid grid-cols-2 md:grid-cols-4 gap-8">
             {/* Desktop çizgileri */}
             <div className="hidden md:block absolute left-1/4 top-0 bottom-0 w-px bg-white/20"></div>

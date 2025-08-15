@@ -107,6 +107,57 @@ const ServicesGridSection = () => {
               variants={cardVariants}
               className="bg-transparent backdrop-blur-xl rounded-2xl p-6 lg:p-8 text-center border border-gray-700/50 hover:border-white/50 transition-all duration-300 hover:shadow-2xl hover:shadow-white/20 relative overflow-hidden group"
             >
+              {/* Animated Wave Background */}
+              <div className="absolute inset-0 overflow-hidden">
+                <motion.div
+                  className="absolute inset-0 opacity-20"
+                  style={{
+                    background: `linear-gradient(90deg, transparent 0%, white 50%, transparent 100%)`,
+                    backgroundSize: '200% 100%',
+                  }}
+                  animate={{
+                    backgroundPosition: ['200% 0', '-200% 0'],
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: 'linear',
+                  }}
+                />
+                <motion.div
+                  className="absolute inset-0 opacity-15"
+                  style={{
+                    background: `linear-gradient(90deg, transparent 0%, white 30%, transparent 100%)`,
+                    backgroundSize: '300% 100%',
+                  }}
+                  animate={{
+                    backgroundPosition: ['300% 0', '-300% 0'],
+                  }}
+                  transition={{
+                    duration: 12,
+                    repeat: Infinity,
+                    ease: 'linear',
+                    delay: 2,
+                  }}
+                />
+                <motion.div
+                  className="absolute inset-0 opacity-10"
+                  style={{
+                    background: `linear-gradient(90deg, transparent 0%, white 20%, transparent 100%)`,
+                    backgroundSize: '400% 100%',
+                  }}
+                  animate={{
+                    backgroundPosition: ['400% 0', '-400% 0'],
+                  }}
+                  transition={{
+                    duration: 16,
+                    repeat: Infinity,
+                    ease: 'linear',
+                    delay: 4,
+                  }}
+                />
+              </div>
+              
               {/* Sol üstten beyaz blur - her kartta */}
               <div className="absolute top-0 left-0 w-40 h-40 bg-white/15 rounded-full blur-3xl" />
               

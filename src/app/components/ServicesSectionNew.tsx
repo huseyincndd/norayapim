@@ -458,7 +458,7 @@ const ServicesSectionNew = ({ noBg = false }: { noBg?: boolean }) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 text-white leading-tight"
+            className="text-4xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 text-white leading-tight"
           >
             Benzersiz{" "}
             <span className="text-white">Projeler</span>
@@ -470,18 +470,12 @@ const ServicesSectionNew = ({ noBg = false }: { noBg?: boolean }) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
-            className="text-base sm:text-lg text-white/80 leading-relaxed max-w-3xl lg:mx-auto"
+            className="text-lg sm:text-lg text-white/80 leading-relaxed max-w-3xl lg:mx-auto"
           >
             Her proje, yaratıcı vizyonumuzun ve teknik uzmanlığımızın bir yansımasıdır. Farklı sektörlerden markalarla çalışarak, her birinin benzersiz hikayesini görsel bir şölene dönüştürüyoruz.
           </motion.p>
 
-          {/* Decorative Line */}
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "120px" }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="h-0.5 bg-gradient-to-r from-white via-white/60 to-transparent mt-8 lg:mx-auto"
-          />
+
         </div>
 
         {/* Carousel Container */}

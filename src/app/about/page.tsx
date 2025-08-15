@@ -4,12 +4,13 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '../components/Header';
-import CreativeFlowSectionNoPadding from '../components/CreativeFlowSectionNoPadding';
+import CreativeFlowSection from '../components/CreativeFlowSection';
 import AboutSection from '../components/AboutSection';
 import ApproachSection from '../components/ApproachSection';
 import WhyChooseUsSection from '../components/WhyChooseUsSection';
 import WhatWeDoSection from '../components/WhatWeDoSection';
 import JourneySection from '../components/JourneySection';
+import TeamImageSlider from '../components/TeamImageSlider';
 import FAQSection from '../components/FAQSection';
 import Footer from '../components/Footer';
 
@@ -59,9 +60,9 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Slogan Slider - Using CreativeFlowSectionNoPadding */}
+        {/* Slogan Slider - Using CreativeFlowSection */}
         <div className="pb-2 lg:pb-3">
-          <CreativeFlowSectionNoPadding 
+          <CreativeFlowSection 
             duration={40} 
             className="py-0" 
             noBg={true}
@@ -93,6 +94,11 @@ const AboutPage = () => {
           {/* What We Do Section */}
           <div className="relative z-10">
             <WhatWeDoSection />
+          </div>
+
+          {/* Team Image Slider Section */}
+          <div className="relative z-10">
+            <TeamImageSlider />
           </div>
 
           {/* FAQ Section */}

@@ -114,9 +114,9 @@ const IconGridSection = ({ noBg = false }: { noBg?: boolean }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-              NELER YAPIYORUZ?
-            </h2>
+                         <h2 className="text-4xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+               NELER YAPIYORUZ?
+             </h2>
             <div className="w-24 h-0.5 bg-white mx-auto" />
           </motion.div>
 
@@ -143,12 +143,12 @@ const IconGridSection = ({ noBg = false }: { noBg?: boolean }) => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-sm md:text-base font-medium uppercase text-white/90 tracking-wider group-hover:text-white transition-colors duration-300 mb-1">
+                  <h3 className="text-base md:text-base font-medium uppercase text-white/90 tracking-wider group-hover:text-white transition-colors duration-300 mb-1">
                     {feature.title}
                   </h3>
 
                   {/* Subtitle */}
-                  <p className="text-xs md:text-sm font-light uppercase text-white/70 tracking-wider group-hover:text-white/90 transition-colors duration-300">
+                  <p className="text-sm md:text-sm font-light uppercase text-white/70 tracking-wider group-hover:text-white/90 transition-colors duration-300">
                     {feature.subtitle}
                   </p>
                 </motion.div>

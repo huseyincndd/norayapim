@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '../components/Header';
-import CreativeFlowSectionNoPadding from '../components/CreativeFlowSectionNoPadding';
+import CreativeFlowSection from '../components/CreativeFlowSection';
 import ServicesSection from '../components/ServicesSection';
 import ServicesSectionNew from '../components/ServicesSectionNew';
 import ServicesGridSection from '../components/ServicesGridSection';
@@ -101,9 +101,9 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        {/* Slogan Slider - Using CreativeFlowSectionNoPadding */}
+        {/* Slogan Slider - Using CreativeFlowSection */}
         <div className="pb-2 lg:pb-3">
-          <CreativeFlowSectionNoPadding 
+          <CreativeFlowSection 
             duration={40} 
             className="py-0" 
             noBg={true}

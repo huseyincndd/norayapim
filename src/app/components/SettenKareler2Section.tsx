@@ -16,7 +16,7 @@ const SettenKareler2Section: React.FC<SettenKareler2SectionProps> = ({
   const [isVisible, setIsVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  // Studio MGX project images from ImageSliderSection
+  // Studio MGX project images from ImageSliderSection - 21 images
   const setImages = [
     "https://www.studiomgx.com/assets/upload/proje/171241825521.png",
     "https://www.studiomgx.com/assets/upload/proje/169631928389.jpg",
@@ -29,7 +29,16 @@ const SettenKareler2Section: React.FC<SettenKareler2SectionProps> = ({
     "https://www.studiomgx.com/assets/upload/proje/171232446066.png",
     "https://www.studiomgx.com/assets/upload/proje/169631884266.jpg",
     "https://www.studiomgx.com/assets/upload/proje/173581081641.png",
-    "https://www.studiomgx.com/assets/upload/proje/169097969041.jpg"
+    "https://www.studiomgx.com/assets/upload/proje/169097969041.jpg",
+    "https://www.studiomgx.com/assets/upload/proje/171241825521.png",
+    "https://www.studiomgx.com/assets/upload/proje/169631928389.jpg",
+    "https://www.studiomgx.com/assets/upload/proje/169097879478.jpg",
+    "https://www.studiomgx.com/assets/upload/proje/169097876792.jpg",
+    "https://www.studiomgx.com/assets/upload/proje/173581081641.png",
+    "https://www.studiomgx.com/assets/upload/proje/169097969041.jpg",
+    "https://www.studiomgx.com/assets/upload/proje/171232458761.png",
+    "https://www.studiomgx.com/assets/upload/proje/17123245191.png",
+    "https://www.studiomgx.com/assets/upload/proje/171232446066.png"
   ];
 
   // Intersection Observer to track visibility
@@ -69,11 +78,11 @@ const SettenKareler2Section: React.FC<SettenKareler2SectionProps> = ({
       
       <div className="relative z-10">
         {/* Section Title */}
-        <div className="text-center mb-16 lg:mb-20">
-          <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">
+        <div className="text-left lg:text-center mb-16 lg:mb-20 px-4 lg:px-0">
+          <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
             Setten Kareler
           </h2>
-          <p className="text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-2xl lg:text-2xl text-gray-300 max-w-3xl lg:mx-auto leading-relaxed">
             Projelerimizden unutulmaz anlar ve yaratıcı sürecin arka planından kareler
           </p>
         </div>

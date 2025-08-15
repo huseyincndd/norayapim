@@ -90,7 +90,7 @@ const InstagramFeedSection: React.FC<InstagramFeedSectionProps> = ({ noBg = fals
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl lg:text-6xl font-bold text-white mb-6"
+            className="text-5xl lg:text-6xl font-bold text-white mb-6 text-left lg:text-center"
           >
             Sosyal Medyada{" "}
             <span className="text-white">Biz</span>
@@ -101,18 +101,12 @@ const InstagramFeedSection: React.FC<InstagramFeedSectionProps> = ({ noBg = fals
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed"
+            className="text-2xl lg:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed text-left lg:text-center"
           >
             En son projelerimizi ve arka plan hikayelerimizi Instagram'da takip edin.
           </motion.p>
 
-          {/* Decorative Line */}
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "120px" }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="h-0.5 bg-gradient-to-r from-white via-white/60 to-transparent mx-auto mt-8"
-          />
+
         </motion.div>
 
         {/* Instagram Feed */}

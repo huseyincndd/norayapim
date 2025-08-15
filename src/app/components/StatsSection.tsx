@@ -35,10 +35,10 @@ const Counter = ({ end, suffix, label }: { end: number; suffix: string; label: s
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 lg:mb-4">
+      <div className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 lg:mb-4">
           {count}{suffix}
       </div>
-      <div className="text-sm lg:text-base text-white/80 uppercase tracking-wider font-medium">{label}</div>
+      <div className="text-base lg:text-base text-white/80 uppercase tracking-wider font-medium">{label}</div>
     </motion.div>
   );
 };
@@ -99,11 +99,11 @@ const StatsSection = ({ noBg = false }: { noBg?: boolean }) => {
             viewport={{ once: true }}
             className="mb-16 lg:mb-24 text-left lg:text-center"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 lg:mb-8 leading-tight">
+            <h2 className="text-4xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 lg:mb-8 leading-tight">
               Başarılarımızın{" "}
               <span className="text-white">Rakamlarla</span> Hikayesi
             </h2>
-            <p className="text-lg lg:text-xl xl:text-2xl text-white/80 max-w-3xl lg:max-w-4xl lg:mx-auto leading-relaxed">
+            <p className="text-xl lg:text-xl xl:text-2xl text-white/80 max-w-3xl lg:max-w-4xl lg:mx-auto leading-relaxed">
               2008 yılından bu yana sektörde edindiğimiz deneyim ve tamamladığımız projelerle 
               müşterilerimizin güvenini kazandık. İşte başarılarımızın sayısal özeti.
             </p>

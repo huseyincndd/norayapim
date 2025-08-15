@@ -77,10 +77,62 @@ const ApproachSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 lg:p-10"
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 lg:p-10 relative overflow-hidden"
           >
+            {/* Animated Wave Background */}
+            <div className="absolute inset-0 overflow-hidden">
+              <motion.div
+                className="absolute inset-0 opacity-20"
+                style={{
+                  background: `linear-gradient(90deg, transparent 0%, white 50%, transparent 100%)`,
+                  backgroundSize: '200% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['200% 0', '-200% 0'],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+              />
+              <motion.div
+                className="absolute inset-0 opacity-15"
+                style={{
+                  background: `linear-gradient(90deg, transparent 0%, white 30%, transparent 100%)`,
+                  backgroundSize: '300% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['300% 0', '-300% 0'],
+                }}
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: 'linear',
+                  delay: 2,
+                }}
+              />
+              <motion.div
+                className="absolute inset-0 opacity-10"
+                style={{
+                  background: `linear-gradient(90deg, transparent 0%, white 20%, transparent 100%)`,
+                  backgroundSize: '400% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['400% 0', '-400% 0'],
+                }}
+                transition={{
+                  duration: 16,
+                  repeat: Infinity,
+                  ease: 'linear',
+                  delay: 4,
+                }}
+              />
+            </div>
             <div className="text-white mb-6">
-              {approachItems[0].icon}
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-black/20 backdrop-blur-md rounded-2xl">
+                {approachItems[0].icon}
+              </div>
             </div>
             <h4 className="text-2xl lg:text-3xl font-bold text-white mb-4">
               {approachItems[0].title}
@@ -111,10 +163,62 @@ const ApproachSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             viewport={{ once: true }}
-            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 lg:p-10"
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 lg:p-10 relative overflow-hidden"
           >
+            {/* Animated Wave Background */}
+            <div className="absolute inset-0 overflow-hidden">
+              <motion.div
+                className="absolute inset-0 opacity-20"
+                style={{
+                  background: `linear-gradient(90deg, transparent 0%, white 50%, transparent 100%)`,
+                  backgroundSize: '200% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['200% 0', '-200% 0'],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+              />
+              <motion.div
+                className="absolute inset-0 opacity-15"
+                style={{
+                  background: `linear-gradient(90deg, transparent 0%, white 30%, transparent 100%)`,
+                  backgroundSize: '300% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['300% 0', '-300% 0'],
+                }}
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: 'linear',
+                  delay: 2,
+                }}
+              />
+              <motion.div
+                className="absolute inset-0 opacity-10"
+                style={{
+                  background: `linear-gradient(90deg, transparent 0%, white 20%, transparent 100%)`,
+                  backgroundSize: '400% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['400% 0', '-400% 0'],
+                }}
+                transition={{
+                  duration: 16,
+                  repeat: Infinity,
+                  ease: 'linear',
+                  delay: 4,
+                }}
+              />
+            </div>
             <div className="text-white mb-6">
-              {approachItems[1].icon}
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-black/20 backdrop-blur-md rounded-2xl">
+                {approachItems[1].icon}
+              </div>
             </div>
             <h4 className="text-2xl lg:text-3xl font-bold text-white mb-4">
               {approachItems[1].title}
@@ -144,10 +248,62 @@ const ApproachSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
             viewport={{ once: true }}
-            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 lg:p-10"
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 lg:p-10 relative overflow-hidden"
           >
+            {/* Animated Wave Background */}
+            <div className="absolute inset-0 overflow-hidden">
+              <motion.div
+                className="absolute inset-0 opacity-20"
+                style={{
+                  background: `linear-gradient(90deg, transparent 0%, white 50%, transparent 100%)`,
+                  backgroundSize: '200% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['200% 0', '-200% 0'],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+              />
+              <motion.div
+                className="absolute inset-0 opacity-15"
+                style={{
+                  background: `linear-gradient(90deg, transparent 0%, white 30%, transparent 100%)`,
+                  backgroundSize: '300% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['300% 0', '-300% 0'],
+                }}
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: 'linear',
+                  delay: 2,
+                }}
+              />
+              <motion.div
+                className="absolute inset-0 opacity-10"
+                style={{
+                  background: `linear-gradient(90deg, transparent 0%, white 20%, transparent 100%)`,
+                  backgroundSize: '400% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['400% 0', '-400% 0'],
+                }}
+                transition={{
+                  duration: 16,
+                  repeat: Infinity,
+                  ease: 'linear',
+                  delay: 4,
+                }}
+              />
+            </div>
             <div className="text-white mb-6">
-              {approachItems[2].icon}
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-black/20 backdrop-blur-md rounded-2xl">
+                {approachItems[2].icon}
+              </div>
             </div>
             <h4 className="text-2xl lg:text-3xl font-bold text-white mb-4">
               {approachItems[2].title}

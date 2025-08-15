@@ -320,7 +320,7 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl lg:text-6xl font-bold text-white mb-4 text-left lg:text-center"
+            className="text-5xl lg:text-6xl font-bold text-white mb-4 text-left lg:text-center"
           >
             Sahnelerden{" "}
             <span className="text-white">Hikayeler</span>
@@ -331,18 +331,12 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-xl text-white/80 max-w-3xl leading-relaxed lg:text-center lg:mx-auto"
+            className="text-2xl text-white/80 max-w-3xl leading-relaxed lg:text-center lg:mx-auto"
           >
             Oyuncuların dünyasından en güncel deneyimler, başarı hikayeleri ve profesyonel ipuçları.
           </motion.p>
 
-          {/* Decorative Line */}
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "120px" }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="h-0.5 bg-gradient-to-r from-white via-white/60 to-transparent mt-6 lg:mx-auto"
-          />
+
         </motion.div>
 
 

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '../components/Header';
-import CreativeFlowSectionNoPadding from '../components/CreativeFlowSectionNoPadding';
+import CreativeFlowSection from '../components/CreativeFlowSection';
 import Footer from '../components/Footer';
 
 const ContactPage = () => {
@@ -182,14 +182,14 @@ const ContactPage = () => {
           </div>
         </section>
 
-                 {/* Slogan Slider - Using CreativeFlowSectionNoPadding */}
-         <div className="pb-2 lg:pb-3">
-           <CreativeFlowSectionNoPadding 
-             duration={40} 
-             className="py-0" 
-             noBg={true}
-           />
-         </div>
+                         {/* Slogan Slider - Using CreativeFlowSection */}
+        <div className="pb-2 lg:pb-3">
+          <CreativeFlowSection 
+            duration={40} 
+            className="py-0" 
+            noBg={true}
+          />
+        </div>
 
          {/* Contact Content */}
          <section className="pt-8 lg:pt-12 pb-0">
@@ -294,13 +294,13 @@ const ContactPage = () => {
                  viewport={{ once: true }}
                  className="space-y-0"
                >
-                                 <div>
-                   <h2 className="text-3xl lg:text-4xl font-bold text-white mb-2">
-                     Bize <span className="text-white">mesaj</span> gönderin.
-                   </h2>
-                 </div>
+                                                   <div>
+                    <h2 className="text-3xl lg:text-4xl font-bold text-white mb-8">
+                      Bize <span className="text-white">mesaj</span> gönderin.
+                    </h2>
+                  </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                                              <input

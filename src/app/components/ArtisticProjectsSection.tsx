@@ -325,13 +325,7 @@ const ArtisticProjectsSection = ({ projects = dummyProjects, noBg = false }: { p
             En etkileyici projelerimizden seçkiler
           </motion.p>
 
-          {/* Decorative Line */}
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "80px" }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="h-1 bg-premium-red mx-auto mt-8"
-          />
+
         </motion.div>
 
         {/* Desktop Layout - Two Columns */}

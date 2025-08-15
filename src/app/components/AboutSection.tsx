@@ -124,7 +124,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"
+              className="text-4xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"
             >
               Tutku ve sanatla{" "}
               <span className="text-white">yarınları aydınlatıyoruz</span>
@@ -136,7 +136,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="text-base sm:text-lg text-white/80 leading-relaxed max-w-lg"
+              className="text-lg sm:text-lg text-white/80 leading-relaxed max-w-lg"
             >
               16 yılı aşkın köklü deneyimimizle, film, dizi ve reklam prodüksiyonu alanında sanatsal mükemmeliyet ve yüksek kalite standartlarından taviz vermeden özgün projeler üretiyoruz.
             </motion.p>
@@ -151,15 +151,15 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
             >
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-white/80 text-sm">Senaryo geliştirmeden çekim süreçlerine, post-prodüksiyondan yayına kadar tüm aşamalarda aktif rol alıyoruz</p>
+                <p className="text-white/80 text-base">Senaryo geliştirmeden çekim süreçlerine, post-prodüksiyondan yayına kadar tüm aşamalarda aktif rol alıyoruz</p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-white/80 text-sm">Türkiye'nin 84 ilinde, konseptin oluşumundan son teslimata kadar her aşamayı titizlikle planlıyoruz</p>
+                <p className="text-white/80 text-base">Türkiye'nin 84 ilinde, konseptin oluşumundan son teslimata kadar her aşamayı titizlikle planlıyoruz</p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-white/80 text-sm">Gelişen teknoloji ve yaratıcı yaklaşımlarla desteklenen tecrübemiz, unutulmaz görsel deneyimler sunuyor</p>
+                <p className="text-white/80 text-base">Gelişen teknoloji ve yaratıcı yaklaşımlarla desteklenen tecrübemiz, unutulmaz görsel deneyimler sunuyor</p>
               </div>
             </motion.div>
 
@@ -171,14 +171,14 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               viewport={{ once: true }}
               className="grid grid-cols-2 gap-6 pt-6"
             >
-              <div className="text-center">
-                <div className="text-2xl lg:text-3xl font-bold text-white mb-1">16+</div>
-                <p className="text-white/60 text-sm">Yıllık Deneyim</p>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl lg:text-3xl font-bold text-white mb-1">84</div>
-                <p className="text-white/60 text-sm">İlde Üretim</p>
-              </div>
+                             <div className="text-center">
+                 <div className="text-3xl lg:text-3xl font-bold text-white mb-1">16+</div>
+                 <p className="text-white/60 text-base">Yıllık Deneyim</p>
+               </div>
+               <div className="text-center">
+                 <div className="text-3xl lg:text-3xl font-bold text-white mb-1">84</div>
+                 <p className="text-white/60 text-base">İlde Üretim</p>
+               </div>
             </motion.div>
           </div>
         </div>
