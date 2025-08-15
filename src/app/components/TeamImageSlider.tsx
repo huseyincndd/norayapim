@@ -119,7 +119,9 @@ const TeamImageSlider = () => {
               {teamImages.map((image, index) => (
                 <div
                   key={index}
-                  ref={(el) => (imageRefs.current[index] = el)}
+                  ref={(el) => {
+                    imageRefs.current[index] = el;
+                  }}
                   className="flex-shrink-0 relative group snap-start"
                 >
                   <img
