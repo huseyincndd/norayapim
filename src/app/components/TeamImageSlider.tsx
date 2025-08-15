@@ -7,6 +7,7 @@ const TeamImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [isDragging, setIsDragging] = useState(false);
 
   // Voya Digital ekip fotoğrafları - 10 farklı URL
   const teamImages = [
@@ -47,6 +48,91 @@ const TeamImageSlider = () => {
     scrollToImage(newIndex);
   };
 
+  // Touch events for better mobile control
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    let startX = 0;
+    let scrollLeft = 0;
+    let isDown = false;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      isDown = true;
+      setIsDragging(true);
+      startX = e.touches[0].pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+      slider.style.scrollBehavior = 'auto';
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.touches[0].pageX - slider.offsetLeft;
+      const walk = (x - startX) * 0.8; // Sürükleme hassasiyetini azalt
+      slider.scrollLeft = scrollLeft - walk;
+    };
+
+    const handleTouchEnd = () => {
+      isDown = false;
+      setIsDragging(false);
+      slider.style.scrollBehavior = 'smooth';
+      
+      // Snap to nearest image
+      const imageWidth = slider.scrollWidth / teamImages.length;
+      const currentScroll = slider.scrollLeft;
+      const nearestIndex = Math.round(currentScroll / imageWidth);
+      scrollToImage(Math.max(0, Math.min(nearestIndex, teamImages.length - 1)));
+    };
+
+    // Mouse events for desktop
+    const handleMouseDown = (e: MouseEvent) => {
+      isDown = true;
+      setIsDragging(true);
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+      slider.style.scrollBehavior = 'auto';
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 0.8;
+      slider.scrollLeft = scrollLeft - walk;
+    };
+
+    const handleMouseUp = () => {
+      isDown = false;
+      setIsDragging(false);
+      slider.style.scrollBehavior = 'smooth';
+      
+      const imageWidth = slider.scrollWidth / teamImages.length;
+      const currentScroll = slider.scrollLeft;
+      const nearestIndex = Math.round(currentScroll / imageWidth);
+      scrollToImage(Math.max(0, Math.min(nearestIndex, teamImages.length - 1)));
+    };
+
+    // Add event listeners
+    slider.addEventListener('touchstart', handleTouchStart, { passive: false });
+    slider.addEventListener('touchmove', handleTouchMove, { passive: false });
+    slider.addEventListener('touchend', handleTouchEnd);
+    slider.addEventListener('mousedown', handleMouseDown);
+    slider.addEventListener('mousemove', handleMouseMove);
+    slider.addEventListener('mouseup', handleMouseUp);
+    slider.addEventListener('mouseleave', handleMouseUp);
+
+    return () => {
+      slider.removeEventListener('touchstart', handleTouchStart);
+      slider.removeEventListener('touchmove', handleTouchMove);
+      slider.removeEventListener('touchend', handleTouchEnd);
+      slider.removeEventListener('mousedown', handleMouseDown);
+      slider.removeEventListener('mousemove', handleMouseMove);
+      slider.removeEventListener('mouseup', handleMouseUp);
+      slider.removeEventListener('mouseleave', handleMouseUp);
+    };
+  }, [teamImages.length]);
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -73,7 +159,7 @@ const TeamImageSlider = () => {
           className="text-center mb-8 lg:mb-16"
         >
           <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4 lg:mb-6">
-            Ekibimizden <span className="text-orange-500">Kareler</span>
+            Ekibimizden <span className="text-white">Kareler</span>
           </h2>
           <p className="text-lg lg:text-xl text-white/80 max-w-2xl mx-auto">
             Yaratıcı süreçlerimizin arkasındaki tutkulu ekibimizi tanıyın
@@ -91,20 +177,20 @@ const TeamImageSlider = () => {
           {/* Navigation Buttons - Hidden on mobile */}
           <button
             onClick={prevSlide}
-            className="hidden lg:block absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-orange-500/20 hover:bg-orange-500/30 backdrop-blur-sm border border-orange-500/30 rounded-full p-3 transition-all duration-300 group"
+            className="hidden lg:block absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full p-3 transition-all duration-300 group"
             aria-label="Önceki resim"
           >
-            <svg className="w-6 h-6 text-orange-500 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-white group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
           <button
             onClick={nextSlide}
-            className="hidden lg:block absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-orange-500/20 hover:bg-orange-500/30 backdrop-blur-sm border border-orange-500/30 rounded-full p-3 transition-all duration-300 group"
+            className="hidden lg:block absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full p-3 transition-all duration-300 group"
             aria-label="Sonraki resim"
           >
-            <svg className="w-6 h-6 text-orange-500 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-white group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -113,8 +199,15 @@ const TeamImageSlider = () => {
           <div className="relative overflow-hidden rounded-2xl border border-white/10">
             <div
               ref={sliderRef}
-              className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              className={`flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory select-none ${
+                isDragging ? 'cursor-grabbing' : 'cursor-grab'
+              }`}
+              style={{ 
+                scrollbarWidth: 'none', 
+                msOverflowStyle: 'none',
+                touchAction: 'pan-x',
+                scrollBehavior: 'smooth'
+              }}
             >
               {teamImages.map((image, index) => (
                 <div
@@ -128,19 +221,14 @@ const TeamImageSlider = () => {
                     src={image}
                     alt={`Ekip üyesi ${index + 1}`}
                     className="h-[200px] md:h-[280px] lg:h-[371px] w-auto object-cover transition-all duration-500 group-hover:brightness-110"
-                    onError={(e) => {
-                      // Fallback image if URL doesn't exist
-                      e.currentTarget.src = 'https://via.placeholder.com/400x371/1a1a1a/ff6b35?text=Ekip+Üyesi+' + (index + 1);
-                    }}
+                                         onError={(e) => {
+                       // Fallback image if URL doesn't exist
+                       e.currentTarget.src = 'https://via.placeholder.com/400x371/1a1a1a/ffffff?text=Ekip+Üyesi+' + (index + 1);
+                     }}
                   />
                   
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Image Number Indicator */}
-                  <div className="absolute bottom-4 left-4 bg-orange-500/90 backdrop-blur-sm rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-white text-sm font-bold">{index + 1}</span>
-                  </div>
+                                     {/* Hover Overlay */}
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               ))}
             </div>
@@ -167,6 +255,15 @@ const TeamImageSlider = () => {
       <style jsx>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
+        }
+        
+        /* Mobile scroll optimizations */
+        @media (max-width: 768px) {
+          .scrollbar-hide {
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
+          }
         }
       `}</style>
     </section>
