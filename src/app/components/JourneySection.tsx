@@ -20,7 +20,7 @@ const JourneySection = () => {
             {/* Animated Wave Background */}
             <div className="absolute inset-0 overflow-hidden">
               <motion.div
-                className="absolute inset-0 opacity-20"
+                className="absolute inset-0 opacity-5"
                 style={{
                   background: `linear-gradient(90deg, transparent 0%, white 50%, transparent 100%)`,
                   backgroundSize: '200% 100%',
@@ -35,7 +35,7 @@ const JourneySection = () => {
                 }}
               />
               <motion.div
-                className="absolute inset-0 opacity-15"
+                className="absolute inset-0 opacity-5"
                 style={{
                   background: `linear-gradient(90deg, transparent 0%, white 30%, transparent 100%)`,
                   backgroundSize: '300% 100%',
@@ -51,7 +51,7 @@ const JourneySection = () => {
                 }}
               />
               <motion.div
-                className="absolute inset-0 opacity-10"
+                className="absolute inset-0 opacity-5"
                 style={{
                   background: `linear-gradient(90deg, transparent 0%, white 20%, transparent 100%)`,
                   backgroundSize: '400% 100%',
@@ -183,7 +183,7 @@ const JourneySection = () => {
           {/* Animated Wave Background */}
           <div className="absolute inset-0 overflow-hidden">
             <motion.div
-              className="absolute inset-0 opacity-20"
+              className="absolute inset-0 opacity-5"
               style={{
                 background: `linear-gradient(90deg, transparent 0%, white 50%, transparent 100%)`,
                 backgroundSize: '200% 100%',
@@ -198,7 +198,7 @@ const JourneySection = () => {
               }}
             />
             <motion.div
-              className="absolute inset-0 opacity-15"
+              className="absolute inset-0 opacity-5"
               style={{
                 background: `linear-gradient(90deg, transparent 0%, white 30%, transparent 100%)`,
                 backgroundSize: '300% 100%',
@@ -214,7 +214,7 @@ const JourneySection = () => {
               }}
             />
             <motion.div
-              className="absolute inset-0 opacity-10"
+              className="absolute inset-0 opacity-5"
               style={{
                 background: `linear-gradient(90deg, transparent 0%, white 20%, transparent 100%)`,
                 backgroundSize: '400% 100%',

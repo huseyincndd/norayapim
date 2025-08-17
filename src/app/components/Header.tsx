@@ -28,6 +28,12 @@ const Header: React.FC = () => {
       imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop&q=80'
     },
     { 
+      id: 'settenkareler',
+      label: 'Setten Kareler', 
+      href: '/settenkareler',
+      imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&q=80'
+    },
+    { 
       id: 'projects',
       label: 'Blog', 
       href: '/blog',

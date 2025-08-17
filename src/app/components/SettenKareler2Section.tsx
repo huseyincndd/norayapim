@@ -1,16 +1,20 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 import styles from './SettenKareler2.module.css';
 
 interface SettenKareler2SectionProps {
   className?: string;
   noBg?: boolean;
+  hideSeeMore?: boolean;
 }
 
 const SettenKareler2Section: React.FC<SettenKareler2SectionProps> = ({ 
   className = "",
-  noBg = false
+  noBg = false,
+  hideSeeMore = false
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -157,6 +161,27 @@ const SettenKareler2Section: React.FC<SettenKareler2SectionProps> = ({
           <div className={`${styles.floatingElement} ${styles.float3}`}></div>
         </div>
       </div>
+
+      {/* See More Section */}
+      {!hideSeeMore && (
+        <div className="relative z-10 mt-8 lg:mt-12">
+          <div className="text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <Link 
+                href="/settenkareler"
+                className="inline-block text-gray-400 hover:text-white text-sm lg:text-base font-light tracking-wide transition-all duration-300 border-b border-transparent hover:border-gray-400 pb-1"
+              >
+                Daha Fazla Gör
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
