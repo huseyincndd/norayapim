@@ -104,8 +104,7 @@ const StatsSection = ({ noBg = false }: { noBg?: boolean }) => {
               <span className="text-white">Rakamlarla</span> Hikayesi
             </h2>
             <p className="text-xl lg:text-xl xl:text-2xl text-white/80 max-w-3xl lg:max-w-4xl lg:mx-auto leading-relaxed">
-              2008 yılından bu yana sektörde edindiğimiz deneyim ve tamamladığımız projelerle 
-              müşterilerimizin güvenini kazandık. İşte başarılarımızın sayısal özeti.
+              2008 yılından bu yana sektörde kazandığımız deneyim ve tamamladığımız projelerle güvenilirliğimizi pekiştirdik. İşte başarılarımızın öne çıkan sayısal göstergeleri:
             </p>
           </motion.div>
 
@@ -117,10 +116,10 @@ const StatsSection = ({ noBg = false }: { noBg?: boolean }) => {
             viewport={{ once: true }}
             className="grid grid-cols-2 gap-8 lg:gap-16 xl:gap-20"
           >
-            <Counter end={25} suffix="+" label="Yıllık Deneyim" />
-            <Counter end={36} suffix="K+" label="Tamamlanan Proje" />
-            <Counter end={98} suffix="%" label="Müşteri Memnuniyeti" />
-            <Counter end={500} suffix="+" label="Mutlu Müşteri" />
+            <Counter end={16} suffix="+" label="Yıllık Deneyim" />
+            <Counter end={500} suffix="+" label="Tamamlanan Proje" />
+            <Counter end={99} suffix="%" label="Proje Başarı Oranı" />
+            <Counter end={45} suffix="K+" label="Saat Video Üretimi" />
           </motion.div>
         </div>
       </div>

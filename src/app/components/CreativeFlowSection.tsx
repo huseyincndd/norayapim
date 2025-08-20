@@ -19,7 +19,7 @@ const CreativeFlowSection: React.FC<CreativeFlowSectionProps> = ({
       {/* Background - only if noBg is false */}
       {!noBg && (
         <>
-          <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black" />
           <div className="absolute inset-0 bg-noise opacity-30" />
         </>
       )}

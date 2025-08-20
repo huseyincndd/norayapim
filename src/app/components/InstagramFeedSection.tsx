@@ -73,17 +73,7 @@ const InstagramFeedSection: React.FC<InstagramFeedSectionProps> = ({ noBg = fals
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-12 lg:mb-16"
         >
-          {/* Instagram Label */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="flex items-center justify-center gap-2 mb-6"
-          >
-            <div className="w-2 h-2 bg-white rounded-full" />
-            <span className="text-white/60 text-sm uppercase tracking-wider">Instagram</span>
-          </motion.div>
+
 
           {/* Main Title */}
           <motion.h2 
@@ -103,7 +93,7 @@ const InstagramFeedSection: React.FC<InstagramFeedSectionProps> = ({ noBg = fals
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-2xl lg:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed text-left lg:text-center"
           >
-            En son projelerimizi ve arka plan hikayelerimizi Instagram'da takip edin.
+            En yeni projeler ve perde arkası hikayeler için Instagram'da bizi takip edin.
           </motion.p>
 
 

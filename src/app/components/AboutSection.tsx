@@ -126,8 +126,8 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               viewport={{ once: true }}
               className="text-4xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"
             >
-              Tutku ve sanatla{" "}
-              <span className="text-white">yarınları aydınlatıyoruz</span>
+              Sanat ve tutkuyla{" "}
+              <span className="text-white">her hikâyeyi görselleştiriyoruz.</span>
             </motion.h2>
 
             {/* Açıklama */}
@@ -138,7 +138,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               viewport={{ once: true }}
               className="text-lg sm:text-lg text-white/80 leading-relaxed max-w-lg"
             >
-              16 yılı aşkın köklü deneyimimizle, film, dizi ve reklam prodüksiyonu alanında sanatsal mükemmeliyet ve yüksek kalite standartlarından taviz vermeden özgün projeler üretiyoruz.
+              Nora Yapım, 16 yılı aşkın deneyimiyle dizi, sinema ve reklam projelerinde özgün, yenilikçi ve yüksek kaliteli yapımlar sunan öncü bir yapım şirketidir. Kurulduğu günden bu yana, sanatsal mükemmeliyet ve yaratıcılıktan ödün vermeden her projeye değer katıyoruz.
             </motion.p>
 
             {/* Özellikler Listesi */}
@@ -151,16 +151,26 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
             >
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-white/80 text-base">Senaryo geliştirmeden çekim süreçlerine, post-prodüksiyondan yayına kadar tüm aşamalarda aktif rol alıyoruz</p>
+                <p className="text-white/80 text-base">Kapsamlı üretim süreci: Senaryodan çekim ve post-prodüksiyona, yayına kadar tüm aşamalarda aktif rol alıyoruz.</p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-white/80 text-base">Türkiye'nin 84 ilinde, konseptin oluşumundan son teslimata kadar her aşamayı titizlikle planlıyoruz</p>
+                <p className="text-white/80 text-base">Her yerde yaratıcı planlama: Türkiye’nin 81 ilinde ve uluslararası platformlarda projeleri titizlikle yönetiyoruz.</p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-white/80 text-base">Gelişen teknoloji ve yaratıcı yaklaşımlarla desteklenen tecrübemiz, unutulmaz görsel deneyimler sunuyor</p>
+                <p className="text-white/80 text-base">Teknoloji ve vizyon: Modern teknolojiyi yaratıcı yaklaşımlarla birleştirerek izleyiciye unutulmaz deneyimler sunuyoruz.</p>
               </div>
+            </motion.div>
+
+            {/* Vurgu Satırı */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-white/90 text-base sm:text-lg font-semibold">16+ Yıllık Deneyim | Global Etki ve Unutulmaz Hikâyeler</p>
             </motion.div>
 
             {/* İstatistikler */}
@@ -171,15 +181,26 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               viewport={{ once: true }}
               className="grid grid-cols-2 gap-6 pt-6"
             >
-                             <div className="text-center">
-                 <div className="text-3xl lg:text-3xl font-bold text-white mb-1">16+</div>
-                 <p className="text-white/60 text-base">Yıllık Deneyim</p>
-               </div>
-               <div className="text-center">
-                 <div className="text-3xl lg:text-3xl font-bold text-white mb-1">84</div>
-                 <p className="text-white/60 text-base">İlde Üretim</p>
-               </div>
+              <div className="text-center">
+                <div className="text-3xl lg:text-3xl font-bold text-white mb-1">16+</div>
+                <p className="text-white/60 text-base">Yıllık Deneyim</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl lg:text-3xl font-bold text-white mb-1">81</div>
+                <p className="text-white/60 text-base">İlde Üretim</p>
+              </div>
             </motion.div>
+
+            {/* Kapanış Paragrafı */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+              viewport={{ once: true }}
+              className="text-white/80 leading-relaxed max-w-xl"
+            >
+              Nora Yapım olarak, her projeyi sadece üretmekle kalmıyor, izleyiciye dokunan, kalıcı ve estetik bir deneyim yaratmayı misyon ediniyoruz. Ulusal ve uluslararası alanda yürüttüğümüz çalışmalarla, sektörde güvenilir ve saygın bir lider konumundayız.
+            </motion.p>
           </div>
         </div>
       </div>

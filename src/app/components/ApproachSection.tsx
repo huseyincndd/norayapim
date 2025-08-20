@@ -14,7 +14,7 @@ const ApproachSection = () => {
         </svg>
       ),
       title: "Misyonumuz",
-      description: "16 yılı aşkın deneyimimizle, sanat ve tutkuyu rehber edinerek film, dizi ve reklam prodüksiyonu alanında sanatsal mükemmeliyet ve yüksek kalite standartlarından taviz vermeden özgün ve yenilikçi projeler üretmek. Toplumsal kültürün gelişimine katkı sağlayarak, izleyicilere unutulmaz görsel deneyimler sunmak."
+      description: "Nora Yapım olarak, sinema, dizi ve reklam prodüksiyonunda özgün ve yüksek kaliteli içerikler üreterek markalara ve izleyiciye değer katmayı amaçlıyoruz. Her projede yaratıcı vizyonu teknolojik yetkinlikle birleştiriyor, senaryodan post-prodüksiyona kadar tüm süreçleri titizlikle yönetiyoruz. Amacımız, ulusal ve uluslararası arenada iz bırakan, estetik ve etkileyici yapımlar ortaya koymaktır."
     },
     {
       icon: (
@@ -23,7 +23,7 @@ const ApproachSection = () => {
         </svg>
       ),
       title: "Değerlerimiz",
-      description: "Yaratıcılık, kalite, güvenilirlik ve sürekli yenilik. Her projede edindiğimiz deneyimi yetkin ekibimiz ve organize çalışma anlayışımızla birleştirerek sektörde kalıcı bir üretim standardı oluşturmak. Türkiye'nin 84 ilinde konseptten son teslimata kadar her aşamayı titizlikle planlayarak projelerin kendi ruhunu taşıyan yaratıcı dokunuşlar katmak."
+      description: "Nora Yapım olarak yaratıcılığı, kaliteyi, güveni, teknolojiyi ve sürdürülebilirliği temel değerlerimiz olarak benimsiyoruz. Her projede özgün ve yenilikçi fikirler sunarken, sanatsal mükemmeliyet ve yüksek üretim standartlarından ödün vermiyoruz. İş ortaklarımız ve izleyiciyle kurduğumuz ilişkilerde şeffaflık ve güven önceliğimizdir. Gelişen prodüksiyon araçlarını ve dijital çözümleri yaratıcı süreçlerle entegre ederek, hem sektöre hem toplumsal kültüre değer katan projeler üretmeyi hedefliyoruz."
     },
     {
       icon: (
@@ -34,7 +34,7 @@ const ApproachSection = () => {
         </svg>
       ),
       title: "Vizyonumuz",
-      description: "Film, dizi ve reklam prodüksiyonu sektöründe öncü bir yapım şirketi olarak, gelişen teknoloji ve yaratıcı yaklaşımlarla desteklenen tecrübemizi kullanarak ulusal ve uluslararası platformlarda başarılı işbirlikleri kurmak. Sektörün önde gelen yapım şirketlerinden biri olmanın haklı gururunu yaşayarak, gelecekte de kalıcı bir üretim standardı oluşturmaya devam etmek."
+      description: "Nora Yapım olarak, film, dizi ve reklam prodüksiyonu alanlarında sektörün öncüsü olmayı sürdürüyoruz. Gelişen teknoloji ve yaratıcı yaklaşımlarımızla ulusal ve uluslararası platformlarda başarılı iş birlikleri kurarak, kalıcı bir üretim standardı oluşturmayı hedefliyoruz. Görsel hikaye anlatımında sınırları zorlayarak ve teknolojiyi sanatsal yaratıcılıkla birleştirerek, her projeyi unutulmaz bir deneyime dönüştürmek ve global prodüksiyon standartlarını yükseltmek vizyonumuzun merkezindedir."
     }
   ];
 

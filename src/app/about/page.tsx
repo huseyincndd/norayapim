@@ -13,6 +13,8 @@ import JourneySection from '../components/JourneySection';
 import TeamImageSlider from '../components/TeamImageSlider';
 import FAQSection from '../components/FAQSection';
 import Footer from '../components/Footer';
+import AboutPageSection from '../components/AboutSectionNew';
+import AboutSectionNew from '../components/AboutSectionNew';
 
 const AboutPage = () => {
   return (
@@ -61,7 +63,7 @@ const AboutPage = () => {
         </section>
 
         {/* Slogan Slider - Using CreativeFlowSection */}
-        <div className="pb-2 lg:pb-3">
+        <div className="pb-2 lg:pb-3 bg-black">
           <CreativeFlowSection 
             duration={40} 
             className="py-0" 
@@ -73,7 +75,7 @@ const AboutPage = () => {
         <section className="relative bg-black overflow-hidden">
           {/* About Section */}
           <div className="relative z-10">
-            <AboutSection noBg={true} />
+            <AboutSectionNew />
           </div>
 
           {/* Journey Section */}

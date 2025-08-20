@@ -99,10 +99,10 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden">
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 via-black/90 to-black" />
+        <div className="absolute inset-0 bg-black" />
         {/* Animated Background Lines */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div 
@@ -183,7 +183,7 @@ const ContactPage = () => {
         </section>
 
                          {/* Slogan Slider - Using CreativeFlowSection */}
-        <div className="pb-2 lg:pb-3">
+        <div className="pb-2 lg:pb-3 bg-black">
           <CreativeFlowSection 
             duration={40} 
             className="py-0" 
@@ -212,7 +212,7 @@ const ContactPage = () => {
                      Ulaşın ve <span className="text-white">hikayenizi</span> bugün başlatın.
                    </h1>
                    <p className="text-lg text-white/80 leading-relaxed mb-8">
-                     Vizyonunuza uygun yenilikçi tasarımlar ve yaratıcı çözümlerle fikirlerinizi hayata geçirmek için bizimle iletişime geçin.
+                     Projeleriniz, iş birliği teklifleri veya sorularınız için doğrudan bizimle iletişime geçin.
                    </p>
                  </div>
 
@@ -351,6 +351,39 @@ const ContactPage = () => {
                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-white focus:bg-white/15 transition-all duration-300 resize-none"
                      />
                    </div>
+                   
+                   {/* KVKK Consent Checkbox */}
+                   <div className="flex items-start gap-3">
+                     <input
+                       type="checkbox"
+                       id="consent"
+                       checked={consent}
+                       onChange={(e) => {
+                         setConsent(e.target.checked);
+                         if (e.target.checked) {
+                           setShowConsentError(false);
+                         }
+                       }}
+                       className="mt-1 w-4 h-4 text-white bg-white/10 border-white/20 rounded focus:ring-white focus:ring-2"
+                     />
+                     <label htmlFor="consent" className="text-white/80 text-sm leading-relaxed">
+                       <Link href="#" className="text-white/80 hover:text-white transition-colors underline">
+                         Aydınlatma Metni
+                       </Link>'ni ve <Link href="#" className="text-white/80 hover:text-white transition-colors underline">
+                         Açık Rıza Onayı
+                       </Link>'nı okudum ve kabul ediyorum.
+                     </label>
+                   </div>
+                   
+                   {/* Consent Error Message */}
+                   {showConsentError && (
+                     <div className="text-red-400 text-sm mt-2 flex items-center gap-2">
+                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                       </svg>
+                       Lütfen KVKK onayını veriniz.
+                     </div>
+                   )}
                   
                                      <motion.button
                      type="submit"

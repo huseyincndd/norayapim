@@ -316,14 +316,14 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
           className="text-left lg:text-center mb-8 lg:mb-12 px-6 lg:px-8 relative"
         >
           {/* Main Title */}
-          <motion.h2 
+                    <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl lg:text-6xl font-bold text-white mb-4 text-left lg:text-center"
           >
-            Sahnelerden{" "}
-            <span className="text-white">Hikayeler</span>
+            Perdenin{" "}
+            <span className="text-white">Arkasından</span>
           </motion.h2>
 
           {/* Subtitle */}
@@ -333,7 +333,7 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-2xl text-white/80 max-w-3xl leading-relaxed lg:text-center lg:mx-auto"
           >
-            Oyuncuların dünyasından en güncel deneyimler, başarı hikayeleri ve profesyonel ipuçları.
+            Film, dizi ve reklam prodüksiyonundan en güncel gelişmeler, sektörel ve bizden haberler, başarı hikayeleri ve profesyonel ipuçları
           </motion.p>
 
 

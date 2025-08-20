@@ -6,16 +6,16 @@ import { motion } from 'framer-motion';
 const WhatWeDoSection = () => {
   const services = [
     {
-      title: "Film Prodüksiyonu",
-      description: "Sinema filmleri, belgeseller ve kısa filmler için kapsamlı prodüksiyon hizmetleri. Senaryo geliştirmeden post-prodüksiyona kadar tüm süreçleri yönetiyoruz."
+      title: "Film Yapımı",
+      description: "Nora Yapım, ulusal ve uluslararası deneyimiyle sinema filmleri, belgeseller ve kısa filmler için kapsamlı yapım çözümleri sunar. Senaryo geliştirmeden çekim ve post-prodüksiyona kadar tüm süreçleri titizlikle yönetir, her projeye sanatsal değer ve teknik mükemmeliyet katar."
     },
     {
-      title: "Dizi Prodüksiyonu",
-      description: "Televizyon dizileri için profesyonel prodüksiyon çözümleri. Çekim planlaması, set yönetimi ve yayın süreçlerinde uzman ekibimizle hizmet veriyoruz."
+      title: "Dizi Yapımı",
+      description: "Televizyon ve dijital platform dizilerinde profesyonel yapım çözümleri sağlıyoruz. Çekim planlaması, set yönetimi ve yayın süreçlerinde uzman ekibimizle projeleri zamanında ve yüksek kalite standartlarında hayata geçiriyoruz."
     },
     {
-      title: "Reklam Prodüksiyonu",
-      description: "Markalar için yaratıcı reklam filmleri ve tanıtım videoları. Konsept geliştirmeden final teslime kadar tüm aşamalarda aktif rol alıyoruz."
+      title: "Reklam Yapımı",
+      description: "Markalar için yaratıcı reklam filmleri ve tanıtım videoları üretiyoruz. Konsept geliştirmeden final teslimine kadar her aşamada aktif rol alıyor, izleyiciye unutulmaz görsel deneyimler sunuyoruz."
     }
   ];
 
@@ -41,8 +41,8 @@ const WhatWeDoSection = () => {
                viewport={{ once: true }}
                className="text-3xl lg:text-5xl font-bold text-white leading-tight mb-6"
              >
-               Yaratıcı <span className="text-white">fikirleri</span><br />
-               muhteşem sonuçlara dönüştürüyoruz
+               Yaratıcı Fikirleri <span className="text-white">Etkileyici Yapımlara</span><br />
+               Dönüştürüyoruz
              </motion.h3>
 
             {/* Service Descriptions */}

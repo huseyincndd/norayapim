@@ -79,13 +79,13 @@ const TeamImageSlider = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-8 lg:mb-16"
+          className="text-left lg:text-center mb-8 lg:mb-16"
         >
           <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4 lg:mb-6">
-            Ekibimizden <span className="text-white">Kareler</span>
+            Ofisimizden <span className="text-white">Kareler</span>
           </h2>
-          <p className="text-lg lg:text-xl text-white/80 max-w-2xl mx-auto">
-            Yaratıcı süreçlerimizin arkasındaki tutkulu ekibimizi tanıyın
+          <p className="text-lg lg:text-xl text-white/80 max-w-2xl lg:mx-auto">
+            Nora Yapım'ın yaratıcı ve profesyonel ortamını keşfedin.
           </p>
         </motion.div>
 
@@ -154,17 +154,16 @@ const TeamImageSlider = () => {
 
         </motion.div>
 
-        {/* Team Description */}
+        {/* Office Description */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-8 lg:mt-12"
+          className="text-left lg:text-center mt-8 lg:mt-12"
         >
-          <p className="text-base lg:text-lg text-white/70 max-w-3xl mx-auto leading-relaxed">
-            Her projede tutkumuzla çalışan, yaratıcılığımızla sınırları zorlayan ve
-            müşterilerimizin vizyonlarını gerçeğe dönüştüren dinamik ekibimiz.
+          <p className="text-base lg:text-lg text-white/70 max-w-3xl lg:mx-auto leading-relaxed">
+            Ofislerimiz, projelere gösterdiğimiz özeni ve profesyonel yaklaşımımızı yansıtıyor. Her projede tutku ve yaratıcılıkla çalışan, vizyonları gerçeğe dönüştüren dinamik çalışma alanımızı keşfedin.
           </p>
         </motion.div>
       </div>

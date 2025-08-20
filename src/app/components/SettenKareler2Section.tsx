@@ -20,29 +20,32 @@ const SettenKareler2Section: React.FC<SettenKareler2SectionProps> = ({
   const [isVisible, setIsVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  // Studio MGX project images from ImageSliderSection - 21 images
+  // Setten Kareler images from norayapim.xyz - 25 images
   const setImages = [
-    "https://www.studiomgx.com/assets/upload/proje/171241825521.png",
-    "https://www.studiomgx.com/assets/upload/proje/169631928389.jpg",
-    "https://www.studiomgx.com/assets/upload/proje/169097879478.jpg",
-    "https://www.studiomgx.com/assets/upload/proje/169097876792.jpg",
-    "https://www.studiomgx.com/assets/upload/proje/173581081641.png",
-    "https://www.studiomgx.com/assets/upload/proje/169097969041.jpg",
-    "https://www.studiomgx.com/assets/upload/proje/171232458761.png",
-    "https://www.studiomgx.com/assets/upload/proje/17123245191.png",
-    "https://www.studiomgx.com/assets/upload/proje/171232446066.png",
-    "https://www.studiomgx.com/assets/upload/proje/169631884266.jpg",
-    "https://www.studiomgx.com/assets/upload/proje/173581081641.png",
-    "https://www.studiomgx.com/assets/upload/proje/169097969041.jpg",
-    "https://www.studiomgx.com/assets/upload/proje/171241825521.png",
-    "https://www.studiomgx.com/assets/upload/proje/169631928389.jpg",
-    "https://www.studiomgx.com/assets/upload/proje/169097879478.jpg",
-    "https://www.studiomgx.com/assets/upload/proje/169097876792.jpg",
-    "https://www.studiomgx.com/assets/upload/proje/173581081641.png",
-    "https://www.studiomgx.com/assets/upload/proje/169097969041.jpg",
-    "https://www.studiomgx.com/assets/upload/proje/171232458761.png",
-    "https://www.studiomgx.com/assets/upload/proje/17123245191.png",
-    "https://www.studiomgx.com/assets/upload/proje/171232446066.png"
+    "https://norayapim.xyz/_assets/media/a7947a71e33cd2f673459c47d35094f8.jpg",
+    "https://norayapim.xyz/_assets/media/3c199d4af4b02a77c1efa7c415787df2.jpg",
+    "https://norayapim.xyz/_assets/media/b57a77ceff8176b5e3018b505cf7376d.jpg",
+    "https://norayapim.xyz/_assets/media/292bacc2f4d4415a7b0d9d5e747bf6e5.jpg",
+    "https://norayapim.xyz/_assets/media/31b94a0f4c44ac5aa9b88f0134f0b74d.jpg",
+    "https://norayapim.xyz/_assets/media/5428660a970db918e9051ae4646b2427.jpg",
+    "https://norayapim.xyz/_assets/media/bfda080f68faf6c2f9d4ab0945e31543.jpg",
+    "https://norayapim.xyz/_assets/media/7170bae3f4cf04938935cfa053a3bc04.jpg",
+    "https://norayapim.xyz/_assets/media/9188603306a533bfe07d9c5cd8f1b432.jpg",
+    "https://norayapim.xyz/_assets/media/2f70b78136628d390ffcefdbfccf52af.jpg",
+    "https://norayapim.xyz/_assets/media/f622a9294b97b25d6ba23cfbb2e48c04.jpg",
+    "https://norayapim.xyz/_assets/media/b2097b5633356d2ce1397c8342ffcfd1.jpg",
+    "https://norayapim.xyz/_assets/media/f26287deacf79c417240900e43f16a2d.jpg",
+    "https://norayapim.xyz/_assets/media/811c798ff552a60ec746340990fe7725.jpg",
+    "https://norayapim.xyz/_assets/media/faafa706123a8c11b99df84796f40e89.jpg",
+    "https://norayapim.xyz/_assets/media/c08ee4e915ffd05f3dce26c92dba69e2.jpg",
+    "https://norayapim.xyz/_assets/media/08bd60829b4b7e13908da3152bf08d1b.jpg",
+    "https://norayapim.xyz/_assets/media/a24c81374cdc21dc496778b235f2cc55.jpg",
+    "https://norayapim.xyz/_assets/media/a7947a71e33cd2f673459c47d35094f8.jpg",
+    "https://norayapim.xyz/_assets/media/5428660a970db918e9051ae4646b2427.jpg",
+    "https://norayapim.xyz/_assets/media/427ebd7453682591be356a6926264d9a.jpg",
+    "https://norayapim.xyz/_assets/media/3c7f3a95855dff001eb9ef93d2f1140b.jpg",
+    "https://norayapim.xyz/_assets/media/2060255c8bece77119d1737fd4cf8e59.jpg",
+    "https://norayapim.xyz/_assets/media/a955859fe3363680c50c9023d38c0894.jpg"
   ];
 
   // Intersection Observer to track visibility
@@ -84,10 +87,10 @@ const SettenKareler2Section: React.FC<SettenKareler2SectionProps> = ({
         {/* Section Title */}
         <div className="text-left lg:text-center mb-16 lg:mb-20 px-4 lg:px-0">
           <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
-            Setten Kareler
+            Kamera Arkası
           </h2>
           <p className="text-2xl lg:text-2xl text-gray-300 max-w-3xl lg:mx-auto leading-relaxed">
-            Projelerimizden unutulmaz anlar ve yaratıcı sürecin arka planından kareler
+            Projelerimizden seçilmiş unutulmaz anlar ve yaratıcı sürecin perde arkası görüntüleri
           </p>
         </div>
 

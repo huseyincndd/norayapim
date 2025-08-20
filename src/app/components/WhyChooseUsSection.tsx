@@ -6,16 +6,20 @@ import { motion } from 'framer-motion';
 const WhyChooseUsSection = () => {
      const services = [
      {
-       title: "16 Yıllık Deneyim",
-       description: "Film, dizi ve reklam prodüksiyonu alanında 16 yılı aşkın köklü deneyimimizle sektörün öncü şirketlerinden biriyiz."
+       title: "16+ Yıllık Profesyonel Deneyim",
+       description: "Nora Yapım, film, dizi ve reklam prodüksiyonunda 16 yılı aşkın köklü deneyimiyle sektörde güvenilir ve saygın bir lider konumunda. Her projede sanatsal mükemmeliyet ve teknik kaliteyi ön planda tutuyor, yaratıcı vizyonu hayata geçiriyoruz."
      },
      {
-       title: "84 İlde Üretim Gücü",
-       description: "Türkiye'nin 84 ilinde konseptten son teslimata kadar her aşamayı titizlikle planlayarak projelerin kendi ruhunu taşıyan yaratıcı dokunuşlar katıyoruz."
+       title: "Ulusal ve Uluslararası Üretim Gücü",
+       description: "Türkiye'nin 84 ilinde ve uluslararası platformlarda yürüttüğümüz projelerle geniş bir üretim ağına sahibiz."
      },
      {
-       title: "Kapsamlı Prodüksiyon Hizmetleri",
-       description: "Senaryo geliştirmeden çekim ve yapım süreçlerine, post-prodüksiyondan yayına kadar tüm aşamalarda aktif rol alıyoruz."
+       title: "Profesyonel Prodüksiyon Süreci",
+       description: "Senaryo geliştirmeden çekim, yapım, post-prodüksiyon ve yayına kadar tüm süreçlerde aktif rol alıyoruz. Modern teknolojiyi yaratıcı yaklaşımlarla birleştirerek, izleyiciye unutulmaz ve etkileyici görsel deneyimler sunmayı hedefliyoruz."
+     },
+     {
+       title: "Global Etki ve Güvenilirlik",
+       description: "Nora Yapım, yalnızca yerel değil, global ölçekte de projelere imza atarak sektörde standartları yükselten, güvenilir bir yapım ortağı olarak öne çıkıyor."
      }
    ];
 
@@ -133,34 +137,34 @@ const WhyChooseUsSection = () => {
                />
              </motion.div>
 
-             {/* Services List - Connected White Boxes */}
-             <motion.div
-               initial={{ opacity: 0, y: 30 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.8, delay: 0.6 }}
-               viewport={{ once: true }}
-               className="bg-white rounded-b-2xl lg:rounded-r-2xl lg:rounded-l-none p-4 lg:p-6 flex flex-col justify-center w-full lg:w-auto"
-             >
-               <div className="space-y-4">
-                 {services.map((service, index) => (
-                   <motion.div
-                     key={index}
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                     viewport={{ once: true }}
-                     className={`${index < services.length - 1 ? 'border-b border-black/40 pb-4 mx-4' : 'mx-4'}`}
-                   >
-                     <h4 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2">
-                       {service.title}
-                     </h4>
-                     <p className="text-gray-600 leading-relaxed text-sm lg:text-base">
-                       {service.description}
-                     </p>
-                   </motion.div>
-                 ))}
-               </div>
-             </motion.div>
+                           {/* Services List - Connected White Boxes */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-b-2xl lg:rounded-r-2xl lg:rounded-l-none p-3 lg:p-4 flex flex-col justify-center w-full lg:w-96"
+              >
+                <div className="space-y-2">
+                  {services.map((service, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                      viewport={{ once: true }}
+                      className={`${index < services.length - 1 ? 'border-b border-black/40 pb-2 mx-2' : 'mx-2'}`}
+                    >
+                      <h4 className="text-lg lg:text-lg font-bold text-gray-900 mb-1">
+                        {service.title}
+                      </h4>
+                      <p className="text-gray-600 leading-tight text-sm lg:text-sm">
+                        {service.description}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
            </div>
          </motion.div>
       </div>

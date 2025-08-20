@@ -11,8 +11,8 @@ const ServicesGridSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
         </svg>
       ),
-      title: "Film Prodüksiyonu",
-      description: "Sinema filmleri, kısa filmler ve uzun metrajlı yapımlar için kapsamlı prodüksiyon hizmetleri sunuyoruz."
+      title: "Film Yapımı",
+      description: "Nora Yapım, ulusal ve uluslararası deneyimiyle sinema filmleri, belgeseller ve kısa filmler için kapsamlı yapım çözümleri sunar. Senaryo geliştirmeden çekim ve post-prodüksiyona kadar tüm süreçleri titizlikle yönetir, her projeye sanatsal değer ve teknik mükemmeliyet katar."
     },
     {
       icon: (
@@ -20,8 +20,8 @@ const ServicesGridSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       ),
-      title: "Dizi Prodüksiyonu",
-      description: "Televizyon dizileri için profesyonel prodüksiyon çözümleri. Çekim planlaması ve set yönetimi hizmetleri."
+      title: "Dizi Yapımı",
+      description: "Televizyon ve dijital platformlar için dizi projelerinde, yaratıcı vizyon ve profesyonel planlamayla tüm yapım süreçlerini yönetiyoruz. Çekim planlaması, set koordinasyonu ve oyuncu yönetimi ile projelerin sorunsuz ilerlemesini sağlıyoruz."
     },
     {
       icon: (
@@ -29,8 +29,8 @@ const ServicesGridSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       ),
-      title: "Reklam Prodüksiyonu",
-      description: "Markalar için yaratıcı reklam filmleri ve tanıtım videoları. Konsept geliştirmeden final teslime kadar."
+      title: "Reklam Yapımı",
+      description: "Markalar için özgün ve etkileyici reklam filmleri ile tanıtım içerikleri üretiyoruz. Konsept geliştirmeden final teslimine kadar tüm aşamalarda aktif rol alıyor ve hedef kitleye güçlü görsel deneyimler sunuyoruz."
     },
     {
       icon: (
@@ -38,8 +38,8 @@ const ServicesGridSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
         </svg>
       ),
-      title: "Belgesel Prodüksiyonu",
-      description: "Belgesel filmler ve TV programları için özel prodüksiyon hizmetleri. Gerçek hikayeleri görselleştiriyoruz."
+      title: "Belgesel ve TV Programları",
+      description: "Gerçek hikâyeleri güçlü anlatılarla buluşturuyor, belgesel filmler ve TV programları için yüksek kaliteli yapımlar gerçekleştiriyoruz. Her projede izleyiciye unutulmaz ve etkileyici deneyimler kazandırıyoruz."
     },
     {
       icon: (
@@ -48,7 +48,7 @@ const ServicesGridSection = () => {
         </svg>
       ),
       title: "Post-Prodüksiyon",
-      description: "Kurgu, montaj, renk düzenleme ve ses prodüksiyonu ile projelerinizi mükemmelliğe taşıyoruz."
+      description: "Kurgu, montaj, renk düzenleme, görsel efekt ve ses prodüksiyonu süreçlerinde ileri teknolojiyi yaratıcı yaklaşımla birleştiriyoruz. Projeleri tamamlayarak izleyiciye kusursuz görsel ve işitsel deneyimler sunuyoruz."
     },
     {
       icon: (
@@ -56,8 +56,8 @@ const ServicesGridSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
       ),
-      title: "Set Yönetimi",
-      description: "Profesyonel set yönetimi ve ekip koordinasyonu. Her aşamada titizlikle planlanmış prodüksiyon süreçleri."
+      title: "Set ve Ekip Yönetimi",
+      description: "Profesyonel set yönetimi, ekip koordinasyonu ve lojistik planlama ile her projeyi titizlikle organize ediyoruz. Her detayda kaliteyi ön planda tutarak yapımların sorunsuz ilerlemesini garanti ediyoruz."
     }
   ];
 
@@ -184,7 +184,7 @@ const ServicesGridSection = () => {
           ))}
         </motion.div>
 
-        {/* Call to Action */}
+        {/* Stats Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -192,21 +192,27 @@ const ServicesGridSection = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <button className="bg-white text-black px-6 py-2 rounded-full text-sm font-semibold hover:bg-gray-200 transition-colors duration-300">
-              16 Yıllık Deneyim
-            </button>
-            <span className="text-white text-lg">
-              84 ilde profesyonel prodüksiyon hizmetleri.
-            </span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 max-w-4xl mx-auto">
+            {/* First Stat */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-white/10 hover:border-white/20 transition-all duration-300">
+              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3">
+                Birçok Proje
+              </h3>
+              <p className="text-white/80 text-base lg:text-lg leading-relaxed">
+                Her proje, yaratıcı vizyon ve teknik uzmanlığın bir yansımasıdır. Hikâyeler, etkileyici görsel deneyimlerle buluşuyor.
+              </p>
+            </div>
+            
+            {/* Second Stat */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-white/10 hover:border-white/20 transition-all duration-300">
+              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3">
+                2008'den Bugüne
+              </h3>
+              <p className="text-white/80 text-base lg:text-lg leading-relaxed">
+                Senaryodan yayına kadar, ulusal ve uluslararası birçok projede yer alındı ve katkı sağlandı.
+              </p>
+            </div>
           </div>
-          
-          <Link 
-            href="/contact" 
-            className="text-white underline hover:text-gray-300 transition-colors duration-300 font-medium"
-          >
-            Proje Teklifi Al
-          </Link>
         </motion.div>
       </div>
     </section>

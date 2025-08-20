@@ -109,7 +109,7 @@ const Footer = () => {
     },
     { 
       id: 'services',
-      label: 'Hizmetler', 
+      label: 'Neler Yapıyoruz', 
       href: '/services'
     },
     { 
@@ -125,10 +125,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden">
+    <footer className="bg-black text-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 via-black/90 to-black" />
+        <div className="absolute inset-0 bg-black" />
         {/* Animated Background Lines */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div 
@@ -186,8 +186,7 @@ const Footer = () => {
                   </h1>
                 </div>
                 <p className="text-lg text-white/80 leading-relaxed mb-6 max-w-lg">
-                  Dijital markaların hikayelerini güçlü videolarla anlatan yaratıcı bir prodüksiyon şirketi.
-                  Modern teknoloji ve yaratıcı vizyonu birleştirerek markaların hikayelerini etkileyici görsel anlatımlarla hayata geçiriyoruz.
+                  Nora Yapım, 16 yılı aşkın süredir film, dizi ve reklam yapımlarında fark yaratan bir üretim şirketidir. Her projede yenilikçi çözümler ve yaratıcı anlatımı ön planda tutarak, izleyiciler ve iş ortakları için etkileyici deneyimler sunuyoruz. Hem yerel hem de global arenada yürüttüğümüz çalışmalarla sektör standartlarını yükselten güvenilir bir yapım ortağıyız.
                 </p>
                 
                 {/* Social Media */}
@@ -398,7 +397,11 @@ const Footer = () => {
                        className="mt-1 w-4 h-4 text-white bg-white/10 border-white/20 rounded focus:ring-white focus:ring-2"
                      />
                      <label htmlFor="consent" className="text-white/80 text-sm leading-relaxed">
-                       Yukarıda verdiğim kişisel bilgilerin doğru olduğunu kabul ediyorum. <span className="font-semibold">NORA YAPIM</span> tarafından ticari amaçlarla saklanabilir, işlenebilir ve paylaşılabilir.
+                       <Link href="#" className="text-white/80 hover:text-white transition-colors underline">
+                         Aydınlatma Metni
+                       </Link>'ni ve <Link href="#" className="text-white/80 hover:text-white transition-colors underline">
+                         Açık Rıza Onayı
+                       </Link>'nı okudum ve kabul ediyorum.
                      </label>
                    </div>
                    
@@ -537,13 +540,28 @@ const Footer = () => {
                 viewport={{ once: true }}
               >
                 <Link href="#" className="text-white/60 hover:text-white transition-colors">
+                  Aydınlatma Metni
+                </Link>
+                <Link href="#" className="text-white/60 hover:text-white transition-colors">
+                  Açık Rıza Onayı
+                </Link>
+                <Link href="#" className="text-white/60 hover:text-white transition-colors">
+                  Kvkk Politikası
+                </Link>
+                <Link href="#" className="text-white/60 hover:text-white transition-colors">
+                  Bgys Politikası
+                </Link>
+                <Link href="#" className="text-white/60 hover:text-white transition-colors">
+                  Kvkk Başvuru Formu
+                </Link>
+                <Link href="#" className="text-white/60 hover:text-white transition-colors">
                   Gizlilik Politikası
                 </Link>
                 <Link href="#" className="text-white/60 hover:text-white transition-colors">
-                  Kullanım Şartları
+                  Çerez Politikası
                 </Link>
                 <Link href="#" className="text-white/60 hover:text-white transition-colors">
-                  Çerez Politikası
+                  Site Haritası
                 </Link>
               </motion.div>
             </div>

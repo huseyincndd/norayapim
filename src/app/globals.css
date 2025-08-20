@@ -80,3 +80,27 @@ body {
 
 /* HeroSection video overlay'i buradan kaldırıldı, bileşenin kendi içine taşındı */
 /* Genel iframe stilleri buradan kaldırıldı, bileşene özel hale getirildi */
+
+/* Pulse scale animation for red dots */
+@keyframes pulseScale {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(0.7);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  75% {
+    transform: scale(0.7);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

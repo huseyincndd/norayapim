@@ -9,7 +9,7 @@ const servicesData = [
     id: 1,
     title: "Video Productions",
     description: "An international digital design studio reimagining how people connect with brands.",
-    poster: "https://cactuscastagency.com/wp-content/uploads/Ask-101.jpg",
+    poster: "https://norayapim.xyz/_assets/media/390a4d97c2a911c6c5288a8e60b901e7.jpg",
     videoId: "1088965285",
     icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/videography.svg"
   },
@@ -17,7 +17,7 @@ const servicesData = [
     id: 2,
     title: "Digital Media",
     description: "We prioritize flexibility, streamlined processes, and creative that positively impacts your business.",
-    poster: "https://image.tmdb.org/t/p/original/i6t3GScKxSuF5A65qjQymEpo9au.jpg",
+    poster: "https://norayapim.xyz/_assets/media/42ab8b39ea20e6463d398652a976e13a.jpg",
     videoId: "1088965204",
     icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/playlist.svg"
   },
@@ -25,7 +25,7 @@ const servicesData = [
     id: 3,
     title: "Commercial",
     description: "We are dedicated to transforming businesses by providing expert consulting services.",
-    poster: "https://i.pinimg.com/564x/b0/83/4f/b0834fb287167f07a0656572a5d5bcb4.jpg",
+    poster: "https://norayapim.xyz/_assets/media/47230946f363ef20051e51cafc3dcdff.jpg",
     videoId: "1088965267",
     icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/megaphone.svg"
   },
@@ -33,7 +33,7 @@ const servicesData = [
     id: 4,
     title: "Content Creation",
     description: "We are a creative production company that specializes in crafting unique stories.",
-    poster: "https://m.media-amazon.com/images/M/MV5BMTk2Nzc0OTExNl5BMl5BanBnXkFtZTgwMDc5MTI1NjE@._V1_.jpg",
+    poster: "https://norayapim.xyz/_assets/media/49a64215211360af66f457eb773e77d2.jpg",
     videoId: "1088965238",
     icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/movie-reel.svg"
   },
@@ -41,7 +41,7 @@ const servicesData = [
     id: 5,
     title: "Creative Directions",
     description: "It's not about being right but rather about discovering the right idea.",
-    poster: "https://m.media-amazon.com/images/M/MV5BNzQ4ZTMxM2UtYTY2MS00NjlmLTlmNmYtYWFmMjMyMzZmZjZkXkEyXkFqcGc@._V1_.jpg",
+    poster: "https://norayapim.xyz/_assets/media/522f67e2602ff41683885da245a46f0a.jpg",
     videoId: "1088965175",
     icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/clapper.svg"
   },
@@ -49,8 +49,104 @@ const servicesData = [
     id: 6,
     title: "Studio Rental",
     description: "We got into this business to tell compelling stories and connect ideas with people.",
-    poster: "https://image.hurimg.com/i/hurriyet/75/770x0/5d6e22b567b0a918780f4cca.jpg",
+    poster: "https://norayapim.xyz/_assets/media/52f994ed6afbf599aa372f271457dedd.jpg",
     videoId: "1088965150",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/lighting.svg"
+  },
+  {
+    id: 7,
+    title: "Film Production",
+    description: "Creating cinematic experiences that captivate and inspire audiences worldwide.",
+    poster: "https://norayapim.xyz/_assets/media/59edb701e24db057f9f0a9fc9fdf698f.jpg",
+    videoId: "1088965149",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/videography.svg"
+  },
+  {
+    id: 8,
+    title: "Advertising",
+    description: "Strategic advertising solutions that drive engagement and deliver results.",
+    poster: "https://norayapim.xyz/_assets/media/5f53320dd1302bca88145669f6ac31cb.jpg",
+    videoId: "1088965148",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/megaphone.svg"
+  },
+  {
+    id: 9,
+    title: "Brand Storytelling",
+    description: "Crafting compelling narratives that connect brands with their audiences.",
+    poster: "https://norayapim.xyz/_assets/media/6212466731fe62ced311fcffd0868cb9.jpg",
+    videoId: "1088965147",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/playlist.svg"
+  },
+  {
+    id: 10,
+    title: "Corporate Videos",
+    description: "Professional corporate video production for businesses of all sizes.",
+    poster: "https://norayapim.xyz/_assets/media/69bdeedd52bb3f1425f7c519ba8ec7e6.jpg",
+    videoId: "1088965146",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/movie-reel.svg"
+  },
+  {
+    id: 11,
+    title: "Event Coverage",
+    description: "Comprehensive event coverage and live streaming services.",
+    poster: "https://norayapim.xyz/_assets/media/72be2afe12ae076a5225f82a7ceb2a4a.jpg",
+    videoId: "1088965145",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/clapper.svg"
+  },
+  {
+    id: 12,
+    title: "Documentary",
+    description: "Documentary filmmaking that tells real stories with authenticity.",
+    poster: "https://norayapim.xyz/_assets/media/75c063c5717dabf1a90242341b5c5369.png",
+    videoId: "1088965144",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/lighting.svg"
+  },
+  {
+    id: 13,
+    title: "Music Videos",
+    description: "Creative music video production for artists and musicians.",
+    poster: "https://norayapim.xyz/_assets/media/77132f50e03162d994bc45bb89d2bf3b.jpg",
+    videoId: "1088965143",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/videography.svg"
+  },
+  {
+    id: 14,
+    title: "Product Videos",
+    description: "Showcasing products with stunning visual storytelling.",
+    poster: "https://norayapim.xyz/_assets/media/79c3e80ec848d799d25b291f0a89a985.jpg",
+    videoId: "1088965142",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/megaphone.svg"
+  },
+  {
+    id: 15,
+    title: "Social Media",
+    description: "Engaging social media content that drives audience interaction.",
+    poster: "https://norayapim.xyz/_assets/media/7ff22b339a52fc8fe3659fad99b91e45.jpg",
+    videoId: "1088965141",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/playlist.svg"
+  },
+  {
+    id: 16,
+    title: "Animation",
+    description: "Creative animation and motion graphics for dynamic storytelling.",
+    poster: "https://norayapim.xyz/_assets/media/80e6c06d519a9af9f8a872021ee35b4c.jpg",
+    videoId: "1088965140",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/movie-reel.svg"
+  },
+  {
+    id: 17,
+    title: "Post Production",
+    description: "Professional post-production services for polished final products.",
+    poster: "https://norayapim.xyz/_assets/media/82b20caf71ec3776afcadbe49981ddb4.jpg",
+    videoId: "1088965139",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/clapper.svg"
+  },
+  {
+    id: 18,
+    title: "Live Streaming",
+    description: "High-quality live streaming solutions for events and broadcasts.",
+    poster: "https://norayapim.xyz/_assets/media/9671304c91110994886639ff61eccae3.jpg",
+    videoId: "1088965138",
     icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/lighting.svg"
   }
 ];
@@ -460,8 +556,7 @@ const ServicesSectionNew = ({ noBg = false }: { noBg?: boolean }) => {
             viewport={{ once: true }}
             className="text-4xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 text-white leading-tight"
           >
-            Benzersiz{" "}
-            <span className="text-white">Projeler</span>
+            Birçok <span className="text-white">Proje</span>
           </motion.h2>
 
           {/* Açıklama Metni */}
@@ -472,8 +567,24 @@ const ServicesSectionNew = ({ noBg = false }: { noBg?: boolean }) => {
             viewport={{ once: true }}
             className="text-lg sm:text-lg text-white/80 leading-relaxed max-w-3xl lg:mx-auto"
           >
-            Her proje, yaratıcı vizyonumuzun ve teknik uzmanlığımızın bir yansımasıdır. Farklı sektörlerden markalarla çalışarak, her birinin benzersiz hikayesini görsel bir şölene dönüştürüyoruz.
+            Her proje, yaratıcı vizyon ve teknik uzmanlığın bir yansımasıdır. Hikâyeler, etkileyici görsel deneyimlerle buluşuyor.
           </motion.p>
+
+          {/* Alt Başlık ve Açıklama */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="mt-6"
+          >
+            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3">
+              2008'den Bugüne
+            </h3>
+            <p className="text-base sm:text-lg text-white/80 leading-relaxed max-w-3xl lg:mx-auto">
+              Senaryodan yayına kadar, ulusal ve uluslararası birçok projede yer alındı ve katkı sağlandı.
+            </p>
+          </motion.div>
 
 
         </div>

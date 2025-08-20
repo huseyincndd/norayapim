@@ -150,32 +150,62 @@ const HeroSection = () => {
           {/* Part 1: Solid Text */}
           <motion.h1 
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-bebas-neue mb-2 tracking-wider"
+            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-bebas-neue mb-2 tracking-wider"
           >
-            <span className="text-white">HİKAYENİ</span>
+            <span className="text-white">DİZİ</span>
           </motion.h1>
 
           {/* Part 2: Solid Text */}
           <motion.h1 
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-bebas-neue mb-2 tracking-wider"
+            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-bebas-neue mb-2 tracking-wider"
           >
-            <span className="text-white">GÖRSELLEŞTİR</span>
+            <span className="text-white">SİNEMA</span>
           </motion.h1>
 
           {/* Part 3: Outline Text */}
           <motion.h1 
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-bebas-neue tracking-wider"
+            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-bebas-neue tracking-wider"
           >
-            <span 
-              className="text-transparent"
-              style={{ 
-                WebkitTextStroke: '1px white'
-              }}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-auto h-[1em] overflow-visible align-[0.08em]"
+              aria-label="REKLAM"
+              textRendering="geometricPrecision"
+              shapeRendering="geometricPrecision"
             >
-              PRODÜKSİYON
-            </span>
+              {/* Bottom layer: thick white stroke only */}
+              <text
+                x="0"
+                y="0"
+                dominantBaseline="hanging"
+                fontFamily="'Bebas Neue', sans-serif"
+                fontWeight="800"
+                fontSize="1em"
+                letterSpacing="0.02em"
+                fill="transparent"
+                stroke="#ffffff"
+                strokeWidth="0.10em"
+                strokeLinejoin="round"
+                strokeLinecap="round"
+              >
+                REKLAM
+              </text>
+              {/* Top layer: solid fill to mask inner strokes so only outer border remains */}
+              <text
+                x="0"
+                y="0"
+                dominantBaseline="hanging"
+                fontFamily="'Bebas Neue', sans-serif"
+                fontWeight="800"
+                fontSize="1em"
+                letterSpacing="0.02em"
+                fill="#000000"
+              >
+                REKLAM
+              </text>
+            </svg>
           </motion.h1>
         </motion.div>
       </div>

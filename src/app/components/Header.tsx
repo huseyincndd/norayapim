@@ -23,13 +23,13 @@ const Header: React.FC = () => {
     },
     { 
       id: 'services',
-      label: 'Hizmetler', 
+      label: 'Neler Yapıyoruz', 
       href: '/services',
       imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop&q=80'
     },
     { 
       id: 'settenkareler',
-      label: 'Setten Kareler', 
+      label: 'Galeri & Portföy', 
       href: '/settenkareler',
       imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&q=80'
     },

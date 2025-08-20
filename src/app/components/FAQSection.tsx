@@ -5,28 +5,52 @@ import { motion } from 'framer-motion';
 const FAQSection = () => {
   const faqs = [
     {
-      question: "Hangi prodüksiyon hizmetlerini sunuyorsunuz?",
-      answer: "Film, dizi ve reklam prodüksiyonu alanında kapsamlı hizmetler sunuyoruz. Senaryo geliştirmeden çekim ve yapım süreçlerine, post-prodüksiyondan yayına kadar tüm aşamalarda aktif rol alıyoruz."
+      question: "Nora Yapım hangi alanlarda hizmet veriyor?",
+      answer: "Film, dizi, reklam ve belgesel yapımında kapsamlı çözümler sunuyoruz. Senaryo geliştirmeden çekim ve yapım süreçlerine, post-prodüksiyondan yayına kadar tüm aşamalarda aktif rol alıyoruz."
     },
     {
-      question: "Proje süreleri ne kadar sürüyor?",
-      answer: "Proje süreleri projenin kapsamına ve karmaşıklığına göre değişmektedir. Kısa reklam filmleri 1-2 hafta, dizi bölümleri 2-3 ay, sinema filmleri ise 6-12 ay sürebilmektedir."
+      question: "Projelerinizin süresi ne kadar sürüyor?",
+      answer: "Proje süresi türüne ve kapsamına göre değişir. Kısa reklam filmleri genellikle 1-2 hafta, dizi bölümleri 1-3 ay, sinema filmleri ise 3-12 ay arasında tamamlanır."
     },
     {
-      question: "Türkiye'nin hangi illerinde hizmet veriyorsunuz?",
-      answer: "Türkiye'nin 84 ilinde hizmet veriyoruz. Konseptin oluşumundan çekim sürecine, kurgu ve renk düzenlemesinden son teslimata kadar her aşamayı titizlikle planlıyoruz."
+      question: "Türkiye'nin hangi bölgelerinde çalışıyorsunuz?",
+      answer: "Türkiye'nin 84 ilinde projeleri planlıyor ve hayata geçiriyoruz. Konsept geliştirmeden son teslimata kadar tüm aşamalarda titizlikle çalışıyoruz."
     },
     {
-      question: "Uluslararası projeler yapıyor musunuz?",
-      answer: "Evet, ulusal ve uluslararası platformlarda başarılı işbirlikleri kuruyoruz. Film dağıtımı ve uluslararası yapımlara destek gibi sektörel faaliyetleri de sürdürüyoruz."
+      question: "Uluslararası projeler üretiyor musunuz?",
+      answer: "Evet, ulusal ve uluslararası platformlarda projeler geliştiriyor, film dağıtımı ve işbirlikleri ile global projelerde yer alıyoruz."
     },
     {
-      question: "Prodüksiyon süreciniz nasıl işliyor?",
-      answer: "Önce konsept geliştirme ve storyboard hazırlığı yapıyoruz. Ardından çekim planlaması, set yönetimi, görüntü ve ses prodüksiyonu ile ileri düzey post-prodüksiyon süreçlerini entegre şekilde yönetiyoruz."
+      question: "Dizi yapımında sunduğunuz hizmetler nelerdir?",
+      answer: "Televizyon ve dijital platform dizilerinde; çekim planlaması, set yönetimi, oyuncu koordinasyonu, görüntü ve ses prodüksiyonu ile post-prodüksiyon hizmetleri sağlıyoruz."
     },
     {
-      question: "Hangi markalarla çalıştınız?",
-      answer: "Mavi, Türk Telekom, Kiğılı, Balparmak, Sütaş, Dalin, Vodafone, Haribo, Turkcell, Halkbank, Albaraka, Media Markt, LC Waikiki, Burger King, Vestel, Opet, Migros, Bellona gibi önemli markalarla çalıştık."
+      question: "Sinema filmi yapımında hangi aşamalarda yer alıyorsunuz?",
+      answer: "Senaryo geliştirme, çekim, kurgu, görsel efekt ve renk düzenleme dahil tüm aşamalarda aktif rol alıyoruz. Her projede yüksek kalite ve sanatsal mükemmeliyeti ön planda tutuyoruz."
+    },
+    {
+      question: "Markalar için özel içerik üretiyor musunuz?",
+      answer: "Evet, markalara özgün reklam filmleri, tanıtım videoları ve dijital içerikler üretiyoruz. Konseptten teslimata kadar tüm süreçte aktif destek sağlıyoruz."
+    },
+    {
+      question: "Projelerinizde kalite ve standartlar nasıl korunuyor?",
+      answer: "Her aşamada sanatsal mükemmeliyet ve yüksek kalite standartlarını uygular, deneyimli ekibimizle projelerin kusursuz ilerlemesini sağlarız."
+    },
+    {
+      question: "Post-prodüksiyon hizmetleriniz neleri kapsıyor?",
+      answer: "Kurgu, renk düzenlemesi, görsel efekt (VFX), ses miksajı ve final mastering dahil olmak üzere tüm post-prodüksiyon süreçlerini yönetiyoruz."
+    },
+    {
+      question: "Konsept geliştirme süreciniz nasıl ilerliyor?",
+      answer: "Hedef kitle, marka kimliği ve yaratıcı vizyon doğrultusunda fikir geliştirme, storyboard ve senaryo tasarımı aşamalarını titizlikle yürütüyoruz."
+    },
+    {
+      question: "Çekim mekanları konusunda destek veriyor musunuz?",
+      answer: "Evet, Türkiye'nin 84 ilinde ve uluslararası lokasyonlarda çekim mekanları seçimi ve planlaması konusunda danışmanlık ve organizasyon sağlıyoruz."
+    },
+    {
+      question: "Nora Yapım'ı diğer yapım şirketlerinden farklı kılan nedir?",
+      answer: "16+ yıllık deneyim, yaratıcı vizyon, ulusal ve uluslararası projelerdeki başarımız ve yüksek kalite standartlarımızla her projeyi izleyiciye unutulmaz bir deneyim olarak sunuyoruz."
     }
   ];
 
@@ -45,9 +69,9 @@ const FAQSection = () => {
         >
            {/* Main title */}
            <h2 className="text-4xl lg:text-5xl font-bold">
-             <span className="text-white">En çok sorulan </span>
-             <span className="text-white">soruların</span>
-             <span className="text-white"> cevapları</span>
+             <span className="text-white">Sıkça Sorulan Sorular</span>
+             <span className="text-white"> – </span>
+             <span className="text-white">Nora Yapım</span>
            </h2>
         </motion.div>
 
@@ -55,7 +79,7 @@ const FAQSection = () => {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Left Column */}
           <div className="space-y-12">
-            {faqs.slice(0, 3).map((faq, index) => (
+            {faqs.slice(0, 6).map((faq, index) => (
               <motion.div 
                 key={index}
                 className="flex gap-4"
@@ -84,13 +108,13 @@ const FAQSection = () => {
 
           {/* Right Column */}
           <div className="space-y-12">
-            {faqs.slice(3, 6).map((faq, index) => (
+            {faqs.slice(6, 12).map((faq, index) => (
               <motion.div 
-                key={index + 3}
+                key={index + 6}
                 className="flex gap-4"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: (index + 3) * 0.1 }}
+                transition={{ duration: 0.6, delay: (index + 6) * 0.1 }}
                 viewport={{ once: true }}
               >
                 {/* Question Mark Icon */}

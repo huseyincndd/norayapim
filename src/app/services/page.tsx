@@ -8,6 +8,7 @@ import CreativeFlowSection from '../components/CreativeFlowSection';
 import ServicesSection from '../components/ServicesSection';
 import ServicesSectionNew from '../components/ServicesSectionNew';
 import ServicesGridSection from '../components/ServicesGridSection';
+import CustomerServicesSection from '../components/CustomerServicesSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import FeaturesSection from '../components/FeaturesSection';
 import StatsSection from '../components/StatsSection';
@@ -85,14 +86,14 @@ const ServicesPage = () => {
                 className="text-center mb-12 lg:mb-16 pt-8 lg:pt-16"
               >
                 <h1 className="text-4xl lg:text-7xl font-bold text-white tracking-wider mb-4">
-                  <span className="text-white">Hizmetlerimiz</span>
+                  <span className="text-white">Neler Yapıyoruz</span>
                 </h1>
                 
                 {/* Breadcrumb Navigation */}
                 <div className="text-sm lg:text-lg text-white/80">
                   <span className="text-white">Ana Sayfa</span>
                   <span className="text-white mx-2">*</span>
-                  <span className="text-white">Hizmetler</span>
+                  <span className="text-white">Neler Yapıyoruz</span>
                 </div>
               </motion.div>
               
@@ -102,7 +103,7 @@ const ServicesPage = () => {
         </section>
 
         {/* Slogan Slider - Using CreativeFlowSection */}
-        <div className="pb-2 lg:pb-3">
+        <div className="pb-2 lg:pb-3 bg-black">
           <CreativeFlowSection 
             duration={40} 
             className="py-0" 
@@ -112,13 +113,13 @@ const ServicesPage = () => {
         {/* Services Grid Section */}
         <ServicesGridSection />
 
+        {/* Customer Services Section */}
+        <CustomerServicesSection />
+
         {/* Services Section New */}
         <ServicesSectionNew />
 
         
-
-        {/* Testimonials Section */}
-        <TestimonialsSection />
 
       </div>
       
