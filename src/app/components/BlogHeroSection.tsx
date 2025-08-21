@@ -47,10 +47,10 @@ const BlogHeroSection = () => {
               className="flex flex-col items-end space-y-6"
             >
               <div className="flex items-center gap-4">
-                <button className="bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-white/90 transition-all duration-300 group font-montserrat tracking-wide">
+                <button className="bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 group font-montserrat tracking-wide">
                   EN SON YAZILAR
                 </button>
-                <button className="w-14 h-14 bg-white rounded-full flex items-center justify-center hover:bg-white/90 transition-all duration-300 group">
+                <button className="w-14 h-14 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-all duration-300 group">
                   <svg className="w-6 h-6 text-black group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>

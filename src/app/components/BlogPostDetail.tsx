@@ -11,263 +11,70 @@ const blogPosts = [
     title: "2024'te Video Prodüksiyon Trendleri",
     excerpt: "Bu yılın en popüler video prodüksiyon teknikleri ve yaratıcı yaklaşımları hakkında detaylı bir rehber.",
     content: `
-      <!-- Introduction Section -->
-      <div class="mb-16 p-8 bg-gradient-to-r from-premium-red/10 to-transparent rounded-2xl border border-premium-red/20">
-        <div class="flex items-start gap-4">
-          <div class="w-12 h-12 bg-premium-red/20 rounded-xl flex items-center justify-center flex-shrink-0">
-            <svg class="w-6 h-6 text-premium-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-2xl font-bold text-white mb-3">2024 Video Prodüksiyon Trendleri</h3>
-            <p class="text-lg leading-relaxed text-white/80">
-              Video prodüksiyon dünyası sürekli evrim geçiriyor. 2024 yılında teknolojik gelişmeler ve yaratıcı yaklaşımlar, sektörü yeniden şekillendiriyor. Bu yazıda, bu yılın en önemli trendlerini ve bunların prodüksiyon süreçlerinizi nasıl etkileyebileceğini detaylı olarak inceleyeceğiz.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- AI Section -->
-      <div class="mb-20">
-        <div class="flex items-center gap-4 mb-8">
-          <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-            </svg>
-          </div>
-          <h2 class="text-4xl font-bold text-white font-montserrat tracking-wide">1. Yapay Zeka Destekli Post Prodüksiyon</h2>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-          <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
-            <h4 class="text-xl font-bold text-white mb-4 font-montserrat">AI Özellikleri</h4>
-            <ul class="space-y-3">
-              <li class="flex items-center gap-3 text-white/80">
-                <div class="w-2 h-2 bg-premium-red rounded-full"></div>
-                Otomatik renk düzenleme
-              </li>
-              <li class="flex items-center gap-3 text-white/80">
-                <div class="w-2 h-2 bg-premium-red rounded-full"></div>
-                Akıllı kesme önerileri
-              </li>
-              <li class="flex items-center gap-3 text-white/80">
-                <div class="w-2 h-2 bg-premium-red rounded-full"></div>
-                AI destekli ses düzenleme
-              </li>
-            </ul>
-          </div>
-          
-          <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
-            <h4 class="text-xl font-bold text-white mb-4 font-montserrat">Popüler Yazılımlar</h4>
-            <ul class="space-y-3">
-              <li class="flex items-center gap-3 text-white/80">
-                <div class="w-2 h-2 bg-premium-red rounded-full"></div>
-                Adobe Premiere Pro
-              </li>
-              <li class="flex items-center gap-3 text-white/80">
-                <div class="w-2 h-2 bg-premium-red rounded-full"></div>
-                DaVinci Resolve
-              </li>
-              <li class="flex items-center gap-3 text-white/80">
-                <div class="w-2 h-2 bg-premium-red rounded-full"></div>
-                Final Cut Pro
-              </li>
-            </ul>
-          </div>
-        </div>
-        
-        <p class="text-lg leading-relaxed text-white/80">
-          Yapay zeka, video düzenleme süreçlerinde devrim yaratıyor. Otomatik renk düzenleme, akıllı kesme önerileri ve hatta AI destekli ses düzenleme araçları, prodüksiyon süreçlerini hızlandırıyor ve maliyetleri düşürüyor.
+      <div class="text-white/90 leading-relaxed space-y-6">
+        <p>
+          2024 yılı, video prodüksiyon sektöründe teknolojik gelişmelerin ve yaratıcı yaklaşımların hızla evrim geçirdiği bir dönem olarak karşımıza çıkıyor. Bu yazıda, bu yılın en önemli trendlerini ve bunların prodüksiyon süreçlerinizi nasıl etkileyebileceğini detaylı olarak inceleyeceğiz.
         </p>
-      </div>
 
-      <!-- 8K Section -->
-      <div class="mb-20">
-        <div class="flex items-center gap-4 mb-8">
-          <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl flex items-center justify-center">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <h2 class="text-4xl font-bold text-white font-montserrat tracking-wide">2. 8K ve Yüksek Çözünürlük</h2>
-        </div>
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">Yapay Zeka Destekli Post Prodüksiyon</h2>
         
-        <div class="bg-gradient-to-r from-green-500/10 to-blue-500/10 p-8 rounded-2xl border border-green-500/20 mb-8">
-          <div class="text-center mb-6">
-            <div class="text-6xl font-bold text-green-400 mb-2">8K</div>
-            <p class="text-white/80 text-lg">Ultra Yüksek Çözünürlük</p>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="text-center p-4 bg-white/5 rounded-xl">
-              <div class="text-2xl font-bold text-white mb-1">7680</div>
-              <div class="text-white/60 text-sm">Genişlik (px)</div>
-            </div>
-            <div class="text-center p-4 bg-white/5 rounded-xl">
-              <div class="text-2xl font-bold text-white mb-1">4320</div>
-              <div class="text-white/60 text-sm">Yükseklik (px)</div>
-            </div>
-            <div class="text-center p-4 bg-white/5 rounded-xl">
-              <div class="text-2xl font-bold text-white mb-1">33.2M</div>
-              <div class="text-white/60 text-sm">Toplam Piksel</div>
-            </div>
-            <div class="text-center p-4 bg-white/5 rounded-xl">
-              <div class="text-2xl font-bold text-white mb-1">16:9</div>
-              <div class="text-white/60 text-sm">Aspect Ratio</div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-yellow-500/10 p-6 rounded-2xl border border-yellow-500/20">
-                      <h4 class="text-xl font-bold text-white mb-4 flex items-center gap-2 font-montserrat">
-            <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
-            </svg>
-            Dikkat Edilmesi Gerekenler
-          </h4>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="flex items-center gap-3 text-white/80">
-              <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
-              Depolama alanı gereksinimleri
-            </div>
-            <div class="flex items-center gap-3 text-white/80">
-              <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
-              İşleme gücü ihtiyaçları
-            </div>
-            <div class="flex items-center gap-3 text-white/80">
-              <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
-              Lens kalitesi
-            </div>
-            <div class="flex items-center gap-3 text-white/80">
-              <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
-              Işıklandırma gereksinimleri
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Drone Section -->
-      <div class="mb-20">
-        <div class="flex items-center gap-4 mb-8">
-          <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2" />
-            </svg>
-          </div>
-          <h2 class="text-4xl font-bold text-white font-montserrat tracking-wide">3. Drone Teknolojisi ve Havadan Çekimler</h2>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          <div class="p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl border border-purple-500/20 text-center">
-            <div class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-            </div>
-            <h4 class="text-xl font-bold text-white mb-2 font-montserrat">Hava Durumu</h4>
-            <p class="text-white/80">Çekim öncesi hava durumunu kontrol edin</p>
-          </div>
-          
-          <div class="p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl border border-purple-500/20 text-center">
-            <div class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h4 class="text-xl font-bold text-white mb-2 font-montserrat">Yasal İzinler</h4>
-            <p class="text-white/80">Gerekli izinleri almayı unutmayın</p>
-          </div>
-          
-          <div class="p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl border border-purple-500/20 text-center">
-            <div class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
-            </div>
-            <h4 class="text-xl font-bold text-white mb-2 font-montserrat">Güvenlik</h4>
-            <p class="text-white/80">Güvenlik önlemlerini göz ardı etmeyin</p>
-          </div>
-        </div>
-        
-        <p class="text-lg leading-relaxed text-white/80">
-          Drone teknolojisi, video prodüksiyon sektöründe büyük bir dönüşüm yaratıyor. Artık daha küçük, daha akıllı ve daha güvenli drone'lar mevcut.
+        <p>
+          Yapay zeka, video düzenleme süreçlerinde devrim yaratıyor. Otomatik renk düzenleme, akıllı kesme önerileri ve AI destekli ses düzenleme araçları, prodüksiyon süreçlerini hızlandırıyor ve maliyetleri düşürüyor. Adobe Premiere Pro, DaVinci Resolve ve Final Cut Pro gibi popüler yazılımlar artık AI özelliklerini entegre ediyor.
         </p>
-      </div>
 
-      <!-- Social Media Section -->
-      <div class="mb-20">
-        <div class="flex items-center gap-4 mb-8">
-          <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-red-600 rounded-2xl flex items-center justify-center">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2" />
-            </svg>
-          </div>
-          <h2 class="text-4xl font-bold text-white font-montserrat tracking-wide">4. Sosyal Medya Optimizasyonu</h2>
-        </div>
+        <p>
+          AI destekli araçlar sayesinde, saatler süren manuel işlemler artık dakikalar içinde tamamlanabiliyor. Özellikle renk düzenleme ve ses temizleme konularında yapay zeka, profesyonel sonuçlar elde etmeyi kolaylaştırıyor.
+        </p>
+
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">8K ve Yüksek Çözünürlük</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-6 bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-2xl border border-pink-500/20">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center">
-                <span class="text-white font-bold text-lg">IG</span>
-              </div>
-              <h3 class="text-xl font-bold text-white font-montserrat">Instagram Reels</h3>
-            </div>
-            <ul class="space-y-2 text-white/80">
-              <li>• Dikey format (9:16)</li>
-              <li>• 15-60 saniye</li>
-              <li>• Hızlı kesmeler</li>
-              <li>• Müzik kullanımı</li>
-            </ul>
-          </div>
-          
-          <div class="p-6 bg-gradient-to-br from-red-500/10 to-pink-500/10 rounded-2xl border border-red-500/20">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex items-center justify-center">
-                <span class="text-white font-bold text-lg">YT</span>
-              </div>
-              <h3 class="text-xl font-bold text-white font-montserrat">YouTube Shorts</h3>
-            </div>
-            <ul class="space-y-2 text-white/80">
-              <li>• Dikey format (9:16)</li>
-              <li>• 60 saniyeye kadar</li>
-              <li>• Güçlü açılış</li>
-              <li>• Etkileşim odaklı</li>
-            </ul>
-          </div>
-          
-          <div class="p-6 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-2xl border border-blue-500/20">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center">
-                <span class="text-white font-bold text-lg">TT</span>
-              </div>
-              <h3 class="text-xl font-bold text-white font-montserrat">TikTok</h3>
-            </div>
-            <ul class="space-y-2 text-white/80">
-              <li>• Dikey format</li>
-              <li>• Trend müzikler</li>
-              <li>• Hızlı geçişler</li>
-              <li>• Viral potansiyeli</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+        <p>
+          8K çözünürlük, video prodüksiyon dünyasında yeni standartlar belirliyor. 7680x4320 piksel çözünürlüğü ile 33.2 milyon piksel içeren bu format, ultra yüksek kalitede içerik üretme imkanı sunuyor.
+        </p>
 
-      <!-- Conclusion Section -->
-      <div class="mb-16 p-8 bg-gradient-to-r from-premium-red/10 to-transparent rounded-2xl border border-premium-red/20">
-        <div class="text-center">
-          <h2 class="text-3xl font-bold text-white mb-6 font-montserrat tracking-wide">Sonuç</h2>
-          <p class="text-lg leading-relaxed text-white/80 mb-6">
-            2024'te video prodüksiyon sektörü, teknoloji ve yaratıcılığın mükemmel birleşimini sunuyor. Bu trendleri takip ederek, daha etkili ve modern içerikler üretebilirsiniz.
-          </p>
-          <div class="inline-flex items-center gap-2 bg-premium-red text-white px-6 py-3 rounded-xl font-semibold">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-            Projeleriniz için bizimle iletişime geçin
-          </div>
-        </div>
+        <p>
+          Ancak 8K çekim yaparken dikkat edilmesi gereken önemli noktalar var. Depolama alanı gereksinimleri, işleme gücü ihtiyaçları, lens kalitesi ve ışıklandırma gereksinimleri bu formatın başarılı kullanımı için kritik öneme sahip.
+        </p>
+
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">Drone Teknolojisi ve Havadan Çekimler</h2>
+        
+        <p>
+          Drone teknolojisi, video prodüksiyon sektöründe büyük bir dönüşüm yaratıyor. Artık daha küçük, daha akıllı ve daha güvenli drone'lar mevcut. Bu teknoloji, önceden erişilemeyen açılardan çekim yapma imkanı sunuyor.
+        </p>
+
+        <p>
+          Drone çekimlerinde başarılı sonuçlar elde etmek için hava durumunu kontrol etmek, gerekli yasal izinleri almak ve güvenlik önlemlerini göz ardı etmemek gerekiyor. Ayrıca çekim öncesi planlama ve teknik ekipman seçimi de büyük önem taşıyor.
+        </p>
+
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">Sosyal Medya Optimizasyonu</h2>
+        
+        <p>
+          Sosyal medya platformları için optimize edilmiş video içerik üretimi, günümüzde büyük önem taşıyor. Her platformun kendine özgü gereksinimleri ve kullanıcı davranışları bulunuyor.
+        </p>
+
+        <p>
+          Instagram Reels için dikey format (9:16), 15-60 saniye süre, hızlı kesmeler ve müzik kullanımı önemli. YouTube Shorts için de benzer gereksinimler geçerli ancak 60 saniyeye kadar uzunluk kabul ediliyor. TikTok için ise trend müzikler, hızlı geçişler ve viral potansiyeli taşıyan içerikler öne çıkıyor.
+        </p>
+
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">Virtual Production</h2>
+        
+        <p>
+          Virtual Production, gerçek zamanlı render teknolojileri kullanarak fiziksel setlerin yerini alan yenilikçi bir yaklaşım. Bu teknoloji, prodüksiyon süreçlerini hızlandırıyor ve maliyetleri düşürüyor.
+        </p>
+
+        <p>
+          Virtual Production'ın en büyük avantajları arasında maliyet tasarrufu, zaman tasarrufu, yaratıcı özgürlük ve güvenlik yer alıyor. Seyahat maliyetleri, set kurulumu ve lokasyon izinleri ortadan kalkıyor. Gerçek zamanlı görüntüleme ile hızlı karar verme imkanı sunuyor.
+        </p>
+
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">Sonuç</h2>
+        
+        <p>
+          2024'te video prodüksiyon sektörü, teknoloji ve yaratıcılığın mükemmel birleşimini sunuyor. Yapay zeka, yüksek çözünürlük, drone teknolojisi ve virtual production gibi trendler, içerik üreticilerine yeni imkanlar sunuyor. Bu trendleri takip ederek, daha etkili ve modern içerikler üretebilir, sektörde öne çıkabilirsiniz.
+        </p>
+
+        <p>
+          Bu trendleri projelerinize uygulamak için profesyonel ekibimizle çalışabilirsiniz. Deneyimli ekibimiz, en güncel teknolojileri kullanarak projelerinizi hayata geçirmenize yardımcı oluyor.
+        </p>
       </div>
     `,
     category: "Trendler",
@@ -282,71 +89,85 @@ const blogPosts = [
     title: "Drone Çekim Teknikleri: Profesyonel İpuçları",
     excerpt: "Drone ile etkileyici çekimler yapmanın sırları ve güvenlik önlemleri hakkında kapsamlı bir kılavuz.",
     content: `
-      <p>Drone çekimleri, video prodüksiyon dünyasında yeni perspektifler açıyor. Bu yazıda, profesyonel drone çekim tekniklerini ve güvenlik önlemlerini detaylı olarak inceleyeceğiz.</p>
+      <div class="text-white/90 leading-relaxed space-y-6">
+        <p>
+          Drone çekimleri, video prodüksiyon dünyasında yeni perspektifler açıyor. Bu yazıda, profesyonel drone çekim tekniklerini ve güvenlik önlemlerini detaylı olarak inceleyeceğiz.
+        </p>
 
-      <h2>Drone Seçimi ve Ekipman</h2>
-      <p>Doğru drone seçimi, başarılı bir çekim için kritik öneme sahip. İşte dikkat etmeniz gereken faktörler:</p>
-      
-      <ul>
-        <li><strong>Kamera Kalitesi:</strong> En az 4K çözünürlük</li>
-        <li><strong>Uçuş Süresi:</strong> Minimum 20-25 dakika</li>
-        <li><strong>Menzil:</strong> En az 2-3 km</li>
-        <li><strong>Stabilizasyon:</strong> 3 eksenli gimbal</li>
-      </ul>
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">Drone Seçimi ve Ekipman</h2>
+        
+        <p>
+          Doğru drone seçimi, başarılı bir çekim için kritik öneme sahip. En az 4K çözünürlük, minimum 20-25 dakika uçuş süresi, en az 2-3 km menzil ve 3 eksenli gimbal gibi teknik özellikler dikkat edilmesi gereken faktörler arasında yer alıyor.
+        </p>
 
-      <h2>Temel Çekim Teknikleri</h2>
-      
-      <h3>1. Reveal Shot (Açılma Çekimi)</h3>
-      <p>Bu teknik, izleyiciyi yavaş yavaş sahneye tanıtır. Drone'u yüksek bir noktadan başlatıp, yavaşça aşağıya doğru hareket ettirerek sahneyi açarsınız.</p>
-      
-      <h3>2. Orbit Shot (Yörünge Çekimi)</h3>
-      <p>Bir nesne veya kişi etrafında dairesel hareket yaparak dinamik bir çekim elde edersiniz. Bu teknik özellikle mimari çekimlerde etkili.</p>
-      
-      <h3>3. Follow Shot (Takip Çekimi)</h3>
-      <p>Hareket halindeki bir nesneyi veya kişiyi takip ederek dinamik bir çekim oluşturursunuz. Bu teknik aksiyon sahnelerinde çok etkili.</p>
+        <p>
+          Güvenlik özellikleri de drone seçiminde önemli rol oynuyor. Obstacle avoidance sistemi, return to home özelliği, GPS stabilizasyonu ve düşük pil uyarısı gibi özellikler güvenli uçuş için gerekli.
+        </p>
 
-      <h2>Güvenlik Önlemleri</h2>
-      <p>Drone çekimlerinde güvenlik her zaman öncelik olmalıdır:</p>
-      
-      <ul>
-        <li>Hava durumunu kontrol edin</li>
-        <li>Yasal izinleri alın</li>
-        <li>Güvenli uçuş alanları seçin</li>
-        <li>İnsan yoğunluğundan kaçının</li>
-        <li>Pil durumunu sürekli kontrol edin</li>
-      </ul>
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">Temel Çekim Teknikleri</h2>
+        
+        <p>
+          Reveal Shot (Açılma Çekimi) tekniği, izleyiciyi yavaş yavaş sahneye tanıtır. Drone'u yüksek bir noktadan başlatıp, yavaşça aşağıya doğru hareket ettirerek sahneyi açarsınız. Bu teknik özellikle manzara çekimlerinde çok etkilidir.
+        </p>
 
-      <h2>Işıklandırma ve Zamanlama</h2>
-      <p>Drone çekimlerinde doğal ışık çok önemlidir. Altın saat (golden hour) ve mavi saat (blue hour) çekimleri için en ideal zamanlardır.</p>
-      
-      <p>Gün içinde çekim yaparken dikkat edilmesi gerekenler:</p>
-      <ul>
-        <li>Güneşin konumunu hesaplayın</li>
-        <li>Gölge yönlerini planlayın</li>
-        <li>ND filtreleri kullanın</li>
-        <li>ISO ayarlarını optimize edin</li>
-      </ul>
+        <p>
+          Orbit Shot (Yörünge Çekimi) tekniği, bir nesne veya kişi etrafında dairesel hareket yaparak dinamik bir çekim elde edersiniz. Bu teknik özellikle mimari çekimlerde ve portre çekimlerinde etkili.
+        </p>
 
-      <h2>Post Prodüksiyon</h2>
-      <p>Drone çekimlerinin post prodüksiyon süreci de özel dikkat gerektirir:</p>
-      
-      <h3>Renk Düzenleme</h3>
-      <p>Drone kameraları genellikle flat profile kaydeder. Bu, post prodüksiyon sırasında daha fazla esneklik sağlar.</p>
-      
-      <h3>Stabilizasyon</3>
-      <p>Gimbal olsa bile, ek stabilizasyon gerekebilir. Adobe Premiere Pro veya DaVinci Resolve'da Warp Stabilizer kullanabilirsiniz.</p>
+        <p>
+          Follow Shot (Takip Çekimi) tekniği, hareket halindeki bir nesneyi veya kişiyi takip ederek dinamik bir çekim oluşturursunuz. Bu teknik aksiyon sahnelerinde ve spor çekimlerinde çok etkili.
+        </p>
 
-      <h2>Yasal Gereklilikler</h2>
-      <p>Türkiye'de drone kullanımı için gerekli izinler:</p>
-      <ul>
-        <li>SHGM'den drone kaydı</li>
-        <li>Uçuş izni (gerekli durumlarda)</li>
-        <li>Sigorta poliçesi</li>
-        <li>Pilot lisansı (ticari kullanım için)</li>
-      </ul>
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">Güvenlik Önlemleri</h2>
+        
+        <p>
+          Drone çekimlerinde güvenlik her zaman öncelik olmalıdır. Hava durumunu kontrol edin ve uygun koşulları bekleyin. Yasal izinleri alın ve güvenlik kurallarına uyun. Güvenli uçuş alanları seçin ve insan yoğunluğundan kaçının.
+        </p>
 
-      <h2>Sonuç</h2>
-      <p>Drone çekimleri, video prodüksiyon dünyasında yeni ufuklar açıyor. Doğru teknikler ve güvenlik önlemleriyle, etkileyici içerikler üretebilirsiniz.</p>
+        <p>
+          Pil durumunu sürekli kontrol edin ve yedek pil bulundurun. Drone'u görüş alanınızda tutun ve uzak mesafelerde dikkatli olun. Bu önlemler, güvenli ve başarılı bir çekim için kritik öneme sahip.
+        </p>
+
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">Işıklandırma ve Zamanlama</h2>
+        
+        <p>
+          Drone çekimlerinde doğal ışık çok önemlidir. Altın saat (golden hour) ve mavi saat (blue hour) çekimleri için en ideal zamanlardır. Gün içi çekimlerde güneşin konumunu hesaplayın, gölge yönlerini planlayın, ND filtreleri kullanın ve ISO ayarlarını optimize edin.
+        </p>
+
+        <p>
+          Özel zamanlar için gün doğumu ve gün batımı, mavi saat, bulutlu havalar ve mevsimsel değişiklikler ideal çekim koşulları sunuyor. Bu zamanlarda elde edilen görüntüler daha etkileyici ve profesyonel görünüyor.
+        </p>
+
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">Post Prodüksiyon</h2>
+        
+        <p>
+          Drone çekimlerinin post prodüksiyon süreci de özel dikkat gerektirir. Drone kameraları genellikle flat profile kaydeder. Bu, post prodüksiyon sırasında daha fazla esneklik sağlar. Color grading sırasında doğal renkleri korumaya özen gösterin.
+        </p>
+
+        <p>
+          Gimbal olsa bile, ek stabilizasyon gerekebilir. Adobe Premiere Pro veya DaVinci Resolve'da Warp Stabilizer kullanabilirsiniz. Ancak aşırı stabilizasyon görüntü kalitesini düşürebilir, bu yüzden dengeli bir yaklaşım benimseyin.
+        </p>
+
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">Yasal Gereklilikler</h2>
+        
+        <p>
+          Türkiye'de drone kullanımı için gerekli izinler arasında SHGM'den drone kaydı yaptırmak, gerekli durumlarda uçuş izni almak, sigorta poliçesi yaptırmak ve ticari kullanım için pilot lisansı almak yer alıyor.
+        </p>
+
+        <p>
+          Bu yasal gereklilikleri yerine getirmek, hem güvenli hem de yasal bir drone kullanımı için şart. Aksi takdirde ciddi yasal sorunlarla karşılaşabilirsiniz.
+        </p>
+
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">Sonuç</h2>
+        
+        <p>
+          Drone çekimleri, video prodüksiyon dünyasında yeni ufuklar açıyor. Doğru teknikler, güvenlik önlemleri ve yasal gereklilikleri yerine getirerek, etkileyici içerikler üretebilirsiniz. Bu teknolojiyi kullanarak, önceden erişilemeyen açılardan çekim yapma imkanı elde edebilirsiniz.
+        </p>
+
+        <p>
+          Drone çekim projeleriniz için deneyimli ekibimizle çalışabilirsiniz. Profesyonel ekibimiz, güvenli ve etkileyici drone çekimleri gerçekleştirmenize yardımcı oluyor.
+        </p>
+      </div>
     `,
     category: "Teknik",
     author: "Ahmet Yılmaz",
@@ -366,7 +187,7 @@ const BlogPostDetail = ({ postId }: { postId: string }) => {
         <div className="container mx-auto px-6 py-20 text-center">
                       <h1 className="text-4xl font-bold text-white mb-4 font-montserrat tracking-wide">Yazı Bulunamadı</h1>
           <p className="text-white/60 mb-8">Aradığınız blog yazısı mevcut değil.</p>
-          <Link href="/blog" className="bg-premium-red text-white px-6 py-3 rounded-xl hover:bg-premium-red/90 transition-colors">
+          <Link href="/blog" className="bg-white text-black px-6 py-3 rounded-xl hover:bg-gray-100 transition-colors">
             Blog'a Dön
           </Link>
         </div>
@@ -485,8 +306,8 @@ const BlogPostDetail = ({ postId }: { postId: string }) => {
             {/* Author Bio */}
             <div className="mt-20 p-10 bg-white/5 rounded-3xl border border-white/10">
               <div className="flex items-start gap-8">
-                <div className="w-20 h-20 bg-premium-red/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-premium-red font-bold text-2xl">
+                <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-2xl">
                     {post.author.split(' ').map(n => n[0]).join('')}
                   </span>
                 </div>
@@ -506,7 +327,7 @@ const BlogPostDetail = ({ postId }: { postId: string }) => {
             <div className="mt-20 text-center">
               <Link 
                 href="/blog" 
-                className="inline-flex items-center gap-4 bg-premium-red text-white px-10 py-5 rounded-2xl font-semibold text-lg hover:bg-premium-red/90 transition-all duration-300 group"
+                className="inline-flex items-center gap-4 bg-white text-black px-10 py-5 rounded-2xl font-semibold text-lg hover:bg-gray-100 transition-all duration-300 group"
               >
                 <svg className="w-6 h-6 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

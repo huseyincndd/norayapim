@@ -118,7 +118,7 @@ const BlogContentSection = () => {
                 placeholder="Blog yazılarında ara..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-premium-red/50 transition-colors"
+                className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
               />
               <svg className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -134,7 +134,7 @@ const BlogContentSection = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                   selectedCategory === category
-                    ? 'bg-premium-red text-white'
+                    ? 'bg-white text-black'
                     : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white'
                 }`}
               >
@@ -176,11 +176,11 @@ const BlogContentSection = () => {
                    {/* Category and Title */}
                    <div className="mb-6">
                      <div className="flex items-center justify-between mb-4">
-                       <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight group-hover:text-premium-red transition-colors">
+                       <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight group-hover:text-white/80 transition-colors">
                          {filteredPosts[0].title}
                        </h2>
                        <div className="flex flex-col items-end gap-2 ml-4">
-                         <span className="bg-yellow-400 text-black px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap">
+                         <span className="bg-white text-black px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap">
                            {filteredPosts[0].category}
                          </span>
                          <span className="text-white/60 text-sm">Öne Çıkan</span>
@@ -240,10 +240,10 @@ const BlogContentSection = () => {
                       {/* Category and Title */}
                       <div className="mb-6">
                         <div className="flex items-center justify-between mb-4">
-                          <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight group-hover:text-premium-red transition-colors">
+                          <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight group-hover:text-white/80 transition-colors">
                             {post.title}
                           </h2>
-                          <span className="bg-yellow-400 text-black px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap ml-4">
+                          <span className="bg-white text-black px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap ml-4">
                             {post.category}
                           </span>
                         </div>
@@ -276,7 +276,7 @@ const BlogContentSection = () => {
             viewport={{ once: true }}
             className="text-center mt-16"
           >
-            <button className="bg-premium-red text-white px-8 py-4 rounded-xl font-semibold hover:bg-premium-red/90 transition-all duration-300">
+            <button className="bg-white text-black px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300">
               Daha Fazla Yazı Yükle
             </button>
           </motion.div>

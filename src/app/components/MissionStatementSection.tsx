@@ -11,7 +11,7 @@ const MissionStatementSection = () => {
   };
 
   return (
-    <section id="mission-statement-section" className="relative h-[70vh] md:h-[60vh] lg:h-[90vh] bg-black py-4 md:py-12 lg:py-20 overflow-hidden">
+    <section id="mission-statement-section" className="relative bg-black py-4 md:py-12 lg:py-20">
       {/* Sophisticated Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center"
@@ -24,7 +24,7 @@ const MissionStatementSection = () => {
       <div className="absolute inset-0 z-0 bg-black/90" />
 
       {/* Main Content Container */}
-      <div className="relative z-10 container mx-auto px-4 md:px-8 pt-0 md:pt-8 -mt-2 md:-mt-0 md:ml-48 lg:ml-64 h-full flex flex-col justify-center">
+      <div className="relative z-10 container mx-auto px-4 md:px-8 pt-0 md:pt-8 -mt-2 md:-mt-0 md:ml-48 lg:ml-64 flex flex-col justify-center">
         
         {/* Heading Section - Compact Layout */}
         <motion.div
@@ -43,31 +43,7 @@ const MissionStatementSection = () => {
           <p className="text-base md:text-base lg:text-lg font-normal text-white/95 leading-relaxed font-lato mb-3 md:mb-6 lg:mb-8 drop-shadow">
             Nora Yapım, sanat ve yaratıcı vizyonu rehber edinerek, dizi, sinema ve reklam projelerinde öncü bir konumda yer alıyor. 16 yılı aşkın deneyimiyle her projeye özgün yaklaşım getiriyor, modern teknoloji ve yenilikçi çözümlerle hikâyeleri unutulmaz görsel deneyimlere dönüştürüyor. Senaryo geliştirmeden çekim ve post-prodüksiyona kadar tüm süreçlerde kalite ve sanatsal mükemmeliyetten ödün vermeden çalışıyor; izleyiciye etkileyici ve kalıcı işler sunmayı misyon ediniyor.
           </p>
-          <p className="text-base md:text-base lg:text-lg font-normal leading-relaxed text-white mb-3 md:mb-6 lg:mb-8 font-lato drop-shadow">
-            “Sanatı ilhamla, teknolojiyi ustalıkla harmanlıyoruz.”
-          </p>
         </motion.div>
-
-        {/* Details Section - Closer to Heading */}
-        <div className="mt-2 lg:mt-4 md:mt-6 lg:mt-8 xl:mt-10">
-          <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
-            
-            <motion.div
-              className="max-w-4xl"
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <p className="text-base md:text-base lg:text-lg font-normal text-white/95 leading-relaxed font-lato drop-shadow">
-                Sıradan fikirlerle yetinmeyin. Biz, projelerinizi yaratıcı sanat anlayışı ve yenilikçi teknolojik çözümlerle geleceğe taşıyoruz. Hazır olun; beklentilerinizi aşan deneyimler sizi bekliyor.
-              </p>
-            </motion.div>
-
-
-          </div>
-        </div>
       </div>
       {/* Down Arrow for Mobile */}
       <button

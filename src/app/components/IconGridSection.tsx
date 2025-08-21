@@ -136,9 +136,8 @@ const IconGridSection = ({ noBg = false }: { noBg?: boolean }) => {
                   className="group relative flex flex-col items-center text-center p-6 rounded-lg transition-all duration-500 hover:bg-white/5 hover:scale-105"
                   variants={cardVariants}
                 >
-                  {/* Icon Container with Glow Effect */}
+                  {/* Icon Container */}
                   <div className="relative mb-6">
-                    <div className="absolute inset-0 bg-premium-red opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-full" />
                     <IconComponent />
                   </div>
 

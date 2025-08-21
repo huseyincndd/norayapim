@@ -136,7 +136,7 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Header */}
+            {/* Header */}
       <Header />
 
       {/* Main Content Container */}
@@ -147,66 +147,49 @@ const HeroSection = () => {
           initial="hidden"
           animate="visible"
         >
-          {/* Part 1: Solid Text */}
-          <motion.h1 
-            variants={itemVariants}
-            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-bebas-neue mb-2 tracking-wider"
-          >
-            <span className="text-white">DİZİ</span>
-          </motion.h1>
-
-          {/* Part 2: Solid Text */}
-          <motion.h1 
-            variants={itemVariants}
-            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-bebas-neue mb-2 tracking-wider"
-          >
-            <span className="text-white">SİNEMA</span>
-          </motion.h1>
-
-          {/* Part 3: Outline Text */}
-          <motion.h1 
-            variants={itemVariants}
-            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight font-bebas-neue tracking-wider"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-auto h-[1em] overflow-visible align-[0.08em]"
-              aria-label="REKLAM"
-              textRendering="geometricPrecision"
-              shapeRendering="geometricPrecision"
+          <div className="text">
+            <motion.div 
+              variants={itemVariants}
+              className="text-7xl sm:text-8xl md:text-9xl lg:text-[12rem] xl:text-[14rem] font-black leading-none font-poppins mb-1 tracking-wider text-white"
             >
-              {/* Bottom layer: thick white stroke only */}
-              <text
-                x="0"
-                y="0"
-                dominantBaseline="hanging"
-                fontFamily="'Bebas Neue', sans-serif"
-                fontWeight="800"
-                fontSize="1em"
-                letterSpacing="0.02em"
-                fill="transparent"
-                stroke="#ffffff"
-                strokeWidth="0.10em"
-                strokeLinejoin="round"
-                strokeLinecap="round"
+              DİZİ
+            </motion.div>
+            <motion.div 
+              variants={itemVariants}
+              className="text-7xl sm:text-8xl md:text-9xl lg:text-[12rem] xl:text-[14rem] font-black leading-none font-poppins mb-1 tracking-wider text-white"
+            >
+              FİLM
+            </motion.div>
+            <motion.div 
+              variants={itemVariants}
+              className="text-7xl sm:text-8xl md:text-9xl lg:text-[12rem] xl:text-[14rem] font-black leading-none font-poppins tracking-wider"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-auto h-[1em] overflow-visible align-[0.08em]"
+                aria-label="REKLAM"
+                textRendering="geometricPrecision"
+                shapeRendering="geometricPrecision"
               >
-                REKLAM
-              </text>
-              {/* Top layer: solid fill to mask inner strokes so only outer border remains */}
-              <text
-                x="0"
-                y="0"
-                dominantBaseline="hanging"
-                fontFamily="'Bebas Neue', sans-serif"
-                fontWeight="800"
-                fontSize="1em"
-                letterSpacing="0.02em"
-                fill="#000000"
-              >
-                REKLAM
-              </text>
-            </svg>
-          </motion.h1>
+                <text
+                  x="0"
+                  y="0"
+                  dominantBaseline="hanging"
+                  fontFamily="var(--font-poppins), Poppins, sans-serif"
+                  fontWeight="900"
+                  fontSize="1em"
+                  letterSpacing="0.02em"
+                  fill="transparent"
+                  stroke="#ffffff"
+                  strokeWidth="0.02em"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                >
+                  REKLAM
+                </text>
+              </svg>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
 

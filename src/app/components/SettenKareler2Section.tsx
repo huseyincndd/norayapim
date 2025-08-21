@@ -20,8 +20,22 @@ const SettenKareler2Section: React.FC<SettenKareler2SectionProps> = ({
   const [isVisible, setIsVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  // Setten Kareler images from norayapim.xyz - 25 images
+  // Setten Kareler images - 24 images mixed from old and new sources
   const setImages = [
+    // First 12 from new villaqrmenu CDN links
+    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-1.webp",
+    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-2.webp",
+    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-3.webp",
+    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-4.webp",
+    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-5.webp",
+    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-6.webp",
+    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-7.webp",
+    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-8.webp",
+    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-9.webp",
+    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-10.webp",
+    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-11.webp",
+    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-12.webp",
+    // 12 selected from old norayapim.xyz links
     "https://norayapim.xyz/_assets/media/a7947a71e33cd2f673459c47d35094f8.jpg",
     "https://norayapim.xyz/_assets/media/3c199d4af4b02a77c1efa7c415787df2.jpg",
     "https://norayapim.xyz/_assets/media/b57a77ceff8176b5e3018b505cf7376d.jpg",
@@ -34,18 +48,6 @@ const SettenKareler2Section: React.FC<SettenKareler2SectionProps> = ({
     "https://norayapim.xyz/_assets/media/2f70b78136628d390ffcefdbfccf52af.jpg",
     "https://norayapim.xyz/_assets/media/f622a9294b97b25d6ba23cfbb2e48c04.jpg",
     "https://norayapim.xyz/_assets/media/b2097b5633356d2ce1397c8342ffcfd1.jpg",
-    "https://norayapim.xyz/_assets/media/f26287deacf79c417240900e43f16a2d.jpg",
-    "https://norayapim.xyz/_assets/media/811c798ff552a60ec746340990fe7725.jpg",
-    "https://norayapim.xyz/_assets/media/faafa706123a8c11b99df84796f40e89.jpg",
-    "https://norayapim.xyz/_assets/media/c08ee4e915ffd05f3dce26c92dba69e2.jpg",
-    "https://norayapim.xyz/_assets/media/08bd60829b4b7e13908da3152bf08d1b.jpg",
-    "https://norayapim.xyz/_assets/media/a24c81374cdc21dc496778b235f2cc55.jpg",
-    "https://norayapim.xyz/_assets/media/a7947a71e33cd2f673459c47d35094f8.jpg",
-    "https://norayapim.xyz/_assets/media/5428660a970db918e9051ae4646b2427.jpg",
-    "https://norayapim.xyz/_assets/media/427ebd7453682591be356a6926264d9a.jpg",
-    "https://norayapim.xyz/_assets/media/3c7f3a95855dff001eb9ef93d2f1140b.jpg",
-    "https://norayapim.xyz/_assets/media/2060255c8bece77119d1737fd4cf8e59.jpg",
-    "https://norayapim.xyz/_assets/media/a955859fe3363680c50c9023d38c0894.jpg"
   ];
 
   // Intersection Observer to track visibility
@@ -120,15 +122,6 @@ const SettenKareler2Section: React.FC<SettenKareler2SectionProps> = ({
                       target.alt = `Set karesi ${index + 1}`;
                     }}
                   />
-                  <div className={styles.imageOverlay}>
-                    <div className={styles.overlayContent}>
-                      <span className={styles.imageNumber}>#{index + 1}</span>
-                      <div className={styles.overlayText}>
-                        <h3 className={styles.imageTitle}>Set Karesi</h3>
-                        <p className={styles.imageDescription}>Yaratıcı sürecin anları</p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             ))}
@@ -147,12 +140,6 @@ const SettenKareler2Section: React.FC<SettenKareler2SectionProps> = ({
                 alt={`Set karesi ${selectedImage + 1}`}
                 className={styles.modalImage}
               />
-              <div className={styles.modalInfo}>
-                <h3 className={styles.modalTitle}>Set Karesi #{selectedImage + 1}</h3>
-                <p className={styles.modalDescription}>
-                  Projemizden unutulmaz bir an ve yaratıcı sürecin arka planından bir kare
-                </p>
-              </div>
             </div>
           </div>
         )}

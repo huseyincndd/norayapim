@@ -9,6 +9,7 @@ import ServicesSection from '../components/ServicesSection';
 import ServicesSectionNew from '../components/ServicesSectionNew';
 import ServicesGridSection from '../components/ServicesGridSection';
 import CustomerServicesSection from '../components/CustomerServicesSection';
+import BrandsSection from '../components/BrandsSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import FeaturesSection from '../components/FeaturesSection';
 import StatsSection from '../components/StatsSection';
@@ -62,42 +63,57 @@ const ServicesPage = () => {
       <div className="relative z-10">
         {/* Hero Section with Background */}
         <section className="relative pt-24 pb-16 lg:pt-48 lg:pb-32 overflow-hidden">
-          {/* Background Image */}
+          {/* Background Image - black & white aesthetic */}
           <div className="absolute inset-0 z-0">
             <img
-              src="https://demo.awaikenthemes.com/artistics/creative-portfolio/wp-content/uploads/2025/02/page-header-bg.jpg"
+              src="https://www.sineplusakademi.com/wp-content/themes/yootheme/cache/f6/freelance-film-production-f608a5c7.jpeg"
               alt="Services Page Background"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover filter grayscale"
             />
-            <div className="absolute inset-0 bg-black/60" />
+            <div className="absolute inset-0 bg-black/85" />
           </div>
-          
+
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center max-w-4xl mx-auto pt-8 lg:pt-0"
+              className="max-w-5xl pt-8 lg:pt-16 mx-0 lg:mx-auto"
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-center mb-12 lg:mb-16 pt-8 lg:pt-16"
-              >
-                <h1 className="text-4xl lg:text-7xl font-bold text-white tracking-wider mb-4">
-                  <span className="text-white">Neler Yapıyoruz</span>
-                </h1>
-                
-                {/* Breadcrumb Navigation */}
-                <div className="text-sm lg:text-lg text-white/80">
-                  <span className="text-white">Ana Sayfa</span>
-                  <span className="text-white mx-2">*</span>
-                  <span className="text-white">Neler Yapıyoruz</span>
-                </div>
-              </motion.div>
-              
+              {/* Small label + line */}
+              <div className="flex items-center gap-6 mb-6">
+                <span className="uppercase tracking-wider text-sm text-white/80">Welcome</span>
+                <span className="h-px w-28 bg-white/40" />
+              </div>
 
+              {/* Big headline - EXACT same as About */}
+              <h1 className="uppercase font-extrabold text-white leading-[0.95] tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+                <span className="block">Let's make your</span>
+                <span className="block">Film + TV Shows</span>
+                <span className="block">& More</span>
+              </h1>
+
+              {/* Description - same tone */}
+              <p className="mt-8 max-w-2xl text-white/80 text-base md:text-lg">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
+                ullamcorper mattis, pulvinar dapibus leo.
+              </p>
+
+              {/* CTAs - mirror About */}
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Link
+                  href="/services"
+                  className="px-6 py-3 rounded-md border border-white/30 text-white hover:bg-white hover:text-black transition-colors"
+                >
+                  Show Plan
+                </Link>
+                <Link
+                  href="/contact"
+                  className="px-6 py-3 rounded-md bg-white text-black font-medium hover:bg-white/90 transition-colors"
+                >
+                  Get Started
+                </Link>
+              </div>
             </motion.div>
           </div>
         </section>
@@ -113,13 +129,16 @@ const ServicesPage = () => {
         {/* Services Grid Section */}
         <ServicesGridSection />
 
+      
+
         {/* Customer Services Section */}
         <CustomerServicesSection />
 
         {/* Services Section New */}
         <ServicesSectionNew />
-
         
+        {/* Brands Section */}
+        <BrandsSection />
 
       </div>
       

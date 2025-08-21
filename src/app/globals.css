@@ -76,6 +76,13 @@ body {
   .border-premium-red {
     border-color: var(--premium-red);
   }
+  
+  /* Hollow text effect for REKLAM */
+  .text-hollow {
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+    text-stroke: 1px white;
+  }
 }
 
 /* HeroSection video overlay'i buradan kaldırıldı, bileşenin kendi içine taşındı */

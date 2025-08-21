@@ -460,10 +460,10 @@ function CarouselItem({ children, className }: CarouselItemProps) {
 // ServiceCard Component
 const ServiceCard = ({ 
   service, 
-  isActive, 
+  isActive
 }: { 
   service: typeof servicesData[0], 
-  isActive: boolean, 
+  isActive: boolean
 }) => {
   return (
     <motion.div 
@@ -610,6 +610,9 @@ const ServicesSectionNew = ({ noBg = false }: { noBg?: boolean }) => {
           </Carousel>
         </div>
       </div>
+
+      {/* YouTube Popup */}
+      {/* Removed YouTube Popup */}
     </section>
   );
 };

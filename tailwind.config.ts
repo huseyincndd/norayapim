@@ -15,6 +15,7 @@ const config: Config = {
         lato: ['var(--font-lato)', 'sans-serif'],
         playfair: ['var(--font-playfair)', 'serif'],
         inter: ['var(--font-inter)', 'sans-serif'],
+        poppins: ['var(--font-poppins)', 'sans-serif'],
       },
       colors: {
         'brand-dark': '#1a1a1a',

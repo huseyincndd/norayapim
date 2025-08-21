@@ -130,8 +130,7 @@ const AboutSectionNew = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            {/* Background accent line */}
-            <div className="absolute left-0 top-0 w-1 h-24 bg-gradient-to-b from-white/60 to-transparent"></div>
+
             
             {/* Main content with modern layout */}
             <div className="pl-8 lg:pl-12">
@@ -165,18 +164,7 @@ const AboutSectionNew = () => {
                 </p>
               </motion.div>
 
-              {/* Decorative elements */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                viewport={{ once: true }}
-                className="mt-8 flex items-center space-x-4"
-              >
-                <div className="w-12 h-px bg-gradient-to-r from-white/40 to-transparent"></div>
-                <div className="w-2 h-2 bg-white/60 rounded-full"></div>
-                <div className="w-8 h-px bg-gradient-to-r from-white/40 to-transparent"></div>
-              </motion.div>
+
             </div>
           </motion.div>
         </div>

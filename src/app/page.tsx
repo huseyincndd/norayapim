@@ -28,11 +28,13 @@ import InstagramFeedSection from './components/InstagramFeedSection'
 import FlowingImagesSection from './components/FlowingImagesSection'
 import HighlightsFromSetSection from './components/HighlightsFromSetSection'
 import SettenKareler2Section from './components/SettenKareler2Section'
+import ChannelLogoSlider from './components/ChannelLogoSlider'
+import Image from 'next/image'
 
 export default function Home() {
 
   return (
-    <main>
+    <main className="relative">
       <HeroSection />
       <MissionStatementSection/>
       
@@ -60,8 +62,9 @@ export default function Home() {
           {/* Image Slider Section */}
           <ImageSliderSection noBg />
         </div>
+
         <div className="relative z-10">
-          <LogoMarquee noBg />
+          <ChannelLogoSlider noBg />
         </div>
 
       </section>
@@ -73,11 +76,12 @@ export default function Home() {
         <div className="relative z-10">
           <BlogPreviewSection noBg />
         </div>
-        <div className="relative z-10">
-          <InstagramFeedSection noBg />
-        </div>
+        
         <div className="relative z-10">
           <SettenKareler2Section noBg />
+        </div>
+        <div className="relative z-10">
+          <InstagramFeedSection noBg />
         </div>
       </section>
       

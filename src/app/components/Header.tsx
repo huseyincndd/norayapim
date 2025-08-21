@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,12 +28,7 @@ const Header: React.FC = () => {
       href: '/services',
       imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop&q=80'
     },
-    { 
-      id: 'settenkareler',
-      label: 'Galeri & Portföy', 
-      href: '/settenkareler',
-      imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&q=80'
-    },
+
     { 
       id: 'projects',
       label: 'Blog', 
@@ -165,9 +161,14 @@ const Header: React.FC = () => {
                 href="/" 
                 className="flex items-center hover:scale-105 transition-all duration-300 cursor-pointer group"
               >
-                <h1 className="text-2xl font-bold text-white tracking-wider font-bebas-neue group-hover:text-premium-red transition-all duration-300">
-                  NORA
-                </h1>
+                <Image
+                  src="https://villaqrmenu.b-cdn.net/nora/Nora%20Yap%C4%B1m%20logo.png"
+                  alt="Nora Yapım Logo"
+                  width={300}
+                  height={56}
+                  className="object-contain group-hover:brightness-110 transition-all duration-300"
+                  priority
+                />
               </a>
             </motion.div>
 
