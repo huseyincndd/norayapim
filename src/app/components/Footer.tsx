@@ -539,28 +539,28 @@ const Footer = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <Link href="#" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
+                <Link href="/legal/aydinlatma-metni" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
                   Aydınlatma Metni
                 </Link>
-                <Link href="#" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
+                <Link href="/legal/acik-riza-onayi" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
                   Açık Rıza Onayı
                 </Link>
-                <Link href="#" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
+                <Link href="/legal/kvkk-politikasi" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
                   Kvkk Politikası
                 </Link>
-                <Link href="#" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
+                <Link href="/legal/bgys-politikasi" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
                   Bgys Politikası
                 </Link>
-                <Link href="#" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
+                <Link href="/legal/kvkk-basvuru-formu" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
                   Kvkk Başvuru Formu
                 </Link>
-                <Link href="#" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
+                <Link href="/legal/gizlilik-politikasi" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
                   Gizlilik Politikası
                 </Link>
-                <Link href="#" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
+                <Link href="/legal/cerez-politikasi" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
                   Çerez Politikası
                 </Link>
-                <Link href="#" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
+                <Link href="/legal/site-haritasi" className="text-white/60 hover:text-white transition-colors whitespace-nowrap">
                   Site Haritası
                 </Link>
               </motion.div>

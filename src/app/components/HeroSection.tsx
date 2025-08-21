@@ -150,19 +150,19 @@ const HeroSection = () => {
           <div className="text">
             <motion.div 
               variants={itemVariants}
-              className="text-7xl sm:text-8xl md:text-9xl lg:text-[12rem] xl:text-[14rem] font-black leading-none font-poppins mb-1 tracking-wider text-white"
+              className="text-7xl sm:text-8xl md:text-9xl lg:text-[8rem] xl:text-[10rem] font-black leading-none font-poppins mb-1 tracking-wider text-white"
             >
               DİZİ
             </motion.div>
             <motion.div 
               variants={itemVariants}
-              className="text-7xl sm:text-8xl md:text-9xl lg:text-[12rem] xl:text-[14rem] font-black leading-none font-poppins mb-1 tracking-wider text-white"
+              className="text-7xl sm:text-8xl md:text-9xl lg:text-[8rem] xl:text-[10rem] font-black leading-none font-poppins mb-1 tracking-wider text-white"
             >
               FİLM
             </motion.div>
             <motion.div 
               variants={itemVariants}
-              className="text-7xl sm:text-8xl md:text-9xl lg:text-[12rem] xl:text-[14rem] font-black leading-none font-poppins tracking-wider"
+              className="text-7xl sm:text-8xl md:text-9xl lg:text-[8rem] xl:text-[10rem] font-black leading-none font-poppins tracking-wider"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
