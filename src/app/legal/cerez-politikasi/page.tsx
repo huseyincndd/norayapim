@@ -221,10 +221,10 @@ const CerezPolitikasiPage = () => {
                         <div className="p-4 bg-white/5 rounded-lg border border-white/10">
                           <h4 className="text-lg font-semibold text-white mb-2">Tarayıcı Ayarları</h4>
                           <ul className="text-white/70 text-sm space-y-1">
-                            <li>• Chrome: Ayarlar > Gizlilik ve Güvenlik</li>
-                            <li>• Firefox: Seçenekler > Gizlilik ve Güvenlik</li>
-                            <li>• Safari: Tercihler > Gizlilik</li>
-                            <li>• Edge: Ayarlar > Çerezler ve Site İzinleri</li>
+                            <li>• Chrome: Ayarlar &gt; Gizlilik ve Güvenlik</li>
+                            <li>• Firefox: Seçenekler &gt; Gizlilik ve Güvenlik</li>
+                            <li>• Safari: Tercihler &gt; Gizlilik</li>
+                            <li>• Edge: Ayarlar &gt; Çerezler ve Site İzinleri</li>
                           </ul>
                         </div>
 
