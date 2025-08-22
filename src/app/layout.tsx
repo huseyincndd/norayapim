@@ -46,10 +46,33 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://norayapim.com'),
   title: 'Nora Yapım - Video Production & Creative Agency',
   description: 'Markanızın hikayesini sinematik bir dille anlatan, yaratıcı video prodüksiyon ajansı.',
   icons: {
     icon: 'https://villaqrmenu.b-cdn.net/nora/Nora%20logo%20BEYAZ%20(1).png',
+  },
+  openGraph: {
+    title: 'Nora Yapım - Video Production & Creative Agency',
+    description: 'Markanızın hikayesini sinematik bir dille anlatan, yaratıcı video prodüksiyon ajansı.',
+    url: 'https://norayapim.com',
+    siteName: 'Nora Yapım',
+    images: [
+      {
+        url: 'https://villaqrmenu.b-cdn.net/nora/Nora%20logo%20BEYAZ%20(1).png',
+        width: 1200,
+        height: 630,
+        alt: 'Nora Yapım Logo',
+      },
+    ],
+    locale: 'tr_TR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nora Yapım - Video Production & Creative Agency',
+    description: 'Markanızın hikayesini sinematik bir dille anlatan, yaratıcı video prodüksiyon ajansı.',
+    images: ['https://villaqrmenu.b-cdn.net/nora/Nora%20logo%20BEYAZ%20(1).png'],
   },
 }
 

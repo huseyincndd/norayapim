@@ -3,68 +3,7 @@
 import React, { useState, useRef, useId, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-
-// Blog post data structure
-interface BlogPost {
-  id: number;
-  title: string;
-  excerpt?: string;
-  imageUrl: string;
-  slug: string;
-  date?: string;
-}
-
-// Dummy blog posts data
-const dummyPosts: BlogPost[] = [
-  {
-    id: 1,
-    title: 'Doğru Headshot Fotoğrafı Nasıl Çekilir?',
-    excerpt: 'Profesyonel oyuncu portreleri için temel teknikler ve ipuçları',
-    imageUrl: 'https://assets.videomaker.com/2022/08/shooting-studio-for-photographer-and-creative-art-2021-10-13-00-39-44-utc-1.jpg',
-    slug: '/blog/dogru-headshot-fotografi',
-    date: '15 Mart 2024'
-  },
-  {
-    id: 2,
-    title: 'Casting Sürecinde Dikkat Edilmesi Gerekenler',
-    excerpt: 'Başarılı bir casting deneyimi için hazırlık rehberi',
-    imageUrl: 'https://blaremedia.net/wp/wp-content/uploads/2022/07/jakob-owens-ntqaFfrDdEA-unsplash-1024x683.jpg',
-    slug: '/blog/casting-sureci',
-    date: '12 Mart 2024'
-  },
-  {
-    id: 3,
-    title: 'Sosyal Medyada Oyuncu Markası Oluşturma',
-    excerpt: 'Dijital çağda oyuncu kimliğinizi nasıl geliştirirsiniz?',
-    imageUrl: 'https://maestrofilmworks.com/wp-content/uploads/2022/03/Video-Production_Vertical-Split-1.jpg',
-    slug: '/blog/oyuncu-markasi',
-    date: '10 Mart 2024'
-  },
-  {
-    id: 4,
-    title: 'Türk Sinemasında Yeni Trendler',
-    excerpt: '2024 yılında öne çıkan projeler ve fırsatlar',
-    imageUrl: 'https://assets.videomaker.com/2022/08/shooting-studio-for-photographer-and-creative-art-2021-10-13-00-39-44-utc-1.jpg',
-    slug: '/blog/turk-sinemasi-trendleri',
-    date: '8 Mart 2024'
-  },
-  {
-    id: 5,
-    title: 'Oyunculuk Teknikleri ve Metodlar',
-    excerpt: 'Profesyonel oyunculuk için temel teknikler',
-    imageUrl: 'https://blaremedia.net/wp/wp-content/uploads/2022/07/jakob-owens-ntqaFfrDdEA-unsplash-1024x683.jpg',
-    slug: '/blog/oyunculuk-teknikleri',
-    date: '5 Mart 2024'
-  },
-  {
-    id: 6,
-    title: 'Dijital Çağda Oyunculuk',
-    excerpt: 'Teknoloji ile değişen oyunculuk sektörü',
-    imageUrl: 'https://maestrofilmworks.com/wp-content/uploads/2022/03/Video-Production_Vertical-Split-1.jpg',
-    slug: '/blog/dijital-cagda-oyunculuk',
-    date: '3 Mart 2024'
-  }
-];
+import { getBlogPosts, BlogPost } from '../../lib/supabase';
 
 // Blog Slide Component with 3D effects
 interface BlogSlideProps {
@@ -121,7 +60,19 @@ const BlogSlide = ({ post, index, current, handleSlideClick }: BlogSlideProps) =
     event.currentTarget.style.opacity = "1";
   };
 
-  const { imageUrl, title, excerpt, date, slug } = post;
+  // Format date
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('tr-TR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
+  const { title, seo_description, published_at, created_at, slug } = post;
+  const imageUrl = post.featured_image || post.detail_image || 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=600&fit=crop';
+  const date = formatDate(published_at || created_at);
 
   return (
     <div className="[perspective:1200px] [transform-style:preserve-3d]">
@@ -173,7 +124,7 @@ const BlogSlide = ({ post, index, current, handleSlideClick }: BlogSlideProps) =
           <div className="max-w-2xl text-left">
             {/* Category Tag */}
             <div className="inline-block bg-white text-black px-3 py-1 rounded-full text-xs font-medium mb-3">
-              Blog
+              {post.category?.name || 'Blog'}
             </div>
 
             {/* Title */}
@@ -182,21 +133,28 @@ const BlogSlide = ({ post, index, current, handleSlideClick }: BlogSlideProps) =
             </h2>
 
             {/* Excerpt */}
-            {excerpt && (
+            {seo_description ? (
               <p className="text-sm md:text-base text-white/80 mb-4 leading-relaxed">
-                {excerpt}
+                {seo_description}
               </p>
+            ) : (
+              <div 
+                className="text-sm md:text-base text-white/80 mb-4 leading-relaxed line-clamp-3 blog-preview-content"
+                dangerouslySetInnerHTML={{ 
+                  __html: post.content 
+                    ? post.content.replace(/<[^>]*>/g, '').substring(0, 150) + '...'
+                    : 'İçerik mevcut değil.'
+                }}
+              />
             )}
 
             {/* Date and Read More */}
             <div className="flex items-center justify-between">
-              {date && (
-                <p className="text-sm text-white/60 font-light">
-                  {date}
-                </p>
-              )}
+              <p className="text-sm text-white/60 font-light">
+                {date}
+              </p>
               
-              <Link href="/blog/1">
+              <Link href={`/blog/${slug}`}>
                 <button className="px-4 py-2 bg-white text-black text-sm font-medium rounded-lg hover:bg-gray-100 transition duration-200 flex items-center gap-2">
                   Devamını Oku
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -240,9 +198,26 @@ const CarouselControl = ({
 };
 
 // Main Blog Preview Section Component
-const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: BlogPost[], noBg?: boolean }) => {
+const BlogPreviewSection = ({ noBg = false }: { noBg?: boolean }) => {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
   const [current, setCurrent] = useState(0);
   const id = useId();
+
+  useEffect(() => {
+    const fetchAllPosts = async () => {
+      try {
+        const allPosts = await getBlogPosts();
+        setPosts(allPosts);
+      } catch (error) {
+        console.error('Error fetching blog posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAllPosts();
+  }, []);
 
   const handlePreviousClick = () => {
     const previous = current - 1;
@@ -259,6 +234,21 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
       setCurrent(index);
     }
   };
+
+  if (loading) {
+    return (
+      <section className={`py-12 lg:py-20 ${noBg ? 'bg-transparent' : 'bg-black'} overflow-hidden relative`}>
+        <div className="container mx-auto px-6 text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
+          <p className="text-white/60 mt-4">Blog yazıları yükleniyor...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (posts.length === 0) {
+    return null; // Don't show the section if no posts
+  }
 
   return (
     <section className={`py-12 lg:py-20 ${noBg ? 'bg-transparent' : 'bg-black'} overflow-hidden relative`}>
@@ -316,7 +306,7 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
           className="text-left lg:text-center mb-8 lg:mb-12 px-6 lg:px-8 relative"
         >
           {/* Main Title */}
-                    <motion.h2
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -335,11 +325,7 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
           >
             Film, dizi ve reklam prodüksiyonundan en güncel gelişmeler, sektörel ve bizden haberler, başarı hikayeleri ve profesyonel ipuçları
           </motion.p>
-
-
         </motion.div>
-
-
 
         {/* Carousel Container */}
         <div className="relative overflow-hidden w-full py-20 mx-0">
@@ -402,7 +388,7 @@ const BlogPreviewSection = ({ posts = dummyPosts, noBg = false }: { posts?: Blog
           className="text-left mt-6 lg:mt-12 px-6 lg:px-8"
         >
           <Link 
-            href="/blog/1"
+            href="/blog"
             className="group inline-flex items-center gap-3 text-white font-semibold text-lg hover:text-gray-300 transition-colors duration-300"
           >
             <span>Tümünü Gör</span>

@@ -1,232 +1,172 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 import Link from 'next/link'
-
-// Blog post data
-const blogPosts = [
-  {
-    id: 1,
-    title: "2024'te Video Prodüksiyon Trendleri",
-    excerpt: "Bu yılın en popüler video prodüksiyon teknikleri ve yaratıcı yaklaşımları hakkında detaylı bir rehber.",
-    category: "Trendler",
-    author: "Nora Yapım",
-    date: "15 Mart 2024",
-    readTime: "8 dk",
-    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=600&fit=crop",
-    featured: true
-  },
-  {
-    id: 2,
-    title: "Drone Çekim Teknikleri: Profesyonel İpuçları",
-    excerpt: "Drone ile etkileyici çekimler yapmanın sırları ve güvenlik önlemleri hakkında kapsamlı bir kılavuz.",
-    category: "Teknik",
-    author: "Ahmet Yılmaz",
-    date: "12 Mart 2024",
-    readTime: "12 dk",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
-  },
-  {
-    id: 3,
-    title: "Kurumsal Video İçerik Stratejisi",
-    excerpt: "Markanız için etkili video içerik stratejisi geliştirme ve hedef kitleye ulaşma yöntemleri.",
-    category: "Strateji",
-    author: "Zeynep Kaya",
-    date: "10 Mart 2024",
-    readTime: "10 dk",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop"
-  },
-  {
-    id: 4,
-    title: "Post Prodüksiyon: Renk Düzenleme Rehberi",
-    excerpt: "Video düzenleme sürecinde renk düzenleme teknikleri ve profesyonel görünüm elde etme yöntemleri.",
-    category: "Teknik",
-    author: "Mehmet Demir",
-    date: "8 Mart 2024",
-    readTime: "15 dk",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop"
-  },
-  {
-    id: 5,
-    title: "Sosyal Medya Video İçerikleri",
-    excerpt: "Instagram, TikTok ve YouTube için optimize edilmiş video içerik üretme ve yayınlama stratejileri.",
-    category: "Sosyal Medya",
-    author: "Elif Özkan",
-    date: "5 Mart 2024",
-    readTime: "9 dk",
-    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&h=600&fit=crop"
-  },
-  {
-    id: 6,
-    title: "Müzik Video Prodüksiyon Süreci",
-    excerpt: "Bir müzik videosunun konsept aşamasından final ürüne kadar olan tüm prodüksiyon süreci.",
-    category: "Prodüksiyon",
-    author: "Can Yıldız",
-    date: "3 Mart 2024",
-    readTime: "11 dk",
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop"
-  }
-]
-
-const categories = ["Tümü", "Trendler", "Teknik", "Strateji", "Sosyal Medya", "Prodüksiyon"]
+import { getBlogPosts, getFeaturedBlogPosts, BlogPost } from '../../lib/supabase'
 
 const BlogContentSection = () => {
-  const [selectedCategory, setSelectedCategory] = useState("Tümü")
-  const [searchTerm, setSearchTerm] = useState("")
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
+  const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([])
+  const [loading, setLoading] = useState(true)
+  const [activeCategory, setActiveCategory] = useState('Tümü')
 
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesCategory = selectedCategory === "Tümü" || post.category === selectedCategory
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
-    return matchesCategory && matchesSearch
-  })
+  useEffect(() => {
+    fetchPosts()
+  }, [])
+
+  const fetchPosts = async () => {
+    try {
+      const [posts, featured] = await Promise.all([
+        getBlogPosts(),
+        getFeaturedBlogPosts()
+      ])
+      setBlogPosts(posts)
+      setFeaturedPosts(featured)
+    } catch (error) {
+      console.error('Error fetching posts:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  // Get unique categories
+  const categories = ['Tümü', ...Array.from(new Set(
+    blogPosts
+      .map(post => post.category?.name)
+      .filter(Boolean)
+  ))]
+
+  // Filter posts by category
+  const filteredPosts = activeCategory === 'Tümü' 
+    ? blogPosts 
+    : blogPosts.filter(post => post.category?.name === activeCategory)
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('tr-TR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+      </div>
+    )
+  }
 
   return (
-    <section className="py-20 bg-black">
-      <div className="container mx-auto px-6">
-        
+    <section className="min-h-screen bg-black py-20">
+      <div className="container mx-auto px-4">
         {/* Header */}
+        <div className="text-center mb-16">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl lg:text-7xl font-bold text-white mb-6"
+          >
+            Blog Yazıları
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl text-white/80 max-w-2xl mx-auto"
+          >
+            Yapım dünyasından hikayeler, teknikler ve sektörel gelişmeler
+          </motion.p>
+        </div>
+
+        {/* Category Filter */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-wrap justify-center gap-4 mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            En Son Blog Yazıları
-          </h2>
-          <p className="text-xl text-white/60 max-w-2xl mx-auto">
-            Video prodüksiyon dünyasından en güncel bilgiler, teknik ipuçları ve yaratıcı içgörüler
-          </p>
+                     {categories.map((category) => (
+             <button
+               key={category}
+               onClick={() => setActiveCategory(category || '')}
+               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+                 activeCategory === category
+                   ? 'bg-white text-black'
+                   : 'bg-white/10 text-white hover:bg-white/20'
+               }`}
+             >
+               {category}
+             </button>
+           ))}
         </motion.div>
 
-        {/* Search and Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="flex flex-col lg:flex-row gap-6 mb-12"
-        >
-          {/* Search */}
-          <div className="flex-1">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Blog yazılarında ara..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
-              />
-              <svg className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+        {/* Featured Posts - First 3 */}
+        {featuredPosts.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mb-32"
+          >
+            <h2 className="text-3xl font-bold text-white mb-12 text-center">Öne Çıkan Yazılar</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {featuredPosts.slice(0, 3).map((post, index) => (
+                <Link key={post.id} href={`/blog/${post.slug}`} className="group">
+                  <div className="relative h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-black">
+                    {post.featured_image && (
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+                        style={{ backgroundImage: `url(${post.featured_image})` }}
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                    
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <div className="bg-white text-black px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
+                        {post.category?.name || 'Blog'}
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-white/80 transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-white/70 text-sm">
+                        {formatDate(post.published_at || post.created_at)}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
             </div>
-          </div>
+          </motion.div>
+        )}
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap gap-3">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                  selectedCategory === category
-                    ? 'bg-white text-black'
-                    : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </motion.div>
-
-                 {/* Featured Post */}
-         {filteredPosts.length > 0 && filteredPosts[0]?.featured && (
-           <motion.div
-             initial={{ opacity: 0, y: 20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             transition={{ duration: 0.8, delay: 0.3 }}
-             viewport={{ once: true }}
-             className="mb-32"
-           >
-             <Link href={`/blog/${filteredPosts[0].id}`} className="group">
-               <section className="flex flex-col lg:flex-row gap-16 items-center">
-                 {/* Large Image - Left Side */}
-                 <div className="lg:w-1/2">
-                   <div className="relative h-[500px] overflow-hidden rounded-2xl">
-                     <img
-                       src={filteredPosts[0].image}
-                       alt={filteredPosts[0].title}
-                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                     />
-                   </div>
-                 </div>
-
-                 {/* Content - Right Side */}
-                 <div className="lg:w-1/2 lg:pl-8">
-                   {/* Date */}
-                   <div className="text-white/60 text-sm mb-4">
-                     {filteredPosts[0].date}
-                   </div>
-                   
-                   {/* Category and Title */}
-                   <div className="mb-6">
-                     <div className="flex items-center justify-between mb-4">
-                       <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight group-hover:text-white/80 transition-colors">
-                         {filteredPosts[0].title}
-                       </h2>
-                       <div className="flex flex-col items-end gap-2 ml-4">
-                         <span className="bg-white text-black px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap">
-                           {filteredPosts[0].category}
-                         </span>
-                         <span className="text-white/60 text-sm">Öne Çıkan</span>
-                       </div>
-                     </div>
-                   </div>
-                   
-                   {/* Excerpt */}
-                   <p className="text-white/80 text-xl leading-relaxed mb-6">
-                     {filteredPosts[0].excerpt}
-                   </p>
-                   
-                   {/* Meta Info */}
-                   <div className="flex items-center gap-4 text-white/60 text-sm">
-                     <span>{filteredPosts[0].author}</span>
-                     <span>•</span>
-                     <span>{filteredPosts[0].readTime} okuma</span>
-                   </div>
-                 </div>
-               </section>
-             </Link>
-           </motion.div>
-         )}
-
-        {/* Blog Posts */}
+        {/* Regular Blog Posts */}
         <div className="space-y-32">
           {filteredPosts
-            .filter(post => !post.featured)
+            .filter(post => !featuredPosts.find(featured => featured.id === post.id))
             .map((post, index) => (
               <motion.div
                 key={post.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="group"
               >
-                <Link href={`/blog/${post.id}`} className="group">
-                  <section className="flex flex-col lg:flex-row gap-16 items-center">
-                    {/* Large Image - Left Side */}
+                <Link href={`/blog/${post.slug}`}>
+                  <section className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+                    {/* Image - Left Side */}
                     <div className="lg:w-1/2">
-                      <div className="relative h-[500px] overflow-hidden rounded-2xl">
-                        <img
-                          src={post.image}
-                          alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
+                      <div className="relative h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-black group-hover:shadow-2xl transition-shadow duration-500">
+                        {post.featured_image && (
+                          <div 
+                            className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+                            style={{ backgroundImage: `url(${post.featured_image})` }}
+                          />
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                       </div>
                     </div>
 
@@ -234,7 +174,7 @@ const BlogContentSection = () => {
                     <div className="lg:w-1/2 lg:pl-8">
                       {/* Date */}
                       <div className="text-white/60 text-sm mb-4">
-                        {post.date}
+                        {formatDate(post.published_at || post.created_at)}
                       </div>
                       
                       {/* Category and Title */}
@@ -244,21 +184,21 @@ const BlogContentSection = () => {
                             {post.title}
                           </h2>
                           <span className="bg-white text-black px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap ml-4">
-                            {post.category}
+                            {post.category?.name || 'Blog'}
                           </span>
                         </div>
                       </div>
                       
                       {/* Excerpt */}
                       <p className="text-white/80 text-xl leading-relaxed mb-6">
-                        {post.excerpt}
+                        {post.seo_description || 'Blog yazısı açıklaması...'}
                       </p>
                       
                       {/* Meta Info */}
                       <div className="flex items-center gap-4 text-white/60 text-sm">
-                        <span>{post.author}</span>
+                        <span>Nora Yapım</span>
                         <span>•</span>
-                        <span>{post.readTime} okuma</span>
+                        <span>5 dk okuma</span>
                       </div>
                     </div>
                   </section>
@@ -270,35 +210,23 @@ const BlogContentSection = () => {
         {/* Load More Button */}
         {filteredPosts.length > 6 && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mt-16"
+            className="text-center mt-20"
           >
-            <button className="bg-white text-black px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300">
-              Daha Fazla Yazı Yükle
+            <button className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300">
+              Daha Fazla Yükle
             </button>
           </motion.div>
         )}
 
-        {/* No Results */}
+        {/* No Posts Message */}
         {filteredPosts.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center py-20"
-          >
-                       <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
-             <svg className="w-12 h-12 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-             </svg>
-           </div>
-           <h3 className="text-2xl font-bold text-white mb-2">Sonuç Bulunamadı</h3>
-           <p className="text-white/60">Arama kriterlerinize uygun blog yazısı bulunamadı.</p>
-          </motion.div>
+          <div className="text-center py-20">
+            <p className="text-white/60 text-xl">Bu kategoride henüz blog yazısı bulunmuyor.</p>
+          </div>
         )}
       </div>
     </section>
