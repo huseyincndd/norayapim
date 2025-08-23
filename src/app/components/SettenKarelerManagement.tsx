@@ -189,18 +189,18 @@ export default function SettenKarelerManagement() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 lg:space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">SettenKareler Yönetimi</h1>
-          <p className="text-gray-600 mt-1">SettenKareler sayfasındaki resimleri yönetin</p>
+          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">SettenKareler Yönetimi</h1>
+          <p className="text-gray-600 mt-1 text-sm lg:text-base">SettenKareler sayfasındaki resimleri yönetin</p>
         </div>
         <button
           onClick={() => setShowUploadForm(true)}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
+          className="bg-blue-600 text-white px-4 lg:px-6 py-2 lg:py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2 text-sm lg:text-base"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 lg:w-5 lg:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
           </svg>
           <span>Yeni Resim Ekle</span>
@@ -212,7 +212,7 @@ export default function SettenKarelerManagement() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg"
+          className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm"
         >
           {error}
         </motion.div>
@@ -222,7 +222,7 @@ export default function SettenKarelerManagement() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg"
+          className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm"
         >
           {success}
         </motion.div>
@@ -233,10 +233,10 @@ export default function SettenKarelerManagement() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white border border-gray-200 rounded-lg p-6"
+          className="bg-white border border-gray-200 rounded-lg p-4 lg:p-6"
         >
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold text-gray-900">
+            <h2 className="text-lg lg:text-xl font-semibold text-gray-900">
               {editingImage ? 'Resmi Düzenle' : 'Yeni Resim Ekle'}
             </h2>
             <button
@@ -280,7 +280,7 @@ export default function SettenKarelerManagement() {
                 type="text"
                 value={formData.title}
                 onChange={(e) => handleInputChange('title', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm lg:text-base"
                 placeholder="Resim başlığı"
                 required
               />
@@ -294,7 +294,7 @@ export default function SettenKarelerManagement() {
               <textarea
                 value={formData.description}
                 onChange={(e) => handleInputChange('description', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm lg:text-base"
                 placeholder="Resim açıklaması"
                 rows={3}
               />
@@ -309,7 +309,7 @@ export default function SettenKarelerManagement() {
                 type="number"
                 value={formData.order_index}
                 onChange={(e) => handleInputChange('order_index', parseInt(e.target.value) || 0)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm lg:text-base"
                 placeholder="0"
               />
             </div>
@@ -334,7 +334,7 @@ export default function SettenKarelerManagement() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Önizleme
                 </label>
-                <div className="relative w-32 h-32 border border-gray-300 rounded-lg overflow-hidden">
+                <div className="relative w-24 h-24 lg:w-32 lg:h-32 border border-gray-300 rounded-lg overflow-hidden">
                   <img
                     src={formData.image_url}
                     alt="Preview"
@@ -345,17 +345,17 @@ export default function SettenKarelerManagement() {
             )}
 
             {/* Submit Button */}
-            <div className="flex justify-end space-x-3 pt-4">
+            <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3 pt-4">
               <button
                 type="button"
                 onClick={resetForm}
-                className="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                className="w-full sm:w-auto px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors text-sm lg:text-base"
               >
                 İptal
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="w-full sm:w-auto px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm lg:text-base"
               >
                 {editingImage ? 'Güncelle' : 'Ekle'}
               </button>
@@ -365,7 +365,7 @@ export default function SettenKarelerManagement() {
       )}
 
       {/* Images Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
         {images.map((image) => (
           <motion.div
             key={image.id}
@@ -386,10 +386,10 @@ export default function SettenKarelerManagement() {
             </div>
 
             {/* Content */}
-            <div className="p-4">
-              <h3 className="font-semibold text-gray-900 mb-1">{image.title}</h3>
+            <div className="p-3 lg:p-4">
+              <h3 className="font-semibold text-gray-900 mb-1 text-sm lg:text-base">{image.title}</h3>
               {image.description && (
-                <p className="text-sm text-gray-600 mb-3 line-clamp-2">{image.description}</p>
+                <p className="text-xs lg:text-sm text-gray-600 mb-3 line-clamp-2">{image.description}</p>
               )}
               
               {/* Status */}
@@ -407,13 +407,13 @@ export default function SettenKarelerManagement() {
               <div className="flex space-x-2">
                 <button
                   onClick={() => handleEdit(image)}
-                  className="flex-1 bg-blue-50 text-blue-700 px-3 py-2 rounded text-sm hover:bg-blue-100 transition-colors"
+                  className="flex-1 bg-blue-50 text-blue-700 px-2 lg:px-3 py-2 rounded text-xs lg:text-sm hover:bg-blue-100 transition-colors"
                 >
                   Düzenle
                 </button>
                 <button
                   onClick={() => handleDelete(image)}
-                  className="flex-1 bg-red-50 text-red-700 px-3 py-2 rounded text-sm hover:bg-red-100 transition-colors"
+                  className="flex-1 bg-red-50 text-red-700 px-2 lg:px-3 py-2 rounded text-xs lg:text-sm hover:bg-red-100 transition-colors"
                 >
                   Sil
                 </button>

@@ -13,6 +13,7 @@ type ActiveTab = 'dashboard' | 'blog' | 'categories' | 'settenkareler' | 'settin
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard')
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const renderContent = () => {
     switch (activeTab) {
@@ -33,13 +34,33 @@ export default function AdminPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <AdminHeader />
+      <AdminHeader onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
       
       <div className="flex pt-16">
-        <AdminSidebar activeTab={activeTab} setActiveTab={(tab) => setActiveTab(tab as ActiveTab)} />
+        {/* Mobile sidebar overlay */}
+        {sidebarOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
         
-        <main className="flex-1 ml-64">
-          <div className="p-6">
+        {/* Sidebar */}
+        <div className={`fixed lg:static inset-y-0 left-0 z-50 transform ${
+          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        } lg:translate-x-0 transition duration-200 ease-in-out`}>
+          <AdminSidebar 
+            activeTab={activeTab} 
+            setActiveTab={(tab) => {
+              setActiveTab(tab as ActiveTab)
+              setSidebarOpen(false) // Close sidebar on mobile after selection
+            }} 
+          />
+        </div>
+        
+        {/* Main content */}
+        <main className="flex-1 lg:ml-64 min-w-0">
+          <div className="p-4 lg:p-6">
             {renderContent()}
           </div>
         </main>

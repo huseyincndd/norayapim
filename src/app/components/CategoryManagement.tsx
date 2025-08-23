@@ -136,30 +136,30 @@ export default function CategoryManagement() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 lg:space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Kategori Yönetimi</h1>
-          <p className="text-gray-600 mt-2">Blog kategorilerini yönetin ve düzenleyin</p>
+          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Kategori Yönetimi</h1>
+          <p className="text-gray-600 mt-1 lg:mt-2 text-sm lg:text-base">Blog kategorilerini yönetin ve düzenleyin</p>
         </div>
         <button 
           onClick={handleAddCategory}
-          className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors"
+          className="bg-blue-500 text-white px-4 lg:px-6 py-2 lg:py-3 rounded-lg hover:bg-blue-600 transition-colors text-sm lg:text-base"
         >
           Yeni Kategori Ekle
         </button>
       </div>
 
       {/* Categories Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
         {categories.map((category, index) => (
           <motion.div
             key={category.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
-            className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
+            className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6"
           >
             <div className="flex items-start justify-between">
               <div className="flex items-center space-x-3 flex-1">
@@ -168,11 +168,11 @@ export default function CategoryManagement() {
                   style={{ backgroundColor: category.color }}
                 ></div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-semibold text-gray-900 truncate">
+                  <h3 className="text-base lg:text-lg font-semibold text-gray-900 truncate">
                     {category.name}
                   </h3>
                   {category.description && (
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-xs lg:text-sm text-gray-600 mt-1">
                       {category.description}
                     </p>
                   )}
@@ -192,11 +192,11 @@ export default function CategoryManagement() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-4 pt-4 border-t border-gray-200">
               <div className="flex items-center space-x-2">
                 <button
                   onClick={() => toggleCategoryStatus(category.id, category.is_active)}
-                  className={`px-3 py-1 text-xs rounded ${
+                  className={`px-2 lg:px-3 py-1 text-xs rounded ${
                     category.is_active
                       ? 'bg-gray-100 text-gray-800 hover:bg-gray-200'
                       : 'bg-green-100 text-green-800 hover:bg-green-200'
@@ -206,14 +206,14 @@ export default function CategoryManagement() {
                 </button>
                 <button 
                   onClick={() => handleEditCategory(category)}
-                  className="px-3 py-1 text-xs bg-blue-100 text-blue-800 rounded hover:bg-blue-200"
+                  className="px-2 lg:px-3 py-1 text-xs bg-blue-100 text-blue-800 rounded hover:bg-blue-200"
                 >
                   Düzenle
                 </button>
               </div>
               <button
                 onClick={() => deleteCategory(category.id)}
-                className="px-3 py-1 text-xs bg-red-100 text-red-800 rounded hover:bg-red-200"
+                className="px-2 lg:px-3 py-1 text-xs bg-red-100 text-red-800 rounded hover:bg-red-200"
               >
                 Sil
               </button>
@@ -241,11 +241,11 @@ export default function CategoryManagement() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="bg-white rounded-lg shadow-xl w-full max-w-md"
+            className="bg-white rounded-lg shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <h2 className="text-xl font-bold text-gray-900">
+            <div className="flex items-center justify-between p-4 lg:p-6 border-b border-gray-200">
+              <h2 className="text-lg lg:text-xl font-bold text-gray-900">
                 {editingCategory ? 'Kategoriyi Düzenle' : 'Yeni Kategori Ekle'}
               </h2>
               <button
@@ -259,9 +259,9 @@ export default function CategoryManagement() {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+            <form onSubmit={handleSubmit} className="p-4 lg:p-6 space-y-4">
               {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
                   {error}
                 </div>
               )}
@@ -275,7 +275,7 @@ export default function CategoryManagement() {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 lg:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm lg:text-base"
                   placeholder="Örn: Yapım Süreci"
                   required
                 />
@@ -290,7 +290,7 @@ export default function CategoryManagement() {
                   value={formData.description}
                   onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
                   rows={3}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 lg:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm lg:text-base"
                   placeholder="Kategori açıklaması"
                 />
               </div>
@@ -305,31 +305,31 @@ export default function CategoryManagement() {
                     type="color"
                     value={formData.color}
                     onChange={(e) => setFormData(prev => ({ ...prev, color: e.target.value }))}
-                    className="w-12 h-10 border border-gray-300 rounded cursor-pointer"
+                    className="w-10 h-8 lg:w-12 lg:h-10 border border-gray-300 rounded cursor-pointer"
                   />
                   <input
                     type="text"
                     value={formData.color}
                     onChange={(e) => setFormData(prev => ({ ...prev, color: e.target.value }))}
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="flex-1 px-3 lg:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm lg:text-base"
                     placeholder="#3B82F6"
                   />
                 </div>
               </div>
 
               {/* Actions */}
-              <div className="flex items-center justify-end space-x-4 pt-4">
+              <div className="flex flex-col sm:flex-row items-center justify-end space-y-2 sm:space-y-0 sm:space-x-4 pt-4">
                 <button
                   type="button"
                   onClick={() => setShowForm(false)}
-                  className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="w-full sm:w-auto px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm lg:text-base"
                 >
                   İptal
                 </button>
                 <button
                   type="submit"
                   disabled={formLoading}
-                  className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50"
+                  className="w-full sm:w-auto px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 text-sm lg:text-base"
                 >
                   {formLoading ? 'Kaydediliyor...' : (editingCategory ? 'Güncelle' : 'Kaydet')}
                 </button>

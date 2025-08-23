@@ -139,24 +139,24 @@ export default function BlogManagement() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 lg:space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Blog Yönetimi</h1>
-          <p className="text-gray-600 mt-2">Blog yazılarınızı yönetin ve düzenleyin</p>
+          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Blog Yönetimi</h1>
+          <p className="text-gray-600 mt-1 lg:mt-2 text-sm lg:text-base">Blog yazılarınızı yönetin ve düzenleyin</p>
         </div>
         <button 
           onClick={handleAddNewPost}
-          className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors"
+          className="bg-blue-500 text-white px-4 lg:px-6 py-2 lg:py-3 rounded-lg hover:bg-blue-600 transition-colors text-sm lg:text-base"
         >
           Yeni Yazı Ekle
         </button>
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <div className="flex flex-col md:flex-row gap-4">
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6">
+        <div className="flex flex-col lg:flex-row gap-4">
           {/* Search */}
           <div className="flex-1">
             <input
@@ -164,16 +164,16 @@ export default function BlogManagement() {
               placeholder="Blog yazılarında ara..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 lg:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm lg:text-base"
             />
           </div>
 
           {/* Category Filter */}
-          <div className="md:w-48">
+          <div className="lg:w-48">
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 lg:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm lg:text-base"
             >
               {categoryOptions.map(option => (
                 <option key={option.id} value={option.id === 'all' ? 'Tümü' : option.id}>
@@ -185,15 +185,16 @@ export default function BlogManagement() {
         </div>
       </div>
 
-      {/* Blog Posts Table */}
+      {/* Blog Posts */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200">
-        <div className="p-6 border-b border-gray-200">
-          <h2 className="text-xl font-semibold text-gray-900">
+        <div className="p-4 lg:p-6 border-b border-gray-200">
+          <h2 className="text-lg lg:text-xl font-semibold text-gray-900">
             Blog Yazıları ({filteredPosts.length})
           </h2>
         </div>
         
-        <div className="overflow-x-auto">
+        {/* Desktop Table View */}
+        <div className="hidden lg:block overflow-x-auto">
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
@@ -290,6 +291,82 @@ export default function BlogManagement() {
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile Card View */}
+        <div className="lg:hidden">
+          <div className="p-4 space-y-4">
+            {filteredPosts.map((post, index) => (
+              <motion.div
+                key={post.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className="bg-gray-50 rounded-lg p-4 border border-gray-200"
+              >
+                <div className="space-y-3">
+                  <div>
+                    <h3 className="font-medium text-gray-900 text-sm">{post.title}</h3>
+                    <p className="text-gray-500 text-xs mt-1">
+                      {post.seo_description && post.seo_description.length > 80 
+                        ? `${post.seo_description.substring(0, 80)}...` 
+                        : post.seo_description}
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    <span 
+                      className="px-2 py-1 text-xs font-medium rounded-full text-white"
+                      style={{ backgroundColor: getCategoryColor(post.category_id) }}
+                    >
+                      {getCategoryName(post.category_id)}
+                    </span>
+                    <span className={`px-2 py-1 text-xs font-medium rounded-full ${
+                      post.status === 'published' 
+                        ? 'bg-green-100 text-green-800' 
+                        : 'bg-gray-100 text-gray-800'
+                    }`}>
+                      {post.status === 'published' ? 'Yayında' : 'Taslak'}
+                    </span>
+                    {post.is_featured && (
+                      <span className="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">
+                        Öne Çıkan
+                      </span>
+                    )}
+                  </div>
+                  
+                  <div className="text-xs text-gray-500">
+                    {new Date(post.created_at).toLocaleDateString('tr-TR')}
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-200">
+                    <button
+                      onClick={() => toggleFeaturedStatus(post.id, post.is_featured)}
+                      className={`px-2 py-1 text-xs rounded ${
+                        post.is_featured
+                          ? 'bg-yellow-100 text-yellow-800'
+                          : 'bg-gray-100 text-gray-800'
+                      }`}
+                    >
+                      {post.is_featured ? 'Öne Çıkanı Kaldır' : 'Öne Çıkan Yap'}
+                    </button>
+                    <button 
+                      onClick={() => handleEditPost(post)}
+                      className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded"
+                    >
+                      Düzenle
+                    </button>
+                    <button
+                      onClick={() => deletePost(post.id)}
+                      className="px-2 py-1 text-xs bg-red-100 text-red-800 rounded"
+                    >
+                      Sil
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {filteredPosts.length === 0 && (
