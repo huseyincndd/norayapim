@@ -5,9 +5,10 @@ import Link from 'next/link'
 
 interface AdminHeaderProps {
   onMenuClick: () => void
+  onLogout: () => void
 }
 
-export default function AdminHeader({ onMenuClick }: AdminHeaderProps) {
+export default function AdminHeader({ onMenuClick, onLogout }: AdminHeaderProps) {
   const [isProfileOpen, setIsProfileOpen] = useState(false)
 
   return (
@@ -61,7 +62,13 @@ export default function AdminHeader({ onMenuClick }: AdminHeaderProps) {
                 <Link href="/" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                   Siteye Git
                 </Link>
-                <button className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
+                <button 
+                  onClick={() => {
+                    onLogout()
+                    setIsProfileOpen(false)
+                  }}
+                  className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                >
                   Çıkış Yap
                 </button>
               </div>

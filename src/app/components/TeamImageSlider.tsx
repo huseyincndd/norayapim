@@ -8,18 +8,28 @@ const TeamImageSlider = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Voya Digital ekip fotoğrafları - 10 farklı URL
+  // Nora Yapım ofis fotoğrafları - 20 farklı URL
   const teamImages = [
-    'https://voya.digital/img/voya-team-1.png',
-    'https://voya.digital/img/voya-team-2.png',
-    'https://voya.digital/img/voya-team-3.png',
-    'https://voya.digital/img/voya-team-4.png',
-    'https://voya.digital/img/voya-team-5.png',
-    'https://voya.digital/img/voya-team-6.png',
-    'https://voya.digital/img/voya-team-7.png',
-    'https://voya.digital/img/voya-team-8.png',
-    'https://voya.digital/img/voya-team-9.png',
-    'https://voya.digital/img/voya-team-10.png',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-1.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-2.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-3.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-4.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-5.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-6.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-7.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-8.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-9.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-10.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-11.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-12.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-13.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-14.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-15.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-16.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-17.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-18.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-19.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/nora-yapim-ofis-20.webp',
   ];
 
   // Her resmin pozisyonunu hesapla ve otomatik hizala

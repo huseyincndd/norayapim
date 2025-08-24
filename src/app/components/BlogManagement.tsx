@@ -195,22 +195,22 @@ export default function BlogManagement() {
         
         {/* Desktop Table View */}
         <div className="hidden lg:block overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full min-w-[800px]">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Başlık
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Kategori
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Durum
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Tarih
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   İşlemler
                 </th>
               </tr>
@@ -224,17 +224,17 @@ export default function BlogManagement() {
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                   className="hover:bg-gray-50"
                 >
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 py-4">
                     <div>
                       <div className="text-sm font-medium text-gray-900">{post.title}</div>
                       <div className="text-sm text-gray-500">
-                        {post.seo_description && post.seo_description.length > 60 
-                          ? `${post.seo_description.substring(0, 60)}...` 
+                        {post.seo_description && post.seo_description.length > 50 
+                          ? `${post.seo_description.substring(0, 50)}...` 
                           : post.seo_description}
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-3 py-4">
                     <span 
                       className="px-2 py-1 text-xs font-medium rounded-full text-white"
                       style={{ backgroundColor: getCategoryColor(post.category_id) }}
@@ -242,8 +242,8 @@ export default function BlogManagement() {
                       {getCategoryName(post.category_id)}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center space-x-2">
+                  <td className="px-3 py-4">
+                    <div className="flex flex-col gap-1">
                       <span className={`px-2 py-1 text-xs font-medium rounded-full ${
                         post.status === 'published' 
                           ? 'bg-green-100 text-green-800' 
@@ -258,14 +258,14 @@ export default function BlogManagement() {
                       )}
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-3 py-4 text-sm text-gray-500">
                     {new Date(post.created_at).toLocaleDateString('tr-TR')}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <div className="flex items-center space-x-2">
+                  <td className="px-6 py-4 text-sm font-medium">
+                    <div className="flex flex-col sm:flex-row gap-1 sm:gap-2">
                       <button
                         onClick={() => toggleFeaturedStatus(post.id, post.is_featured)}
-                        className={`px-3 py-1 text-xs rounded ${
+                        className={`px-2 py-1 text-xs rounded whitespace-nowrap ${
                           post.is_featured
                             ? 'bg-yellow-100 text-yellow-800 hover:bg-yellow-200'
                             : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
@@ -275,13 +275,13 @@ export default function BlogManagement() {
                       </button>
                       <button 
                         onClick={() => handleEditPost(post)}
-                        className="px-3 py-1 text-xs bg-blue-100 text-blue-800 rounded hover:bg-blue-200"
+                        className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded hover:bg-blue-200 whitespace-nowrap"
                       >
                         Düzenle
                       </button>
                       <button
                         onClick={() => deletePost(post.id)}
-                        className="px-3 py-1 text-xs bg-red-100 text-red-800 rounded hover:bg-red-200"
+                        className="px-2 py-1 text-xs bg-red-100 text-red-800 rounded hover:bg-red-200 whitespace-nowrap"
                       >
                         Sil
                       </button>
