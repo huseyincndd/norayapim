@@ -34,7 +34,12 @@ export default function AdminPage() {
 
     try {
       // Environment variable'dan şifreyi al
-      const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'nora2024admin'
+      const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD
+      
+      if (!adminPassword) {
+        setError('Admin şifresi yapılandırılmamış!')
+        return
+      }
       
       if (password === adminPassword) {
         localStorage.setItem('adminAuthenticated', 'true')
