@@ -353,18 +353,18 @@ const AboutSectionNew = () => {
           </motion.div>
 
           {/* Office Description */}
-          <motion.div
+              <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
+                viewport={{ once: true }}
             className="text-left lg:text-center mt-8 lg:mt-12"
           >
             <p className="text-base lg:text-lg text-white/70 max-w-3xl lg:mx-auto leading-relaxed">
               Ofislerimiz, projelere gösterdiğimiz özeni ve profesyonel yaklaşımımızı yansıtıyor. Her projede tutku ve yaratıcılıkla çalışan, vizyonları gerçeğe dönüştüren dinamik çalışma alanımızı keşfedin.
             </p>
           </motion.div>
-        </motion.div>
+              </motion.div>
 
         {/* Uzmanlık Alanları */}
         <motion.div
@@ -397,8 +397,8 @@ const AboutSectionNew = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
 
         {/* Vizyonumuz ve Misyonumuz */}
         <motion.div
@@ -410,50 +410,50 @@ const AboutSectionNew = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Vizyonumuz ve Misyonumuz</h2>
-          </div>
+        </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                  </svg>
-                </div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
+          >
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </div>
                 <h3 className="text-2xl font-bold text-white">Vizyon</h3>
-              </div>
-              <p className="text-white/80 leading-relaxed">
-                Türkiye'nin en güvenilir yapım şirketi olmak ve uluslararası arenada ses getiren projelere imza atmak.
-              </p>
-            </motion.div>
+            </div>
+            <p className="text-white/80 leading-relaxed">
+              Türkiye'nin en güvenilir yapım şirketi olmak ve uluslararası arenada ses getiren projelere imza atmak.
+            </p>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-white">Misyon</h3>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
+          >
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
               </div>
-              <p className="text-white/80 leading-relaxed">
-                İzleyiciyi etkileyen, estetik açıdan güçlü ve kalıcı yapımlar üretmek. Her projede kalite, yaratıcılık ve teknolojiyi bir arada sunmak.
-              </p>
-            </motion.div>
-          </div>
+                <h3 className="text-2xl font-bold text-white">Misyon</h3>
+            </div>
+            <p className="text-white/80 leading-relaxed">
+              İzleyiciyi etkileyen, estetik açıdan güçlü ve kalıcı yapımlar üretmek. Her projede kalite, yaratıcılık ve teknolojiyi bir arada sunmak.
+            </p>
+          </motion.div>
+        </div>
         </motion.div>
 
         {/* Statistics Section */}
@@ -504,12 +504,12 @@ const AboutSectionNew = () => {
           <div className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-2xl p-8 lg:p-12 border border-white/10">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {additionalServices.map((service, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 * index }}
-                  viewport={{ once: true }}
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 * index }}
+                viewport={{ once: true }}
                   className="text-center group"
                 >
                   <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">

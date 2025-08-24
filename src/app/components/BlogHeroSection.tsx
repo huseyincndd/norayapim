@@ -32,10 +32,13 @@ const BlogHeroSection = () => {
               className="space-y-6"
             >
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight font-bebas-neue tracking-wider">
-                Blog & Insights
+                BLOG
               </h1>
               <p className="text-xl text-white/80 max-w-lg font-lato">
-                Video prodüksiyon dünyasından en son trendler, teknik ipuçları ve yaratıcı hikayeler
+                Sektöre Dair Güncel Bilgi ve Paylaşımlar
+              </p>
+              <p className="text-lg text-white/70 max-w-xl font-lato">
+                Yapım süreçlerimiz, güncel projelerimiz, sektördeki güncel gelişmeleri ve profesyonel bakış açısını düzenli olarak paylaşıyoruz.
               </p>
             </motion.div>
 

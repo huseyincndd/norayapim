@@ -9,7 +9,6 @@ const BlogContentSection = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
-  const [activeCategory, setActiveCategory] = useState('Tümü')
 
   useEffect(() => {
     fetchPosts()
@@ -29,18 +28,6 @@ const BlogContentSection = () => {
       setLoading(false)
     }
   }
-
-  // Get unique categories
-  const categories = ['Tümü', ...Array.from(new Set(
-    blogPosts
-      .map(post => post.category?.name)
-      .filter(Boolean)
-  ))]
-
-  // Filter posts by category
-  const filteredPosts = activeCategory === 'Tümü' 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category?.name === activeCategory)
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('tr-TR', {
@@ -81,34 +68,12 @@ const BlogContentSection = () => {
           </motion.p>
         </div>
 
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-wrap justify-center gap-4 mb-16"
-        >
-                     {categories.map((category) => (
-             <button
-               key={category}
-               onClick={() => setActiveCategory(category || '')}
-               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                 activeCategory === category
-                   ? 'bg-white text-black'
-                   : 'bg-white/10 text-white hover:bg-white/20'
-               }`}
-             >
-               {category}
-             </button>
-           ))}
-        </motion.div>
-
         {/* Featured Posts - First 3 */}
         {featuredPosts.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-32"
           >
             <h2 className="text-3xl font-bold text-white mb-12 text-center">Öne Çıkan Yazılar</h2>
@@ -144,7 +109,7 @@ const BlogContentSection = () => {
 
         {/* Regular Blog Posts */}
         <div className="space-y-32">
-          {filteredPosts
+          {blogPosts
             .filter(post => !featuredPosts.find(featured => featured.id === post.id))
             .map((post, index) => (
               <motion.div
@@ -208,7 +173,7 @@ const BlogContentSection = () => {
         </div>
 
         {/* Load More Button */}
-        {filteredPosts.length > 6 && (
+        {blogPosts.length > 6 && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -223,9 +188,9 @@ const BlogContentSection = () => {
         )}
 
         {/* No Posts Message */}
-        {filteredPosts.length === 0 && (
+        {blogPosts.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-white/60 text-xl">Bu kategoride henüz blog yazısı bulunmuyor.</p>
+            <p className="text-white/60 text-xl">Henüz blog yazısı bulunmuyor.</p>
           </div>
         )}
       </div>

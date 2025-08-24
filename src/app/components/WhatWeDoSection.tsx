@@ -89,13 +89,12 @@ const WhatWeDoSection = () => {
               viewport={{ once: true }}
               className="text-right mb-8"
             >
-              <p className="text-white text-lg mb-2">Sizin İçin Çalıştık</p>
-                             <h2 className="text-4xl lg:text-6xl font-bold text-white tracking-wider">
-                 NORA 2008
-               </h2>
+              <h2 className="text-4xl lg:text-6xl font-bold text-white tracking-wider">
+                NORA YAPIM
+              </h2>
             </motion.div>
 
-            {/* Main Image with Get Started Button */}
+            {/* Main Image */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -103,25 +102,7 @@ const WhatWeDoSection = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Get Started Button - Circular */}
-                             <motion.div
-                 initial={{ opacity: 0, scale: 0 }}
-                 whileInView={{ opacity: 1, scale: 1 }}
-                 transition={{ duration: 0.8, delay: 0.8 }}
-                 viewport={{ once: true }}
-                 className="absolute -top-4 -left-4 z-10 w-24 h-24 lg:w-32 lg:h-32 bg-white rounded-full flex items-center justify-center shadow-lg"
-               >
-                                 <div className="text-center">
-                   <div className="text-black text-xs lg:text-sm font-bold leading-tight">
-                     BAŞLAYALIM
-                   </div>
-                   <svg className="w-4 h-4 text-black mx-auto mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                   </svg>
-                 </div>
-              </motion.div>
-
-                             {/* Main Image */}
+              {/* Main Image */}
                <div className="relative overflow-hidden rounded-2xl flex-shrink-0 w-full lg:w-auto">
                  <img
                    src="https://img.freepik.com/premium-photo/production-team-working-together-studio_1257223-129210.jpg"

@@ -43,38 +43,21 @@ const AboutPage = () => {
             >
               {/* Small label + line */}
               <div className="flex items-center gap-6 mb-6">
-                <span className="uppercase tracking-wider text-sm text-white/80">Welcome</span>
+                <span className="uppercase tracking-wider text-sm text-white/80">Hakkımızda</span>
                 <span className="h-px w-28 bg-white/40" />
               </div>
 
               {/* Big headline */}
               <h1 className="uppercase font-extrabold text-white leading-[0.95] tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
-                <span className="block">Let's make your</span>
-                <span className="block">Film + TV Shows</span>
-                <span className="block">& More</span>
+                <span className="block">Yaratıcılık, Deneyim</span>
+                <span className="block">ve Yenilikçi</span>
+                <span className="block">Çözümler</span>
               </h1>
 
               {/* Description */}
               <p className="mt-8 max-w-2xl text-white/80 text-base md:text-lg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
-                ullamcorper mattis, pulvinar dapibus leo.
+                Dizi, sinema ve reklam projelerinde güçlü hikâyeler ve yüksek prodüksiyon kalitesiyle sektöre değer katıyoruz.
               </p>
-
-              {/* CTAs - black & white only */}
-              <div className="mt-10 flex flex-wrap items-center gap-4">
-                <Link
-                  href="/services"
-                  className="px-6 py-3 rounded-md border border-white/30 text-white hover:bg-white hover:text-black transition-colors"
-                >
-                  Show Plan
-                </Link>
-                <Link
-                  href="/contact"
-                  className="px-6 py-3 rounded-md bg-white text-black font-medium hover:bg-white/90 transition-colors"
-                >
-                  Get Started
-                </Link>
-              </div>
             </motion.div>
           </div>
         </section>
@@ -95,9 +78,7 @@ const AboutPage = () => {
             <AboutSectionNew />
           </div>
           {/* Team Image Slider Section */}
-          <div className="relative z-10">
-            <TeamImageSlider />
-          </div>
+          
           {/* Journey Section */}
           <div className="relative z-10">
             <JourneySection />

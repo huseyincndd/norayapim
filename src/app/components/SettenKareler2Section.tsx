@@ -20,34 +20,32 @@ const SettenKareler2Section: React.FC<SettenKareler2SectionProps> = ({
   const [isVisible, setIsVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  // Setten Kareler images - 24 images mixed from old and new sources
+  // Setten Kareler images - 24 images from 202 to 226 (excluding 215)
   const setImages = [
-    // First 12 from new villaqrmenu CDN links
-    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-1.webp",
-    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-2.webp",
-    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-3.webp",
-    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-4.webp",
-    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-5.webp",
-    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-6.webp",
-    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-7.webp",
-    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-8.webp",
-    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-9.webp",
-    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-10.webp",
-    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-11.webp",
-    "https://villaqrmenu.b-cdn.net/nora/norasettenkareler/nora_yap%C4%B1m_settenkareler-12.webp",
-    // 12 selected from old norayapim.xyz links
-    "https://norayapim.xyz/_assets/media/a7947a71e33cd2f673459c47d35094f8.jpg",
-    "https://norayapim.xyz/_assets/media/3c199d4af4b02a77c1efa7c415787df2.jpg",
-    "https://norayapim.xyz/_assets/media/b57a77ceff8176b5e3018b505cf7376d.jpg",
-    "https://norayapim.xyz/_assets/media/292bacc2f4d4415a7b0d9d5e747bf6e5.jpg",
-    "https://norayapim.xyz/_assets/media/31b94a0f4c44ac5aa9b88f0134f0b74d.jpg",
-    "https://norayapim.xyz/_assets/media/5428660a970db918e9051ae4646b2427.jpg",
-    "https://norayapim.xyz/_assets/media/bfda080f68faf6c2f9d4ab0945e31543.jpg",
-    "https://norayapim.xyz/_assets/media/7170bae3f4cf04938935cfa053a3bc04.jpg",
-    "https://norayapim.xyz/_assets/media/9188603306a533bfe07d9c5cd8f1b432.jpg",
-    "https://norayapim.xyz/_assets/media/2f70b78136628d390ffcefdbfccf52af.jpg",
-    "https://norayapim.xyz/_assets/media/f622a9294b97b25d6ba23cfbb2e48c04.jpg",
-    "https://norayapim.xyz/_assets/media/b2097b5633356d2ce1397c8342ffcfd1.jpg",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-202.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-203.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-204.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-205.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-206.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-207.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-208.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-209.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-210.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-211.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-212.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-213.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-214.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-216.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-217.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-218.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-219.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-220.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-221.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-222.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-223.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-224.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-225.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-226.webp"
   ];
 
   // Intersection Observer to track visibility

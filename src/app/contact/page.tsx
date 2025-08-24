@@ -169,32 +169,14 @@ const ContactPage = () => {
 
               {/* Big headline - same as About/Services */}
               <h1 className="uppercase font-extrabold text-white leading-[0.95] tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
-                <span className="block">Let's make your</span>
-                <span className="block">Film + TV Shows</span>
-                <span className="block">& More</span>
+                <span className="block">Bizimle İletişime</span>
+                <span className="block">Geçin</span>
               </h1>
 
               {/* Description */}
               <p className="mt-8 max-w-2xl text-white/80 text-base md:text-lg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
-                ullamcorper mattis, pulvinar dapibus leo.
+                Projeleriniz, iş birliği teklifleri veya sorularınız için doğrudan bizimle iletişime geçin.
               </p>
-
-              {/* CTAs */}
-              <div className="mt-10 flex flex-wrap items-center gap-4">
-                <Link
-                  href="/services"
-                  className="px-6 py-3 rounded-md border border-white/30 text-white hover:bg-white hover:text-black transition-colors"
-                >
-                  Show Plan
-                </Link>
-                <Link
-                  href="#contact-form"
-                  className="px-6 py-3 rounded-md bg-white text-black font-medium hover:bg-white/90 transition-colors"
-                >
-                  Get Started
-                </Link>
-              </div>
             </motion.div>
           </div>
         </section>
@@ -226,10 +208,13 @@ const ContactPage = () => {
                  {/* Main Title */}
                  <div>
                    <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-                     Ulaşın ve <span className="text-white">hikayenizi</span> bugün başlatın.
+                     İletişim
                    </h1>
-                   <p className="text-lg text-white/80 leading-relaxed mb-8">
-                     Projeleriniz, iş birliği teklifleri veya sorularınız için doğrudan bizimle iletişime geçin.
+                   <p className="text-lg text-white/80 leading-relaxed mb-4">
+                     Nora Yapım Adres ve İletişim Bilgileri
+                   </p>
+                   <p className="text-base text-white/70 leading-relaxed mb-8">
+                     Aşağıdan Nora Yapım'ın adres ve iletişim kanallarına ulaşabilirsiniz. Projelerimizle ilgili bilgi almak, soru, görüş ve önerileriniz için bizimle iletişime geçebilirsiniz.
                    </p>
                  </div>
 

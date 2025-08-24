@@ -82,38 +82,21 @@ const ServicesPage = () => {
             >
               {/* Small label + line */}
               <div className="flex items-center gap-6 mb-6">
-                <span className="uppercase tracking-wider text-sm text-white/80">Welcome</span>
+                <span className="uppercase tracking-wider text-sm text-white/80">NELER YAPIYORUZ</span>
                 <span className="h-px w-28 bg-white/40" />
               </div>
 
               {/* Big headline - EXACT same as About */}
               <h1 className="uppercase font-extrabold text-white leading-[0.95] tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
-                <span className="block">Let's make your</span>
-                <span className="block">Film + TV Shows</span>
-                <span className="block">& More</span>
+                <span className="block">Fikirden Ekrana</span>
+                <span className="block">Uzanan</span>
+                <span className="block">Profesyonel Süreç</span>
               </h1>
 
               {/* Description - same tone */}
               <p className="mt-8 max-w-2xl text-white/80 text-base md:text-lg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
-                ullamcorper mattis, pulvinar dapibus leo.
+                Film, dizi, reklam ve dijital içerik projelerini planlama, prodüksiyon ve post prodüksiyon süreçlerinden hayata geçiriyoruz.
               </p>
-
-              {/* CTAs - mirror About */}
-              <div className="mt-10 flex flex-wrap items-center gap-4">
-                <Link
-                  href="/services"
-                  className="px-6 py-3 rounded-md border border-white/30 text-white hover:bg-white hover:text-black transition-colors"
-                >
-                  Show Plan
-                </Link>
-                <Link
-                  href="/contact"
-                  className="px-6 py-3 rounded-md bg-white text-black font-medium hover:bg-white/90 transition-colors"
-                >
-                  Get Started
-                </Link>
-              </div>
             </motion.div>
           </div>
         </section>

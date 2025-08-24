@@ -129,23 +129,7 @@ const Footer = () => {
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-black" />
-        {/* Animated Background Lines */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div 
-            className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 1.5, ease: 'easeOut' }}
-            viewport={{ once: true }}
-          />
-          <motion.div 
-            className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 1.5, delay: 0.5, ease: 'easeOut' }}
-            viewport={{ once: true }}
-          />
-        </div>
+
         {/* White Blur Effects */}
         <motion.div
           className="absolute top-1/3 left-1/4 w-32 h-32 bg-white/5 rounded-full blur-2xl"

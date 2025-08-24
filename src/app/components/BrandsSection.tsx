@@ -16,7 +16,6 @@ const BrandsSection = () => {
     'https://norayapim.xyz/_assets/media/806be557458f2152863eee8f95010210.png',
     'https://norayapim.xyz/_assets/media/84a516c2c07ed0aa1c4404cd374a9da9.png',
     'https://norayapim.xyz/_assets/media/902981800a3d475aefef1247dfc8c528.jpg',
-    'https://norayapim.xyz/_assets/media/9671304c91110994886639ff61eccae3.jpg',
     'https://norayapim.xyz/_assets/media/98f8e90ff9651182849cd4bae6a83eb7.jpg',
     'https://norayapim.xyz/_assets/media/9ad7842a41a57e1cba7e4ffbdd90fc60.png',
     'https://norayapim.xyz/_assets/media/9c4128d96406eb95b12e0b69351b8672.png',
@@ -33,7 +32,29 @@ const BrandsSection = () => {
     'https://norayapim.xyz/_assets/media/e7dc05cc3c103494ffe0e7b416c3e9f2.png',
     'https://norayapim.xyz/_assets/media/ed0eb97b42a798066eee028cef06018e.jpg',
     'https://norayapim.xyz/_assets/media/fb87c06f8f80841a901dcf6f72994eb5.png',
-    'https://norayapim.xyz/_assets/media/006b77961ed27cd981a893e8893ad05d.png'
+    'https://norayapim.xyz/_assets/media/006b77961ed27cd981a893e8893ad05d.png',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/ajet.png',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/alliane.jpg',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/birevim.jpg',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/denizbank.jpg',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/doritos.jpg',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/eti.jpg',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/ford.jpg',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/fuzulev.jpg',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/Gap.png',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/getir.jpg',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/halkbank.png',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/lays.png',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/McDonald\'s.png',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/nescafe.png',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/pegasus.jpg',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/pepsi.jpg',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/petrol ofisi.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/renault.jpg',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/rexona.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/shell.png',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/trendyol.jpg',
+    'https://villaqrmenu.b-cdn.net/nora/noramarka/ülker.png'
   ];
 
   return (
@@ -103,11 +124,11 @@ const BrandsSection = () => {
                   className="group relative"
                 >
                   {/* Logo Container - White rounded square like app icons */}
-                  <div className="aspect-square bg-white rounded-xl p-3 lg:p-4 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 group-hover:bg-gray-50 overflow-hidden">
+                  <div className="aspect-square bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:bg-gray-50 overflow-hidden">
                     <img 
                       src={logoUrl} 
                       alt={`Brand Logo ${index + 1}`}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-cover"
                       loading="lazy"
                       onError={(e) => {
                         // Fallback for failed image loads
