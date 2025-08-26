@@ -80,11 +80,12 @@ const BlogContentSection = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {featuredPosts.slice(0, 3).map((post, index) => (
                 <Link key={post.id} href={`/blog/${post.slug}`} className="group">
-                  <div className="relative h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-black">
+                                     <div className="relative h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-black">
                     {post.featured_image && (
-                      <div 
-                        className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                        style={{ backgroundImage: `url(${post.featured_image})` }}
+                      <img
+                        src={post.featured_image}
+                        alt={post.title}
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -99,6 +100,7 @@ const BlogContentSection = () => {
                       <p className="text-white/70 text-sm">
                         {formatDate(post.published_at || post.created_at)}
                       </p>
+
                     </div>
                   </div>
                 </Link>
@@ -126,9 +128,10 @@ const BlogContentSection = () => {
                     <div className="lg:w-1/2">
                       <div className="relative h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-black group-hover:shadow-2xl transition-shadow duration-500">
                         {post.featured_image && (
-                          <div 
-                            className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                            style={{ backgroundImage: `url(${post.featured_image})` }}
+                          <img
+                            src={post.featured_image}
+                            alt={post.title}
+                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                         )}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -165,6 +168,8 @@ const BlogContentSection = () => {
                         <span>•</span>
                         <span>5 dk okuma</span>
                       </div>
+                      
+
                     </div>
                   </section>
                 </Link>

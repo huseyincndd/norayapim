@@ -34,3 +34,19 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Bunny CDN upload (admin blog images)
+
+Set the following environment variables in `.env.local`:
+
+```
+BUNNY_API_KEY=YOUR_STORAGE_ZONE_API_KEY
+BUNNY_STORAGE_ZONE=villaqr
+BUNNY_CDN_HOST=villaqrmenu.b-cdn.net
+```
+
+API routes:
+- `POST /api/media/upload` (form-data: `file`, optional `folder`, `nameHint`) → `{ success, url }`
+- `DELETE /api/media/delete?url={cdnUrl}` → `{ success }`
+
+Admin blog form now uses a drag-and-drop `ImageUploader` for two images and automatically fills the URL fields with the uploaded CDN links.

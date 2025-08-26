@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import { supabase, BlogPost, getBlogCategories, BlogCategory, createSlug } from '../../lib/supabase'
+import ImageUploader from './ImageUploader'
 
 // Dynamic import for React Quill to avoid SSR issues
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
@@ -259,28 +260,28 @@ export default function BlogForm({ post, onClose, onSuccess }: BlogFormProps) {
           {/* Images */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Ana Sayfa Resmi URL
-              </label>
-              <input
-                type="url"
-                value={formData.featured_image}
-                onChange={(e) => handleInputChange('featured_image', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="https://example.com/image.jpg"
+              <ImageUploader
+                label="1. Resim - Blog Listesi Kapak Resmi"
+                initialUrl={formData.featured_image}
+                folder="nora/norablog"
+                nameHint={createSlug(formData.title) || 'blog-cover'}
+                onChange={(url) => handleInputChange('featured_image', url)}
               />
+              <p className="text-sm text-gray-500 mt-1">
+                Blog yazılarının listelendiği sayfada görünecek kapak resmi
+              </p>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Detay Sayfa Resmi URL
-              </label>
-              <input
-                type="url"
-                value={formData.detail_image}
-                onChange={(e) => handleInputChange('detail_image', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="https://example.com/detail-image.jpg"
+              <ImageUploader
+                label="2. Resim - Blog İçerik Başlangıç Resmi"
+                initialUrl={formData.detail_image}
+                folder="nora/norablog"
+                nameHint={createSlug(formData.title) || 'blog-detail'}
+                onChange={(url) => handleInputChange('detail_image', url)}
               />
+              <p className="text-sm text-gray-500 mt-1">
+                Blog detay sayfasında içerik başlangıcında gösterilecek resim
+              </p>
             </div>
           </div>
 
