@@ -364,6 +364,86 @@ const servicesData = [
     poster: "https://villaqrmenu.b-cdn.net/nora/noraafis/nora%20yap%C4%B1m-poster-45.webp",
     videoId: "1088965147",
     icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/playlist.svg"
+  },
+  {
+    id: 46,
+    title: "Corporate Videos",
+    description: "Professional corporate video production for businesses of all sizes.",
+    poster: "https://villaqrmenu.b-cdn.net/nora/noraafis/nora%20yap%C4%B1m-poster-46.webp",
+    videoId: "1088965146",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/movie-reel.svg"
+  },
+  {
+    id: 47,
+    title: "Event Coverage",
+    description: "Comprehensive event coverage and live streaming services.",
+    poster: "https://villaqrmenu.b-cdn.net/nora/noraafis/nora%20yap%C4%B1m-poster-47.webp",
+    videoId: "1088965145",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/clapper.svg"
+  },
+  {
+    id: 48,
+    title: "Documentary",
+    description: "Documentary filmmaking that tells real stories with authenticity.",
+    poster: "https://villaqrmenu.b-cdn.net/nora/noraafis/nora%20yap%C4%B1m-poster-48.webp",
+    videoId: "1088965144",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/lighting.svg"
+  },
+  {
+    id: 49,
+    title: "Music Videos",
+    description: "Creative music video production for artists and musicians.",
+    poster: "https://villaqrmenu.b-cdn.net/nora/noraafis/nora%20yap%C4%B1m-poster-49.webp",
+    videoId: "1088965143",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/videography.svg"
+  },
+  {
+    id: 50,
+    title: "Product Videos",
+    description: "Showcasing products with stunning visual storytelling.",
+    poster: "https://villaqrmenu.b-cdn.net/nora/noraafis/nora%20yap%C4%B1m-poster-50.webp",
+    videoId: "1088965142",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/megaphone.svg"
+  },
+  {
+    id: 51,
+    title: "Social Media",
+    description: "Engaging social media content that drives audience interaction.",
+    poster: "https://villaqrmenu.b-cdn.net/nora/noraafis/nora%20yap%C4%B1m-poster-51.webp",
+    videoId: "1088965141",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/playlist.svg"
+  },
+  {
+    id: 52,
+    title: "Animation",
+    description: "Creative animation and motion graphics for dynamic storytelling.",
+    poster: "https://villaqrmenu.b-cdn.net/nora/noraafis/nora%20yap%C4%B1m-poster-52.webp",
+    videoId: "1088965140",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/movie-reel.svg"
+  },
+  {
+    id: 53,
+    title: "Post Production",
+    description: "Professional post-production services for polished final products.",
+    poster: "https://villaqrmenu.b-cdn.net/nora/noraafis/nora%20yap%C4%B1m-poster-53.webp",
+    videoId: "1088965139",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/clapper.svg"
+  },
+  {
+    id: 54,
+    title: "Live Streaming",
+    description: "High-quality live streaming solutions for events and broadcasts.",
+    poster: "https://villaqrmenu.b-cdn.net/nora/noraafis/nora%20yap%C4%B1m-poster-54.webp",
+    videoId: "1088965138",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/lighting.svg"
+  },
+  {
+    id: 55,
+    title: "Video Productions",
+    description: "An international digital design studio reimagining how people connect with brands.",
+    poster: "https://villaqrmenu.b-cdn.net/nora/noraafis/nora%20yap%C4%B1m-poster-55.webp",
+    videoId: "1088965285",
+    icon: "https://demo2.wpopal.com/framek/wp-content/uploads/2025/05/videography.svg"
   }
 ];
 

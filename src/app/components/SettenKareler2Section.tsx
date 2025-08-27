@@ -23,7 +23,7 @@ const SettenKareler2Section: React.FC<SettenKareler2SectionProps> = ({
   // Setten Kareler images - 24 images from 202 to 226 (excluding 215)
   const setImages = [
     "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-202.webp",
-    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-203.webp",
+    "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/WhatsApp%20Image%202025-08-27%20at%2012.29.23.jpeg",
     "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-204.webp",
     "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-205.webp",
     "https://villaqrmenu.b-cdn.net/nora/noraanasayfasettenkareler/nora-setten-kareler-206.webp",
