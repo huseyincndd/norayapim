@@ -11,7 +11,7 @@ const WhyChooseUsSection = () => {
      },
      {
        title: "Ulusal ve Uluslararası Üretim Gücü",
-       description: "Türkiye'nin 84 ilinde ve uluslararası platformlarda yürüttüğümüz projelerle geniş bir üretim ağına sahibiz."
+       description: "Türkiye'nin 81 ilinde ve uluslararası platformlarda yürüttüğümüz projelerle geniş bir üretim ağına sahibiz."
      },
      {
        title: "Profesyonel Prodüksiyon Süreci",

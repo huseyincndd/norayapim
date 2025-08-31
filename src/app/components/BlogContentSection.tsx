@@ -3,25 +3,31 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { getBlogPosts, getFeaturedBlogPosts, BlogPost } from '../../lib/supabase'
+import { getBlogPostsPaginated, getFeaturedBlogPosts, BlogPost } from '../../lib/supabase'
 
 const BlogContentSection = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
+  const [totalPosts, setTotalPosts] = useState(0)
 
   useEffect(() => {
     fetchPosts()
-  }, [])
+  }, [currentPage])
 
   const fetchPosts = async () => {
     try {
-      const [posts, featured] = await Promise.all([
-        getBlogPosts(),
+      const [paginatedData, featured] = await Promise.all([
+        getBlogPostsPaginated(currentPage, 10),
         getFeaturedBlogPosts()
       ])
-      setBlogPosts(posts)
+      
+      setBlogPosts(paginatedData.posts)
       setFeaturedPosts(featured)
+      setTotalPages(paginatedData.totalPages)
+      setTotalPosts(paginatedData.total)
     } catch (error) {
       console.error('Error fetching posts:', error)
     } finally {
@@ -35,6 +41,11 @@ const BlogContentSection = () => {
       month: 'long',
       day: 'numeric'
     })
+  }
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   if (loading) {
@@ -177,23 +188,75 @@ const BlogContentSection = () => {
             ))}
         </div>
 
-        {/* Load More Button */}
-        {blogPosts.length > 6 && (
+        {/* Pagination */}
+        {totalPages > 1 && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mt-20"
+            className="flex justify-center items-center mt-20 space-x-2"
           >
-            <button className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300">
-              Daha Fazla Yükle
+            {/* Previous Button */}
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                currentPage === 1
+                  ? 'bg-gray-800 text-gray-400 cursor-not-allowed'
+                  : 'bg-white text-black hover:bg-gray-100'
+              }`}
+            >
+              Önceki
+            </button>
+
+            {/* Page Numbers */}
+            <div className="flex space-x-2">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => handlePageChange(page)}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    currentPage === page
+                      ? 'bg-white text-black'
+                      : 'bg-gray-800 text-white hover:bg-gray-700'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+
+            {/* Next Button */}
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                currentPage === totalPages
+                  ? 'bg-gray-800 text-gray-400 cursor-not-allowed'
+                  : 'bg-white text-black hover:bg-gray-100'
+              }`}
+            >
+              Sonraki
             </button>
           </motion.div>
         )}
 
+        {/* Page Info */}
+        {totalPosts > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center mt-8"
+          >
+            <p className="text-white/60 text-sm">
+              Sayfa {currentPage} / {totalPages} • Toplam {totalPosts} blog yazısı
+            </p>
+          </motion.div>
+        )}
+
         {/* No Posts Message */}
-        {blogPosts.length === 0 && (
+        {blogPosts.length === 0 && featuredPosts.length === 0 && (
           <div className="text-center py-20">
             <p className="text-white/60 text-xl">Henüz blog yazısı bulunmuyor.</p>
           </div>

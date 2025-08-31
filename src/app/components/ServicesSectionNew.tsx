@@ -886,7 +886,7 @@ const ServicesSectionNew = ({ noBg = false }: { noBg?: boolean }) => {
         </div>
 
         {/* Carousel Container */}
-        <div className='relative w-full px-4 pb-8'>
+        <div className='relative w-full px-4 pb-4'>
           <Carousel>
             <CarouselContent className='-ml-4'>
               {servicesData.map((service) => (
@@ -898,11 +898,6 @@ const ServicesSectionNew = ({ noBg = false }: { noBg?: boolean }) => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-                         <CarouselNavigation
-               className='absolute -bottom-24 left-auto top-auto w-full justify-end gap-2 z-30'
-               classNameButton='bg-white *:stroke-black'
-               alwaysShow
-             />
           </Carousel>
         </div>
       </div>

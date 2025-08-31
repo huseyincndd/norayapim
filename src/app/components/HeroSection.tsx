@@ -1,69 +1,24 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Header from './Header';
 
 const HeroSection = () => {
-  // Hybrid Loading State Management
+  // Simplified and safer state management
   const [isMounted, setIsMounted] = useState(false);
   const [isVideoReady, setIsVideoReady] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [showBlackOverlay, setShowBlackOverlay] = useState(true);
   const [videoActuallyLoaded, setVideoActuallyLoaded] = useState(false);
+  const [deviceType, setDeviceType] = useState<'mobile' | 'desktop'>('desktop');
+  const [bufferProgress, setBufferProgress] = useState(0);
+  
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const loadStartTime = useRef<number>(0);
+  const hasTriggeredHide = useRef<boolean>(false);
 
-  // Trigger video loading after component mounts
-  useEffect(() => {
-    setIsMounted(true);
-    
-    // Vimeo postMessage listener for real video status
-    const handleMessage = (event: MessageEvent) => {
-      if (event.origin !== 'https://player.vimeo.com') return;
-      
-      try {
-        const data = JSON.parse(event.data);
-        console.log('Vimeo message received:', data);
-        
-        // Video gerçekten oynatılmaya başladığında (sadece play eventi)
-        if (data.event === 'play') {
-          console.log('Vimeo video actually started playing:', data.event);
-          setVideoActuallyLoaded(true);
-          setIsVideoPlaying(true);
-          
-          // Video gerçekten oynatılmaya başladıktan sonra overlay'i kaldır
-          setTimeout(() => {
-            console.log('Removing black overlay...');
-            setShowBlackOverlay(false);
-          }, 2000); // 2 saniye buffer süresi
-        }
-      } catch (e) {
-        console.log('Message parsing error:', e);
-      }
-    };
-
-    window.addEventListener('message', handleMessage);
-    
-    // Maksimum 8 saniye bekle, sonra zorla başlat (fallback)
-    const fallbackTimer = setTimeout(() => {
-      console.log('Fallback: Video loading timeout, starting animation');
-      console.log('Current videoActuallyLoaded state:', videoActuallyLoaded);
-      if (!videoActuallyLoaded) {
-        console.log('Activating fallback animation...');
-        setIsVideoPlaying(true);
-        setVideoActuallyLoaded(true);
-        setTimeout(() => {
-          setShowBlackOverlay(false);
-        }, 500);
-      }
-    }, 8000);
-
-    return () => {
-      window.removeEventListener('message', handleMessage);
-      clearTimeout(fallbackTimer);
-    };
-  }, [videoActuallyLoaded]);
-
-  // Animation variants for the new slogan
+  // Animation variants for the text
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -88,55 +43,184 @@ const HeroSection = () => {
     }
   };
 
+  // Detect device type for optimized video quality
+  useEffect(() => {
+    const checkDevice = () => {
+      const isMobile = window.innerWidth < 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      setDeviceType(isMobile ? 'mobile' : 'desktop');
+    };
+
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
+
+  // Get optimized video URL - simplified parameters
+  const getOptimizedVideoUrl = () => {
+    const baseUrl = "https://player.vimeo.com/video/1089941484";
+    const quality = deviceType === 'mobile' ? '360p' : '480p';
+    
+    return `${baseUrl}?muted=1&autoplay=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0&playsinline=1&quality=${quality}&api=1&dnt=1`;
+  };
+
+  // Safe function for hiding overlay
+  const hideOverlayWithDelay = (delay: number = 1000) => {
+    if (hasTriggeredHide.current) return;
+    
+    setTimeout(() => {
+      if (!hasTriggeredHide.current) {
+        hasTriggeredHide.current = true;
+        setShowBlackOverlay(false);
+      }
+    }, delay);
+  };
+
+  // Mount effect with simpler logic
+  useEffect(() => {
+    setIsMounted(true);
+    loadStartTime.current = Date.now();
+    
+    // Simple Vimeo event listener
+    const handleMessage = (event: MessageEvent) => {
+      if (event.origin !== 'https://player.vimeo.com') return;
+      
+      try {
+        const data = JSON.parse(event.data);
+        
+        // Handle different video events
+        if (data.event === 'loaded') {
+          setIsVideoReady(true);
+        }
+        
+        if (data.event === 'play' || data.event === 'playing') {
+          setIsVideoPlaying(true);
+          setVideoActuallyLoaded(true);
+          hideOverlayWithDelay(1500); // 1.5 second delay for smooth transition
+        }
+        
+        if (data.event === 'timeupdate' && data.seconds && data.seconds > 0.5) {
+          setIsVideoPlaying(true);
+          setVideoActuallyLoaded(true);
+          hideOverlayWithDelay(1000);
+        }
+        
+        if (data.event === 'progress' && data.percent) {
+          const percent = Math.round(data.percent * 100);
+          setBufferProgress(percent);
+        }
+        
+      } catch (e) {
+        // Silent error handling
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    
+    // Conservative fallback timers
+    const earlyFallback = setTimeout(() => {
+      if (!videoActuallyLoaded && !hasTriggeredHide.current) {
+        setIsVideoPlaying(true);
+        setVideoActuallyLoaded(true);
+        hideOverlayWithDelay(500);
+      }
+    }, 3000);
+    
+    const safeFallback = setTimeout(() => {
+      if (!hasTriggeredHide.current) {
+        setIsVideoPlaying(true);
+        setVideoActuallyLoaded(true);
+        hasTriggeredHide.current = true;
+        setShowBlackOverlay(false);
+      }
+    }, 6000);
+
+    return () => {
+      window.removeEventListener('message', handleMessage);
+      clearTimeout(earlyFallback);
+      clearTimeout(safeFallback);
+    };
+  }, [videoActuallyLoaded]);
+
+  // Iframe load monitoring
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+    
+    const handleIframeLoad = () => {
+      setIsVideoReady(true);
+      
+      // Give iframe 2 seconds to start playing, then fallback
+      setTimeout(() => {
+        if (!videoActuallyLoaded) {
+          setIsVideoPlaying(true);
+          setVideoActuallyLoaded(true);
+          hideOverlayWithDelay(1000);
+        }
+      }, 2000);
+    };
+    
+    iframe.addEventListener('load', handleIframeLoad);
+    return () => iframe.removeEventListener('load', handleIframeLoad);
+  }, [videoActuallyLoaded]);
+
+
+
   return (
     <section className="relative h-[60vh] md:h-screen w-full overflow-hidden">
-      {/* Layer 1: Video Background (Conditionally Rendered) */}
+      {/* Video Background */}
       {isMounted && (
         <div className="absolute inset-0 z-[-3]">
           <iframe 
-            src="https://player.vimeo.com/video/1089941484?muted=1&autoplay=1&loop=1&background=1&quality=720p&controls=0&title=0&byline=0&portrait=0&transparent=0&playsinline=1&preload=auto&api=1" 
+            ref={iframeRef}
+            src={getOptimizedVideoUrl()}
             allow="autoplay; fullscreen; picture-in-picture" 
-            className="absolute top-1/2 left-1/2 w-auto h-auto min-w-[250%] md:min-w-[120%] min-h-[115%] -translate-x-1/2 -translate-y-1/2 object-cover"
+            className={`absolute top-1/2 left-1/2 w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover
+              ${deviceType === 'mobile' 
+                ? 'min-w-[120%] min-h-[120%]' 
+                : 'min-w-[120%] min-h-[115%]'
+              }`}
             style={{ 
               border: 'none', 
               pointerEvents: 'none',
               width: '100%',
               height: '100%',
-              opacity: isVideoPlaying ? 1 : 0,
-              transition: 'opacity 0.3s ease-in-out'
+              opacity: 1, // Always visible now - we control visibility with overlay
+              transition: 'opacity 0.3s ease-out'
             }}
             onLoad={() => {
-              console.log('Video iframe DOM loaded');
               setIsVideoReady(true);
-              // PostMessage API şimdi video durumunu kontrol ediyor
             }}
-            onError={(e) => {
-              console.error('Video loading error:', e);
+            onError={() => {
+              // Force show video on error
+              setIsVideoPlaying(true);
+              setVideoActuallyLoaded(true);
+              hasTriggeredHide.current = true;
+              setShowBlackOverlay(false);
             }}
+            loading="eager"
+            title="Hero Video Background"
           />
         </div>
       )}
 
-      {/* Layer 2: Removed poster image, now we start with black overlay */}
-
-      {/* Layer 3: Dark Overlay (Always Present) */}
+      {/* Dark Overlay (Always Present) */}
       <div className="absolute inset-0 z-[-1] bg-black/30" />
 
-      {/* Layer 4: Black Overlay with Opacity Fade Animation */}
+      {/* Black Loading Overlay */}
       <motion.div
         className="absolute inset-0 bg-black z-[5] pointer-events-none"
         initial={{ opacity: 1 }}
         animate={{ opacity: showBlackOverlay ? 1 : 0 }}
         transition={{ 
-          duration: 3,
+          duration: 1.5,
           ease: "easeInOut"
         }}
         onAnimationComplete={() => {
-          console.log('Opacity animation completed, final opacity:', showBlackOverlay ? 1 : 0);
+          // Animation completed
         }}
       />
 
-            {/* Header */}
+      {/* Header */}
       <Header />
 
       {/* Main Content Container */}
@@ -193,7 +277,7 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Loading Indicator (Optional) */}
+      {/* Simple Loading Indicator */}
       {isMounted && !videoActuallyLoaded && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -201,9 +285,9 @@ const HeroSection = () => {
           exit={{ opacity: 0 }}
           className="absolute bottom-8 right-8 z-20"
         >
-          <div className="flex items-center gap-2 text-white/60 text-sm">
-            <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse" />
-            <span>Video yükleniyor...</span>
+          <div className="flex items-center gap-3 text-white/70 text-sm">
+            <div className="w-2 h-2 bg-white/70 rounded-full animate-pulse" />
+            <span>Video yükleniyor... {bufferProgress > 0 ? `${bufferProgress}%` : ''}</span>
           </div>
         </motion.div>
       )}

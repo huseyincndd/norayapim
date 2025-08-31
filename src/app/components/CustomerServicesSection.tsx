@@ -276,7 +276,7 @@ const CustomerServicesSection = () => {
                          {/* Title */}
              <div className="space-y-3 lg:space-y-4">
                <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-white leading-tight">
-                 84 İL, SINIRSIZ HİKÂYE
+                 81 İL, SINIRSIZ HİKÂYE
                </h2>
                <p className="text-lg lg:text-xl xl:text-2xl text-white/80 font-light">
                  Her Yerde, Her Aşamada.
@@ -287,7 +287,7 @@ const CustomerServicesSection = () => {
              <div className="space-y-4 lg:space-y-6 text-white/90 leading-relaxed text-sm lg:text-base">
                <p>
                  Fikir bir masa başında doğar, bir sokakta hayat bulur, bir kamerayla gerçeğe dönüşür. 
-                 Biz, 84 ilde bu dönüşümün her anında varız. Konseptin oluşumundan çekim sürecine, 
+                 Biz, 81 ilde bu dönüşümün her anında varız. Konseptin oluşumundan çekim sürecine, 
                  kurgu ve renk düzenlemesinden son teslimata kadar her aşamayı titizlikle planlıyor, 
                  her projeye kendi ruhunu taşıyan yaratıcı dokunuşlar katıyoruz. Türkiye'nin dört bir 
                  yanında, hayalleri ekrana yansıtan üretim gücümüzle fark yaratıyoruz.

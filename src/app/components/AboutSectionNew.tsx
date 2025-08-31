@@ -32,6 +32,10 @@ const AboutSectionNew = () => {
     'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-19.webp',
     'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-20.webp',
     'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-21.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-22.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-23.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-24.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-25.webp'
   ];
 
   // Her resmin pozisyonunu hesapla ve otomatik hizala
@@ -248,7 +252,7 @@ const AboutSectionNew = () => {
               {/* Left Panel - Text Content */}
               <div className="lg:col-span-2 p-6 lg:p-8 flex flex-col justify-center">
                 <p className="text-lg lg:text-xl text-white/90 leading-relaxed mb-6">
-                  Nora Yapım, İstanbul merkezli ulular arası faaliyet gösteren bir dizi yapım şirketi, sinema yapım firması ve reklam prodüksiyon şirketi olarak sektörde uzun yıllara dayanan deneyime sahiptir. 2008 yılından bu yana televizyon kanalları, dijital platformlar ve markalar için dizi, sinema filmi, reklam filmi, belgesel ve kurumsal içerikler üretiyoruz.
+                  Nora Yapım, İstanbul merkezli uluslar arası faaliyet gösteren bir dizi yapım şirketi, sinema yapım firması ve reklam prodüksiyon şirketi olarak sektörde uzun yıllara dayanan deneyime sahiptir. 2008 yılından bu yana televizyon kanalları, dijital platformlar ve markalar için dizi, sinema filmi, reklam filmi, belgesel ve kurumsal içerikler üretiyoruz.
                 </p>
                 
                 <p className="text-lg lg:text-xl text-white/90 leading-relaxed">

@@ -29,6 +29,7 @@ import HighlightsFromSetSection from './components/HighlightsFromSetSection'
 import SettenKareler2Section from './components/SettenKareler2Section'
 import ChannelLogoSlider from './components/ChannelLogoSlider'
 import Image from 'next/image'
+import InstagramEmbedSection from './components/InstagramEmbedSection'
 
 export default function Home() {
 
@@ -82,6 +83,7 @@ export default function Home() {
         <div className="relative z-10">
           <InstagramFeedSection noBg />
         </div>
+        
       </section>
       
       <Footer />

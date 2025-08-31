@@ -3,7 +3,7 @@
 import React, { useState, useRef, useId, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { getBlogPosts, BlogPost } from '../../lib/supabase';
+import { getHomepageFeaturedPosts, BlogPost } from '../../lib/supabase';
 
 // Blog Slide Component with 3D effects
 interface BlogSlideProps {
@@ -207,10 +207,10 @@ const BlogPreviewSection = ({ noBg = false }: { noBg?: boolean }) => {
   useEffect(() => {
     const fetchAllPosts = async () => {
       try {
-        const allPosts = await getBlogPosts();
+        const allPosts = await getHomepageFeaturedPosts();
         setPosts(allPosts);
       } catch (error) {
-        console.error('Error fetching blog posts:', error);
+        console.error('Error fetching homepage featured blog posts:', error);
       } finally {
         setLoading(false);
       }
@@ -240,7 +240,7 @@ const BlogPreviewSection = ({ noBg = false }: { noBg?: boolean }) => {
       <section className={`py-12 lg:py-20 ${noBg ? 'bg-transparent' : 'bg-black'} overflow-hidden relative`}>
         <div className="container mx-auto px-6 text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
-          <p className="text-white/60 mt-4">Blog yazıları yükleniyor...</p>
+          <p className="text-white/60 mt-4">Ana sayfa blog yazıları yükleniyor...</p>
         </div>
       </section>
     );

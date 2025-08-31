@@ -44,6 +44,16 @@ export default function BlogManagement() {
 
   const toggleFeaturedStatus = async (id: number, currentStatus: boolean) => {
     try {
+      // Eğer öne çıkan yapılmaya çalışılıyorsa, mevcut öne çıkan sayısını kontrol et
+      if (!currentStatus) { // Yeni öne çıkan eklenmeye çalışılıyor
+        const featuredCount = blogPosts.filter(post => post.is_featured).length
+        
+        if (featuredCount >= 3) {
+          alert('En fazla 3 blog öne çıkan olarak işaretlenebilir. Lütfen önce mevcut öne çıkan bloglardan birini kaldırın.')
+          return
+        }
+      }
+
       const { error } = await supabase
         .from('blog_posts')
         .update({ is_featured: !currentStatus })
@@ -59,6 +69,26 @@ export default function BlogManagement() {
       )
     } catch (error) {
       console.error('Error updating featured status:', error)
+    }
+  }
+
+  const toggleHomepageFeaturedStatus = async (id: number, currentStatus: boolean) => {
+    try {
+      const { error } = await supabase
+        .from('blog_posts')
+        .update({ is_homepage_featured: !currentStatus })
+        .eq('id', id)
+
+      if (error) throw error
+
+      // Update local state
+      setBlogPosts(posts => 
+        posts.map(post => 
+          post.id === id ? { ...post, is_homepage_featured: !currentStatus } : post
+        )
+      )
+    } catch (error) {
+      console.error('Error updating homepage featured status:', error)
     }
   }
 
@@ -106,15 +136,33 @@ export default function BlogManagement() {
   ]
 
   // Filter posts
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         (post.seo_description && post.seo_description.toLowerCase().includes(searchTerm.toLowerCase()))
-    
-    const matchesCategory = selectedCategory === 'Tümü' || 
-                           (post.category_id && post.category_id.toString() === selectedCategory)
-    
-    return matchesSearch && matchesCategory
-  })
+  const filteredPosts = blogPosts
+    .filter(post => {
+      const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           (post.seo_description && post.seo_description.toLowerCase().includes(searchTerm.toLowerCase()))
+      
+      const matchesCategory = selectedCategory === 'Tümü' || 
+                             (post.category_id && post.category_id.toString() === selectedCategory)
+      
+      return matchesSearch && matchesCategory
+    })
+    .sort((a, b) => {
+      // Hem öne çıkan hem ana sayfa olanları en üstte göster
+      if (a.is_featured && a.is_homepage_featured && !(b.is_featured && b.is_homepage_featured)) return -1
+      if (!(a.is_featured && a.is_homepage_featured) && b.is_featured && b.is_homepage_featured) return 1
+      
+      // Sonra sadece öne çıkan olanları göster
+      if (a.is_featured && !b.is_featured) return -1
+      if (!a.is_featured && b.is_featured) return 1
+      
+      // Sonra sadece ana sayfa olanları göster
+      if (a.is_homepage_featured && !b.is_homepage_featured) return -1
+      if (!a.is_homepage_featured && b.is_homepage_featured) return 1
+      
+      // Son olarak yayın tarihine göre sırala (en yeni önce)
+      return new Date(b.published_at || b.created_at).getTime() - 
+             new Date(a.published_at || a.created_at).getTime()
+    })
 
   // Get category name by id
   const getCategoryName = (categoryId?: number): string => {
@@ -152,6 +200,50 @@ export default function BlogManagement() {
         >
           Yeni Yazı Ekle
         </button>
+      </div>
+
+      {/* Featured Posts Info */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+        {/* Öne Çıkan Bloglar */}
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 lg:p-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                <span className="text-white text-sm font-bold">⭐</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">Öne Çıkan Bloglar</h3>
+                <p className="text-sm text-gray-600">
+                  {blogPosts.filter(post => post.is_featured).length}/3 öne çıkan blog
+                </p>
+              </div>
+            </div>
+            {blogPosts.filter(post => post.is_featured).length >= 3 && (
+              <div className="bg-yellow-100 border border-yellow-300 rounded-lg px-3 py-2">
+                <p className="text-yellow-800 text-sm font-medium">
+                  ⚠️ Maksimum sayıya ulaştınız
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Ana Sayfa Blogları */}
+        <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-4 lg:p-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                <span className="text-white text-sm font-bold">🏠</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">Ana Sayfa Blogları</h3>
+                <p className="text-sm text-gray-600">
+                  {blogPosts.filter(post => post.is_homepage_featured).length} ana sayfa blogu
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Filters */}
@@ -222,7 +314,15 @@ export default function BlogManagement() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="hover:bg-gray-50"
+                  className={`hover:bg-gray-50 ${
+                    post.is_featured && post.is_homepage_featured
+                      ? 'bg-gradient-to-r from-purple-50 to-pink-50 border-l-4 border-purple-400' 
+                      : post.is_featured
+                      ? 'bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-400'
+                      : post.is_homepage_featured
+                      ? 'bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-400'
+                      : ''
+                  }`}
                 >
                   <td className="px-4 py-4">
                     <div>
@@ -256,6 +356,11 @@ export default function BlogManagement() {
                           Öne Çıkan
                         </span>
                       )}
+                      {post.is_homepage_featured && (
+                        <span className="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+                          Ana Sayfa
+                        </span>
+                      )}
                     </div>
                   </td>
                   <td className="px-3 py-4 text-sm text-gray-500">
@@ -265,13 +370,29 @@ export default function BlogManagement() {
                     <div className="flex flex-col sm:flex-row gap-1 sm:gap-2">
                       <button
                         onClick={() => toggleFeaturedStatus(post.id, post.is_featured)}
+                        disabled={!post.is_featured && blogPosts.filter(p => p.is_featured).length >= 3}
                         className={`px-2 py-1 text-xs rounded whitespace-nowrap ${
                           post.is_featured
                             ? 'bg-yellow-100 text-yellow-800 hover:bg-yellow-200'
+                            : blogPosts.filter(p => p.is_featured).length >= 3
+                            ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                            : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                        }`}
+                        title={!post.is_featured && blogPosts.filter(p => p.is_featured).length >= 3 
+                          ? 'Maksimum öne çıkan blog sayısına ulaştınız' 
+                          : ''}
+                      >
+                        {post.is_featured ? 'Öne Çıkanı Kaldır' : 'Öne Çıkan Yap'}
+                      </button>
+                      <button
+                        onClick={() => toggleHomepageFeaturedStatus(post.id, post.is_homepage_featured)}
+                        className={`px-2 py-1 text-xs rounded whitespace-nowrap ${
+                          post.is_homepage_featured
+                            ? 'bg-green-100 text-green-800 hover:bg-green-200'
                             : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
                         }`}
                       >
-                        {post.is_featured ? 'Öne Çıkanı Kaldır' : 'Öne Çıkan Yap'}
+                        {post.is_homepage_featured ? 'Ana Sayfadan Kaldır' : 'Ana Sayfaya Çıkar'}
                       </button>
                       <button 
                         onClick={() => handleEditPost(post)}
@@ -333,6 +454,11 @@ export default function BlogManagement() {
                         Öne Çıkan
                       </span>
                     )}
+                    {post.is_homepage_featured && (
+                      <span className="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+                        Ana Sayfa
+                      </span>
+                    )}
                   </div>
                   
                   <div className="text-xs text-gray-500">
@@ -349,6 +475,16 @@ export default function BlogManagement() {
                       }`}
                     >
                       {post.is_featured ? 'Öne Çıkanı Kaldır' : 'Öne Çıkan Yap'}
+                    </button>
+                    <button
+                      onClick={() => toggleHomepageFeaturedStatus(post.id, post.is_homepage_featured)}
+                      className={`px-2 py-1 text-xs rounded ${
+                        post.is_homepage_featured
+                          ? 'bg-green-100 text-green-800'
+                          : 'bg-gray-100 text-gray-800'
+                      }`}
+                    >
+                      {post.is_homepage_featured ? 'Ana Sayfadan Kaldır' : 'Ana Sayfaya Çıkar'}
                     </button>
                     <button 
                       onClick={() => handleEditPost(post)}

@@ -31,6 +31,7 @@ export interface BlogPost {
   detail_image?: string;
   slug?: string;
   is_featured: boolean;
+  is_homepage_featured: boolean;
   status: 'draft' | 'published';
   published_at?: string;
   created_at: string;
@@ -99,6 +100,53 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
   return data || [];
 };
 
+// Sayfalama ile blog yazılarını getirme
+export const getBlogPostsPaginated = async (page: number = 1, limit: number = 10): Promise<{
+  posts: BlogPost[];
+  total: number;
+  totalPages: number;
+  currentPage: number;
+}> => {
+  const offset = (page - 1) * limit;
+
+  // Toplam blog sayısını al
+  const { count, error: countError } = await supabase
+    .from('blog_posts')
+    .select('*', { count: 'exact', head: true })
+    .eq('status', 'published');
+
+  if (countError) {
+    console.error('Error fetching blog count:', countError);
+    return { posts: [], total: 0, totalPages: 0, currentPage: page };
+  }
+
+  // Sayfalı blog yazılarını al
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select(`
+      *,
+      category:blog_categories(*)
+    `)
+    .eq('status', 'published')
+    .order('published_at', { ascending: false })
+    .range(offset, offset + limit - 1);
+
+  if (error) {
+    console.error('Error fetching paginated blog posts:', error);
+    return { posts: [], total: 0, totalPages: 0, currentPage: page };
+  }
+
+  const total = count || 0;
+  const totalPages = Math.ceil(total / limit);
+
+  return {
+    posts: data || [],
+    total,
+    totalPages,
+    currentPage: page
+  };
+};
+
 export const getFeaturedBlogPosts = async (): Promise<BlogPost[]> => {
   const { data, error } = await supabase
     .from('blog_posts')
@@ -112,6 +160,25 @@ export const getFeaturedBlogPosts = async (): Promise<BlogPost[]> => {
 
   if (error) {
     console.error('Error fetching featured blog posts:', error);
+    return [];
+  }
+
+  return data || [];
+};
+
+export const getHomepageFeaturedPosts = async (): Promise<BlogPost[]> => {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select(`
+      *,
+      category:blog_categories(*)
+    `)
+    .eq('is_homepage_featured', true)
+    .eq('status', 'published')
+    .order('published_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching homepage featured blog posts:', error);
     return [];
   }
 

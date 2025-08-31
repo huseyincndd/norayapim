@@ -459,7 +459,12 @@ const Footer = () => {
                      </div>
                     <div>
                       <p className="text-white font-medium">Adres</p>
-                      <p className="text-white/80">İstanbul</p>
+                      <div className="space-y-1">
+                        <p className="text-white/80">Business İstanbul</p>
+                        <p className="text-white/80">Merdivenköy Mahallesi, Dikyol Sokak No:2, Kat:18</p>
+                        <p className="text-white/80">34732 Kadıköy / İstanbul</p>
+                        <p className="text-white/60 text-xs">Not: Ofisimiz yalnızca randevu ile ziyaret kabul etmektedir.</p>
+                      </div>
                     </div>
                   </div>
                 </div>
