@@ -11,7 +11,7 @@ const MissionStatementSection = () => {
   };
 
   return (
-    <section id="mission-statement-section" className="relative bg-black py-4 md:py-12 lg:py-20">
+    <section id="mission-statement-section" className="relative bg-black py-4 md:py-12 lg:py-20 overflow-x-hidden">
       {/* Sophisticated Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center"
@@ -24,23 +24,23 @@ const MissionStatementSection = () => {
       <div className="absolute inset-0 z-0 bg-black/90" />
 
       {/* Main Content Container */}
-      <div className="relative z-10 container mx-auto px-4 md:px-8 pt-0 md:pt-8 -mt-2 md:-mt-0 md:ml-48 lg:ml-64 flex flex-col justify-center">
+      <div className="relative z-10 container mx-auto px-4 md:px-8 pt-0 md:pt-8 mt-0 flex flex-col justify-center xl:ml-48 2xl:ml-64">
         
         {/* Heading Section - Compact Layout */}
         <motion.div
-          className="text-left max-w-4xl md:max-w-6xl"
+          className="text-left w-full max-w-full md:max-w-3xl lg:max-w-4xl xl:max-w-6xl"
           variants={fadeInUp}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
         >
-          <p className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight text-white mb-4 md:mb-10 lg:mb-14 font-montserrat tracking-wide">
+          <p className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight text-white mb-4 md:mb-10 lg:mb-14 font-montserrat tracking-wide break-words">
             <strong>TUTKU VE SANATLA YARINLARI AYDINLATAN VİZYON</strong>
           </p>
-          <p className="text-lg md:text-xl lg:text-2xl font-extralight uppercase leading-tight text-white mb-3 md:mb-6 lg:mb-8 font-lato tracking-wider drop-shadow">
+          <p className="text-lg md:text-xl lg:text-2xl font-extralight uppercase leading-tight text-white mb-3 md:mb-6 lg:mb-8 font-lato tracking-wider drop-shadow break-words">
             YAPIM ŞİRKETİMİZ, DİZİ, SİNEMA VE REKLAM PROJELERİNDE ÖZGÜN FİKİRLER GELİŞTİRİYOR. HER YAPIMDA TUTKU, SANAT VE VİZYONU BİR ARAYA GETİRİYORUZ.
           </p>
-          <p className="text-base md:text-base lg:text-lg font-normal text-white/95 leading-relaxed font-lato mb-3 md:mb-6 lg:mb-8 drop-shadow">
+          <p className="text-base md:text-base lg:text-lg font-normal text-white/95 leading-relaxed font-lato mb-3 md:mb-6 lg:mb-8 drop-shadow break-words">
             Fortis Yapım, sanat ve yaratıcı vizyonu rehber edinerek, dizi, sinema ve reklam projelerinde öncü bir konumda yer alıyor. 16 yılı aşkın deneyimiyle her projeye özgün yaklaşım getiriyor, modern teknoloji ve yenilikçi çözümlerle hikâyeleri unutulmaz görsel deneyimlere dönüştürüyor. Senaryo geliştirmeden çekim ve post-prodüksiyona kadar tüm süreçlerde kalite ve sanatsal mükemmeliyetten ödün vermeden çalışıyor; izleyiciye etkileyici ve kalıcı işler sunmayı misyon ediniyor.
           </p>
         </motion.div>

@@ -220,10 +220,12 @@ const ContactPage = () => {
 
                                  {/* Contact Details */}
                 <div className="space-y-6 mb-8">
+                  {/*
                   <div>
                     <p className="text-white font-semibold mb-1">Bizi arayın:</p>
                     <p className="text-white text-lg">+90 (555) 123 45 67</p>
                   </div>
+                  */}
                   
                   <div>
                     <p className="text-white font-semibold mb-2">Adres</p>
@@ -281,6 +283,7 @@ const ContactPage = () => {
                    </div>
                    
                    <div>
+                     {/*
                      <input
                        type="tel"
                        name="phone"
@@ -288,6 +291,7 @@ const ContactPage = () => {
                        required
                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-white focus:bg-white/15 transition-all duration-300"
                      />
+                     */}
                    </div>
                    
                    <div>

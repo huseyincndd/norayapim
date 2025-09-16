@@ -252,7 +252,7 @@ const KvkkPolitikasiPage = () => {
                         Yukarıda belirtilen haklarınızı kullanmak için aşağıdaki kanallardan başvurabilirsiniz:
                       </p>
                       <ul className="list-disc list-inside space-y-2 ml-4">
-                        <li>E-posta: kvkk@norayapim.com</li>
+                        <li>E-posta: fortisfilmtr@gmail.com</li>
                         <li>Telefon: +90 (555) 123 45 67</li>
                         <li>Adres: [Firma Adresi]</li>
                         <li>Web sitesi: İletişim formu</li>

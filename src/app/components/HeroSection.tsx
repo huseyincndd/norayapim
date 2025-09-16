@@ -176,14 +176,14 @@ const HeroSection = () => {
             allow="autoplay; fullscreen; picture-in-picture" 
             className={`absolute top-1/2 left-1/2 w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover
               ${deviceType === 'mobile' 
-                ? 'min-w-[120%] min-h-[120%]' 
+                ? 'min-w-[300%] min-h-[300%]' 
                 : 'min-w-[120%] min-h-[115%]'
               }`}
             style={{ 
               border: 'none', 
               pointerEvents: 'none',
-              width: '100%',
-              height: '100%',
+              width: deviceType === 'mobile' ? '300%' : '100%',
+              height: deviceType === 'mobile' ? '300%' : '100%',
               opacity: 1, // Always visible now - we control visibility with overlay
               transition: 'opacity 0.3s ease-out'
             }}

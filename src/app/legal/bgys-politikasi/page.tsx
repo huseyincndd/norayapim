@@ -265,9 +265,9 @@ const BgysPolitikasiPage = () => {
                         kullanabilirsiniz:
                       </p>
                       <ul className="list-disc list-inside space-y-2 ml-4">
-                        <li>E-posta: bgys@yapim.com</li>
+                        <li>E-posta: fortisfilmtr@gmail.com</li>
                         <li>Telefon: +90 (555) 123 45 67</li>
-                        <li>Güvenlik olayları: security@norayapim.com</li>
+                        <li>Güvenlik olayları: fortisfilmtr@gmail.com</li>
                         <li>Web sitesi: İletişim formu</li>
                       </ul>
                     </div>

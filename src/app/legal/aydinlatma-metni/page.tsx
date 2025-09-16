@@ -201,7 +201,7 @@ const AydinlatmaMetniPage = () => {
                         birini kullanarak aşağıdaki kanallardan başvurabilirsiniz:
                       </p>
                       <ul className="list-disc list-inside space-y-2 ml-4">
-                        <li>E-posta: kvkk@norayapim.com</li>
+                        <li>E-posta: fortisfilmtr@gmail.com</li>
                         <li>Adres: [Firma Adresi]</li>
                         <li>Telefon: +90 (555) 123 45 67</li>
                       </ul>

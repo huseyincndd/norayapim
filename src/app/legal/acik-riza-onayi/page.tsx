@@ -213,7 +213,7 @@ const AcikRizaOnayiPage = () => {
                         Açık rızanızı geri almak için aşağıdaki yöntemlerden birini kullanabilirsiniz:
                       </p>
                       <ul className="list-disc list-inside space-y-2 ml-4">
-                        <li>E-posta: kvkk@norayapim.com</li>
+                        <li>E-posta: fortisfilmtr@gmail.com</li>
                         <li>Telefon: +90 (555) 123 45 67</li>
                         <li>Yazılı başvuru: [Firma Adresi]</li>
                         <li>Web sitesi üzerinden: İletişim formu</li>
