@@ -162,7 +162,7 @@ const Header: React.FC = () => {
                 className="flex items-center hover:scale-105 transition-all duration-300 cursor-pointer group"
               >
                 <Image
-                  src="https://villaqrmenu.b-cdn.net/nora/Nora%20Yap%C4%B1m%20logo.png"
+                  src="https://villaqrmenu.b-cdn.net/nora/fortis%20film%20logo.png"
                   alt="Fortis Yapım Logo"
                   width={300}
                   height={56}
