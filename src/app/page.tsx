@@ -31,9 +31,61 @@ import Image from 'next/image'
 import InstagramEmbedSection from './components/InstagramEmbedSection'
 
 export default function Home() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Fortis Film",
+    "url": "https://fortisfilm.com",
+    "logo": "https://villaqrmenu.b-cdn.net/nora/fortis%20film%20logo.png",
+    "description": "16 yılı aşkın deneyimi ile dizi, sinema ve reklam projelerinde öncü olan Fortis Film. Modern teknoloji ve yaratıcı çözümlerle hikâyeleri unutulmaz görsel deneyimlere dönüştürüyoruz.",
+    "foundingDate": "2008",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Business İstanbul, Merdivenköy Mahallesi, Dikyol Sokak No:2, Kat:18",
+      "addressLocality": "Kadıköy",
+      "addressRegion": "İstanbul",
+      "postalCode": "34732",
+      "addressCountry": "TR"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "fortisfilmtr@gmail.com",
+      "availableLanguage": "Turkish"
+    },
+    "sameAs": [
+      "https://instagram.com/fortisfilm",
+      "https://linkedin.com/company/fortisfilm",
+      "https://youtube.com/@fortisfilm"
+    ],
+    "services": [
+      {
+        "@type": "Service",
+        "name": "Dizi Yapımı",
+        "description": "Profesyonel dizi prodüksiyon hizmetleri"
+      },
+      {
+        "@type": "Service", 
+        "name": "Film Yapımı",
+        "description": "Sinema filmi prodüksiyon hizmetleri"
+      },
+      {
+        "@type": "Service",
+        "name": "Reklam Çekimi",
+        "description": "Yaratıcı reklam prodüksiyon hizmetleri"
+      }
+    ]
+  }
 
   return (
-    <main className="relative">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
+      <main className="relative">
       <HeroSection />
       <MissionStatementSection/>
       
@@ -86,6 +138,7 @@ export default function Home() {
       </section>
       
       <Footer />
-    </main>
+      </main>
+    </>
   )
 }
