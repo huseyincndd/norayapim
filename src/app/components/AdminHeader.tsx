@@ -27,7 +27,7 @@ export default function AdminHeader({ onMenuClick, onLogout }: AdminHeaderProps)
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/admin" className="text-xl lg:text-2xl font-bold text-gray-900">
-            <span className="hidden sm:inline">Nora Yapım Admin</span>
+            <span className="hidden sm:inline">Fortis Yapım Admin</span>
             <span className="sm:hidden">Admin</span>
           </Link>
         </div>

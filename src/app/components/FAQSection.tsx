@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const FAQSection = () => {
   const faqs = [
     {
-      question: "Nora Yapım hangi alanlarda hizmet veriyor?",
+      question: "Fortis Yapım hangi alanlarda hizmet veriyor?",
       answer: "Film, dizi, reklam ve belgesel yapımında kapsamlı çözümler sunuyoruz. Senaryo geliştirmeden çekim ve yapım süreçlerine, post-prodüksiyondan yayına kadar tüm aşamalarda aktif rol alıyoruz."
     },
     {
@@ -49,7 +49,7 @@ const FAQSection = () => {
       answer: "Evet, Türkiye'nin 84 ilinde ve uluslararası lokasyonlarda çekim mekanları seçimi ve planlaması konusunda danışmanlık ve organizasyon sağlıyoruz."
     },
     {
-      question: "Nora Yapım'ı diğer yapım şirketlerinden farklı kılan nedir?",
+      question: "Fortis Yapım'ı diğer yapım şirketlerinden farklı kılan nedir?",
       answer: "16+ yıllık deneyim, yaratıcı vizyon, ulusal ve uluslararası projelerdeki başarımız ve yüksek kalite standartlarımızla her projeyi izleyiciye unutulmaz bir deneyim olarak sunuyoruz."
     }
   ];
@@ -71,7 +71,7 @@ const FAQSection = () => {
            <h2 className="text-4xl lg:text-5xl font-bold">
              <span className="text-white">Sıkça Sorulan Sorular</span>
              <span className="text-white"> – </span>
-             <span className="text-white">Nora Yapım</span>
+             <span className="text-white">Fortis Yapım</span>
            </h2>
         </motion.div>
 

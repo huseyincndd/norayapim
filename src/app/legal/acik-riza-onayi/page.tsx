@@ -139,7 +139,7 @@ const AcikRizaOnayiPage = () => {
                     <div>
                       <h3 className="text-xl font-semibold text-white mb-4">1. Veri Sorumlusu</h3>
                       <p>
-                        Kişisel verilerinizin veri sorumlusu, <strong className="text-white">Nora Yapım</strong> firmasıdır.
+                        Kişisel verilerinizin veri sorumlusu, <strong className="text-white">Fortis Yapım</strong> firmasıdır.
                       </p>
                     </div>
 

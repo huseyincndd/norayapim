@@ -175,7 +175,7 @@ const BlogContentSection = () => {
                       
                       {/* Meta Info */}
                       <div className="flex items-center gap-4 text-white/60 text-sm">
-                        <span>Nora Yapım</span>
+                        <span>Fortis Yapım</span>
                         <span>•</span>
                         <span>5 dk okuma</span>
                       </div>

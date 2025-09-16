@@ -7,7 +7,7 @@ const WhyChooseUsSection = () => {
      const services = [
      {
        title: "16+ Yıllık Profesyonel Deneyim",
-       description: "Nora Yapım, film, dizi ve reklam prodüksiyonunda 16 yılı aşkın köklü deneyimiyle sektörde güvenilir ve saygın bir lider konumunda. Her projede sanatsal mükemmeliyet ve teknik kaliteyi ön planda tutuyor, yaratıcı vizyonu hayata geçiriyoruz."
+       description: "Fortis Yapım, film, dizi ve reklam prodüksiyonunda 16 yılı aşkın köklü deneyimiyle sektörde güvenilir ve saygın bir lider konumunda. Her projede sanatsal mükemmeliyet ve teknik kaliteyi ön planda tutuyor, yaratıcı vizyonu hayata geçiriyoruz."
      },
      {
        title: "Ulusal ve Uluslararası Üretim Gücü",
@@ -19,7 +19,7 @@ const WhyChooseUsSection = () => {
      },
      {
        title: "Global Etki ve Güvenilirlik",
-       description: "Nora Yapım, yalnızca yerel değil, global ölçekte de projelere imza atarak sektörde standartları yükselten, güvenilir bir yapım ortağı olarak öne çıkıyor."
+       description: "Fortis Yapım, yalnızca yerel değil, global ölçekte de projelere imza atarak sektörde standartları yükselten, güvenilir bir yapım ortağı olarak öne çıkıyor."
      }
    ];
 

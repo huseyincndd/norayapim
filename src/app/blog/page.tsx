@@ -5,14 +5,14 @@ import BlogContentSection from '../components/BlogContentSection'
 import Footer from '../components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Blog - Nora Yapım | Video Prodüksiyon İçgörüleri',
+  title: 'Blog - Fortis Yapım | Video Prodüksiyon İçgörüleri',
   description: 'Video prodüksiyon dünyasından en güncel haberler, teknik rehberler ve yaratıcı içgörüler. Film, dizi ve reklam yapım süreçleri hakkında uzman görüşleri.',
   keywords: 'video prodüksiyon, film yapımı, dizi çekimi, reklam filmi, teknik rehber, yapım süreci',
   openGraph: {
-    title: 'Blog - Nora Yapım',
+    title: 'Blog - Fortis Yapım',
     description: 'Video prodüksiyon dünyasından en güncel haberler ve teknik rehberler',
     type: 'website',
-    url: 'https://norayapim.com/blog',
+    url: 'https://fortisyapim.com/blog',
   },
 }
 

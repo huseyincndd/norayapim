@@ -138,7 +138,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               viewport={{ once: true }}
               className="text-lg sm:text-lg text-white/80 leading-relaxed max-w-lg"
             >
-              Nora Yapım, 16 yılı aşkın deneyimiyle dizi, sinema ve reklam projelerinde özgün, yenilikçi ve yüksek kaliteli yapımlar sunan öncü bir yapım şirketidir. Kurulduğu günden bu yana, sanatsal mükemmeliyet ve yaratıcılıktan ödün vermeden her projeye değer katıyoruz.
+              Fortis Yapım, 16 yılı aşkın deneyimiyle dizi, sinema ve reklam projelerinde özgün, yenilikçi ve yüksek kaliteli yapımlar sunan öncü bir yapım şirketidir. Kurulduğu günden bu yana, sanatsal mükemmeliyet ve yaratıcılıktan ödün vermeden her projeye değer katıyoruz.
             </motion.p>
 
             {/* Özellikler Listesi */}
@@ -199,7 +199,7 @@ const AboutSection = ({ noBg = false }: { noBg?: boolean }) => {
               viewport={{ once: true }}
               className="text-white/80 leading-relaxed max-w-xl"
             >
-              Nora Yapım olarak, her projeyi sadece üretmekle kalmıyor, izleyiciye dokunan, kalıcı ve estetik bir deneyim yaratmayı misyon ediniyoruz. Ulusal ve uluslararası alanda yürüttüğümüz çalışmalarla, sektörde güvenilir ve saygın bir lider konumundayız.
+              Fortis Yapım olarak, her projeyi sadece üretmekle kalmıyor, izleyiciye dokunan, kalıcı ve estetik bir deneyim yaratmayı misyon ediniyoruz. Ulusal ve uluslararası alanda yürüttüğümüz çalışmalarla, sektörde güvenilir ve saygın bir lider konumundayız.
             </motion.p>
           </div>
         </div>

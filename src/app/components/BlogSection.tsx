@@ -264,7 +264,7 @@ const BlogSection: React.FC = () => {
           className="mb-16 text-center"
         >
           <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">
-            Nora'dan Haberler & İçgörüler
+          Fortis Yapım'dan Haberler & İçgörüler
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-gray-200">
             Video prodüksiyon dünyasından en güncel trendler, teknik rehberler ve sektör içgörüleri.

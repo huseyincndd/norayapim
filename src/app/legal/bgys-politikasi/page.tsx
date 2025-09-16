@@ -124,7 +124,7 @@ const BgysPolitikasiPage = () => {
                   
                   <div className="space-y-6 text-white/80 leading-relaxed">
                     <p>
-                      <strong className="text-white">Nora Yapım</strong> olarak, bilgi güvenliği bizim için en önemli önceliklerden 
+                      <strong className="text-white">Fortis Yapım</strong> olarak, bilgi güvenliği bizim için en önemli önceliklerden 
                       biridir. Bu politika, ISO 27001 standardına uygun olarak geliştirilmiş Bilgi Güvenliği 
                       Yönetim Sistemi (BGYS) kapsamında bilgi varlıklarımızın korunması için temel ilkeleri 
                       ve uygulamaları tanımlamaktadır.
@@ -142,7 +142,7 @@ const BgysPolitikasiPage = () => {
                     <div>
                       <h3 className="text-xl font-semibold text-white mb-4">1. Politika Kapsamı</h3>
                       <p>
-                        Bu politika, <strong className="text-white">Nora Yapım</strong> bünyesinde bulunan tüm bilgi varlıklarını, 
+                        Bu politika, <strong className="text-white">Fortis Yapım</strong> bünyesinde bulunan tüm bilgi varlıklarını, 
                         bilgi sistemlerini, ağ altyapısını, uygulamaları ve verileri kapsamaktadır. 
                         Tüm çalışanlar, iş ortakları, tedarikçiler ve üçüncü taraflar bu politika kapsamında 
                         bilgi güvenliği kurallarına uymakla yükümlüdür.
@@ -265,7 +265,7 @@ const BgysPolitikasiPage = () => {
                         kullanabilirsiniz:
                       </p>
                       <ul className="list-disc list-inside space-y-2 ml-4">
-                        <li>E-posta: bgys@norayapim.com</li>
+                        <li>E-posta: bgys@yapim.com</li>
                         <li>Telefon: +90 (555) 123 45 67</li>
                         <li>Güvenlik olayları: security@norayapim.com</li>
                         <li>Web sitesi: İletişim formu</li>

@@ -124,7 +124,7 @@ const KvkkPolitikasiPage = () => {
                   
                   <div className="space-y-6 text-white/80 leading-relaxed">
                     <p>
-                      <strong className="text-white">Nora Yapım</strong> olarak, kişisel verilerinizin güvenliği bizim için 
+                      <strong className="text-white">Fortis Yapım</strong> olarak, kişisel verilerinizin güvenliği bizim için 
                       son derece önemlidir. Bu politika, 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") 
                       uyarınca kişisel verilerinizin nasıl toplandığını, kullanıldığını ve korunduğunu açıklamaktadır.
                     </p>
@@ -132,7 +132,7 @@ const KvkkPolitikasiPage = () => {
                     <div>
                       <h3 className="text-xl font-semibold text-white mb-4">1. Politika Kapsamı</h3>
                       <p>
-                        Bu politika, <strong className="text-white">Nora Yapım</strong> tarafından yürütülen tüm faaliyetlerde 
+                        Bu politika, <strong className="text-white">Fortis Yapım</strong> tarafından yürütülen tüm faaliyetlerde 
                         kişisel verilerin işlenmesine ilişkin temel ilkeleri ve uygulamaları kapsamaktadır.
                       </p>
                     </div>

@@ -14,7 +14,7 @@ const ApproachSection = () => {
         </svg>
       ),
       title: "Misyonumuz",
-      description: "Nora Yapım olarak, sinema, dizi ve reklam prodüksiyonunda özgün ve yüksek kaliteli içerikler üreterek markalara ve izleyiciye değer katmayı amaçlıyoruz. Her projede yaratıcı vizyonu teknolojik yetkinlikle birleştiriyor, senaryodan post-prodüksiyona kadar tüm süreçleri titizlikle yönetiyoruz. Amacımız, ulusal ve uluslararası arenada iz bırakan, estetik ve etkileyici yapımlar ortaya koymaktır."
+      description: "Fortis Yapım olarak, sinema, dizi ve reklam prodüksiyonunda özgün ve yüksek kaliteli içerikler üreterek markalara ve izleyiciye değer katmayı amaçlıyoruz. Her projede yaratıcı vizyonu teknolojik yetkinlikle birleştiriyor, senaryodan post-prodüksiyona kadar tüm süreçleri titizlikle yönetiyoruz. Amacımız, ulusal ve uluslararası arenada iz bırakan, estetik ve etkileyici yapımlar ortaya koymaktır."
     },
     {
       icon: (
@@ -23,7 +23,7 @@ const ApproachSection = () => {
         </svg>
       ),
       title: "Değerlerimiz",
-      description: "Nora Yapım olarak yaratıcılığı, kaliteyi, güveni, teknolojiyi ve sürdürülebilirliği temel değerlerimiz olarak benimsiyoruz. Her projede özgün ve yenilikçi fikirler sunarken, sanatsal mükemmeliyet ve yüksek üretim standartlarından ödün vermiyoruz. İş ortaklarımız ve izleyiciyle kurduğumuz ilişkilerde şeffaflık ve güven önceliğimizdir. Gelişen prodüksiyon araçlarını ve dijital çözümleri yaratıcı süreçlerle entegre ederek, hem sektöre hem toplumsal kültüre değer katan projeler üretmeyi hedefliyoruz."
+      description: "Fortis Yapım olarak yaratıcılığı, kaliteyi, güveni, teknolojiyi ve sürdürülebilirliği temel değerlerimiz olarak benimsiyoruz. Her projede özgün ve yenilikçi fikirler sunarken, sanatsal mükemmeliyet ve yüksek üretim standartlarından ödün vermiyoruz. İş ortaklarımız ve izleyiciyle kurduğumuz ilişkilerde şeffaflık ve güven önceliğimizdir. Gelişen prodüksiyon araçlarını ve dijital çözümleri yaratıcı süreçlerle entegre ederek, hem sektöre hem toplumsal kültüre değer katan projeler üretmeyi hedefliyoruz."
     },
     {
       icon: (
@@ -34,7 +34,7 @@ const ApproachSection = () => {
         </svg>
       ),
       title: "Vizyonumuz",
-      description: "Nora Yapım olarak, film, dizi ve reklam prodüksiyonu alanlarında sektörün öncüsü olmayı sürdürüyoruz. Gelişen teknoloji ve yaratıcı yaklaşımlarımızla ulusal ve uluslararası platformlarda başarılı iş birlikleri kurarak, kalıcı bir üretim standardı oluşturmayı hedefliyoruz. Görsel hikaye anlatımında sınırları zorlayarak ve teknolojiyi sanatsal yaratıcılıkla birleştirerek, her projeyi unutulmaz bir deneyime dönüştürmek ve global prodüksiyon standartlarını yükseltmek vizyonumuzun merkezindedir."
+      description: "Fortis Yapım olarak, film, dizi ve reklam prodüksiyonu alanlarında sektörün öncüsü olmayı sürdürüyoruz. Gelişen teknoloji ve yaratıcı yaklaşımlarımızla ulusal ve uluslararası platformlarda başarılı iş birlikleri kurarak, kalıcı bir üretim standardı oluşturmayı hedefliyoruz. Görsel hikaye anlatımında sınırları zorlayarak ve teknolojiyi sanatsal yaratıcılıkla birleştirerek, her projeyi unutulmaz bir deneyime dönüştürmek ve global prodüksiyon standartlarını yükseltmek vizyonumuzun merkezindedir."
     }
   ];
 

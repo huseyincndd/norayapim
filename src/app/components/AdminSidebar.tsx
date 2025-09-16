@@ -88,7 +88,7 @@ export default function AdminSidebar({ activeTab, setActiveTab }: AdminSidebarPr
             <span className="text-white font-semibold text-xs lg:text-sm">N</span>
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-xs lg:text-sm font-medium text-gray-900 truncate">Nora Yapım</p>
+            <p className="text-xs lg:text-sm font-medium text-gray-900 truncate">Fortis Yapım</p>
             <p className="text-xs text-gray-500 truncate">Admin Panel</p>
           </div>
         </div>

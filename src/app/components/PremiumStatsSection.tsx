@@ -227,7 +227,7 @@ const PremiumStatsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Nora Yapım'ın başarı hikayesini sayılarla anlatıyoruz. 
+            Fortis Yapım'ın başarı hikayesini sayılarla anlatıyoruz. 
             Her rakam, müşterilerimizin güvenini ve kalitemizi yansıtıyor.
           </motion.p>
         </motion.div>

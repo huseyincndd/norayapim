@@ -79,7 +79,7 @@ interface BlogPost {
 ### Örnekler:
 - **Başlık:** "Yapım Süreci Nedir? Fikirden Perdeye Yolculuk"
 - **Slug:** "yapim-sureci-nedir-fikirden-perdeye-yolculuk"
-- **URL:** `https://norayapim.com/blog/yapim-sureci-nedir-fikirden-perdeye-yolculuk`
+- **URL:** `https://fortisyapim.com/blog/yapim-sureci-nedir-fikirden-perdeye-yolculuk`
 
 ### Slug Oluşturma Kuralları:
 - Küçük harfler
@@ -123,7 +123,7 @@ INSERT INTO blog_posts (
   published_at
 ) VALUES (
   'Yapım Süreci Nedir? Fikirden Perdeye Yolculuk',
-  'Bir film, dizi, reklam veya belgeselin izleyiciyle buluşması, yaratıcı fikirlerin titizlikle yürütülen aşamalı bir yapım sürecine dönüşmesiyle mümkündür. Nora Yapım olarak, fikirden perdeye uzanan bu yolculuğu profesyonel ve stratejik bir yaklaşımla yönetiyoruz.
+  'Bir film, dizi, reklam veya belgeselin izleyiciyle buluşması, yaratıcı fikirlerin titizlikle yürütülen aşamalı bir yapım sürecine dönüşmesiyle mümkündür. Fortis Yapım olarak, fikirden perdeye uzanan bu yolculuğu profesyonel ve stratejik bir yaklaşımla yönetiyoruz.
 
 Türkiye''de yapım süreçleri genellikle üç ana evrede gerçekleşir: Ön Prodüksiyon, Prodüksiyon ve Post-Prodüksiyon. Her aşama, projeyi hem sanatsal hem teknik açıdan ileriye taşıyan kritik adımlar içerir.
 
@@ -136,8 +136,8 @@ Prodüksiyon (Production)
 Post-Prodüksiyon (Post-Production)
 Çekimler tamamlandıktan sonra ham görüntüler, seyircinin izleyeceği son hâle getirilir.',
   1, -- Yapım Süreci kategorisi
-  'Yapım Süreci Nedir? Prodüksiyon Aşamaları ve Film/Dizi Yapımı | Nora Yapım',
-  'Nora Yapım olarak fikirden perdeye uzanan yapım sürecini detaylandırıyoruz.',
+  'Yapım Süreci Nedir? Prodüksiyon Aşamaları ve Film/Dizi Yapımı | Fortis Yapım',
+  'Fortis Yapım olarak fikirden perdeye uzanan yapım sürecini detaylandırıyoruz.',
   'Soru: Yapım süreci nedir?
 Cevap: Yapım süreci, bir projenin fikir aşamasından seyirciyle buluşmasına kadar geçen aşamaları kapsar.
 

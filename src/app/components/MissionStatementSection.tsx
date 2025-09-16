@@ -41,7 +41,7 @@ const MissionStatementSection = () => {
             YAPIM ŞİRKETİMİZ, DİZİ, SİNEMA VE REKLAM PROJELERİNDE ÖZGÜN FİKİRLER GELİŞTİRİYOR. HER YAPIMDA TUTKU, SANAT VE VİZYONU BİR ARAYA GETİRİYORUZ.
           </p>
           <p className="text-base md:text-base lg:text-lg font-normal text-white/95 leading-relaxed font-lato mb-3 md:mb-6 lg:mb-8 drop-shadow">
-            Nora Yapım, sanat ve yaratıcı vizyonu rehber edinerek, dizi, sinema ve reklam projelerinde öncü bir konumda yer alıyor. 16 yılı aşkın deneyimiyle her projeye özgün yaklaşım getiriyor, modern teknoloji ve yenilikçi çözümlerle hikâyeleri unutulmaz görsel deneyimlere dönüştürüyor. Senaryo geliştirmeden çekim ve post-prodüksiyona kadar tüm süreçlerde kalite ve sanatsal mükemmeliyetten ödün vermeden çalışıyor; izleyiciye etkileyici ve kalıcı işler sunmayı misyon ediniyor.
+            Fortis Yapım, sanat ve yaratıcı vizyonu rehber edinerek, dizi, sinema ve reklam projelerinde öncü bir konumda yer alıyor. 16 yılı aşkın deneyimiyle her projeye özgün yaklaşım getiriyor, modern teknoloji ve yenilikçi çözümlerle hikâyeleri unutulmaz görsel deneyimlere dönüştürüyor. Senaryo geliştirmeden çekim ve post-prodüksiyona kadar tüm süreçlerde kalite ve sanatsal mükemmeliyetten ödün vermeden çalışıyor; izleyiciye etkileyici ve kalıcı işler sunmayı misyon ediniyor.
           </p>
         </motion.div>
       </div>

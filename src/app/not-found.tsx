@@ -143,7 +143,7 @@ export default function NotFound() {
             className="pt-12 border-t border-white/10"
           >
             <p className="text-sm text-white/50 font-light tracking-wide">
-              Nora Yapım • Video Production & Creative Agency
+              Fortis Yapım • Video Production & Creative Agency
             </p>
             <p className="text-xs text-white/30 mt-2 font-light">
               Crafting cinematic stories since 2008

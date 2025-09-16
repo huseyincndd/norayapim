@@ -124,7 +124,7 @@ const GizlilikPolitikasiPage = () => {
                   
                   <div className="space-y-6 text-white/80 leading-relaxed">
                     <p>
-                      <strong className="text-white">Nora Yapım</strong> olarak, gizliliğinizi korumaya ve kişisel verilerinizin 
+                      <strong className="text-white">Fortis Yapım</strong> olarak, gizliliğinizi korumaya ve kişisel verilerinizin 
                       güvenliğini sağlamaya büyük önem veriyoruz. Bu gizlilik politikası, web sitemizi ziyaret 
                       ettiğinizde veya hizmetlerimizi kullandığınızda hangi bilgileri topladığımızı, 
                       nasıl kullandığımızı ve koruduğumuzu açıklamaktadır.

@@ -166,11 +166,11 @@ const Footer = () => {
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-2 h-2 bg-white rounded-full" />
                   <h1 className="text-3xl font-bold text-white tracking-wider font-bebas-neue">
-                    NORA
+                    FORTIS
                   </h1>
                 </div>
                 <p className="text-lg text-white/80 leading-relaxed mb-6 max-w-lg">
-                  Nora Yapım, 16 yılı aşkın süredir film, dizi ve reklam yapımlarında fark yaratan bir üretim şirketidir. Her projede yenilikçi çözümler ve yaratıcı anlatımı ön planda tutarak, izleyiciler ve iş ortakları için etkileyici deneyimler sunuyoruz. Hem yerel hem de global arenada yürüttüğümüz çalışmalarla sektör standartlarını yükselten güvenilir bir yapım ortağıyız.
+                  Fortis Yapım, 16 yılı aşkın süredir film, dizi ve reklam yapımlarında fark yaratan bir üretim şirketidir. Her projede yenilikçi çözümler ve yaratıcı anlatımı ön planda tutarak, izleyiciler ve iş ortakları için etkileyici deneyimler sunuyoruz. Hem yerel hem de global arenada yürüttüğümüz çalışmalarla sektör standartlarını yükselten güvenilir bir yapım ortağıyız.
                 </p>
                 
                 {/* Social Media */}
@@ -445,7 +445,7 @@ const Footer = () => {
                      </div>
                     <div>
                       <p className="text-white font-medium">E-posta</p>
-                      <p className="text-white/80">info@norayapim.com</p>
+                      <p className="text-white/80">info@fortisyapim.com</p>
                       <p className="text-white/60 text-sm">24 saat içinde yanıt veriyoruz</p>
                     </div>
                   </div>
@@ -517,7 +517,7 @@ const Footer = () => {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                © {new Date().getFullYear()} Nora Yapım. Tüm hakları saklıdır.
+                © {new Date().getFullYear()} Fortis Yapım. Tüm hakları saklıdır.
               </motion.p>
 
               {/* Quick Links */}

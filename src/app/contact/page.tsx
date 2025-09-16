@@ -211,10 +211,10 @@ const ContactPage = () => {
                      İletişim
                    </h1>
                    <p className="text-lg text-white/80 leading-relaxed mb-4">
-                     Nora Yapım Adres ve İletişim Bilgileri
+                    Fortis Yapım Adres ve İletişim Bilgileri
                    </p>
                    <p className="text-base text-white/70 leading-relaxed mb-8">
-                     Aşağıdan Nora Yapım'ın adres ve iletişim kanallarına ulaşabilirsiniz. Projelerimizle ilgili bilgi almak, soru, görüş ve önerileriniz için bizimle iletişime geçebilirsiniz.
+                     Aşağıdan Fortis Yapım'ın adres ve iletişim kanallarına ulaşabilirsiniz. Projelerimizle ilgili bilgi almak, soru, görüş ve önerileriniz için bizimle iletişime geçebilirsiniz.
                    </p>
                  </div>
 

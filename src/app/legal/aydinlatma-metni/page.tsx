@@ -125,14 +125,14 @@ const AydinlatmaMetniPage = () => {
                   <div className="space-y-6 text-white/80 leading-relaxed">
                     <p>
                       <strong className="text-white">6698 Sayılı Kişisel Verilerin Korunması Kanunu ("KVKK")</strong> uyarınca, 
-                      <strong className="text-white">Nora Yapım</strong> olarak, veri sorumlusu sıfatıyla, kişisel verilerinizin 
+                      <strong className="text-white">Fortis Yapım</strong> olarak, veri sorumlusu sıfatıyla, kişisel verilerinizin 
                       işlenmesi hakkında sizi aşağıdaki konularda aydınlatmayı amaçlamaktayız.
                     </p>
 
                     <div>
                       <h3 className="text-xl font-semibold text-white mb-4">1. Veri Sorumlusu</h3>
                       <p>
-                        Kişisel verilerinizin veri sorumlusu, <strong className="text-white">Nora Yapım</strong> firmasıdır.
+                        Kişisel verilerinizin veri sorumlusu, <strong className="text-white">Fortis Yapım</strong> firmasıdır.
                       </p>
                     </div>
 

@@ -20,26 +20,26 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     
     if (!category) {
       return {
-        title: 'Kategori Bulunamadı - Nora Yapım Blog',
+        title: 'Kategori Bulunamadı - Fortis Yapım Blog',
         description: 'Aradığınız kategori bulunamadı.',
       }
     }
 
     return {
-      title: `${category.name} - Nora Yapım Blog`,
+      title: `${category.name} - Fortis Yapım Blog`,
       description: category.description || `${category.name} kategorisindeki blog yazıları`,
-      keywords: `${category.name}, video prodüksiyon, nora yapım, blog`,
+      keywords: `${category.name}, video prodüksiyon, fortis yapım, blog`,
       openGraph: {
-        title: `${category.name} - Nora Yapım Blog`,
+        title: `${category.name} - Fortis Yapım Blog`,
         description: category.description || `${category.name} kategorisindeki blog yazıları`,
         type: 'website',
-        url: `https://norayapim.com/blog/category/${slug}`,
+        url: `https://fortisyapim.com/blog/category/${slug}`,
       },
     }
   } catch (error) {
     console.error('Error generating category metadata:', error)
     return {
-      title: 'Blog Kategorisi - Nora Yapım',
+      title: 'Blog Kategorisi - Fortis Yapım',
       description: 'Video prodüksiyon kategorileri',
     }
   }

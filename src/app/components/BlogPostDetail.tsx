@@ -163,7 +163,7 @@ const BlogPostDetail = ({ postId }: { postId: string }) => {
                   <span className="text-white font-bold text-2xl">NY</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-3">Nora Yapım</h3>
+                  <h3 className="text-2xl font-bold text-white mb-3">Fortis Yapım</h3>
                   <p className="text-white/70 leading-relaxed text-lg">
                     Video prodüksiyon alanında uzmanlaşmış deneyimli bir ekip. 
                     Teknoloji ve yaratıcılığın kesişiminde yer alan konularda 

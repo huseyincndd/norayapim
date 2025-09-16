@@ -9,57 +9,62 @@ const AboutSectionNew = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Voya Digital ekip fotoğrafları - 10 farklı URL
+  // Fortis ofis fotoğrafları - 1'den 23'e sırayla
   const teamImages = [
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-1.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-2.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-3.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-4.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-5.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-6.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-7.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-8.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-9.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-10.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-11.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-12.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-13.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-14.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-15.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-16.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-17.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-18.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-19.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-20.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-21.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-22.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-23.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-24.webp',
-    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/norayapimofiss-25.webp'
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_1.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_2.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_3.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_4.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_5.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_6.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_7.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_8.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_9.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_10.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_11.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_12.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_13.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_14.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_15.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_16.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_17.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_18.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_19.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_20.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_21.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_22.webp',
+    'https://villaqrmenu.b-cdn.net/nora/noraofisadres/fortis_film_ofis_23.webp'
   ];
 
   // Her resmin pozisyonunu hesapla ve otomatik hizala
   const scrollToImage = (index: number) => {
-    if (sliderRef.current && imageRefs.current[index]) {
-      const imageElement = imageRefs.current[index];
-      if (imageElement) {
-        const offsetLeft = imageElement.offsetLeft;
-        sliderRef.current.scrollTo({
-          left: offsetLeft,
-          behavior: 'smooth'
-        });
-        setCurrentIndex(index);
-      }
-    }
+    const container = sliderRef.current;
+    const imageElement = imageRefs.current[index];
+    if (!container || !imageElement) return;
+
+    // Daha güvenilir sabitleme: öğeyi görünümün başına hizala
+    imageElement.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    setCurrentIndex(index);
   };
 
   // Manuel scroll için daha yavaş animasyon
   const handleManualScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const target = e.currentTarget;
     const scrollLeft = target.scrollLeft;
-    const itemWidth = target.scrollWidth / teamImages.length;
-    const currentIndex = Math.round(scrollLeft / itemWidth);
-    setCurrentIndex(currentIndex);
+
+    // En yakın görüntüyü bul (değişken genişlikler için güvenilir)
+    let nearestIndex = 0;
+    let minDistance = Number.POSITIVE_INFINITY;
+    for (let i = 0; i < imageRefs.current.length; i++) {
+      const el = imageRefs.current[i];
+      if (!el) continue;
+      const distance = Math.abs(el.offsetLeft - scrollLeft);
+      if (distance < minDistance) {
+        minDistance = distance;
+        nearestIndex = i;
+      }
+    }
+    setCurrentIndex(nearestIndex);
   };
 
   const nextSlide = () => {
@@ -252,11 +257,11 @@ const AboutSectionNew = () => {
               {/* Left Panel - Text Content */}
               <div className="lg:col-span-2 p-6 lg:p-8 flex flex-col justify-center">
                 <p className="text-lg lg:text-xl text-white/90 leading-relaxed mb-6">
-                  Nora Yapım, İstanbul merkezli uluslar arası faaliyet gösteren bir dizi yapım şirketi, sinema yapım firması ve reklam prodüksiyon şirketi olarak sektörde uzun yıllara dayanan deneyime sahiptir. 2008 yılından bu yana televizyon kanalları, dijital platformlar ve markalar için dizi, sinema filmi, reklam filmi, belgesel ve kurumsal içerikler üretiyoruz.
+                  Fortis Yapım, İstanbul merkezli uluslar arası faaliyet gösteren bir dizi yapım şirketi, sinema yapım firması ve reklam prodüksiyon şirketi olarak sektörde uzun yıllara dayanan deneyime sahiptir. 2008 yılından bu yana televizyon kanalları, dijital platformlar ve markalar için dizi, sinema filmi, reklam filmi, belgesel ve kurumsal içerikler üretiyoruz.
                 </p>
                 
                 <p className="text-lg lg:text-xl text-white/90 leading-relaxed">
-                  Kurulduğumuz günden bu yana amacımız, yaratıcı fikirleri profesyonel prodüksiyon süreçleriyle birleştirerek izleyicilere değerli hikâyeler sunmak oldu. Bugün Nora Yapım, film yapım şirketi denildiğinde akla gelen güvenilir markalardan biridir.
+                  Kurulduğumuz günden bu yana amacımız, yaratıcı fikirleri profesyonel prodüksiyon süreçleriyle birleştirerek izleyicilere değerli hikâyeler sunmak oldu. Bugün Fortis Yapım, film yapım şirketi denildiğinde akla gelen güvenilir markalardan biridir.
                 </p>
               </div>
 
@@ -300,7 +305,7 @@ const AboutSectionNew = () => {
               Ofisimizden <span className="text-white">Kareler</span>
             </h2>
             <p className="text-lg lg:text-xl text-white/80 max-w-2xl lg:mx-auto">
-              Nora Yapım'ın yaratıcı ve profesyonel ortamını keşfedin.
+              Fortis Yapım'ın yaratıcı ve profesyonel ortamını keşfedin.
             </p>
           </motion.div>
 
@@ -338,7 +343,7 @@ const AboutSectionNew = () => {
               <div
                 ref={sliderRef}
                 className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', scrollSnapType: 'x mandatory', scrollPaddingLeft: 0 }}
                 onScroll={handleManualScroll}
               >
                 {teamImages.map((image, index) => (
@@ -348,6 +353,7 @@ const AboutSectionNew = () => {
                       imageRefs.current[index] = el;
                     }}
                     className="flex-shrink-0 relative group snap-start"
+                    style={{ scrollSnapStop: 'always' }}
                   >
                     <img
                       src={image}
@@ -390,7 +396,7 @@ const AboutSectionNew = () => {
           className="mb-20"
         >
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Nora Yapım Uzmanlık Alanları</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Fortis Yapım Uzmanlık Alanları</h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -480,7 +486,7 @@ const AboutSectionNew = () => {
           className="mb-20"
         >
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Rakamlarla Nora Yapım</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Rakamlarla Fortis Yapım</h2>
             <p className="text-white/80 text-lg mb-8">Bu rakamlar, sadece işimizi değil, izleyiciyle kurduğumuz güveni ve markaların bize duyduğu bağlılığı da gösteriyor.</p>
           </div>
           

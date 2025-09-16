@@ -85,7 +85,7 @@ export default function DashboardOverview() {
       {/* Header */}
       <div>
         <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-600 mt-1 lg:mt-2 text-sm lg:text-base">Nora Yapım admin paneli genel bakış</p>
+        <p className="text-gray-600 mt-1 lg:mt-2 text-sm lg:text-base">Fortis Yapım admin paneli genel bakış</p>
       </div>
 
       {/* Stats Grid */}

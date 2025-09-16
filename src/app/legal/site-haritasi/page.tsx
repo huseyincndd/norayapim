@@ -11,7 +11,7 @@ const SiteHaritasiPage = () => {
     {
       title: "Ana Sayfa",
       path: "/",
-      description: "Nora Yapım ana sayfası - Video prodüksiyon ve yaratıcı ajans hizmetleri"
+      description: "Fortis Yapım ana sayfası - Video prodüksiyon ve yaratıcı ajans hizmetleri"
     },
     {
       title: "Hakkımızda",

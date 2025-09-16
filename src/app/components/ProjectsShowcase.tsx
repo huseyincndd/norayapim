@@ -409,7 +409,7 @@ const MobileShowcase: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mx-auto max-w-3xl text-lg md:text-xl text-white/80 leading-relaxed"
           >
-            Nora Yapım'ın yaratıcı vizyonunu ve teknik mükemmelliğini yansıtan 
+            Fortis Yapım'ın yaratıcı vizyonunu ve teknik mükemmelliğini yansıtan 
             seçkin projelerimizi keşfedin.
           </motion.p>
 

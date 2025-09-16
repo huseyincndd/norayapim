@@ -124,7 +124,7 @@ const CerezPolitikasiPage = () => {
                   
                   <div className="space-y-6 text-white/80 leading-relaxed">
                     <p>
-                      <strong className="text-white">Nora Yapım</strong> web sitesi, kullanıcı deneyimini iyileştirmek, 
+                      <strong className="text-white">Fortis Yapım</strong> web sitesi, kullanıcı deneyimini iyileştirmek, 
                       web sitesi performansını analiz etmek ve kişiselleştirilmiş içerik sunmak amacıyla 
                       çerezler ve benzer teknolojiler kullanmaktadır. Bu politika, hangi çerezlerin 
                       kullanıldığını ve nasıl yönetilebileceğini açıklamaktadır.

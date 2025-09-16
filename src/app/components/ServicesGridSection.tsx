@@ -12,7 +12,7 @@ const ServicesGridSection = () => {
         </svg>
       ),
       title: "Film Yapımı",
-      description: "Nora Yapım, ulusal ve uluslararası deneyimiyle sinema filmleri, belgeseller ve kısa filmler için kapsamlı yapım çözümleri sunar. Senaryo geliştirmeden çekim ve post-prodüksiyona kadar tüm süreçleri titizlikle yönetir, her projeye sanatsal değer ve teknik mükemmeliyet katar."
+      description: "Fortis Yapım, ulusal ve uluslararası deneyimiyle sinema filmleri, belgeseller ve kısa filmler için kapsamlı yapım çözümleri sunar. Senaryo geliştirmeden çekim ve post-prodüksiyona kadar tüm süreçleri titizlikle yönetir, her projeye sanatsal değer ve teknik mükemmeliyet katar."
     },
     {
       icon: (

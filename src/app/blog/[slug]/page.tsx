@@ -17,20 +17,20 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     
     if (!post) {
       return {
-        title: 'Blog Yazısı Bulunamadı - Nora Yapım',
+        title: 'Blog Yazısı Bulunamadı - Fortis Yapım',
         description: 'Aradığınız blog yazısı bulunamadı.',
       }
     }
 
     return {
-      title: post.seo_title || `${post.title} - Nora Yapım Blog`,
+      title: post.seo_title || `${post.title} - Fortis Yapım Blog`,
       description: post.seo_description || post.content.replace(/<[^>]*>/g, '').substring(0, 160),
-      keywords: `${post.category?.name || 'video prodüksiyon'}, ${post.title}, nora yapım, blog`,
+      keywords: `${post.category?.name || 'video prodüksiyon'}, ${post.title}, fortis yapım, blog`,
       openGraph: {
         title: post.title,
         description: post.seo_description || post.content.replace(/<[^>]*>/g, '').substring(0, 160),
         type: 'article',
-        url: `https://norayapim.com/blog/${slug}`,
+        url: `https://fortisyapim.com/blog/${slug}`,
         images: post.featured_image ? [
           {
             url: post.featured_image,
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
           }
         ] : [],
         publishedTime: post.published_at || post.created_at,
-        authors: ['Nora Yapım'],
+        authors: ['Fortis Yapım'],
         section: post.category?.name,
       },
       twitter: {
@@ -50,13 +50,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         images: post.featured_image ? [post.featured_image] : [],
       },
       alternates: {
-        canonical: `https://norayapim.com/blog/${slug}`,
+        canonical: `https://fortisyapim.com/blog/${slug}`,
       },
     }
   } catch (error) {
     console.error('Error generating metadata:', error)
     return {
-      title: 'Blog - Nora Yapım',
+      title: 'Blog - Fortis Yapım',
       description: 'Video prodüksiyon dünyasından içgörüler',
     }
   }

@@ -7,7 +7,7 @@ const WhatWeDoSection = () => {
   const services = [
     {
       title: "Film Yapımı",
-      description: "Nora Yapım, ulusal ve uluslararası deneyimiyle sinema filmleri, belgeseller ve kısa filmler için kapsamlı yapım çözümleri sunar. Senaryo geliştirmeden çekim ve post-prodüksiyona kadar tüm süreçleri titizlikle yönetir, her projeye sanatsal değer ve teknik mükemmeliyet katar."
+      description: "Fortis Yapım, ulusal ve uluslararası deneyimiyle sinema filmleri, belgeseller ve kısa filmler için kapsamlı yapım çözümleri sunar. Senaryo geliştirmeden çekim ve post-prodüksiyona kadar tüm süreçleri titizlikle yönetir, her projeye sanatsal değer ve teknik mükemmeliyet katar."
     },
     {
       title: "Dizi Yapımı",
@@ -90,7 +90,7 @@ const WhatWeDoSection = () => {
               className="text-right mb-8"
             >
               <h2 className="text-4xl lg:text-6xl font-bold text-white tracking-wider">
-                NORA YAPIM
+                FORTİS YAPIM
               </h2>
             </motion.div>
 
