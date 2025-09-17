@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect, createContext, useContext, Children, ReactNode } from 'react';
-import { motion, Transition, useMotionValue } from 'framer-motion';
+import { motion, Transition } from 'framer-motion';
 
 // Service data
 const servicesData = [
@@ -642,8 +642,7 @@ function CarouselContent({
   className,
   transition,
 }: CarouselContentProps) {
-  const { index, setIndex, setItemsCount, disableDrag } = useCarousel();
-  const dragX = useMotionValue(0);
+  const { index, setIndex, setItemsCount } = useCarousel();
   const containerRef = useRef<HTMLDivElement>(null);
   const itemsLength = Children.count(children);
   const [visibleItemsCount, setVisibleItemsCount] = useState(4);
@@ -674,7 +673,7 @@ function CarouselContent({
       } else {
         setIndex(index + 1);
       }
-    }, 1000); // 2 saniyede bir geçiş
+    }, 1000); // 1 saniyede bir geçiş
 
     return () => clearInterval(interval);
   }, [index, setIndex, maxIndex]);
@@ -687,39 +686,12 @@ function CarouselContent({
     setItemsCount(itemsLength);
   }, [itemsLength, setItemsCount]);
 
-  const onDragEnd = () => {
-    const x = dragX.get();
-
-    if (x <= -10) {
-      if (index >= maxIndex) {
-        setIndex(0); // Başa dön
-      } else {
-        setIndex(index + 1);
-      }
-    } else if (x >= 10 && index > 0) {
-      setIndex(index - 1);
-    }
-  };
-
   return (
     <motion.div
-      drag={disableDrag ? false : 'x'}
-      dragConstraints={
-        disableDrag
-          ? undefined
-          : {
-              left: 0,
-              right: 0,
-            }
-      }
-      dragMomentum={disableDrag ? undefined : false}
-      style={{
-        x: disableDrag ? undefined : dragX,
-      }}
+      drag={false}
       animate={{
         translateX: `-${index * (100 / visibleItemsCount)}%`,
       }}
-      onDragEnd={disableDrag ? undefined : onDragEnd}
       transition={
         transition || {
           damping: 18,
@@ -728,9 +700,7 @@ function CarouselContent({
           duration: 0.2,
         }
       }
-      className={`flex items-center ${
-        !disableDrag && 'cursor-grab active:cursor-grabbing'
-      } ${className}`}
+      className={`flex items-center ${className}`}
       ref={containerRef}
     >
       {children}
@@ -887,7 +857,7 @@ const ServicesSectionNew = ({ noBg = false }: { noBg?: boolean }) => {
 
         {/* Carousel Container */}
         <div className='relative w-full px-4 pb-4'>
-          <Carousel>
+          <Carousel disableDrag={true}>
             <CarouselContent className='-ml-4'>
               {servicesData.map((service) => (
                 <CarouselItem key={service.id} className='basis-1/2 lg:basis-1/4 xl:basis-1/4 pl-4'>
