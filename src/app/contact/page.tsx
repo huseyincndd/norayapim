@@ -230,10 +230,7 @@ const ContactPage = () => {
                   <div>
                     <p className="text-white font-semibold mb-2">Adres</p>
                     <div className="space-y-1">
-                      <p className="text-white/90">Business İstanbul</p>
-                      <p className="text-white/90">Merdivenköy Mahallesi, Dikyol Sokak No:2, Kat:18</p>
-                      <p className="text-white/90">34732 Kadıköy / İstanbul</p>
-                      <p className="text-white/70 text-sm mt-2 italic">Not: Ofisimiz yalnızca randevu ile ziyaret kabul etmektedir.</p>
+                      <p className="text-white/90">İstanbul</p>
                     </div>
                   </div>
                 </div>
