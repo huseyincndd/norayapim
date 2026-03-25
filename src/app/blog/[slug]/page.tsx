@@ -17,24 +17,24 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     
     if (!post) {
       return {
-        title: 'Blog Yazısı Bulunamadı - Fortis Yapım',
+        title: 'Blog Yazısı Bulunamadı - Fortis Film',
         description: 'Aradığınız blog yazısı bulunamadı.',
       }
     }
 
     const autoExcerpt = (post.content || '').replace(/<[^>]*>/g, '').substring(0, 160);
-    const metaTitle = post.meta_title || `${post.title} - Fortis Yapım Blog`;
+    const metaTitle = post.meta_title || `${post.title} - Fortis Film Blog`;
     const metaDesc = post.meta_description || autoExcerpt;
 
     return {
       title: metaTitle,
       description: metaDesc,
-      keywords: `video prodüksiyon, ${post.title}, fortis yapım, blog`,
+      keywords: `video prodüksiyon, ${post.title}, fortis film, blog`,
       openGraph: {
         title: metaTitle,
         description: metaDesc,
         type: 'article',
-        url: `https://fortisyapim.com/blog/${slug}`,
+        url: `https://fortisfilm.com/blog/${slug}`,
         images: post.featured_image ? [
           {
             url: post.featured_image,
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
           }
         ] : [],
         publishedTime: post.published_at || post.created_at,
-        authors: ['Fortis Yapım'],
+        authors: ['Fortis Film'],
       },
       twitter: {
         card: 'summary_large_image',
@@ -53,13 +53,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         images: post.featured_image ? [post.featured_image] : [],
       },
       alternates: {
-        canonical: `https://fortisyapim.com/blog/${slug}`,
+        canonical: `https://fortisfilm.com/blog/${slug}`,
       },
     }
   } catch (error) {
     console.error('Error generating metadata:', error)
     return {
-      title: 'Blog - Fortis Yapım',
+      title: 'Blog - Fortis Film',
       description: 'Video prodüksiyon dünyasından içgörüler',
     }
   }

@@ -100,8 +100,8 @@ const BlogContentSection = () => {
                 <Link href={`/blog/${post.slug}`}>
                   <section className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
                     {/* Image - Left Side */}
-                    <div className="lg:w-1/2">
-                      <div className="relative h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-black group-hover:shadow-2xl transition-shadow duration-500">
+                    <div className="w-full lg:w-1/2">
+                      <div className="relative h-64 md:h-96 w-full rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-black group-hover:shadow-2xl transition-shadow duration-500">
                         {getSafeImageUrl(post.featured_image) && (
                           <img
                             src={getSafeImageUrl(post.featured_image) || ''}
@@ -136,7 +136,7 @@ const BlogContentSection = () => {
                       
                       {/* Meta Info */}
                       <div className="flex items-center gap-4 text-white/60 text-sm">
-                        <span>Fortis Yapım</span>
+                        <span>Fortis Film</span>
                         <span>•</span>
                         <span>5 dk okuma</span>
                       </div>

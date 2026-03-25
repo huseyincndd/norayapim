@@ -61,8 +61,8 @@ export const createSlug = (title: string): string => {
   return slug;
 };
 
-const BLOG_LIST_COLUMNS = 'id,title,slug,featured_image,status,published_at,created_at,updated_at,content';
-const BLOG_DETAIL_COLUMNS = `${BLOG_LIST_COLUMNS},meta_title,meta_description,faq_data`;
+const BLOG_LIST_COLUMNS = 'id,title,slug,featured_image,status,published_at,created_at,updated_at,content,meta_title,meta_description,faq_data';
+const BLOG_DETAIL_COLUMNS = BLOG_LIST_COLUMNS;
 
 const hasDataUri = (value?: string | null): boolean => {
   if (!value) return false;

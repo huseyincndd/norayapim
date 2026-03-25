@@ -126,7 +126,7 @@ const BlogPostDetail = ({ postId }: { postId: string }) => {
                 transition={{ duration: 1, delay: 0.3 }}
                 className="mb-16"
               >
-                <div className="relative h-[600px] rounded-3xl overflow-hidden">
+                <div className="relative h-64 sm:h-[400px] md:h-[600px] w-full rounded-2xl md:rounded-3xl overflow-hidden">
                   <img
                     src={safeImageUrl}
                     alt={post.title}
@@ -188,10 +188,10 @@ const BlogPostDetail = ({ postId }: { postId: string }) => {
             <div className="mt-20 p-10 bg-white/5 rounded-3xl border border-white/10">
               <div className="flex items-start gap-8">
                 <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-2xl">NY</span>
+                  <span className="text-white font-bold text-2xl">FF</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-3">Fortis Yapım</h3>
+                  <h3 className="text-2xl font-bold text-white mb-3">Fortis Film</h3>
                   <p className="text-white/70 leading-relaxed text-lg">
                     Video prodüksiyon alanında uzmanlaşmış deneyimli bir ekip. 
                     Teknoloji ve yaratıcılığın kesişiminde yer alan konularda 

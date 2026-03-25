@@ -164,7 +164,7 @@ export default function BlogForm({ post, onClose, onSuccess }: BlogFormProps) {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               İçerik *
             </label>
-            <div className="border border-gray-200 rounded-xl overflow-hidden bg-white">
+            <div className="border border-gray-200 rounded-xl overflow-hidden bg-white [&_.ql-editor]:text-gray-900 [&_.ql-editor]:!text-gray-900">
               <ReactQuill
                 value={formData.content}
                 onChange={(value) => handleInputChange('content', value)}

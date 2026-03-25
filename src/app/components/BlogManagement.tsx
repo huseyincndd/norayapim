@@ -182,6 +182,11 @@ export default function BlogManagement() {
                 className="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl p-5 border border-white/10"
               >
                 <div className="space-y-4">
+                  {post.featured_image && (
+                    <div className="h-40 w-full rounded-xl overflow-hidden mb-2">
+                      <img src={post.featured_image} alt={post.title} className="w-full h-full object-cover" />
+                    </div>
+                  )}
                   <div>
                     <h3 className="font-semibold text-white text-base">{post.title}</h3>
                     <p className="text-white/50 text-xs mt-1 line-clamp-2">
