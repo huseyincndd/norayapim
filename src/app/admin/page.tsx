@@ -5,11 +5,10 @@ import { motion } from 'framer-motion'
 import AdminSidebar from '../components/AdminSidebar'
 import AdminHeader from '../components/AdminHeader'
 import DashboardOverview from '../components/DashboardOverview'
-import BlogManagement from '../components/BlogManagement'
-import CategoryManagement from '../components/CategoryManagement'
+import BlogManagement from '@/app/components/BlogManagement'
 import SettenKarelerManagement from '../components/SettenKarelerManagement'
 
-type ActiveTab = 'dashboard' | 'blog' | 'categories' | 'settenkareler' | 'settings'
+type ActiveTab = 'dashboard' | 'blog' | 'settenkareler' | 'settings'
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard')
@@ -38,6 +37,16 @@ export default function AdminPage() {
       
       if (!adminPassword) {
         setError('Admin şifresi yapılandırılmamış!')
+        return
+      }
+
+      if (!/^\d{6}$/.test(adminPassword)) {
+        setError('Sunucu şifresi 6 haneli sayı formatında olmalı.')
+        return
+      }
+
+      if (!/^\d{6}$/.test(password)) {
+        setError('Lütfen 6 haneli şifre girin.')
         return
       }
       
@@ -82,12 +91,14 @@ export default function AdminPage() {
                   Admin Şifresi
                 </label>
                 <input
-                  type="password"
+                  type="text"
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Şifrenizi girin"
+                  placeholder="6 haneli şifre"
+                  inputMode="numeric"
+                  maxLength={6}
                   required
                 />
               </div>
@@ -128,8 +139,6 @@ export default function AdminPage() {
         return <DashboardOverview />
       case 'blog':
         return <BlogManagement />
-      case 'categories':
-        return <CategoryManagement />
       case 'settenkareler':
         return <SettenKarelerManagement />
       case 'settings':

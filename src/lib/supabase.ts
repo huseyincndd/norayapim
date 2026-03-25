@@ -5,7 +5,20 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-// Blog category interface
+// Blog post interface
+export interface BlogPost {
+  id: number;
+  title: string;
+  content?: string;
+  featured_image?: string;
+  slug: string;
+  status: 'draft' | 'published';
+  published_at?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+// Legacy compatibility type. Category-based blog flow is disabled.
 export interface BlogCategory {
   id: number;
   name: string;
@@ -13,27 +26,6 @@ export interface BlogCategory {
   description?: string;
   color: string;
   is_active: boolean;
-  created_at: string;
-  updated_at: string;
-}
-
-// Blog post interface
-export interface BlogPost {
-  id: number;
-  title: string;
-  content: string;
-  category_id?: number;
-  category?: BlogCategory; // JOIN ile gelecek
-  seo_title?: string;
-  seo_description?: string;
-  faq?: string;
-  featured_image?: string;
-  detail_image?: string;
-  slug?: string;
-  is_featured: boolean;
-  is_homepage_featured: boolean;
-  status: 'draft' | 'published';
-  published_at?: string;
   created_at: string;
   updated_at: string;
 }
@@ -66,31 +58,48 @@ export const createSlug = (title: string): string => {
   return slug;
 };
 
-// Kategorileri getirme
-export const getBlogCategories = async (): Promise<BlogCategory[]> => {
-  const { data, error } = await supabase
-    .from('blog_categories')
-    .select('*')
-    .eq('is_active', true)
-    .order('name', { ascending: true });
-  
-  if (error) {
-    console.error('Error fetching categories:', error);
-    return [];
-  }
-  return data || [];
+const BLOG_LIST_COLUMNS = 'id,title,slug,featured_image,status,published_at,created_at,updated_at,content';
+const BLOG_DETAIL_COLUMNS = BLOG_LIST_COLUMNS;
+
+const hasDataUri = (value?: string | null): boolean => {
+  if (!value) return false;
+  return /data:image\/[a-zA-Z+]+;base64,/i.test(value);
 };
 
-// Blog yazılarını kategori ile birlikte getirme
-export const getBlogPosts = async (): Promise<BlogPost[]> => {
-  const { data, error } = await supabase
+const isValidBunnyUrl = (url?: string | null): boolean => {
+  if (!url) return true;
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === 'https:' && parsed.hostname.includes('b-cdn.net');
+  } catch {
+    return false;
+  }
+};
+
+const validateBlogPayload = (post: { content: string; featured_image?: string | null }) => {
+  if (hasDataUri(post.content)) {
+    throw new Error('İçerikte base64 görsel kullanılamaz. Lütfen Bunny CDN URL kullanın.');
+  }
+  if (hasDataUri(post.featured_image || '')) {
+    throw new Error('Kapak görselinde base64 kullanılamaz. Lütfen Bunny CDN URL kullanın.');
+  }
+  if (!isValidBunnyUrl(post.featured_image)) {
+    throw new Error('Kapak görseli yalnızca Bunny CDN URL formatında olmalıdır.');
+  }
+};
+
+export const getBlogPosts = async (includeDrafts: boolean = true): Promise<BlogPost[]> => {
+  let query = supabase
     .from('blog_posts')
-    .select(`
-      *,
-      category:blog_categories(*)
-    `)
-    .eq('status', 'published')
-    .order('published_at', { ascending: false });
+    .select(BLOG_LIST_COLUMNS)
+    .order('published_at', { ascending: false, nullsFirst: false })
+    .order('created_at', { ascending: false });
+
+  if (!includeDrafts) {
+    query = query.eq('status', 'published');
+  }
+
+  const { data, error } = await query;
 
   if (error) {
     console.error('Error fetching blog posts:', error);
@@ -98,6 +107,26 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
   }
 
   return data || [];
+};
+
+export const getPublicBlogPosts = async (): Promise<BlogPost[]> => {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select(BLOG_LIST_COLUMNS)
+    .eq('status', 'published')
+    .order('published_at', { ascending: false, nullsFirst: false })
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching blog posts:', error);
+    return [];
+  }
+
+  return data || [];
+};
+
+export const getBlogCategories = async (): Promise<BlogCategory[]> => {
+  return [];
 };
 
 // Sayfalama ile blog yazılarını getirme
@@ -123,12 +152,10 @@ export const getBlogPostsPaginated = async (page: number = 1, limit: number = 10
   // Sayfalı blog yazılarını al
   const { data, error } = await supabase
     .from('blog_posts')
-    .select(`
-      *,
-      category:blog_categories(*)
-    `)
+    .select(BLOG_LIST_COLUMNS)
     .eq('status', 'published')
-    .order('published_at', { ascending: false })
+    .order('published_at', { ascending: false, nullsFirst: false })
+    .order('created_at', { ascending: false })
     .range(offset, offset + limit - 1);
 
   if (error) {
@@ -148,34 +175,17 @@ export const getBlogPostsPaginated = async (page: number = 1, limit: number = 10
 };
 
 export const getFeaturedBlogPosts = async (): Promise<BlogPost[]> => {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select(`
-      *,
-      category:blog_categories(*)
-    `)
-    .eq('is_featured', true)
-    .eq('status', 'published')
-    .order('published_at', { ascending: false });
-
-  if (error) {
-    console.error('Error fetching featured blog posts:', error);
-    return [];
-  }
-
-  return data || [];
+  return [];
 };
 
 export const getHomepageFeaturedPosts = async (): Promise<BlogPost[]> => {
   const { data, error } = await supabase
     .from('blog_posts')
-    .select(`
-      *,
-      category:blog_categories(*)
-    `)
-    .eq('is_homepage_featured', true)
+    .select(BLOG_LIST_COLUMNS)
     .eq('status', 'published')
-    .order('published_at', { ascending: false });
+    .order('published_at', { ascending: false, nullsFirst: false })
+    .order('created_at', { ascending: false })
+    .limit(6);
 
   if (error) {
     console.error('Error fetching homepage featured blog posts:', error);
@@ -188,10 +198,7 @@ export const getHomepageFeaturedPosts = async (): Promise<BlogPost[]> => {
 export const getBlogPostBySlug = async (slug: string): Promise<BlogPost | null> => {
   const { data, error } = await supabase
     .from('blog_posts')
-    .select(`
-      *,
-      category:blog_categories(*)
-    `)
+    .select(BLOG_DETAIL_COLUMNS)
     .eq('slug', slug)
     .eq('status', 'published')
     .single();
@@ -207,12 +214,8 @@ export const getBlogPostBySlug = async (slug: string): Promise<BlogPost | null> 
 export const getBlogPostById = async (id: string): Promise<BlogPost | null> => {
   const { data, error } = await supabase
     .from('blog_posts')
-    .select(`
-      *,
-      category:blog_categories(*)
-    `)
+    .select(BLOG_DETAIL_COLUMNS)
     .eq('id', id)
-    .eq('status', 'published')
     .single();
 
   if (error) {
@@ -223,67 +226,76 @@ export const getBlogPostById = async (id: string): Promise<BlogPost | null> => {
   return data;
 };
 
-// Kategoriye göre blog yazıları getirme
-export const getBlogPostsByCategory = async (categorySlug: string): Promise<BlogPost[]> => {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select(`
-      *,
-      category:blog_categories(*)
-    `)
-    .eq('category.slug', categorySlug)
-    .eq('status', 'published')
-    .order('published_at', { ascending: false });
-
-  if (error) {
-    console.error('Error fetching posts by category:', error);
-    return [];
-  }
-  return data || [];
-};
-
-// Blog yazısı ekleme (slug otomatik oluşturulur)
 export const saveBlogPost = async (post: {
   title: string;
   content: string;
-  category_id?: number;
-  seo_title?: string;
-  seo_description?: string;
-  faq?: string;
   featured_image?: string;
-  detail_image?: string;
-  is_featured?: boolean;
   status: 'draft' | 'published';
 }) => {
+  validateBlogPayload(post);
   const slug = createSlug(post.title);
   
   const { data, error } = await supabase
     .from('blog_posts')
     .insert({
-      ...post,
+      title: post.title,
+      content: post.content,
       slug,
-      is_featured: post.is_featured || false,
+      featured_image: post.featured_image || null,
+      status: post.status,
       published_at: post.status === 'published' ? new Date().toISOString() : null
     });
   return { data, error };
 };
 
-// Kategori ekleme
-export const addBlogCategory = async (category: {
+export const updateBlogPost = async (
+  id: number,
+  post: {
+    title: string;
+    content: string;
+    featured_image?: string;
+    status: 'draft' | 'published';
+  }
+) => {
+  validateBlogPayload(post);
+  const slug = createSlug(post.title);
+
+  const payload: {
+    title: string;
+    slug: string;
+    content: string;
+    featured_image: string | null;
+    status: 'draft' | 'published';
+    published_at?: string | null;
+  } = {
+    title: post.title,
+    slug,
+    content: post.content,
+    featured_image: post.featured_image || null,
+    status: post.status
+  };
+
+  if (post.status === 'published') {
+    payload.published_at = new Date().toISOString();
+  }
+
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .update(payload)
+    .eq('id', id);
+
+  return { data, error };
+};
+
+export const addBlogCategory = async (_category: {
   name: string;
   description?: string;
   color?: string;
 }) => {
-  const slug = createSlug(category.name);
-  
-  const { data, error } = await supabase
-    .from('blog_categories')
-    .insert({
-      ...category,
-      slug,
-      color: category.color || '#3B82F6'
-    });
-  return { data, error };
+  return {
+    data: null,
+    error: { message: 'Kategori yapisi devre disi birakildi.' }
+  };
 };
 
 // SettenKareler Image interface

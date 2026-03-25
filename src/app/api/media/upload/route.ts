@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 const BUNNY_STORAGE_ZONE = process.env.BUNNY_STORAGE_ZONE || process.env.NEXT_PUBLIC_BUNNY_STORAGE_ZONE || 'villaqr'
 const BUNNY_API_KEY = process.env.BUNNY_API_KEY || ''
-const BUNNY_CDN_HOST = process.env.BUNNY_CDN_HOST || 'villaqrmenu.b-cdn.net'
+const BUNNY_CDN_HOST = process.env.BUNNY_CDN_HOST || process.env.BUNNY_PULL_ZONE || 'villaqrmenu.b-cdn.net'
 
 export async function POST(request: NextRequest) {
 	try {
@@ -18,7 +18,8 @@ export async function POST(request: NextRequest) {
 
 		const formData = await request.formData()
 		const file = formData.get('file') as File | null
-		const folder = (formData.get('folder') as string | null) || 'nora/norablog'
+		const folderRaw = (formData.get('folder') as string | null) || 'nora'
+		const folder = folderRaw.replace(/(\.\.)|[^a-zA-Z0-9/_-]/g, '')
 		const nameHint = (formData.get('nameHint') as string | null) || 'blog'
 
 		console.log('File received:', file?.name, file?.size, file?.type)
@@ -80,6 +81,9 @@ export async function POST(request: NextRequest) {
 		// URL'yi düzelt: villaqr.b-cdn.net yerine villaqrmenu.b-cdn.net kullan
 		let url = `https://${BUNNY_CDN_HOST}/${filePath}`
 		url = url.replace('villaqr.b-cdn.net', 'villaqrmenu.b-cdn.net')
+		if (!url.includes('b-cdn.net')) {
+			return NextResponse.json({ success: false, message: 'Geçersiz CDN URL üretildi' }, { status: 500 })
+		}
 		console.log('Upload successful, URL:', url)
 		return NextResponse.json({ success: true, message: 'Dosya başarıyla yüklendi', url })
 	} catch (error: any) {

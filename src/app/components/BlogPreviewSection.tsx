@@ -70,8 +70,11 @@ const BlogSlide = ({ post, index, current, handleSlideClick }: BlogSlideProps) =
     });
   };
 
-  const { title, seo_description, published_at, created_at, slug } = post;
-  const imageUrl = post.featured_image || post.detail_image || 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=600&fit=crop';
+  const { title, published_at, created_at, slug } = post;
+  const imageUrl =
+    post.featured_image && post.featured_image.startsWith('https://') && post.featured_image.includes('b-cdn.net')
+      ? post.featured_image
+      : 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=600&fit=crop';
   const date = formatDate(published_at || created_at);
 
   return (
@@ -122,31 +125,20 @@ const BlogSlide = ({ post, index, current, handleSlideClick }: BlogSlideProps) =
           }`}
         >
           <div className="max-w-2xl text-left">
-            {/* Category Tag */}
-            <div className="inline-block bg-white text-black px-3 py-1 rounded-full text-xs font-medium mb-3">
-              {post.category?.name || 'Blog'}
-            </div>
-
             {/* Title */}
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 leading-tight">
               {title}
             </h2>
 
             {/* Excerpt */}
-            {seo_description ? (
-              <p className="text-sm md:text-base text-white/80 mb-4 leading-relaxed">
-                {seo_description}
-              </p>
-            ) : (
-              <div 
-                className="text-sm md:text-base text-white/80 mb-4 leading-relaxed line-clamp-3 blog-preview-content"
-                dangerouslySetInnerHTML={{ 
-                  __html: post.content 
-                    ? post.content.replace(/<[^>]*>/g, '').substring(0, 150) + '...'
-                    : 'İçerik mevcut değil.'
-                }}
-              />
-            )}
+            <div 
+              className="text-sm md:text-base text-white/80 mb-4 leading-relaxed line-clamp-3 blog-preview-content"
+              dangerouslySetInnerHTML={{ 
+                __html: post.content 
+                  ? post.content.replace(/<[^>]*>/g, '').substring(0, 150) + '...'
+                  : 'İçerik mevcut değil.'
+              }}
+            />
 
             {/* Date and Read More */}
             <div className="flex items-center justify-between">

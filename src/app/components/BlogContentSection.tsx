@@ -3,11 +3,10 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { getBlogPostsPaginated, getFeaturedBlogPosts, BlogPost } from '../../lib/supabase'
+import { getBlogPostsPaginated, BlogPost } from '../../lib/supabase'
 
 const BlogContentSection = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
-  const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
@@ -19,13 +18,9 @@ const BlogContentSection = () => {
 
   const fetchPosts = async () => {
     try {
-      const [paginatedData, featured] = await Promise.all([
-        getBlogPostsPaginated(currentPage, 10),
-        getFeaturedBlogPosts()
-      ])
+      const paginatedData = await getBlogPostsPaginated(currentPage, 10)
       
       setBlogPosts(paginatedData.posts)
-      setFeaturedPosts(featured)
       setTotalPages(paginatedData.totalPages)
       setTotalPosts(paginatedData.total)
     } catch (error) {
@@ -46,6 +41,18 @@ const BlogContentSection = () => {
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
     window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const getSafeImageUrl = (url?: string) => {
+    if (!url) return null
+    if (!url.startsWith('https://')) return null
+    if (!url.includes('b-cdn.net')) return null
+    return url
+  }
+
+  const getExcerpt = (html?: string) => {
+    if (!html) return 'İçerik yakında eklenecek.'
+    return html.replace(/<[^>]*>/g, '').trim().slice(0, 160) + '...'
   }
 
   if (loading) {
@@ -79,52 +86,9 @@ const BlogContentSection = () => {
           </motion.p>
         </div>
 
-        {/* Featured Posts - First 3 */}
-        {featuredPosts.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-32"
-          >
-            <h2 className="text-3xl font-bold text-white mb-12 text-center">Öne Çıkan Yazılar</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {featuredPosts.slice(0, 3).map((post, index) => (
-                <Link key={post.id} href={`/blog/${post.slug}`} className="group">
-                                     <div className="relative h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-black">
-                    {post.featured_image && (
-                      <img
-                        src={post.featured_image}
-                        alt={post.title}
-                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                    
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <div className="bg-white text-black px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
-                        {post.category?.name || 'Blog'}
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-white/80 transition-colors">
-                        {post.title}
-                      </h3>
-                      <p className="text-white/70 text-sm">
-                        {formatDate(post.published_at || post.created_at)}
-                      </p>
-
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </motion.div>
-        )}
-
         {/* Regular Blog Posts */}
         <div className="space-y-32">
-          {blogPosts
-            .filter(post => !featuredPosts.find(featured => featured.id === post.id))
-            .map((post, index) => (
+          {blogPosts.map((post, index) => (
               <motion.div
                 key={post.id}
                 initial={{ opacity: 0, y: 50 }}
@@ -138,9 +102,9 @@ const BlogContentSection = () => {
                     {/* Image - Left Side */}
                     <div className="lg:w-1/2">
                       <div className="relative h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-black group-hover:shadow-2xl transition-shadow duration-500">
-                        {post.featured_image && (
+                        {getSafeImageUrl(post.featured_image) && (
                           <img
-                            src={post.featured_image}
+                            src={getSafeImageUrl(post.featured_image) || ''}
                             alt={post.title}
                             className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
@@ -162,15 +126,12 @@ const BlogContentSection = () => {
                           <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight group-hover:text-white/80 transition-colors">
                             {post.title}
                           </h2>
-                          <span className="bg-white text-black px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap ml-4">
-                            {post.category?.name || 'Blog'}
-                          </span>
                         </div>
                       </div>
                       
                       {/* Excerpt */}
                       <p className="text-white/80 text-xl leading-relaxed mb-6">
-                        {post.seo_description || 'Blog yazısı açıklaması...'}
+                        {getExcerpt(post.content)}
                       </p>
                       
                       {/* Meta Info */}
@@ -185,7 +146,7 @@ const BlogContentSection = () => {
                   </section>
                 </Link>
               </motion.div>
-            ))}
+          ))}
         </div>
 
         {/* Pagination */}
@@ -256,7 +217,7 @@ const BlogContentSection = () => {
         )}
 
         {/* No Posts Message */}
-        {blogPosts.length === 0 && featuredPosts.length === 0 && (
+        {blogPosts.length === 0 && (
           <div className="text-center py-20">
             <p className="text-white/60 text-xl">Henüz blog yazısı bulunmuyor.</p>
           </div>

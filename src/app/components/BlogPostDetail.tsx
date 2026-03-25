@@ -9,6 +9,9 @@ import { getBlogPostBySlug, BlogPost } from '../../lib/supabase'
 const BlogPostDetail = ({ postId }: { postId: string }) => {
   const [post, setPost] = useState<BlogPost | null>(null)
   const [loading, setLoading] = useState(true)
+  const safeImageUrl = post?.featured_image?.startsWith('https://') && post.featured_image.includes('b-cdn.net')
+    ? post.featured_image
+    : null
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -99,17 +102,11 @@ const BlogPostDetail = ({ postId }: { postId: string }) => {
                   </svg>
                   <span>{formatDate(post.published_at || post.created_at)}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                  </svg>
-                  <span>{post.category?.name || 'Blog'}</span>
-                </div>
               </motion.div>
             </div>
 
-            {/* Detail Image - Blog başlangıcında gösterilecek resim */}
-            {(post.detail_image || post.featured_image) && (
+            {/* Featured image */}
+            {safeImageUrl && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -118,7 +115,7 @@ const BlogPostDetail = ({ postId }: { postId: string }) => {
               >
                 <div className="relative h-[600px] rounded-3xl overflow-hidden">
                   <img
-                    src={post.detail_image || post.featured_image}
+                    src={safeImageUrl}
                     alt={post.title}
                     className="w-full h-full object-cover"
                   />
@@ -130,31 +127,9 @@ const BlogPostDetail = ({ postId }: { postId: string }) => {
             <article className="max-w-none">
               <div 
                 className="text-white/90 leading-relaxed prose prose-lg prose-invert max-w-none blog-content"
-                dangerouslySetInnerHTML={{ __html: post.content }}
+                dangerouslySetInnerHTML={{ __html: post.content || '' }}
               />
             </article>
-
-            {/* FAQ Section */}
-            {post.faq && (
-              <div className="mt-20 p-10 bg-white/5 rounded-3xl border border-white/10">
-                <h3 className="text-3xl font-bold text-white mb-8">Sık Sorulan Sorular</h3>
-                <div className="space-y-6">
-                  {post.faq.split('\n').map((line, index) => {
-                    if (line.startsWith('Soru:')) {
-                      const question = line.replace('Soru:', '').trim();
-                      const answer = post.faq?.split('\n')[index + 1]?.replace('Cevap:', '').trim() || '';
-                      return (
-                        <div key={index} className="border-b border-white/10 pb-6 last:border-b-0">
-                          <h4 className="text-xl font-semibold text-white mb-3">{question}</h4>
-                          <p className="text-white/70 leading-relaxed">{answer}</p>
-                        </div>
-                      );
-                    }
-                    return null;
-                  })}
-                </div>
-              </div>
-            )}
 
             {/* Author Bio */}
             <div className="mt-20 p-10 bg-white/5 rounded-3xl border border-white/10">

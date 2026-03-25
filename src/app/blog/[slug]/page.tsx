@@ -23,12 +23,12 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     }
 
     return {
-      title: post.seo_title || `${post.title} - Fortis Yapım Blog`,
-      description: post.seo_description || post.content.replace(/<[^>]*>/g, '').substring(0, 160),
-      keywords: `${post.category?.name || 'video prodüksiyon'}, ${post.title}, fortis yapım, blog`,
+      title: `${post.title} - Fortis Yapım Blog`,
+      description: (post.content || '').replace(/<[^>]*>/g, '').substring(0, 160),
+      keywords: `video prodüksiyon, ${post.title}, fortis yapım, blog`,
       openGraph: {
         title: post.title,
-        description: post.seo_description || post.content.replace(/<[^>]*>/g, '').substring(0, 160),
+        description: (post.content || '').replace(/<[^>]*>/g, '').substring(0, 160),
         type: 'article',
         url: `https://fortisyapim.com/blog/${slug}`,
         images: post.featured_image ? [
@@ -41,12 +41,11 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         ] : [],
         publishedTime: post.published_at || post.created_at,
         authors: ['Fortis Yapım'],
-        section: post.category?.name,
       },
       twitter: {
         card: 'summary_large_image',
         title: post.title,
-        description: post.seo_description || post.content.replace(/<[^>]*>/g, '').substring(0, 160),
+        description: (post.content || '').replace(/<[^>]*>/g, '').substring(0, 160),
         images: post.featured_image ? [post.featured_image] : [],
       },
       alternates: {

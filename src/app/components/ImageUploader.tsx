@@ -11,7 +11,7 @@ interface ImageUploaderProps {
 	className?: string
 }
 
-export default function ImageUploader({ label, initialUrl, folder = 'nora/norablog', nameHint = 'blog', onChange, className }: ImageUploaderProps) {
+export default function ImageUploader({ label, initialUrl, folder = 'nora', nameHint = 'blog', onChange, className }: ImageUploaderProps) {
 	const [previewUrl, setPreviewUrl] = useState<string | null>(initialUrl || null)
 	const [uploading, setUploading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
@@ -39,6 +39,9 @@ export default function ImageUploader({ label, initialUrl, folder = 'nora/norabl
 			const json = await res.json()
 			if (!res.ok || !json?.success) {
 				throw new Error(json?.message || 'Yükleme başarısız')
+			}
+			if (typeof json.url !== 'string' || !json.url.includes('b-cdn.net')) {
+				throw new Error('Yalnızca Bunny CDN URL kabul edilir')
 			}
 			setPreviewUrl(json.url)
 			onChange(json.url)
