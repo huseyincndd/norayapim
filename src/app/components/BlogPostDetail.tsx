@@ -4,20 +4,33 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import Header from './Header'
-import { getBlogPostBySlug, BlogPost } from '../../lib/supabase'
+import { getBlogPostBySlug, getPublicBlogPosts, BlogPost } from '../../lib/supabase'
 
 const BlogPostDetail = ({ postId }: { postId: string }) => {
   const [post, setPost] = useState<BlogPost | null>(null)
+  const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
   const safeImageUrl = post?.featured_image?.startsWith('https://') && post.featured_image.includes('b-cdn.net')
     ? post.featured_image
     : null
+
+  const toggleFaq = (index: number) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index)
+  }
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const blogPost = await getBlogPostBySlug(postId);
         setPost(blogPost);
+        
+        if (blogPost) {
+          const allPosts = await getPublicBlogPosts();
+          const filtered = allPosts.filter(p => p.id !== blogPost.id);
+          const shuffled = filtered.sort(() => 0.5 - Math.random());
+          setRelatedPosts(shuffled.slice(0, 3));
+        }
       } catch (error) {
         console.error('Error fetching blog post:', error);
       } finally {
@@ -131,6 +144,46 @@ const BlogPostDetail = ({ postId }: { postId: string }) => {
               />
             </article>
 
+            {/* FAQs Section */}
+            {post.faq_data && post.faq_data.length > 0 && (
+              <div className="mt-20">
+                <h2 className="text-3xl font-bold text-white mb-8">Sıkça Sorulan Sorular</h2>
+                <div className="space-y-4">
+                  {post.faq_data.map((faq, index) => (
+                    <div 
+                      key={index} 
+                      className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden"
+                    >
+                      <button
+                        onClick={() => toggleFaq(index)}
+                        className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
+                      >
+                        <span className="text-lg font-semibold text-white pr-8">{faq.question}</span>
+                        <motion.span 
+                          animate={{ rotate: openFaqIndex === index ? 180 : 0 }}
+                          className="flex-shrink-0 text-white/50"
+                        >
+                          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </motion.span>
+                      </button>
+                      
+                      <motion.div
+                        initial={false}
+                        animate={{ height: openFaqIndex === index ? 'auto' : 0, opacity: openFaqIndex === index ? 1 : 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 pb-5 text-white/70 leading-relaxed">
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Author Bio */}
             <div className="mt-20 p-10 bg-white/5 rounded-3xl border border-white/10">
               <div className="flex items-start gap-8">
@@ -161,6 +214,35 @@ const BlogPostDetail = ({ postId }: { postId: string }) => {
                 Tüm Yazılara Dön
               </Link>
             </div>
+
+            {/* Related Posts */}
+            {relatedPosts.length > 0 && (
+              <div className="mt-24 border-t border-white/10 pt-16">
+                <h2 className="text-3xl font-bold text-white mb-10 text-center">Bunu Da Okumak İsteyebilirsiniz</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {relatedPosts.map(rp => (
+                    <Link href={`/blog/${rp.slug}`} key={rp.id} className="group block h-full">
+                      <div className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-300 h-full flex flex-col">
+                        {rp.featured_image ? (
+                          <div className="h-48 overflow-hidden relative">
+                            <img src={rp.featured_image} alt={rp.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                          </div>
+                        ) : (
+                          <div className="h-48 bg-gray-900" />
+                        )}
+                        <div className="p-6 flex flex-col flex-grow">
+                          <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white/80 transition-colors line-clamp-2">{rp.title}</h3>
+                          <p className="text-white/60 text-sm line-clamp-3">
+                            {rp.meta_description || (rp.content || '').replace(/<[^>]*>/g, '').substring(0, 100) + '...'}
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+            
           </motion.div>
         </div>
       </section>

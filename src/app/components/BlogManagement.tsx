@@ -82,82 +82,84 @@ export default function BlogManagement() {
     <div className="space-y-4 lg:space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Blog Yönetimi</h1>
-          <p className="text-gray-600 mt-1 lg:mt-2 text-sm lg:text-base">Blog yazılarınızı yönetin ve düzenleyin</p>
+          <h1 className="text-2xl lg:text-3xl font-bold text-white tracking-tight">Blog Yönetimi</h1>
+          <p className="text-white/60 mt-1 lg:mt-2 text-sm lg:text-base">Blog yazılarınızı yönetin ve düzenleyin</p>
         </div>
         <button
           onClick={handleAddNewPost}
-          className="bg-blue-500 text-white px-4 lg:px-6 py-2 lg:py-3 rounded-lg hover:bg-blue-600 transition-colors text-sm lg:text-base"
+          className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white px-5 lg:px-6 py-2.5 lg:py-3 rounded-xl shadow-lg shadow-indigo-500/20 transition-all duration-300 font-medium tracking-wide text-sm lg:text-base"
         >
           Yeni Yazı Ekle
         </button>
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6">
+      <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-5 lg:p-6 shadow-xl">
         <input
           type="text"
           placeholder="Blog yazılarında ara..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full px-3 lg:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm lg:text-base"
+          className="w-full px-4 lg:px-5 py-3 bg-white/5 text-white placeholder-white/40 border border-white/10 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm lg:text-base transition-colors"
         />
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200">
-        <div className="p-4 lg:p-6 border-b border-gray-200">
-          <h2 className="text-lg lg:text-xl font-semibold text-gray-900">
+      <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl overflow-hidden">
+        <div className="p-5 lg:p-6 border-b border-white/10 bg-white/5">
+          <h2 className="text-lg lg:text-xl font-bold text-white">
             Blog Yazıları ({filteredPosts.length})
           </h2>
         </div>
 
         <div className="hidden lg:block overflow-x-auto">
           <table className="w-full min-w-[700px]">
-            <thead className="bg-gray-50">
+            <thead className="bg-white/5">
               <tr>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Başlık</th>
-                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Durum</th>
-                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tarih</th>
-                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">İşlemler</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-white/50 uppercase tracking-wider">Başlık</th>
+                <th className="px-3 py-3 text-left text-xs font-medium text-white/50 uppercase tracking-wider">Durum</th>
+                <th className="px-3 py-3 text-left text-xs font-medium text-white/50 uppercase tracking-wider">Tarih</th>
+                <th className="px-3 py-3 text-left text-xs font-medium text-white/50 uppercase tracking-wider">İşlemler</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-transparent divide-y divide-white/10">
               {filteredPosts.map((post, index) => (
                 <motion.tr
                   key={post.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="hover:bg-gray-50"
+                  className="hover:bg-white/5"
                 >
                   <td className="px-4 py-4">
                     <div>
-                      <div className="text-sm font-medium text-gray-900">{post.title}</div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm font-semibold text-white">{post.title}</div>
+                      <div className="text-sm text-white/50 mt-1 line-clamp-1">
                         {(post.content || '').replace(/<[^>]*>/g, '').substring(0, 80)}...
                       </div>
                     </div>
                   </td>
                   <td className="px-3 py-4">
-                    <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                      post.status === 'published' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+                    <span className={`px-2.5 py-1 text-xs font-semibold rounded-lg border ${
+                      post.status === 'published' 
+                        ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' 
+                        : 'bg-white/5 text-white/60 border-white/10'
                     }`}>
                       {post.status === 'published' ? 'Yayında' : 'Taslak'}
                     </span>
                   </td>
-                  <td className="px-3 py-4 text-sm text-gray-500">
+                  <td className="px-3 py-4 text-sm text-white/50">
                     {new Date(post.created_at).toLocaleDateString('tr-TR')}
                   </td>
                   <td className="px-3 py-4 text-sm font-medium">
                     <div className="flex gap-2">
                       <button
                         onClick={() => handleEditPost(post)}
-                        className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded hover:bg-blue-200 whitespace-nowrap"
+                        className="px-3 py-1.5 text-xs font-semibold bg-indigo-500/20 text-indigo-400 rounded-lg hover:bg-indigo-500/30 transition-colors whitespace-nowrap"
                       >
                         Düzenle
                       </button>
                       <button
                         onClick={() => deletePost(post.id)}
-                        className="px-2 py-1 text-xs bg-red-100 text-red-800 rounded hover:bg-red-200 whitespace-nowrap"
+                        className="px-3 py-1.5 text-xs font-semibold bg-rose-500/20 text-rose-400 rounded-lg hover:bg-rose-500/30 transition-colors whitespace-nowrap"
                       >
                         Sil
                       </button>
@@ -177,35 +179,37 @@ export default function BlogManagement() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="bg-gray-50 rounded-lg p-4 border border-gray-200"
+                className="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl p-5 border border-white/10"
               >
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <div>
-                    <h3 className="font-medium text-gray-900 text-sm">{post.title}</h3>
-                    <p className="text-gray-500 text-xs mt-1">
+                    <h3 className="font-semibold text-white text-base">{post.title}</h3>
+                    <p className="text-white/50 text-xs mt-1 line-clamp-2">
                       {(post.content || '').replace(/<[^>]*>/g, '').substring(0, 80)}...
                     </p>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                      post.status === 'published' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+                    <span className={`px-2.5 py-1 text-xs font-semibold rounded-lg border ${
+                      post.status === 'published' 
+                        ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' 
+                        : 'bg-white/5 text-white/60 border-white/10'
                     }`}>
                       {post.status === 'published' ? 'Yayında' : 'Taslak'}
                     </span>
                   </div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-white/50 font-medium tracking-wide">
                     {new Date(post.created_at).toLocaleDateString('tr-TR')}
                   </div>
-                  <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-200">
+                  <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
                     <button
                       onClick={() => handleEditPost(post)}
-                      className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded"
+                      className="px-4 py-2 text-xs font-semibold bg-indigo-500/20 text-indigo-400 rounded-lg hover:bg-indigo-500/30 transition-colors flex-1"
                     >
                       Düzenle
                     </button>
                     <button
                       onClick={() => deletePost(post.id)}
-                      className="px-2 py-1 text-xs bg-red-100 text-red-800 rounded"
+                      className="px-4 py-2 text-xs font-semibold bg-rose-500/20 text-rose-400 rounded-lg hover:bg-rose-500/30 transition-colors flex-1"
                     >
                       Sil
                     </button>
@@ -218,7 +222,7 @@ export default function BlogManagement() {
 
         {filteredPosts.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-500">Blog yazısı bulunamadı</p>
+            <p className="text-white/50">Blog yazısı bulunamadı</p>
           </div>
         )}
       </div>

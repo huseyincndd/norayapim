@@ -22,13 +22,17 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       }
     }
 
+    const autoExcerpt = (post.content || '').replace(/<[^>]*>/g, '').substring(0, 160);
+    const metaTitle = post.meta_title || `${post.title} - Fortis Yapım Blog`;
+    const metaDesc = post.meta_description || autoExcerpt;
+
     return {
-      title: `${post.title} - Fortis Yapım Blog`,
-      description: (post.content || '').replace(/<[^>]*>/g, '').substring(0, 160),
+      title: metaTitle,
+      description: metaDesc,
       keywords: `video prodüksiyon, ${post.title}, fortis yapım, blog`,
       openGraph: {
-        title: post.title,
-        description: (post.content || '').replace(/<[^>]*>/g, '').substring(0, 160),
+        title: metaTitle,
+        description: metaDesc,
         type: 'article',
         url: `https://fortisyapim.com/blog/${slug}`,
         images: post.featured_image ? [
@@ -44,8 +48,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       },
       twitter: {
         card: 'summary_large_image',
-        title: post.title,
-        description: (post.content || '').replace(/<[^>]*>/g, '').substring(0, 160),
+        title: metaTitle,
+        description: metaDesc,
         images: post.featured_image ? [post.featured_image] : [],
       },
       alternates: {

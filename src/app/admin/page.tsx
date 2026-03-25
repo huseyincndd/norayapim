@@ -149,7 +149,7 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-[#0f172a] to-zinc-900 text-white selection:bg-indigo-500/30">
       <AdminHeader onMenuClick={() => setSidebarOpen(!sidebarOpen)} onLogout={handleLogout} />
       
       <div className="flex pt-16">

@@ -16,6 +16,9 @@ export interface BlogPost {
   published_at?: string;
   created_at: string;
   updated_at: string;
+  meta_title?: string;
+  meta_description?: string;
+  faq_data?: { question: string, answer: string }[];
 }
 
 // Legacy compatibility type. Category-based blog flow is disabled.
@@ -59,7 +62,7 @@ export const createSlug = (title: string): string => {
 };
 
 const BLOG_LIST_COLUMNS = 'id,title,slug,featured_image,status,published_at,created_at,updated_at,content';
-const BLOG_DETAIL_COLUMNS = BLOG_LIST_COLUMNS;
+const BLOG_DETAIL_COLUMNS = `${BLOG_LIST_COLUMNS},meta_title,meta_description,faq_data`;
 
 const hasDataUri = (value?: string | null): boolean => {
   if (!value) return false;
@@ -231,6 +234,9 @@ export const saveBlogPost = async (post: {
   content: string;
   featured_image?: string;
   status: 'draft' | 'published';
+  meta_title?: string;
+  meta_description?: string;
+  faq_data?: { question: string, answer: string }[];
 }) => {
   validateBlogPayload(post);
   const slug = createSlug(post.title);
@@ -243,7 +249,10 @@ export const saveBlogPost = async (post: {
       slug,
       featured_image: post.featured_image || null,
       status: post.status,
-      published_at: post.status === 'published' ? new Date().toISOString() : null
+      published_at: post.status === 'published' ? new Date().toISOString() : null,
+      meta_title: post.meta_title || null,
+      meta_description: post.meta_description || null,
+      faq_data: post.faq_data || null
     });
   return { data, error };
 };
@@ -255,6 +264,9 @@ export const updateBlogPost = async (
     content: string;
     featured_image?: string;
     status: 'draft' | 'published';
+    meta_title?: string;
+    meta_description?: string;
+    faq_data?: { question: string, answer: string }[];
   }
 ) => {
   validateBlogPayload(post);
@@ -267,12 +279,18 @@ export const updateBlogPost = async (
     featured_image: string | null;
     status: 'draft' | 'published';
     published_at?: string | null;
+    meta_title?: string | null;
+    meta_description?: string | null;
+    faq_data?: any;
   } = {
     title: post.title,
     slug,
     content: post.content,
     featured_image: post.featured_image || null,
-    status: post.status
+    status: post.status,
+    meta_title: post.meta_title || null,
+    meta_description: post.meta_description || null,
+    faq_data: post.faq_data || null
   };
 
   if (post.status === 'published') {

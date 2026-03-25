@@ -50,20 +50,20 @@ export default function AdminSidebar({ activeTab, setActiveTab }: AdminSidebarPr
   ]
 
   return (
-    <aside className="w-64 lg:w-64 bg-white shadow-lg border-r border-gray-200 h-full overflow-y-auto">
-      <nav className="mt-8">
-        <div className="px-3 lg:px-4 space-y-1 lg:space-y-2">
+    <aside className="w-64 lg:w-72 bg-slate-900/50 backdrop-blur-xl border-r border-white/10 h-full overflow-y-auto flex flex-col pt-4">
+      <nav className="flex-1">
+        <div className="px-4 space-y-2">
           {menuItems.map((item) => (
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
-              className={`w-full flex items-center space-x-3 px-3 lg:px-4 py-2 lg:py-3 rounded-lg transition-all duration-200 text-sm lg:text-base ${
+              className={`w-full flex items-center space-x-4 px-4 py-3.5 rounded-2xl transition-all duration-300 text-sm font-medium ${
                 activeTab === item.id
-                  ? 'bg-blue-50 text-blue-700 border-r-2 border-blue-700'
-                  : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                  ? 'bg-gradient-to-r from-indigo-500/20 to-purple-500/20 text-white border border-indigo-500/30 shadow-[0_0_15px_rgba(99,102,241,0.15)]'
+                  : 'text-white/60 hover:bg-white/5 hover:text-white border border-transparent'
               }`}
             >
-              <span className={`${activeTab === item.id ? 'text-blue-700' : 'text-gray-500'}`}>
+              <span className={`${activeTab === item.id ? 'text-indigo-400' : 'text-white/50'} transition-colors`}>
                 {item.icon}
               </span>
               <span className="font-medium truncate">{item.label}</span>
@@ -73,14 +73,14 @@ export default function AdminSidebar({ activeTab, setActiveTab }: AdminSidebarPr
       </nav>
 
       {/* Bottom section */}
-      <div className="absolute bottom-0 left-0 right-0 p-3 lg:p-4 border-t border-gray-200">
-        <div className="flex items-center space-x-3 p-2 lg:p-3 bg-gray-50 rounded-lg">
-          <div className="w-6 h-6 lg:w-8 lg:h-8 bg-blue-500 rounded-full flex items-center justify-center">
-            <span className="text-white font-semibold text-xs lg:text-sm">N</span>
+      <div className="p-4 border-t border-white/5 mt-auto">
+        <div className="flex items-center space-x-3 p-3 bg-white/5 hover:bg-white/10 transition-colors rounded-2xl border border-white/5 cursor-pointer">
+          <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+            <span className="text-white font-bold text-sm">N</span>
           </div>
-          <div className="min-w-0 flex-1">
-            <p className="text-xs lg:text-sm font-medium text-gray-900 truncate">Fortis Yapım</p>
-            <p className="text-xs text-gray-500 truncate">Admin Panel</p>
+          <div className="min-w-0 flex-1 text-left">
+            <p className="text-sm font-semibold text-white truncate tracking-wide">Fortis Yapım</p>
+            <p className="text-xs text-white/50 truncate">Yönetici Paneli</p>
           </div>
         </div>
       </div>
