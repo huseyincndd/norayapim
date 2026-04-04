@@ -3,6 +3,7 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display, Montserrat, Bebas_Neue, Lato, Poppins } from 'next/font/google'
 import './globals.css'
+import MetaPixel from './components/MetaPixel'
 
 // Ana metin fontu
 const inter = Inter({ 
@@ -141,6 +142,7 @@ export default function RootLayout({
     <html lang="tr">
       {/* Font değişkenlerini body'e uygulayarak tüm projede kullanılabilir hale getiriyoruz */}
       <body className={`${inter.variable} ${playfair.variable} ${montserrat.variable} ${bebasNeue.variable} ${lato.variable} ${poppins.variable} font-sans bg-[#121212]`}>
+        <MetaPixel />
         {children}
       </body>
     </html>
